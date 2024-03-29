@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Assets.Scripts.Entities;
 using UnityEngine;
 
+[AddComponentMenu("Weapon")]
 public class WeaponComponent : MonoBehaviour, IWeapon
 {
     public float Damage { get; }
