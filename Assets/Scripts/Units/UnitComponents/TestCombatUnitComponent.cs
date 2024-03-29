@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Assets.Scripts.Units.UnitComponents
 {
     [AddComponentMenu("Entities/Test/TestCombatUnit")]
-    public class TestCombatUnitComponent : MonoBehaviour, ICombatUnit, IDamagable, IAttackable
+    public class TestCombatUnitComponent : MonoBehaviour, ICombatUnit
     {
         public IHealthAttribute HealthAttribute { get; private set; }
         public Vector3 Position => transform.position;
