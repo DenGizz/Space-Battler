@@ -9,6 +9,6 @@ namespace Assets.Scripts.Entities
         float ColdDownTime { get; }
 
         bool CanShoot { get; }
-        void Shoot(IDamagableEntity target);
+        void Shoot(IDamagable target);
     }
 }
