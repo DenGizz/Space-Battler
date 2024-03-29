@@ -1,19 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Entities;
 using UnityEngine;
 
 [AddComponentMenu("Entities/Test/TestCombatEntity")]
-public class TestCombatEntityComponent : MonoBehaviour
+public class TestCombatEntityComponent : MonoBehaviour, IEntity, IDamagable, IAttackable
 {
-    // Start is called before the first frame update
-    void Start()
+    public IHealthAttribute HealthAttribute { get; private set; }
+    public Vector3 Position => transform.position;
+
+    public IEnumerable<IWeapon> Weapons => _weapons;
+
+    [SerializeField] private List<WeaponComponent> _weapons;
+
+    public void TakeDamage(float damageAmount)
     {
-        
+        HealthAttribute.TakeDamage(damageAmount);
+    }
+    
+    public void Attack(IWeapon weapon, IDamagable target)
+    {
+        weapon.Shoot(target);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddWeapon(IWeapon weapon)
     {
-        
+        throw new System.NotImplementedException();
+    }
+
+    public void RemoveWeapon(IWeapon weapon)
+    {
+        throw new System.NotImplementedException();
     }
 }
