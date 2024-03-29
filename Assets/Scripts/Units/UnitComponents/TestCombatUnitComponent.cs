@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Units.UnitComponents
 {
-    [AddComponentMenu("Entities/Test/TestCombatEntity")]
+    [AddComponentMenu("Entities/Test/TestCombatUnit")]
     public class TestCombatUnitComponent : MonoBehaviour, ICombatUnit, IDamagable, IAttackable
     {
         public IHealthAttribute HealthAttribute { get; private set; }
