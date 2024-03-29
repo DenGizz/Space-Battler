@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
-namespace Assets.Scripts.Entities
+namespace Assets.Scripts.Units
 {
     public interface IAttackable
     {

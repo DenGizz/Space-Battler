@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-
-namespace Assets.Scripts.Entities.EntityAttributes
+﻿namespace Assets.Scripts.Units.UnitAttributes
 {
     public class HealthAttribute : IHealthAttribute
     {
