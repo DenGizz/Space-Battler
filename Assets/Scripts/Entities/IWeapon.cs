@@ -8,7 +8,7 @@ namespace Assets.Scripts.Entities
         float Damage { get; }
         float ColdDownTime { get; }
 
-        bool IsOnCooldown { get; }
+        bool CanShoot { get; }
         void Shoot(IDamagableEntity target);
     }
 }
