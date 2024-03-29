@@ -12,9 +12,10 @@ public class WeaponComponent : MonoBehaviour, IWeapon
 
     [SerializeField] private float _damage;
     [SerializeField] private float _coldDownTime;
+
     private bool _isOnColdDown;
 
-    public void Shoot(IDamagableEntity target)
+    public void Shoot(IDamagable target)
     {
         if (_isOnColdDown)
             return;
