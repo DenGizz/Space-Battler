@@ -1,8 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Scripts.Units.UnitAttributes;
 using UnityEngine;
 
-public interface IUnit
+namespace Assets.Scripts.Units
 {
-    Vector3 Position { get; }
+    public interface IUnit : IDamagable, IAttackable
+    {
+        IHealthAttribute HealthAttribute { get; }
+        Vector3 Position { get; }
+    }
 }
