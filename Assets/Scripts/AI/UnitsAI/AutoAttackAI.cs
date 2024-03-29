@@ -50,7 +50,7 @@ namespace Assets.Scripts.AI
             if (Target is ICombatUnit combatUnit && combatUnit.HealthAttribute.HP <= 0)
                 return;
 
-            foreach(var weapon in _serializedControlledCombatUnit.Weapons)
+            foreach(var weapon in _controlledCombatUnit.Weapons)
                 if (weapon.CanShoot)
                     weapon.Shoot(Target);     
         }
