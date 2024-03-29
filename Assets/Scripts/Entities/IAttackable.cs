@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities
 {
-    public interface IAttackableEntity
+    public interface IAttackable
     {
         IEnumerable<IWeapon> Weapons { get; }
-        void Attack(IWeapon weapon, IDamagableEntity target);
+        void Attack(IWeapon weapon, IDamagable target);
         void AddWeapon(IWeapon weapon);
         void RemoveWeapon(IWeapon weapon);
     }
