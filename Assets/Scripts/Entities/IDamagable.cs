@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities
 {
-    public interface IDamagableEntity
+    public interface IDamagable
     {
-        void TakeDamage(float damage);
+        void TakeDamage(float damageAmount);
     }
 }
