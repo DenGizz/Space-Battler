@@ -6,8 +6,8 @@ namespace Assets.Scripts.Units.UnitComponents
     [AddComponentMenu("Weapon")]
     public class WeaponComponent : MonoBehaviour, IWeapon
     {
-        public float Damage { get; }
-        public float ColdDownTime { get; }
+        public float Damage => _damage;
+        public float ColdDownTime => _coldDownTime;
         public bool CanShoot => !_isOnColdDown;
 
         [SerializeField] private float _damage;
