@@ -7,9 +7,7 @@ namespace Assets.Scripts.Infrastructure.Services.Factories
 {
     public interface IUnitRegistry
     {
-        public IEnumerable<ICombatUnit> CombatUnits { get; }
-
-        public void RegisterCombatUnit(ICombatUnit unit);
-        public void UnregisterCombatUnit(ICombatUnit unit);
+        public ICombatUnit PlayerCombatUnit { get; set; }
+        public ICombatUnit EnemyCombatUnit { get; set; }
     }
 }
