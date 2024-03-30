@@ -9,7 +9,7 @@ namespace Assets.Scripts.Infrastructure.Services
         private GameObject _spaceShipPrefab;
 
         private const string PrefabsPath = "Prefabs";
-        private const string SpaceShipPrefabRelativePath = "SpaceShip";
+        private const string SpaceShipPrefabRelativePath = "Space Ship";
 
         public GameObject GetSpaceShipPrefab()
         {
