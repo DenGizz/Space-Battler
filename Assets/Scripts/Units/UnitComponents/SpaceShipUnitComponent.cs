@@ -15,7 +15,7 @@ namespace Assets.Scripts.Units.UnitComponents
 
         private List<IWeapon> _weapons;
 
-        public void Initialize(CombatUnitData unitData)
+        public void Construct(CombatUnitData unitData)
         {
             transform.position = unitData.Position;
             HealthAttribute = new HealthAttribute(unitData.Health, unitData.MaxHealth);
