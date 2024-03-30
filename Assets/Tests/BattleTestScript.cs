@@ -11,8 +11,8 @@ public class BattleTestScript : MonoBehaviour
 {
     [SerializeField] private BattleInfoUIViewModel _battleInfoUi;
 
-    [SerializeField] private TestCombatUnitComponent playerCombatUnitComponent;
-    [SerializeField] private TestCombatUnitComponent enemyCombatUnitComponent;
+    [SerializeField] private SpaceShipUnitComponent playerCombatUnitComponent;
+    [SerializeField] private SpaceShipUnitComponent enemyCombatUnitComponent;
 
     [SerializeField] private AutoAttackAI playerAutoAttackAI;
     [SerializeField] private AutoAttackAI enemyAutoAttackAI;
