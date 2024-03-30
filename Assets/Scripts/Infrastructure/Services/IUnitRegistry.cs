@@ -7,7 +7,7 @@ namespace Assets.Scripts.Infrastructure.Services.Factories
 {
     public interface IUnitRegistry
     {
-        public ICombatUnit PlayerCombatUnit { get; set; }
-        public ICombatUnit EnemyCombatUnit { get; set; }
+        public ISpaceShip PlayerSpaceShip { get; set; }
+        public ISpaceShip EnemySpaceShip { get; set; }
     }
 }

@@ -17,8 +17,8 @@ public class BattleTestScript : MonoBehaviour
     [SerializeField] private AutoAttackAI playerAutoAttackAI;
     [SerializeField] private AutoAttackAI enemyAutoAttackAI;
 
-    private ICombatUnit playerCombatUnit;
-    private ICombatUnit enemyCombatUnit;
+    private ISpaceShip _playerSpaceShip;
+    private ISpaceShip _enemySpaceShip;
 
     private ICombatAI playerAI;
     private ICombatAI enemyAI;
@@ -34,19 +34,19 @@ public class BattleTestScript : MonoBehaviour
     private void LateUpdate()
     {
         ObserveBattle();
-        _battleInfoUi.WriteInfo(GetBattleStatInfoString(playerCombatUnit, enemyCombatUnit));
+        _battleInfoUi.WriteInfo(GetBattleStatInfoString(_playerSpaceShip, _enemySpaceShip));
     }
 
     private void InitializeBattle()
     {
-        playerCombatUnit = playerCombatUnitComponent;
-        enemyCombatUnit = enemyCombatUnitComponent;
+        _playerSpaceShip = playerCombatUnitComponent;
+        _enemySpaceShip = enemyCombatUnitComponent;
 
         playerAI = playerAutoAttackAI;
         enemyAI = enemyAutoAttackAI;
 
-        playerAI.SetTarget(enemyCombatUnit);
-        enemyAI.SetTarget(playerCombatUnit);
+        playerAI.SetTarget(_enemySpaceShip);
+        enemyAI.SetTarget(_playerSpaceShip);
     }
 
     private void StartBattle()
@@ -70,33 +70,33 @@ public class BattleTestScript : MonoBehaviour
         if (_isBattleStopped)
             return;
 
-        if(playerCombatUnit.HealthAttribute.HP <= 0)
+        if(_playerSpaceShip.HealthAttribute.HP <= 0)
         {
             Destroy(playerCombatUnitComponent.gameObject);
             StopBattle();
         }
 
-        if(enemyCombatUnit.HealthAttribute.HP <= 0)
+        if(_enemySpaceShip.HealthAttribute.HP <= 0)
         {
             Destroy(enemyCombatUnitComponent.gameObject);
             StopBattle();
         }
     }
 
-    private string GetBattleStatInfoString(ICombatUnit player, ICombatUnit enemy)
+    private string GetBattleStatInfoString(ISpaceShip player, ISpaceShip enemy)
     {
         string GetWeaponInfo(IWeapon weapon)
         {
             return $"Weapon. Damage: {weapon.Damage} ColdDown time: {weapon.ColdDownTime})";
         }
 
-        string GetUnitInfo(ICombatUnit unit)
+        string GetUnitInfo(ISpaceShip unit)
         {
             string baseUnitInfo =
                 $"Unit: {unit.GetType().Name}, Health: {GetAttributeInfo(unit.HealthAttribute)}";
 
             string weaponsInfo = "";
-            if (unit is ICombatUnit combatEntity)
+            if (unit is ISpaceShip combatEntity)
                 foreach (var weapon in combatEntity.Weapons)
                     weaponsInfo += $"{GetWeaponInfo(weapon)}\n";
 

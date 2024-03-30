@@ -8,15 +8,15 @@ namespace Assets.Scripts.Infrastructure.Services
 {
     public class BattleRunnerService 
     {
-        ICombatUnitFactory _combatUnitFactory;
+        ISpaceShipFactory _spaceShipFactory;
         ICombatAIRegistry _combatAIRegistry;
         IBattleObserver _battleObserver;
 
         public BattleData CurrentBattle { get; private set; }
 
-        public BattleRunnerService(ICombatUnitFactory combatUnitFactory, ICombatAIRegistry combatAIRegistry, IBattleObserver battleObserver)
+        public BattleRunnerService(ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleObserver battleObserver)
         {
-            _combatUnitFactory = combatUnitFactory;
+            _spaceShipFactory = spaceShipFactory;
             _combatAIRegistry = combatAIRegistry;
             _battleObserver = battleObserver;
             _battleObserver.OnWinerDetermined += OnWinerDeterminedEventHandler;
@@ -25,8 +25,8 @@ namespace Assets.Scripts.Infrastructure.Services
         public void SetupBattle()
         {
             //Instantiate units
-            ICombatUnit player = _combatUnitFactory.CreatePlayerSpaceShip();
-            ICombatUnit enemy = _combatUnitFactory.CreateEnemySpaceShip();
+            ISpaceShip player = _spaceShipFactory.CreatePlayerSpaceShip();
+            ISpaceShip enemy = _spaceShipFactory.CreateEnemySpaceShip();
             //Find target for each combat unit
             ICombatAI playerAI = _combatAIRegistry.GetAI(player);
             ICombatAI enemyAI = _combatAIRegistry.GetAI(enemy);
@@ -60,7 +60,7 @@ namespace Assets.Scripts.Infrastructure.Services
             //Destroy projectiles
         }
 
-        private void OnWinerDeterminedEventHandler(ICombatUnit winner)
+        private void OnWinerDeterminedEventHandler(ISpaceShip winner)
         {
             StopBattle();
             Debug.Log("Winner is " + winner);

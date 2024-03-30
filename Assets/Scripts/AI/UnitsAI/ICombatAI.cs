@@ -4,11 +4,11 @@ namespace Assets.Scripts.AI.UnitsAI
 {
     public interface ICombatAI
     {
-        ICombatUnit Target { get; }
+        ISpaceShip Target { get; }
 
         bool IsInCombatState { get; }
 
-        void SetTarget(ICombatUnit target);
+        void SetTarget(ISpaceShip target);
         void RemoveTarget();
 
         void StartCombat();

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Units
 {
-    public class CombatUnitData
+    public class SpaceShipData
     {
         public Vector3 Position { get; set; }
         public IEnumerable<IWeapon> Weapons { get; set; }

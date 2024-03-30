@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Services.Factories
 {
-    public interface ICombatUnitFactory
+    public interface ISpaceShipFactory
     {
-        ICombatUnit CreatePlayerSpaceShip();
-        ICombatUnit CreateEnemySpaceShip();
+        ISpaceShip CreatePlayerSpaceShip();
+        ISpaceShip CreateEnemySpaceShip();
     }
 }

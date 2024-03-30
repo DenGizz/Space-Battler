@@ -5,21 +5,21 @@ using UnityEngine;
 namespace Assets.Scripts.AI
 {
     [AddComponentMenu("AI/CombatUnit/AutoAttackAI")]
-    [RequireComponent(typeof(ICombatUnit))]
+    [RequireComponent(typeof(ISpaceShip))]
     public class AutoAttackAI : MonoBehaviour, ICombatAI
     {
-        public ICombatUnit Target { get; private set; }
+        public ISpaceShip Target { get; private set; }
         public bool IsInCombatState { get; private set; }
 
-        [SerializeField] private ICombatUnit _target;
-        private ICombatUnit _controlledCombatUnit;
+        [SerializeField] private ISpaceShip _target;
+        private ISpaceShip _controlledSpaceShip;
 
         private void Awake()
         {
-            _controlledCombatUnit = GetComponent<ICombatUnit>();
+            _controlledSpaceShip = GetComponent<ISpaceShip>();
         }
 
-        public void SetTarget(ICombatUnit target)
+        public void SetTarget(ISpaceShip target)
         {
             Target = target;
         }
@@ -47,10 +47,10 @@ namespace Assets.Scripts.AI
             if (Target == null)
                 return;
 
-            if (Target is ICombatUnit combatUnit && combatUnit.HealthAttribute.HP <= 0)
+            if (Target is ISpaceShip combatUnit && combatUnit.HealthAttribute.HP <= 0)
                 return;
 
-            foreach(var weapon in _controlledCombatUnit.Weapons)
+            foreach(var weapon in _controlledSpaceShip.Weapons)
                 if (weapon.CanShoot)
                     weapon.Shoot(Target);     
         }

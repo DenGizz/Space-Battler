@@ -11,8 +11,8 @@ namespace Assets.Scripts.Infrastructure.Services
     public interface ICombatAIRegistry
     {
         public IEnumerable<ICombatAI> CombatAIs { get; }
-        public ICombatAI GetAI(ICombatUnit combatUnit);
-        public void RegisterAI(ICombatUnit combatUnit, ICombatAI combatUnitAI);
-        public void UnregisterAI(ICombatUnit combatUnit);
+        public ICombatAI GetAI(ISpaceShip spaceShip);
+        public void RegisterAI(ISpaceShip spaceShip, ICombatAI combatUnitAI);
+        public void UnregisterAI(ISpaceShip spaceShip);
     }
 }

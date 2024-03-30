@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Assets.Scripts.Units.UnitComponents
 {
     [AddComponentMenu("Units/SpaceShip")]
-    public class SpaceShipUnitComponent : MonoBehaviour, ICombatUnit
+    public class SpaceShipUnitComponent : MonoBehaviour, ISpaceShip
     {
         public IHealthAttribute HealthAttribute { get; private set; }
 
@@ -15,7 +15,7 @@ namespace Assets.Scripts.Units.UnitComponents
 
         private List<IWeapon> _weapons;
 
-        public void Construct(CombatUnitData unitData)
+        public void Construct(SpaceShipData unitData)
         {
             transform.position = unitData.Position;
             HealthAttribute = new HealthAttribute(unitData.Health, unitData.MaxHealth);
