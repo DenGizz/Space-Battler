@@ -10,27 +10,26 @@ namespace Assets.Scripts
 {
     public class BattleData
     {
-        public ICombatUnit PlayerUnit { get; private set; }
-        public ICombatUnit EnemyUnit { get; private set; }
+        public ICombatUnit PlayerUnit { get; set; }
+        public ICombatUnit EnemyUnit { get; set; }
 
-        public ICombatAI PlayerAI { get; private set; }
-        public ICombatAI EnemyAI { get; private set; }
+        public ICombatAI PlayerAI { get;  set; }
+        public ICombatAI EnemyAI { get;  set; }
 
-        public bool IsBattleStarted { get; private set; }
-        public bool IsBattleEnded { get; private set; }
+        public bool IsBattleStarted { get;  set; }
+        public bool IsBattleEnded { get;  set; }
 
         public BattleData() { }
 
-        public void AddPlayer(ICombatUnit playerUnit, ICombatAI playerAI)
+        public BattleData(ICombatUnit playerUnit, ICombatUnit enemyUnit, 
+            ICombatAI playerAI, ICombatAI enemyAI, bool isBattleStarted, bool isBattleEnded)
         {
             PlayerUnit = playerUnit;
-            PlayerAI = playerAI;
-        }
-
-        public void AddEnemy(ICombatUnit enemyUnit, ICombatAI enemyAI)
-        {
             EnemyUnit = enemyUnit;
+            PlayerAI = playerAI;
             EnemyAI = enemyAI;
+            IsBattleStarted = isBattleStarted;
+            IsBattleEnded = isBattleEnded;
         }
     }
 }
