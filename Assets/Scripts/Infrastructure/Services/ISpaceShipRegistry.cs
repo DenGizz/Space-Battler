@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Services.Factories
 {
-    public interface IUnitRegistry
+    public interface ISpaceShipRegistry
     {
         public ISpaceShip PlayerSpaceShip { get; set; }
         public ISpaceShip EnemySpaceShip { get; set; }

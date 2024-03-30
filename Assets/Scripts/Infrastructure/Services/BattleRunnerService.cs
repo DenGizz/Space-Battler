@@ -25,8 +25,8 @@ namespace Assets.Scripts.Infrastructure.Services
         public void SetupBattle()
         {
             //Instantiate units
-            ISpaceShip player = _spaceShipFactory.CreatePlayerSpaceShip();
-            ISpaceShip enemy = _spaceShipFactory.CreateEnemySpaceShip();
+            ISpaceShip player = _spaceShipFactory.CreatePlayerSpaceShip(Vector3.zero - Vector3.right * 7);
+            ISpaceShip enemy = _spaceShipFactory.CreateEnemySpaceShip(Vector3.zero + Vector3.right * 7);
             //Find target for each combat unit
             ICombatAI playerAI = _combatAIRegistry.GetAI(player);
             ICombatAI enemyAI = _combatAIRegistry.GetAI(enemy);
