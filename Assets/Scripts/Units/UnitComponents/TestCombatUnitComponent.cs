@@ -14,6 +14,11 @@ namespace Assets.Scripts.Units.UnitComponents
 
         [SerializeField] private List<WeaponComponent> _weapons;
 
+        private void Awake()
+        {
+            HealthAttribute = new HealthAttribute(100,100);
+        }
+
         public void TakeDamage(float damageAmount)
         {
             HealthAttribute.TakeDamage(damageAmount);
