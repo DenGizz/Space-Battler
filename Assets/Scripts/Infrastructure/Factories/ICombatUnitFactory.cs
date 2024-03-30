@@ -6,6 +6,7 @@ namespace Assets.Scripts.Infrastructure.Services.Factories
 {
     public interface ICombatUnitFactory
     {
-        ICombatUnit CreateSpaceShip();
+        ICombatUnit CreatePlayerSpaceShip();
+        ICombatUnit CreateEnemySpaceShip();
     }
 }
