@@ -14,6 +14,14 @@ namespace Assets.Scripts.Infrastructure.Services
 
         public BattleData CurrentBattle { get; private set; }
 
+        public BattleRunnerService(ICombatUnitFactory combatUnitFactory, ICombatAIRegistry combatAIRegistry, IBattleObserver battleObserver)
+        {
+            _combatUnitFactory = combatUnitFactory;
+            _combatAIRegistry = combatAIRegistry;
+            _battleObserver = battleObserver;
+            _battleObserver.OnWinerDetermined += OnWinerDeterminedEventHandler;
+        }
+
         public void SetupBattle()
         {
             //Instantiate units
@@ -26,9 +34,7 @@ namespace Assets.Scripts.Infrastructure.Services
             playerAI.SetTarget(enemy);
             enemyAI.SetTarget(player);
 
-            CurrentBattle = new BattleData();
-            CurrentBattle.AddPlayer(player, playerAI);
-            CurrentBattle.AddEnemy(enemy, enemyAI);
+            CurrentBattle = new BattleData(player, enemy, playerAI, enemyAI, false, false);
         }
 
         public void StartBattle()
