@@ -10,8 +10,8 @@ namespace Assets.Scripts
 {
     public class BattleData
     {
-        public ISpaceShip PlayerUnit { get; set; }
-        public ISpaceShip EnemyUnit { get; set; }
+        public ISpaceShip PlayerSpaceShip { get; set; }
+        public ISpaceShip EnemySpaceShip { get; set; }
 
         public ICombatAI PlayerAI { get;  set; }
         public ICombatAI EnemyAI { get;  set; }
@@ -24,8 +24,8 @@ namespace Assets.Scripts
         public BattleData(ISpaceShip playerUnit, ISpaceShip enemyUnit, 
             ICombatAI playerAI, ICombatAI enemyAI, bool isBattleStarted, bool isBattleEnded)
         {
-            PlayerUnit = playerUnit;
-            EnemyUnit = enemyUnit;
+            PlayerSpaceShip = playerUnit;
+            EnemySpaceShip = enemyUnit;
             PlayerAI = playerAI;
             EnemyAI = enemyAI;
             IsBattleStarted = isBattleStarted;
