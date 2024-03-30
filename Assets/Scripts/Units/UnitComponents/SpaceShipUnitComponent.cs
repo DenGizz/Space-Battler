@@ -4,15 +4,16 @@ using UnityEngine;
 
 namespace Assets.Scripts.Units.UnitComponents
 {
-    [AddComponentMenu("Entities/Test/TestCombatUnit")]
-    public class TestCombatUnitComponent : MonoBehaviour, ICombatUnit
+    [AddComponentMenu("Units/SpaceShip")]
+    public class SpaceShipUnitComponent : MonoBehaviour, ICombatUnit
     {
         public IHealthAttribute HealthAttribute { get; private set; }
+
         public Vector3 Position => transform.position;
 
         public IEnumerable<IWeapon> Weapons => _weapons;
 
-        [SerializeField] private List<WeaponComponent> _weapons;
+        private List<IWeapon> _weapons;
 
         private void Awake()
         {
@@ -31,12 +32,12 @@ namespace Assets.Scripts.Units.UnitComponents
 
         public void AddWeapon(IWeapon weapon)
         {
-            throw new System.NotImplementedException();
+            _weapons.Add(weapon);
         }
 
         public void RemoveWeapon(IWeapon weapon)
         {
-            throw new System.NotImplementedException();
+            _weapons.Remove(weapon);
         }
     }
 }
