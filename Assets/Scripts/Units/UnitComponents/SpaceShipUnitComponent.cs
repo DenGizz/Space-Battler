@@ -15,9 +15,11 @@ namespace Assets.Scripts.Units.UnitComponents
 
         private List<IWeapon> _weapons;
 
-        private void Awake()
+        public void Initialize(CombatUnitData unitData)
         {
-            HealthAttribute = new HealthAttribute(100,100);
+            transform.position = unitData.Position;
+            HealthAttribute = new HealthAttribute(unitData.Health, unitData.MaxHealth);
+            _weapons = new List<IWeapon>(unitData.Weapons);
         }
 
         public void TakeDamage(float damageAmount)
