@@ -6,10 +6,13 @@ using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Services
 {
-    public class BattleService 
+    public class BattleRunnerService 
     {
         ICombatUnitFactory _combatUnitFactory;
         ICombatAIRegistry _combatAIRegistry;
+        IBattleObserver _battleObserver;
+
+        public BattleData CurrentBattle { get; private set; }
 
         public void SetupBattle()
         {
@@ -22,17 +25,23 @@ namespace Assets.Scripts.Infrastructure.Services
             //Setup targets in unit ai
             playerAI.SetTarget(enemy);
             enemyAI.SetTarget(player);
+
+            CurrentBattle = new BattleData();
+            CurrentBattle.AddPlayer(player, playerAI);
+            CurrentBattle.AddEnemy(enemy, enemyAI);
         }
 
         public void StartBattle()
         {
+            _battleObserver.StartObserve(CurrentBattle);
             //Enable combat ai battle mode
-            foreach(ICombatAI ai in _combatAIRegistry.CombatAIs)
+            foreach (ICombatAI ai in _combatAIRegistry.CombatAIs)
                    ai.StartCombat();
         }
 
         public void StopBattle()
         {
+            _battleObserver.StopObserve();
             //Disable combat ai battle mode
             foreach (ICombatAI ai in _combatAIRegistry.CombatAIs)
                 ai.StopCombat();
@@ -43,6 +52,12 @@ namespace Assets.Scripts.Infrastructure.Services
             //Destroy units
             //Free memory
             //Destroy projectiles
+        }
+
+        private void OnWinerDeterminedEventHandler(ICombatUnit winner)
+        {
+            StopBattle();
+            Debug.Log("Winner is " + winner);
         }
     }
 }
