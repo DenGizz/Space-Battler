@@ -7,18 +7,32 @@ namespace Assets.Scripts.Infrastructure.Services
     public class AssetsProvider : IAssetsProvider
     {
         private GameObject _spaceShipPrefab;
+        private GameObject _battleUIPrefab;
 
-        private const string PrefabsPath = "Prefabs";
+        private const string PrefabsPathRoot = "Prefabs";
         private const string SpaceShipPrefabRelativePath = "Space Ship";
+
+        private const string UIPathRoot = "UI";
+        private const string BattleUIPrefabRelativePath = "Battle UI";
 
         public GameObject GetSpaceShipPrefab()
         {
             if (_spaceShipPrefab == null)
             {
-                _spaceShipPrefab = LoadPrefab(System.IO.Path.Combine(PrefabsPath, SpaceShipPrefabRelativePath));
+                _spaceShipPrefab = LoadPrefab(System.IO.Path.Combine(PrefabsPathRoot, SpaceShipPrefabRelativePath));
             }
 
             return _spaceShipPrefab;
+        }
+
+        public GameObject GetBattleUIPrefab()
+        {
+            if (_battleUIPrefab == null)
+            {
+                _battleUIPrefab = LoadPrefab(System.IO.Path.Combine(PrefabsPathRoot, UIPathRoot, BattleUIPrefabRelativePath));
+            }
+
+            return _battleUIPrefab;
         }
 
 
