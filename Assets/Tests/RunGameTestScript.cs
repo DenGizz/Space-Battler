@@ -1,12 +1,33 @@
 using Assets.Scripts.AI;
 using Assets.Scripts.AI.UnitsAI;
+using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Units;
 using Assets.Scripts.Units.UnitAttributes;
 using Assets.Scripts.Units.UnitComponents;
 using UnityEngine;
 
-public class BattleTestScript : MonoBehaviour
+public class RunGameTestScript : MonoBehaviour
 {
+    IBattleRunnerService _battleRunnerService;
+
+    public void Construct(IBattleRunnerService battleRunnerService)
+    {
+        _battleRunnerService = battleRunnerService;
+    }
+
+    [ContextMenu("Setup Battle")]
+    public void SetupBattle()
+    {
+        _battleRunnerService.SetupBattle();
+    }
+
+    [ContextMenu("Start Battle")]
+    public void StartBattle()
+    {
+        _battleRunnerService.StartBattle();
+    }
+
+
     private string GetBattleStatInfoString(ISpaceShip player, ISpaceShip enemy)
     {
         string GetWeaponInfo(IWeapon weapon)
