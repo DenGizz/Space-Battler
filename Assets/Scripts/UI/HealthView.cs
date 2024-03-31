@@ -10,7 +10,7 @@ public class HealthView : MonoBehaviour
     [SerializeField] private GameObject _healthGreenRow;
 
 
-    public void SetupView(ISpaceShip spaceShip)
+    public void Setup(ISpaceShip spaceShip)
     {
         _spaceShip = spaceShip;
     }
