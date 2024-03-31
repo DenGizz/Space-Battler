@@ -9,6 +9,7 @@ namespace Assets.Scripts.Infrastructure.Services
 {
     public interface IAssetsProvider
     {
+        GameObject GetBattleUIPrefab();
         GameObject GetSpaceShipPrefab();
     }
 }
