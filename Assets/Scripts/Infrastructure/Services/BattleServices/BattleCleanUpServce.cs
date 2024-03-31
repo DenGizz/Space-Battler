@@ -14,13 +14,15 @@ namespace Assets.Scripts.Infrastructure.Services
         ISpaceShipsGameObjectRegistry _spaceShipsGameObjectRegistry;
         ISpaceShipRegistry _spaceShipRegistry;
         ICombatAIRegistry _combatAIRegistry;
+        IBattleUIService _battleUIService;
 
         [Inject]
-        public BattleCleanUpServce(ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry, ICombatAIRegistry combatAIRegistry)
+        public BattleCleanUpServce(ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService)
         {
             _spaceShipsGameObjectRegistry = spaceShipsGameObjectRegistry;
             _spaceShipRegistry = spaceShipRegistry;
             _combatAIRegistry = combatAIRegistry;
+            _battleUIService = battleUIService;
         }
 
         public void CleanUpBattle(BattleData battleData)
@@ -36,6 +38,7 @@ namespace Assets.Scripts.Infrastructure.Services
 
             _combatAIRegistry.UnregisterAI(battleData.PlayerSpaceShip);
             _combatAIRegistry.UnregisterAI(battleData.EnemySpaceShip);
+            _battleUIService.DestroyBattleUI();
         }
     }
 }

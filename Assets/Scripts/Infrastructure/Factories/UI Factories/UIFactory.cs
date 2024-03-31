@@ -15,11 +15,11 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
             _assetsProvider = assetsProvider;
         }
 
-        public BattleUI CreateBattleUI()
+        public (BattleUI battleUIm, GameObject gameObject) CreateBattleUI()
         {
             GameObject battleUI = GameObject.Instantiate(_assetsProvider.GetBattleUIPrefab());
 
-            return battleUI.GetComponentInChildren<BattleUI>();
+            return (battleUI.GetComponentInChildren<BattleUI>(), battleUI);
         }
     }
 }

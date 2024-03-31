@@ -5,6 +5,6 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
 {
     public interface IUIFactory
     {
-        BattleUI CreateBattleUI();
+        (BattleUI battleUIm, GameObject gameObject) CreateBattleUI();
     }
 }

@@ -29,6 +29,18 @@ public class RunGameTestScript : MonoBehaviour
         _battleRunnerService.StartBattle();
     }
 
+    [ContextMenu("Stop Battle")]
+    public void StopBattle()
+    {
+        _battleRunnerService.StopBattle();
+    }
+
+    [ContextMenu("CleanUp Battle")]
+    public void CleanUpBattle()
+    {
+        _battleRunnerService.CleanUpBattle();
+    }
+
 
     private string GetBattleStatInfoString(ISpaceShip player, ISpaceShip enemy)
     {

@@ -10,7 +10,7 @@ namespace Assets.Scripts.Infrastructure.Services
 {
     public interface ISpaceShipsGameObjectRegistry
     {
-        void RegisterGameObject(GameObject gameObject);
+        void RegisterGameObject(ISpaceShip spaceShip, GameObject gameObject);
         void UnregisterGameObject(GameObject gameObject);
 
         GameObject GetSpaceShipGameObject(ISpaceShip spaceShip);

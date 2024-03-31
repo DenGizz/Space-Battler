@@ -13,13 +13,15 @@ namespace Assets.Scripts.Infrastructure.Factories
         IAssetsProvider _assetsProvider;
         ISpaceShipRegistry _spaceShipRegistry;
         ICombatAIRegistry _combatAIRegistry;
+        ISpaceShipsGameObjectRegistry _spaceShipsGameObjectRegistry;
 
         [Inject]
-        public SpaceShipFactory(IAssetsProvider assetsProvider, ISpaceShipRegistry spaceShipRegistry, ICombatAIRegistry combatAIRegistry)
+        public SpaceShipFactory(IAssetsProvider assetsProvider, ISpaceShipRegistry spaceShipRegistry, ICombatAIRegistry combatAIRegistry, ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry)
         {
             _assetsProvider = assetsProvider;
             _spaceShipRegistry = spaceShipRegistry;
             _combatAIRegistry = combatAIRegistry;
+            _spaceShipsGameObjectRegistry = spaceShipsGameObjectRegistry;
         }
 
         public ISpaceShip CreatePlayerSpaceShip(Vector3 position)
@@ -52,7 +54,9 @@ namespace Assets.Scripts.Infrastructure.Factories
             ICombatAI combatAI = gameObject.GetComponent<ICombatAI>();
 
             _spaceShipRegistry.EnemySpaceShip = spaceShip;
-            _combatAIRegistry.RegisterAI(spaceShip, combatAI); 
+            _combatAIRegistry.RegisterAI(spaceShip, combatAI);
+
+            _spaceShipsGameObjectRegistry.RegisterGameObject(spaceShip, gameObject);
 
             return (gameObject, spaceShip);
         }

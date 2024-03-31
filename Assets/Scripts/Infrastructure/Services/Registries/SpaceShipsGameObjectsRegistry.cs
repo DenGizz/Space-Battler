@@ -22,14 +22,21 @@ namespace Assets.Scripts.Infrastructure.Services
             return _spaceShipsGameObjects[spaceShip];
         }
 
-        public void RegisterGameObject(GameObject gameObject)
+        public void RegisterGameObject(ISpaceShip spaceShip, GameObject gameObject)
         {
-            _spaceShipsGameObjects.Add(gameObject.GetComponent<ISpaceShip>(), gameObject);
+            _spaceShipsGameObjects.Add(spaceShip, gameObject);
         }
 
         public void UnregisterGameObject(GameObject gameObject)
-        {
-           _spaceShipsGameObjects.Remove(gameObject.GetComponent<ISpaceShip>());
+        {      
+            foreach (var pair in _spaceShipsGameObjects)
+            {
+                if (pair.Value == gameObject)
+                {
+                    _spaceShipsGameObjects.Remove(pair.Key);
+                    break;
+                }
+            }
         }
     }
 }

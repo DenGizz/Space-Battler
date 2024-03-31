@@ -13,19 +13,20 @@ namespace Assets.Scripts.Infrastructure.Services
         ISpaceShipFactory _spaceShipFactory;
         ICombatAIRegistry _combatAIRegistry;
         IBattleObserver _battleObserver;
-        IUIFactory _iUIFactory;
         IBattleCleanUpServce _battleCleanUpServce;
+        IBattleUIService _battleUIService;
 
         public BattleData CurrentBattle { get; private set; }
 
         [Inject]
-        public BattleRunnerService(ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleObserver battleObserver, IUIFactory uiFactory, IBattleCleanUpServce battleCleanUpServce)
+        public BattleRunnerService(ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleObserver battleObserver, IBattleCleanUpServce battleCleanUpServce, IBattleUIService battleUIService)
         {
             _spaceShipFactory = spaceShipFactory;
             _combatAIRegistry = combatAIRegistry;
             _battleObserver = battleObserver;
-            _iUIFactory = uiFactory;
             _battleCleanUpServce = battleCleanUpServce;
+            _battleUIService = battleUIService;
+
 
             _battleObserver.OnWinnerDetermined += OnWinerDeterminedEventHandler;
         }
@@ -44,8 +45,8 @@ namespace Assets.Scripts.Infrastructure.Services
 
             CurrentBattle = new BattleData(player, enemy, playerAI, enemyAI, false, false);
 
-            BattleUI battleUI = _iUIFactory.CreateBattleUI();
-            battleUI.Setup(CurrentBattle);
+            _battleUIService.CreateBattleUI();
+            _battleUIService.SetBattle(CurrentBattle);
         }
 
         public void StartBattle()

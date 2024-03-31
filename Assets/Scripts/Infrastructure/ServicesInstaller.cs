@@ -19,5 +19,8 @@ public class ServicesInstaller : MonoInstaller
         Container.Bind<ICombatAIRegistry>().To<CombatAIRegistry>().AsSingle();
         Container.Bind<ISpaceShipRegistry>().To<SpaceShipRegistry>().AsSingle();
         Container.Bind<IUIFactory>().To<UIFactory>().AsSingle();
+        Container.Bind<IBattleCleanUpServce>().To<BattleCleanUpServce>().AsSingle();
+        Container.Bind<ISpaceShipsGameObjectRegistry>().To<SpaceShipsGameObjectsRegistry>().AsSingle();
+        Container.Bind<IBattleUIService>().To<BattleUIService>().AsSingle();
     }
 }
