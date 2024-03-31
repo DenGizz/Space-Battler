@@ -14,16 +14,18 @@ namespace Assets.Scripts.Infrastructure.Services
         ICombatAIRegistry _combatAIRegistry;
         IBattleObserver _battleObserver;
         IUIFactory _iUIFactory;
+        IBattleCleanUpServce _battleCleanUpServce;
 
         public BattleData CurrentBattle { get; private set; }
 
         [Inject]
-        public BattleRunnerService(ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleObserver battleObserver, IUIFactory uiFactory)
+        public BattleRunnerService(ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleObserver battleObserver, IUIFactory uiFactory, IBattleCleanUpServce battleCleanUpServce)
         {
             _spaceShipFactory = spaceShipFactory;
             _combatAIRegistry = combatAIRegistry;
             _battleObserver = battleObserver;
             _iUIFactory = uiFactory;
+            _battleCleanUpServce = battleCleanUpServce;
 
             _battleObserver.OnWinnerDetermined += OnWinerDeterminedEventHandler;
         }
@@ -64,9 +66,7 @@ namespace Assets.Scripts.Infrastructure.Services
 
         public void CleanUpBattle()
         {
-            //Destroy units
-            //Free memory
-            //Destroy projectiles
+            _battleCleanUpServce.CleanUpBattle(CurrentBattle);
         }
 
         private void OnWinerDeterminedEventHandler(ISpaceShip winner)
