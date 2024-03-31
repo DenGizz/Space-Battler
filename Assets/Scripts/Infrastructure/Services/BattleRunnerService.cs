@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Services
 {
-    public class BattleRunnerService 
+    public class BattleRunnerService : IBattleRunnerService
     {
         ISpaceShipFactory _spaceShipFactory;
         ICombatAIRegistry _combatAIRegistry;
