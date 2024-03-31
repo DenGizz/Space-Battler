@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using Assets.Scripts.Infrastructure.Services;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
 {
     public class UIFactory : IUIFactory
     {
-        IAssetsProvider _assetsProvider;
+        private readonly IAssetsProvider _assetsProvider;
 
+        [Inject]
         public UIFactory(IAssetsProvider assetsProvider)
         {
             _assetsProvider = assetsProvider;
@@ -17,7 +19,7 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
         {
             GameObject battleUI = GameObject.Instantiate(_assetsProvider.GetBattleUIPrefab());
 
-            return battleUI.GetComponent<BattleUI>();
+            return battleUI.GetComponentInChildren<BattleUI>();
         }
     }
 }
