@@ -11,16 +11,10 @@ public class BattleUI : MonoBehaviour
     [SerializeField] private HealthView _playerHealthView;
     [SerializeField] private HealthView _enemyHealthView;
 
-    
-    public void Construct()
-    {
-
-    }
-
-    public void SetupUI(BattleData battleData)
+    public void Setup(BattleData battleData)
     {
         _battleData = battleData;
-        _playerHealthView.SetupView(battleData.PlayerSpaceShip);
-        _enemyHealthView.SetupView(battleData.EnemySpaceShip);
+        _playerHealthView.Setup(battleData.PlayerSpaceShip);
+        _enemyHealthView.Setup(battleData.EnemySpaceShip);
     }
 }
