@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.AI.UnitsAI;
+using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services.Factories;
 using Assets.Scripts.Units;
 using System.Collections;
@@ -11,6 +12,7 @@ namespace Assets.Scripts.Infrastructure.Services
         ISpaceShipFactory _spaceShipFactory;
         ICombatAIRegistry _combatAIRegistry;
         IBattleObserver _battleObserver;
+        IUIFactory iUIFactory;
 
         public BattleData CurrentBattle { get; private set; }
 
@@ -35,6 +37,9 @@ namespace Assets.Scripts.Infrastructure.Services
             enemyAI.SetTarget(player);
 
             CurrentBattle = new BattleData(player, enemy, playerAI, enemyAI, false, false);
+
+            BattleUI battleUI = iUIFactory.CreateBattleUI();
+            battleUI.Setup(CurrentBattle);
         }
 
         public void StartBattle()
