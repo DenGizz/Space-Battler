@@ -5,7 +5,5 @@ using UnityEngine;
 public interface IState
 {
     void Enter();
-    void Enter<TArgs>(TArgs args);
-    void Execute();
     void Exit();
 }
