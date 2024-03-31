@@ -10,7 +10,7 @@ namespace Assets.Scripts.Infrastructure.Services
     public interface IBattleObserver
     {
         BattleData CurrentBattle { get; }
-        event Action<ISpaceShip> OnWinerDetermined;
+        event Action<ISpaceShip> OnWinnerDetermined;
         void StartObserve(BattleData battle);
         void StopObserve();
     }

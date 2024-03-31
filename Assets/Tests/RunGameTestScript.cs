@@ -5,11 +5,13 @@ using Assets.Scripts.Units;
 using Assets.Scripts.Units.UnitAttributes;
 using Assets.Scripts.Units.UnitComponents;
 using UnityEngine;
+using Zenject;
 
 public class RunGameTestScript : MonoBehaviour
 {
     IBattleRunnerService _battleRunnerService;
 
+    [Inject]
     public void Construct(IBattleRunnerService battleRunnerService)
     {
         _battleRunnerService = battleRunnerService;

@@ -4,6 +4,7 @@ using Assets.Scripts.Infrastructure.Services.Factories;
 using Assets.Scripts.Units;
 using System.Collections;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts.Infrastructure.Services
 {
@@ -12,16 +13,19 @@ namespace Assets.Scripts.Infrastructure.Services
         ISpaceShipFactory _spaceShipFactory;
         ICombatAIRegistry _combatAIRegistry;
         IBattleObserver _battleObserver;
-        IUIFactory iUIFactory;
+        IUIFactory _iUIFactory;
 
         public BattleData CurrentBattle { get; private set; }
 
-        public BattleRunnerService(ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleObserver battleObserver)
+        [Inject]
+        public BattleRunnerService(ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleObserver battleObserver, IUIFactory uiFactory)
         {
             _spaceShipFactory = spaceShipFactory;
             _combatAIRegistry = combatAIRegistry;
             _battleObserver = battleObserver;
-            _battleObserver.OnWinerDetermined += OnWinerDeterminedEventHandler;
+            _iUIFactory = uiFactory;
+
+            _battleObserver.OnWinnerDetermined += OnWinerDeterminedEventHandler;
         }
 
         public void SetupBattle()
@@ -38,7 +42,7 @@ namespace Assets.Scripts.Infrastructure.Services
 
             CurrentBattle = new BattleData(player, enemy, playerAI, enemyAI, false, false);
 
-            BattleUI battleUI = iUIFactory.CreateBattleUI();
+            BattleUI battleUI = _iUIFactory.CreateBattleUI();
             battleUI.Setup(CurrentBattle);
         }
 

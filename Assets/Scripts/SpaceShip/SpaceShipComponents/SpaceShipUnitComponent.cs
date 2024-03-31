@@ -15,11 +15,22 @@ namespace Assets.Scripts.Units.UnitComponents
 
         private List<IWeapon> _weapons;
 
+        public void Construct()
+        {
+            HealthAttribute = new HealthAttribute(100,100);
+            _weapons = new List<IWeapon>();
+        }
+
         public void Construct(SpaceShipData unitData)
         {
             transform.position = unitData.Position;
             HealthAttribute = new HealthAttribute(unitData.Health, unitData.MaxHealth);
             _weapons = new List<IWeapon>(unitData.Weapons);
+        }
+
+        private void Awake()
+        {
+            Construct();
         }
 
         public void TakeDamage(float damageAmount)

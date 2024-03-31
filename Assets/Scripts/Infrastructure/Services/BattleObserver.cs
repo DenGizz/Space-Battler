@@ -12,7 +12,7 @@ namespace Assets.Scripts.Infrastructure.Services
     {
         public BattleData CurrentBattle { get; private set; }
 
-        public event Action<ISpaceShip> OnWinerDetermined;
+        public event Action<ISpaceShip> OnWinnerDetermined;
 
         private bool _isObserving;
 
@@ -33,10 +33,10 @@ namespace Assets.Scripts.Infrastructure.Services
                 return;
 
             if (CurrentBattle.PlayerSpaceShip.HealthAttribute.HP <= 0)
-                OnWinerDetermined?.Invoke(CurrentBattle.EnemySpaceShip);
+                OnWinnerDetermined?.Invoke(CurrentBattle.EnemySpaceShip);
 
             if (CurrentBattle.EnemySpaceShip.HealthAttribute.HP <= 0)
-                OnWinerDetermined?.Invoke(CurrentBattle.PlayerSpaceShip);
+                OnWinnerDetermined?.Invoke(CurrentBattle.PlayerSpaceShip);
         }
     }
 }
