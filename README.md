@@ -7,8 +7,8 @@ The ships attack each other until one of them is destroyed.
 
 The game should have the following features:
 1. Add multiple weapons to the ships.
-2. Configure ship health.
-3. Configure the damage and reload time of weapons.
+2. Configure ship health. (Ship A 100 hp 1 weapon slot. Ship B 60 hp 2 weapon slots)
+3. Configure the damage and reload time of weapons. (Weapon A 10 damage 1 sec colddown. Weapon B 20 damage 3 sec colddown)
 4. Possible to start a battle, stop a battle and restart a battle (with the same configurations).
 
 **UI**
