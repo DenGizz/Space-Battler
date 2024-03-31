@@ -18,7 +18,6 @@ namespace Assets.Scripts.Infrastructure.Services
 
         public BattleData CurrentBattle { get; private set; }
 
-        [Inject]
         public BattleRunnerService(ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleObserver battleObserver, IBattleCleanUpServce battleCleanUpServce, IBattleUIService battleUIService)
         {
             _spaceShipFactory = spaceShipFactory;
