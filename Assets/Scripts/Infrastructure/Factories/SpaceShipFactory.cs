@@ -1,8 +1,10 @@
-﻿using Assets.Scripts.Infrastructure.Services;
+﻿using Assets.Scripts.AI.UnitsAI;
+using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.Services.Factories;
 using Assets.Scripts.Units;
 using System.Collections;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts.Infrastructure.Factories
 {
@@ -10,11 +12,14 @@ namespace Assets.Scripts.Infrastructure.Factories
     {
         IAssetsProvider _assetsProvider;
         ISpaceShipRegistry _spaceShipRegistry;
+        ICombatAIRegistry _combatAIRegistry;
 
-        public SpaceShipFactory(IAssetsProvider assetsProvider, ISpaceShipRegistry spaceShipRegistry)
+        [Inject]
+        public SpaceShipFactory(IAssetsProvider assetsProvider, ISpaceShipRegistry spaceShipRegistry, ICombatAIRegistry combatAIRegistry)
         {
             _assetsProvider = assetsProvider;
             _spaceShipRegistry = spaceShipRegistry;
+            _combatAIRegistry = combatAIRegistry;
         }
 
         public ISpaceShip CreatePlayerSpaceShip(Vector3 position)
@@ -22,10 +27,16 @@ namespace Assets.Scripts.Infrastructure.Factories
             GameObject gameObject = GameObject.Instantiate(_assetsProvider.GetSpaceShipPrefab());
             ISpaceShip spaceShip = gameObject.GetComponent<ISpaceShip>();
 
+            spaceShip.AddWeapon(gameObject.GetComponent<IWeapon>());
+
             SetSpaceShipColor(gameObject, Color.green);
             PlaceSpaceShip(gameObject, position, -90);
 
+            ICombatAI combatAI = gameObject.GetComponent<ICombatAI>();
+
             _spaceShipRegistry.PlayerSpaceShip = spaceShip;
+            _combatAIRegistry.RegisterAI(spaceShip, combatAI);
+
             return spaceShip;
         }
 
@@ -34,10 +45,16 @@ namespace Assets.Scripts.Infrastructure.Factories
             GameObject gameObject = GameObject.Instantiate(_assetsProvider.GetSpaceShipPrefab());
             ISpaceShip spaceShip = gameObject.GetComponent<ISpaceShip>();
 
+            spaceShip.AddWeapon(gameObject.GetComponent<IWeapon>());
+
             SetSpaceShipColor(gameObject, Color.red);
             PlaceSpaceShip(gameObject, position, 90);
 
+            ICombatAI combatAI = gameObject.GetComponent<ICombatAI>();
+
             _spaceShipRegistry.EnemySpaceShip = spaceShip;
+
+            _combatAIRegistry.RegisterAI(spaceShip, combatAI);
             return spaceShip;
         }
 
