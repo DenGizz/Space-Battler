@@ -12,10 +12,10 @@ public class GameStateMachine : StateMachine
     //TODO: Create BattleData provider service ???
     public BattleData BattleData { get; set; }
 
-    public GameStateMachine(ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleObserver battleObserver) : base()
+    public GameStateMachine(ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleObserver battleObserver, ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry)
     {
         States[typeof(SetupBattleState)] = new SetupBattleState(this, spaceShipFactory, combatAIRegistry, battleUIService);
         States[typeof(BattleRunningState)] = new BattleRunningState(this, battleObserver, combatAIRegistry);
-        States[typeof(CleanUpBattleState)] = new CleanUpBattleState(this);
+        States[typeof(CleanUpBattleState)] = new CleanUpBattleState(this, spaceShipsGameObjectRegistry, spaceShipRegistry, combatAIRegistry, battleUIService);
     }
 }
