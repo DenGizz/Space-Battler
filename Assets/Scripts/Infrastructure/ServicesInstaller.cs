@@ -12,15 +12,45 @@ public class ServicesInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
-        Container.Bind<IBattleRunnerService>().To<BattleRunnerService>().AsSingle();
+        BindCoreServices();
+        BindUnitsManagementServices();
+        BindBattleObserver();
+        BindBattleServices();
+        BindUI();
+    }
+
+    private void BindUnitsManagementServices()
+    {
         Container.Bind<ISpaceShipFactory>().To<SpaceShipFactory>().AsSingle();
-        Container.Bind<IAssetsProvider>().To<AssetsProvider>().AsSingle();
-        Container.Bind<IBattleObserver>().To<BattleObserver>().AsSingle();
+        Container.Bind<ISpaceShipsGameObjectRegistry>().To<SpaceShipsGameObjectsRegistry>().AsSingle();
         Container.Bind<ICombatAIRegistry>().To<CombatAIRegistry>().AsSingle();
         Container.Bind<ISpaceShipRegistry>().To<SpaceShipRegistry>().AsSingle();
-        Container.Bind<IUIFactory>().To<UIFactory>().AsSingle();
-        Container.Bind<IBattleCleanUpServce>().To<BattleCleanUpServce>().AsSingle();
-        Container.Bind<ISpaceShipsGameObjectRegistry>().To<SpaceShipsGameObjectsRegistry>().AsSingle();
-        Container.Bind<IBattleUIService>().To<BattleUIService>().AsSingle();
     }
+
+    private void BindCoreServices()
+    {
+        Container.Bind<IAssetsProvider>().To<AssetsProvider>().AsSingle();
+    }
+
+    private void BindUI()
+    {
+        Container.Bind<IBattleUIService>().To<BattleUIService>().AsSingle();
+        Container.Bind<IUIFactory>().To<UIFactory>().AsSingle();
+    }
+
+    private void BindBattleServices()
+    {
+        Container.Bind<IBattleRunnerService>().To<BattleRunnerService>().AsSingle();
+        Container.Bind<IBattleCleanUpServce>().To<BattleCleanUpServce>().AsSingle();
+    }
+
+    private void BindBattleObserver()
+    {
+        Container.Bind<BattleObserver>().AsSingle();
+        Container.Bind<IBattleObserver>().To<BattleObserver>().FromResolve();
+        Container.Bind<ITickable>().To<BattleObserver>().FromResolve();
+    }
+
+
 }
+ 
