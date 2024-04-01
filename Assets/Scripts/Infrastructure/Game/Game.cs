@@ -1,21 +1,23 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Infrastructure.Game.GameStateMachine;
+using System.Collections;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts.Infrastructure.Game
 {
-    public class Game : MonoBehaviour
+    public class Game
     {
+        private readonly GameStateMachine.GameStateMachine _gameStateMachine;
 
-        // Use this for initialization
-        void Start()
+        [Inject]
+        public Game(GameStateMachine.GameStateMachine gameStateMachine)
         {
-
+            _gameStateMachine = gameStateMachine;
         }
 
-        // Update is called once per frame
-        void Update()
+        public void Start()
         {
-
+            _gameStateMachine.EnterState<SetupBattleState>();
         }
     }
 }

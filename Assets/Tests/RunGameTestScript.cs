@@ -1,6 +1,7 @@
 using Assets.Scripts.AI;
 using Assets.Scripts.AI.UnitsAI;
 using Assets.Scripts.Infrastructure.Factories;
+using Assets.Scripts.Infrastructure.Game;
 using Assets.Scripts.Infrastructure.Game.GameStateMachine;
 using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
@@ -12,32 +13,19 @@ using Zenject;
 
 public class RunGameTestScript : MonoBehaviour
 {
-    private  ISpaceShipFactory _spaceShipFactory;
-    private  ICombatAIRegistry _combatAIRegistry;
-    private  IBattleUIService _battleUIService;
-    private  IBattleObserver _battleObserver;
-    private  ISpaceShipsGameObjectRegistry _spaceShipsGameObjectRegistry;
-     private  ISpaceShipRegistry _spaceShipRegistry;
-     private  IBattleDataProvider _battleDataProvider;
+    private Game _game;
 
     [Inject]
-    public void Construct( ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleObserver battleObserver, ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry, IBattleDataProvider battleDataProvider)
+    public void Construct(Game game)
     {
-        _spaceShipFactory = spaceShipFactory;
-        _combatAIRegistry = combatAIRegistry;
-        _battleUIService = battleUIService;
-        _battleObserver = battleObserver;
-        _spaceShipsGameObjectRegistry = spaceShipsGameObjectRegistry;
-        _spaceShipRegistry = spaceShipRegistry;
-        _battleDataProvider = battleDataProvider;
+        _game = game;
     }
 
 
-    [ContextMenu("Run Game StateMachine")]
+    [ContextMenu("StartGame")]
     public void RunGameStateMachine()
     {
-        GameStateMachine stateMachine = new GameStateMachine(_spaceShipFactory, _combatAIRegistry, _battleUIService, _battleObserver, _spaceShipsGameObjectRegistry,  _spaceShipRegistry, _battleDataProvider);
-        stateMachine.EnterState<SetupBattleState>();
+        _game.Start();  
     }
 
 

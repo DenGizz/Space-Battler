@@ -18,8 +18,6 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
 
         private readonly GameStateMachine GameStateMachine;
 
-
-
         public SetupBattleState(GameStateMachine gameStateMachine, ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleDataProvider battleDataProvider)
         {
             GameStateMachine = gameStateMachine;
