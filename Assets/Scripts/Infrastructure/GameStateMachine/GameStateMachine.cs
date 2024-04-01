@@ -12,6 +12,7 @@ public class GameStateMachine : StateMachine
     //TODO: Create BattleData provider service ???
     public BattleData BattleData { get; set; }
 
+    //TODO: Register GameStateMachine as service. Create state factory to auto resolve dependencies
     public GameStateMachine(ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleObserver battleObserver, ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry)
     {
         States[typeof(SetupBattleState)] = new SetupBattleState(this, spaceShipFactory, combatAIRegistry, battleUIService);
