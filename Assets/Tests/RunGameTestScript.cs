@@ -11,7 +11,6 @@ using Zenject;
 
 public class RunGameTestScript : MonoBehaviour
 {
-    private IBattleRunnerService _battleRunnerService;
     private ISpaceShipFactory _spaceShipFactory;
     private ICombatAIRegistry _combatAIRegistry;
     private IBattleUIService _battleUIService;
@@ -20,9 +19,8 @@ public class RunGameTestScript : MonoBehaviour
      private ISpaceShipRegistry _spaceShipRegistry;
 
     [Inject]
-    public void Construct(IBattleRunnerService battleRunnerService, ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleObserver battleObserver, ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry)
+    public void Construct( ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleObserver battleObserver, ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry)
     {
-        _battleRunnerService = battleRunnerService;
         _spaceShipFactory = spaceShipFactory;
         _combatAIRegistry = combatAIRegistry;
         _battleUIService = battleUIService;
@@ -37,30 +35,6 @@ public class RunGameTestScript : MonoBehaviour
     {
         GameStateMachine stateMachine = new GameStateMachine(_spaceShipFactory, _combatAIRegistry, _battleUIService, _battleObserver, _spaceShipsGameObjectRegistry,  _spaceShipRegistry);
         stateMachine.EnterState<SetupBattleState>();
-    }
-
-    [ContextMenu("Setup Battle")]
-    public void SetupBattle()
-    {
-        _battleRunnerService.SetupBattle();
-    }
-
-    [ContextMenu("Start Battle")]
-    public void StartBattle()
-    {
-        _battleRunnerService.StartBattle();
-    }
-
-    [ContextMenu("Stop Battle")]
-    public void StopBattle()
-    {
-        _battleRunnerService.StopBattle();
-    }
-
-    [ContextMenu("CleanUp Battle")]
-    public void CleanUpBattle()
-    {
-        _battleRunnerService.CleanUpBattle();
     }
 
 
