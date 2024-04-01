@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Infrastructure.Services
+﻿namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
     public interface IBattleRunnerService
     {

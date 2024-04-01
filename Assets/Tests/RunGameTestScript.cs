@@ -1,8 +1,10 @@
 using Assets.Scripts.AI;
 using Assets.Scripts.AI.UnitsAI;
 using Assets.Scripts.Infrastructure.Factories;
+using Assets.Scripts.Infrastructure.Game.GameStateMachine;
 using Assets.Scripts.Infrastructure.Services;
-using Assets.Scripts.Infrastructure.Services.Factories;
+using Assets.Scripts.Infrastructure.Services.BattleServices;
+using Assets.Scripts.Infrastructure.Services.Registries;
 using Assets.Scripts.Units;
 using Assets.Scripts.Units.UnitAttributes;
 using Assets.Scripts.Units.UnitComponents;

@@ -1,12 +1,10 @@
 ﻿using Assets.Scripts.AI.UnitsAI;
-using Assets.Scripts.Infrastructure.Factories.UI_Factories;
-using Assets.Scripts.Infrastructure.Services.Factories;
+using Assets.Scripts.Infrastructure.Factories;
+using Assets.Scripts.Infrastructure.Services.Registries;
 using Assets.Scripts.Units;
-using System.Collections;
 using UnityEngine;
-using Zenject;
 
-namespace Assets.Scripts.Infrastructure.Services
+namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
     public class BattleRunnerService : IBattleRunnerService
     {

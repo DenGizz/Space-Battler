@@ -1,23 +1,22 @@
-using Assets.Scripts;
 using Assets.Scripts.Infrastructure.Factories;
 using Assets.Scripts.Infrastructure.Services;
-using Assets.Scripts.Infrastructure.Services.Factories;
-using Assets.Scripts.StateMachine;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Assets.Scripts.Infrastructure.Services.BattleServices;
+using Assets.Scripts.Infrastructure.Services.Registries;
 
-public class GameStateMachine : StateMachine
+namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
 {
-    //TODO: Create BattleData provider service ???
-    public BattleData BattleData { get; set; }
-
-    //TODO: Register GameStateMachine as service. Create state factory to auto resolve dependencies
-    //TODO: Bind states in States installer
-    public GameStateMachine(ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleObserver battleObserver, ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry)
+    public class GameStateMachine : StateMachine.StateMachine
     {
-        States[typeof(SetupBattleState)] = new SetupBattleState(this, spaceShipFactory, combatAIRegistry, battleUIService);
-        States[typeof(BattleRunningState)] = new BattleRunningState(this, battleObserver, combatAIRegistry);
-        States[typeof(CleanUpBattleState)] = new CleanUpBattleState(this, spaceShipsGameObjectRegistry, spaceShipRegistry, combatAIRegistry, battleUIService);
+        //TODO: Create BattleData provider service ???
+        public BattleData BattleData { get; set; }
+
+        //TODO: Register GameStateMachine as service. Create state factory to auto resolve dependencies
+        //TODO: Bind states in States installer
+        public GameStateMachine(ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleObserver battleObserver, ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry)
+        {
+            States[typeof(SetupBattleState)] = new SetupBattleState(this, spaceShipFactory, combatAIRegistry, battleUIService);
+            States[typeof(BattleRunningState)] = new BattleRunningState(this, battleObserver, combatAIRegistry);
+            States[typeof(CleanUpBattleState)] = new CleanUpBattleState(this, spaceShipsGameObjectRegistry, spaceShipRegistry, combatAIRegistry, battleUIService);
+        }
     }
 }

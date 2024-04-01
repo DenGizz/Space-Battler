@@ -1,57 +1,58 @@
 using Assets.Scripts.AI.UnitsAI;
-using Assets.Scripts.Units;
-using Assets.Scripts;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Assets.Scripts.Infrastructure.Services.Factories;
+using Assets.Scripts.Infrastructure.Factories;
 using Assets.Scripts.Infrastructure.Services;
+using Assets.Scripts.Infrastructure.Services.Registries;
+using Assets.Scripts.Units;
+using UnityEngine;
 
-public class SetupBattleState : IState
+namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
 {
-    private readonly ISpaceShipFactory _spaceShipFactory;
-    private readonly ICombatAIRegistry _combatAIRegistry;
-    private readonly IBattleUIService _battleUIService;
-    private readonly GameStateMachine GameStateMachine;
-
-
-
-    public SetupBattleState(GameStateMachine gameStateMachine, ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService)
+    public class SetupBattleState : IState
     {
-        GameStateMachine = gameStateMachine;
-        _spaceShipFactory = spaceShipFactory;
-        _combatAIRegistry = combatAIRegistry;
-        _battleUIService = battleUIService;
-    }
+        private readonly ISpaceShipFactory _spaceShipFactory;
+        private readonly ICombatAIRegistry _combatAIRegistry;
+        private readonly IBattleUIService _battleUIService;
+        private readonly GameStateMachine GameStateMachine;
 
-    public void Enter()
-    {
-        SetupBattle();
-        GameStateMachine.EnterState<BattleRunningState>();
-    }
 
-    public void Exit()
-    {
 
-    }
+        public SetupBattleState(GameStateMachine gameStateMachine, ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService)
+        {
+            GameStateMachine = gameStateMachine;
+            _spaceShipFactory = spaceShipFactory;
+            _combatAIRegistry = combatAIRegistry;
+            _battleUIService = battleUIService;
+        }
 
-    private void SetupBattle()
-    {
-        //Instantiate units
-        ISpaceShip player = _spaceShipFactory.CreatePlayerSpaceShip(Vector3.zero - Vector3.right * 7);
-        ISpaceShip enemy = _spaceShipFactory.CreateEnemySpaceShip(Vector3.zero + Vector3.right * 7);
-        //Find target for each combat unit
-        ICombatAI playerAI = _combatAIRegistry.GetAI(player);
-        ICombatAI enemyAI = _combatAIRegistry.GetAI(enemy);
-        //Setup targets in unit ai
-        playerAI.SetTarget(enemy);
-        enemyAI.SetTarget(player);
+        public void Enter()
+        {
+            SetupBattle();
+            GameStateMachine.EnterState<BattleRunningState>();
+        }
 
-        BattleData battle = new BattleData(player, enemy, playerAI, enemyAI, false, false);
+        public void Exit()
+        {
 
-        _battleUIService.CreateBattleUI();
-        _battleUIService.SetBattle(battle);
+        }
 
-        GameStateMachine.BattleData = battle;
+        private void SetupBattle()
+        {
+            //Instantiate units
+            ISpaceShip player = _spaceShipFactory.CreatePlayerSpaceShip(Vector3.zero - Vector3.right * 7);
+            ISpaceShip enemy = _spaceShipFactory.CreateEnemySpaceShip(Vector3.zero + Vector3.right * 7);
+            //Find target for each combat unit
+            ICombatAI playerAI = _combatAIRegistry.GetAI(player);
+            ICombatAI enemyAI = _combatAIRegistry.GetAI(enemy);
+            //Setup targets in unit ai
+            playerAI.SetTarget(enemy);
+            enemyAI.SetTarget(player);
+
+            BattleData battle = new BattleData(player, enemy, playerAI, enemyAI, false, false);
+
+            _battleUIService.CreateBattleUI();
+            _battleUIService.SetBattle(battle);
+
+            GameStateMachine.BattleData = battle;
+        }
     }
 }

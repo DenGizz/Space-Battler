@@ -1,13 +1,8 @@
-﻿using Assets.Scripts.Units;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using System;
+using Assets.Scripts.Units;
 using Zenject;
 
-namespace Assets.Scripts.Infrastructure.Services
+namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
     public class BattleObserver : IBattleObserver, ITickable
     {

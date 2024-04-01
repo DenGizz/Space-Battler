@@ -1,8 +1,8 @@
 ﻿using Assets.Scripts.AI.UnitsAI;
 using Assets.Scripts.Infrastructure.Services;
-using Assets.Scripts.Infrastructure.Services.Factories;
 using Assets.Scripts.Units;
 using System.Collections;
+using Assets.Scripts.Infrastructure.Services.Registries;
 using UnityEngine;
 using Zenject;
 
