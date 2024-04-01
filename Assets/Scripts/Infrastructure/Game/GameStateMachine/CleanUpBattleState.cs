@@ -1,4 +1,5 @@
 using Assets.Scripts.Infrastructure.Services;
+using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.Infrastructure.Services.Registries;
 using Assets.Scripts.StateMachine;
 using UnityEngine;
@@ -11,21 +12,23 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
         private readonly ISpaceShipRegistry _spaceShipRegistry;
         private readonly ICombatAIRegistry _combatAIRegistry;
         private readonly IBattleUIService _battleUIService;
+        private readonly IBattleDataProvider _battleDataProvider;
         private readonly GameStateMachine _gameStateMachine;
 
-        public CleanUpBattleState(GameStateMachine gameStateMachine, ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService)
+        public CleanUpBattleState(GameStateMachine gameStateMachine, ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleDataProvider battleDataProvider)
         {
             _gameStateMachine = gameStateMachine;
             _spaceShipsGameObjectRegistry = spaceShipsGameObjectRegistry;
             _spaceShipRegistry = spaceShipRegistry;
             _combatAIRegistry = combatAIRegistry;
             _battleUIService = battleUIService;
+            _battleDataProvider = battleDataProvider;
       
         }
 
         public void Enter()
         {
-            BattleData battleData = _gameStateMachine.BattleData;
+            BattleData battleData = _battleDataProvider.CurrentBattleData;
 
             GameObject.Destroy(_spaceShipsGameObjectRegistry.GetSpaceShipGameObject(battleData.PlayerSpaceShip));
             GameObject.Destroy(_spaceShipsGameObjectRegistry.GetSpaceShipGameObject(battleData.EnemySpaceShip));

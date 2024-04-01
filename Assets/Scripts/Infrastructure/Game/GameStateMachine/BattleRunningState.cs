@@ -10,13 +10,17 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
     {
         private readonly IBattleObserver _battleObserver;
         private readonly ICombatAIRegistry _combatAIRegistry;
+        private readonly IBattleDataProvider _battleDataProvider;
+
+
         private readonly GameStateMachine GameStateMachine;
 
-        public BattleRunningState(GameStateMachine gameStateMachine, IBattleObserver battleObserver, ICombatAIRegistry combatAIRegistry)
+        public BattleRunningState(GameStateMachine gameStateMachine, IBattleObserver battleObserver, ICombatAIRegistry combatAIRegistry, IBattleDataProvider battleDataProvider)
         {
             GameStateMachine = gameStateMachine;
             _battleObserver = battleObserver;
             _combatAIRegistry = combatAIRegistry;
+            _battleDataProvider = battleDataProvider;
         }
 
         public void Enter()
@@ -33,7 +37,7 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
         private void StartBattle()
         {
             //TODO: Create BattleData provider service ???
-            BattleData battleData = GameStateMachine.BattleData;
+            BattleData battleData = _battleDataProvider.CurrentBattleData;
             _battleObserver.StartObserve(battleData);
             //Enable combat ai battle mode
             foreach (ICombatAI ai in _combatAIRegistry.CombatAIs)
