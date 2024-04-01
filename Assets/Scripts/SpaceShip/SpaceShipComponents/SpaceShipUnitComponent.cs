@@ -17,7 +17,7 @@ namespace Assets.Scripts.Units.UnitComponents
 
         public void Construct()
         {
-            HealthAttribute = new HealthAttribute(100,100);
+            HealthAttribute = new HealthAttribute(20,20);
             _weapons = new List<IWeapon>();
         }
 
