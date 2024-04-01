@@ -7,10 +7,10 @@ using UnityEngine;
 
 public class CleanUpBattleState : IState
 {
-    ISpaceShipsGameObjectRegistry _spaceShipsGameObjectRegistry;
-    ISpaceShipRegistry _spaceShipRegistry;
-    ICombatAIRegistry _combatAIRegistry;
-    IBattleUIService _battleUIService;
+    private readonly ISpaceShipsGameObjectRegistry _spaceShipsGameObjectRegistry;
+    private readonly ISpaceShipRegistry _spaceShipRegistry;
+    private readonly ICombatAIRegistry _combatAIRegistry;
+    private readonly IBattleUIService _battleUIService;
     private readonly GameStateMachine _gameStateMachine;
 
     public CleanUpBattleState(GameStateMachine gameStateMachine, ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService)

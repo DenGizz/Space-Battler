@@ -8,9 +8,9 @@ using UnityEngine;
 
 public class BattleRunningState : IState
 {
-    IBattleObserver _battleObserver;
-    ICombatAIRegistry _combatAIRegistry;
-    GameStateMachine GameStateMachine;
+    private readonly IBattleObserver _battleObserver;
+    private readonly ICombatAIRegistry _combatAIRegistry;
+    private readonly GameStateMachine GameStateMachine;
 
     public BattleRunningState(GameStateMachine gameStateMachine, IBattleObserver battleObserver, ICombatAIRegistry combatAIRegistry)
     {
