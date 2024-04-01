@@ -13,9 +13,14 @@ public class CleanUpBattleState : IState
     IBattleUIService _battleUIService;
     private readonly GameStateMachine _gameStateMachine;
 
-    public CleanUpBattleState(GameStateMachine gameStateMachine)
+    public CleanUpBattleState(GameStateMachine gameStateMachine, ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService)
     {
         _gameStateMachine = gameStateMachine;
+        _spaceShipsGameObjectRegistry = spaceShipsGameObjectRegistry;
+        _spaceShipRegistry = spaceShipRegistry;
+        _combatAIRegistry = combatAIRegistry;
+        _battleUIService = battleUIService;
+      
     }
 
     public void Enter()
