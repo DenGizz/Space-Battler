@@ -50,7 +50,5 @@ public class ServicesInstaller : MonoInstaller
         Container.Bind<IBattleObserver>().To<BattleObserver>().FromResolve();
         Container.Bind<ITickable>().To<BattleObserver>().FromResolve();
     }
-
-
 }
  
