@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 using Zenject;
 
 namespace Assets.Scripts.Infrastructure.Services
@@ -29,14 +30,20 @@ namespace Assets.Scripts.Infrastructure.Services
 
         public void Tick()
         {
-            if (_isObserving)
+            if (!_isObserving)
                 return;
 
             if (CurrentBattle.PlayerSpaceShip.HealthAttribute.HP <= 0)
+            {
                 OnWinnerDetermined?.Invoke(CurrentBattle.EnemySpaceShip);
+                return;
+            }
 
             if (CurrentBattle.EnemySpaceShip.HealthAttribute.HP <= 0)
+            {
                 OnWinnerDetermined?.Invoke(CurrentBattle.PlayerSpaceShip);
+                return;
+            }
         }
     }
 }
