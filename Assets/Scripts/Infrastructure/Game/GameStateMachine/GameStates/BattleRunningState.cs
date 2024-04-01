@@ -34,6 +34,12 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
             _battleObserver.OnWinnerDetermined -= OnWinerDeterminedEventHandler;
         }
 
+        private void OnWinerDeterminedEventHandler(ISpaceShip winner)
+        {
+            StopBattle();
+            GameStateMachine.EnterState<CleanUpBattleState>();
+        }
+
         private void StartBattle()
         {
             //TODO: Create BattleData provider service ???
@@ -52,10 +58,12 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
                 ai.StopCombat();
         }
 
-        private void OnWinerDeterminedEventHandler(ISpaceShip winner)
+        private void ContinueBattle()
         {
-            StopBattle();
-            GameStateMachine.EnterState<CleanUpBattleState>();
+            foreach (ICombatAI ai in _combatAIRegistry.CombatAIs)
+                ai.StartCombat();
         }
+
+
     }
 }
