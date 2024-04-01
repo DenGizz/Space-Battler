@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Units.UnitAttributes
+﻿namespace Assets.Scripts.SpaceShip.SpaceShipAttributes
 {
     public class HealthAttribute : IHealthAttribute
     {

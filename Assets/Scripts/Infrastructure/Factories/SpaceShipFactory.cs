@@ -1,8 +1,8 @@
 ﻿using Assets.Scripts.AI.UnitsAI;
 using Assets.Scripts.Infrastructure.Services;
-using Assets.Scripts.Units;
 using System.Collections;
 using Assets.Scripts.Infrastructure.Services.Registries;
+using Assets.Scripts.SpaceShip;
 using UnityEngine;
 using Zenject;
 

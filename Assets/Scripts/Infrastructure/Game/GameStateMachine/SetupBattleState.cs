@@ -2,7 +2,8 @@ using Assets.Scripts.AI.UnitsAI;
 using Assets.Scripts.Infrastructure.Factories;
 using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.Services.Registries;
-using Assets.Scripts.Units;
+using Assets.Scripts.SpaceShip;
+using Assets.Scripts.StateMachine;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Game.GameStateMachine

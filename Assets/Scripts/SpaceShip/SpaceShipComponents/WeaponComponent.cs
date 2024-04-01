@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.Scripts.Units.UnitComponents
+namespace Assets.Scripts.SpaceShip.SpaceShipComponents
 {
     [AddComponentMenu("Weapon")]
     public class WeaponComponent : MonoBehaviour, IWeapon

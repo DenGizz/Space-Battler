@@ -1,5 +1,5 @@
 ﻿using System;
-using Assets.Scripts.Units;
+using Assets.Scripts.SpaceShip;
 using Zenject;
 
 namespace Assets.Scripts.Infrastructure.Services.BattleServices

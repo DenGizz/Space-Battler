@@ -5,9 +5,8 @@ using Assets.Scripts.Infrastructure.Game.GameStateMachine;
 using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.Infrastructure.Services.Registries;
-using Assets.Scripts.Units;
-using Assets.Scripts.Units.UnitAttributes;
-using Assets.Scripts.Units.UnitComponents;
+using Assets.Scripts.SpaceShip;
+using Assets.Scripts.SpaceShip.SpaceShipAttributes;
 using UnityEngine;
 using Zenject;
 

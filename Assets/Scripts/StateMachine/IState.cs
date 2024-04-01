@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IState
+namespace Assets.Scripts.StateMachine
 {
-    void Enter();
-    void Exit();
+    public interface IState
+    {
+        void Enter();
+        void Exit();
+    }
 }

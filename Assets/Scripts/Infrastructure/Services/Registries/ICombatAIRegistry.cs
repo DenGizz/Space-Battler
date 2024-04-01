@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Assets.Scripts.AI.UnitsAI;
-using Assets.Scripts.Units;
+using Assets.Scripts.SpaceShip;
 
 namespace Assets.Scripts.Infrastructure.Services.Registries
 {

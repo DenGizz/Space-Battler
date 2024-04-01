@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.AI.UnitsAI;
 using Assets.Scripts.Infrastructure.Factories;
 using Assets.Scripts.Infrastructure.Services.Registries;
-using Assets.Scripts.Units;
+using Assets.Scripts.SpaceShip;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Services.BattleServices
