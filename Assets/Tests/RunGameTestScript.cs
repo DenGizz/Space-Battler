@@ -1,5 +1,6 @@
 using Assets.Scripts.AI;
 using Assets.Scripts.AI.UnitsAI;
+using Assets.Scripts.Infrastructure.Factories;
 using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.Services.Factories;
 using Assets.Scripts.Units;
@@ -10,27 +11,31 @@ using Zenject;
 
 public class RunGameTestScript : MonoBehaviour
 {
-    IBattleRunnerService _battleRunnerService;
-    ISpaceShipFactory _spaceShipFactory;
-    ICombatAIRegistry _combatAIRegistry;
-    IBattleUIService _battleUIService;
-    IBattleObserver _battleObserver;
+    private IBattleRunnerService _battleRunnerService;
+    private ISpaceShipFactory _spaceShipFactory;
+    private ICombatAIRegistry _combatAIRegistry;
+    private IBattleUIService _battleUIService;
+    private IBattleObserver _battleObserver;
+    private ISpaceShipsGameObjectRegistry _spaceShipsGameObjectRegistry;
+     private ISpaceShipRegistry _spaceShipRegistry;
 
     [Inject]
-    public void Construct(IBattleRunnerService battleRunnerService, ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleObserver battleObserver)
+    public void Construct(IBattleRunnerService battleRunnerService, ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleObserver battleObserver, ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry)
     {
         _battleRunnerService = battleRunnerService;
         _spaceShipFactory = spaceShipFactory;
         _combatAIRegistry = combatAIRegistry;
         _battleUIService = battleUIService;
         _battleObserver = battleObserver;
+        _spaceShipsGameObjectRegistry = spaceShipsGameObjectRegistry;
+        _spaceShipRegistry = spaceShipRegistry;
     }
 
 
     [ContextMenu("Run Game StateMachine")]
     public void RunGameStateMachine()
     {
-        GameStateMachine stateMachine = new GameStateMachine(_spaceShipFactory, _combatAIRegistry, _battleUIService, _battleObserver);
+        GameStateMachine stateMachine = new GameStateMachine(_spaceShipFactory, _combatAIRegistry, _battleUIService, _battleObserver, _spaceShipsGameObjectRegistry,  _spaceShipRegistry);
         stateMachine.EnterState<SetupBattleState>();
     }
 
