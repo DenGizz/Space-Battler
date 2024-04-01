@@ -20,7 +20,6 @@ namespace Assets.Scripts.StateMachine
         {
             _currentState?.Exit();
             IState state = States[typeof(TState)];
-            state.Enter();
             _currentState = state;
             _currentState.Enter();
         }
@@ -29,7 +28,6 @@ namespace Assets.Scripts.StateMachine
         {
             _currentState?.Exit();
             IState state = States[typeof(TState)];
-            state.Enter();
             _currentState = state;
             (_currentState as IStateWithArtuments<TArgs>).Enter(args);
         }
