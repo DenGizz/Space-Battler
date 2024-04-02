@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: ScenesConfig
   m_EditorClassIdentifier: 
   _battleFieldSceneName: Battle Field Scene
+  _mainMenuSceneName: Main Menu Scene
