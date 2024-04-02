@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using UnityEngine;
-using System;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.Infrastructure.Services
+namespace Assets.Scripts.Infrastructure.Services.CoreServices
 {
     public class AssetsProvider : IAssetsProvider
     {

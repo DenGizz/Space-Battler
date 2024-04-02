@@ -7,7 +7,7 @@ using Assets.Scripts.SpaceShip;
 using Assets.Scripts.StateMachine;
 using UnityEngine;
 
-namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
+namespace Assets.Scripts.Infrastructure.Game.GameStateMachine.GameStates
 {
     public class CreateBattleState : IState
     {

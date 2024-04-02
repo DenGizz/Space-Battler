@@ -1,10 +1,7 @@
-using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
-using Assets.Scripts.Infrastructure.Services.Registries;
 using Assets.Scripts.StateMachine;
-using UnityEngine;
 
-namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
+namespace Assets.Scripts.Infrastructure.Game.GameStateMachine.GameStates
 {
     public class CleanUpBattleState : IState
     {
