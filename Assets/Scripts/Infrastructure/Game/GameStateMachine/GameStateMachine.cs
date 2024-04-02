@@ -11,9 +11,9 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
         //TODO: Register GameStateMachine as service. Create state factory to auto resolve dependencies
         //TODO: Bind states in States installer
         [Inject]
-        public GameStateMachine(ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleObserver battleObserver, IBattleCleanUpServce battleCleanUpServce, IBattleDataProvider battleDataProvider, IBattleController battleController)
+        public GameStateMachine(ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleObserver battleObserver, IBattleCleanUpServce battleCleanUpServce, IBattleDataProvider battleDataProvider, IBattleController battleController, IBattleFactory battleFactory)
         {
-            States[typeof(CreateBattleState)] = new CreateBattleState(this, spaceShipFactory, combatAIRegistry, battleUIService, battleDataProvider);
+            States[typeof(CreateBattleState)] = new CreateBattleState(this, spaceShipFactory, combatAIRegistry, battleUIService, battleDataProvider, battleFactory);
             States[typeof(BattleState)] = new BattleState(this, battleObserver, battleDataProvider, battleController);
             States[typeof(CleanUpBattleState)] = new CleanUpBattleState(this,battleDataProvider, battleCleanUpServce);
         }

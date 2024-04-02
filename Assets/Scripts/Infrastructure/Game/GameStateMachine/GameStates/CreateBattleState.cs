@@ -15,21 +15,23 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
         private readonly ICombatAIRegistry _combatAIRegistry;
         private readonly IBattleUIService _battleUIService;
         private readonly IBattleDataProvider _battleDataProvider;
+        private readonly IBattleFactory _battleFactory;
 
         private readonly GameStateMachine GameStateMachine;
 
-        public CreateBattleState(GameStateMachine gameStateMachine, ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleDataProvider battleDataProvider)
+        public CreateBattleState(GameStateMachine gameStateMachine, ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleDataProvider battleDataProvider, IBattleFactory battleFactory)
         {
             GameStateMachine = gameStateMachine;
             _spaceShipFactory = spaceShipFactory;
             _combatAIRegistry = combatAIRegistry;
             _battleUIService = battleUIService;
             _battleDataProvider = battleDataProvider;
+            _battleFactory = battleFactory;
         }
 
         public void Enter()
         {
-            SetupBattle();
+            CreateBattle();
             GameStateMachine.EnterState<BattleState>();
         }
 
@@ -38,7 +40,7 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
 
         }
 
-        private void SetupBattle()
+        private void CreateBattle()
         {
             //Instantiate units
             ISpaceShip player = _spaceShipFactory.CreatePlayerSpaceShip(Vector3.zero - Vector3.right * 7);
@@ -50,7 +52,7 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
             playerAI.SetTarget(enemy);
             enemyAI.SetTarget(player);
 
-            BattleData battle = new BattleData(player, enemy, playerAI, enemyAI, false, false);
+            BattleData battle = _battleFactory.CreateBattleForSpaceShips(player, enemy);
             _battleDataProvider.CurrentBattleData = battle;
 
             _battleUIService.CreateBattleUI();

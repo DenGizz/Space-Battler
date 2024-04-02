@@ -16,20 +16,15 @@ namespace Assets.Scripts
         public ICombatAI PlayerAI { get;  set; }
         public ICombatAI EnemyAI { get;  set; }
 
-        public bool IsBattleStarted { get;  set; }
-        public bool IsBattleEnded { get;  set; }
-
         public BattleData() { }
 
         public BattleData(ISpaceShip playerUnit, ISpaceShip enemyUnit, 
-            ICombatAI playerAI, ICombatAI enemyAI, bool isBattleStarted, bool isBattleEnded)
+            ICombatAI playerAI, ICombatAI enemyAI)
         {
             PlayerSpaceShip = playerUnit;
             EnemySpaceShip = enemyUnit;
             PlayerAI = playerAI;
             EnemyAI = enemyAI;
-            IsBattleStarted = isBattleStarted;
-            IsBattleEnded = isBattleEnded;
         }
     }
 }
