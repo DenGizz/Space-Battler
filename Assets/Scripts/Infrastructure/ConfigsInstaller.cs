@@ -15,7 +15,7 @@ namespace Assets.Scripts.Infrastructure
 
         override public void InstallBindings()
         {
-            Container.Bind<ScenesConfig>().FromScriptableObject(_scenesConfig);
+            Container.Bind<ScenesConfig>().FromScriptableObject(_scenesConfig).AsSingle();
         }
     }
 }
