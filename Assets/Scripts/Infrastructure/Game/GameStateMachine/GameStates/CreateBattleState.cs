@@ -57,7 +57,6 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine.GameStates
 
             _battleUIService.CreateBattleUI();
             _battleUIService.SetBattle(battle);
-
         }
     }
 }
