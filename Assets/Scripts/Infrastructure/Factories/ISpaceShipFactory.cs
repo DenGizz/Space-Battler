@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using Assets.Scripts.Units;
+﻿using Assets.Scripts.SpaceShip;
 using UnityEngine;
 
-namespace Assets.Scripts.Infrastructure.Services.Factories
+namespace Assets.Scripts.Infrastructure.Factories
 {
     public interface ISpaceShipFactory
     {

@@ -1,9 +1,6 @@
-﻿using Assets.Scripts.Units;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Assets.Scripts.SpaceShip;
 
-namespace Assets.Scripts.Infrastructure.Services.Factories
+namespace Assets.Scripts.Infrastructure.Services.Registries
 {
     public interface ISpaceShipRegistry
     {

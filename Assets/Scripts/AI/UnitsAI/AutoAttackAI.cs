@@ -1,8 +1,7 @@
-﻿using Assets.Scripts.AI.UnitsAI;
-using Assets.Scripts.Units;
+﻿using Assets.Scripts.SpaceShip;
 using UnityEngine;
 
-namespace Assets.Scripts.AI
+namespace Assets.Scripts.AI.UnitsAI
 {
     [AddComponentMenu("AI/CombatUnit/AutoAttackAI")]
     [RequireComponent(typeof(ISpaceShip))]

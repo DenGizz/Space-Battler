@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Assets.Scripts.Units.UnitAttributes;
+using Assets.Scripts.SpaceShip.SpaceShipAttributes;
 using UnityEngine;
 
-namespace Assets.Scripts.Units.UnitComponents
+namespace Assets.Scripts.SpaceShip.SpaceShipComponents
 {
     [AddComponentMenu("Units/SpaceShip")]
     public class SpaceShipUnitComponent : MonoBehaviour, ISpaceShip
@@ -17,7 +17,7 @@ namespace Assets.Scripts.Units.UnitComponents
 
         public void Construct()
         {
-            HealthAttribute = new HealthAttribute(100,100);
+            HealthAttribute = new HealthAttribute(20,20);
             _weapons = new List<IWeapon>();
         }
 

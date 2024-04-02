@@ -1,11 +1,7 @@
-﻿using Assets.Scripts.Units;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using Assets.Scripts.SpaceShip;
 
-namespace Assets.Scripts.Infrastructure.Services
+namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
     public interface IBattleObserver
     {

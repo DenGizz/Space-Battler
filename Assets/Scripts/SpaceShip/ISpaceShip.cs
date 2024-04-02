@@ -1,7 +1,7 @@
-using Assets.Scripts.Units.UnitAttributes;
+using Assets.Scripts.SpaceShip.SpaceShipAttributes;
 using UnityEngine;
 
-namespace Assets.Scripts.Units
+namespace Assets.Scripts.SpaceShip
 {
     public interface ISpaceShip : IDamagable, IAttackable
     {

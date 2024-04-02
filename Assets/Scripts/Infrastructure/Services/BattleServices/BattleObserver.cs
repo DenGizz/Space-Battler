@@ -1,12 +1,8 @@
-﻿using Assets.Scripts.Units;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using Assets.Scripts.SpaceShip;
 using Zenject;
 
-namespace Assets.Scripts.Infrastructure.Services
+namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
     public class BattleObserver : IBattleObserver, ITickable
     {
@@ -29,14 +25,20 @@ namespace Assets.Scripts.Infrastructure.Services
 
         public void Tick()
         {
-            if (_isObserving)
+            if (!_isObserving)
                 return;
 
             if (CurrentBattle.PlayerSpaceShip.HealthAttribute.HP <= 0)
+            {
                 OnWinnerDetermined?.Invoke(CurrentBattle.EnemySpaceShip);
+                return;
+            }
 
             if (CurrentBattle.EnemySpaceShip.HealthAttribute.HP <= 0)
+            {
                 OnWinnerDetermined?.Invoke(CurrentBattle.PlayerSpaceShip);
+                return;
+            }
         }
     }
 }

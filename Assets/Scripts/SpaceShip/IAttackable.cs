@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Assets.Scripts.Units
+namespace Assets.Scripts.SpaceShip
 {
     public interface IAttackable
     {
