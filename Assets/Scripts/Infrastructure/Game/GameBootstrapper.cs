@@ -13,6 +13,7 @@ namespace Assets.Scripts.Infrastructure.Game
         public void Construct(Game game)
         {
             _game = game;
+            DontDestroyOnLoad(this);
         }
 
         private void LunchGame()
