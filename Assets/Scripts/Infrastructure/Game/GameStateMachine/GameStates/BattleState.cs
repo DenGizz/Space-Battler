@@ -6,21 +6,21 @@ using Assets.Scripts.StateMachine;
 
 namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
 {
-    public class BattleRunningState : IState
+    public class BattleState : IState
     {
         private readonly IBattleObserver _battleObserver;
-        private readonly ICombatAIRegistry _combatAIRegistry;
         private readonly IBattleDataProvider _battleDataProvider;
+        private readonly IBattleController _battleController;
 
 
         private readonly GameStateMachine GameStateMachine;
 
-        public BattleRunningState(GameStateMachine gameStateMachine, IBattleObserver battleObserver, ICombatAIRegistry combatAIRegistry, IBattleDataProvider battleDataProvider)
+        public BattleState(GameStateMachine gameStateMachine, IBattleObserver battleObserver, IBattleDataProvider battleDataProvider, IBattleController battleController)
         {
             GameStateMachine = gameStateMachine;
             _battleObserver = battleObserver;
-            _combatAIRegistry = combatAIRegistry;
             _battleDataProvider = battleDataProvider;
+            _battleController = battleController;
         }
 
         public void Enter()
@@ -42,28 +42,18 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
 
         private void StartBattle()
         {
-            //TODO: Create BattleData provider service ???
-            BattleData battleData = _battleDataProvider.CurrentBattleData;
-            _battleObserver.StartObserve(battleData);
-            //Enable combat ai battle mode
-            foreach (ICombatAI ai in _combatAIRegistry.CombatAIs)
-                ai.StartCombat();
+            _battleObserver.StartObserve(_battleDataProvider.CurrentBattleData);
+            _battleController.StartBattle(_battleDataProvider.CurrentBattleData);
         }
 
         private void StopBattle()
         {
-            _battleObserver.StopObserve();
-            //Disable combat ai battle mode
-            foreach (ICombatAI ai in _combatAIRegistry.CombatAIs)
-                ai.StopCombat();
+            _battleController.StopBattle(_battleDataProvider.CurrentBattleData);
         }
 
-        private void ContinueBattle()
+        private void ResumeBattle()
         {
-            foreach (ICombatAI ai in _combatAIRegistry.CombatAIs)
-                ai.StartCombat();
+            _battleController.ResumeBattle(_battleDataProvider.CurrentBattleData);
         }
-
-
     }
 }

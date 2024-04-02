@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
 {
-    public class SetupBattleState : IState
+    public class CreateBattleState : IState
     {
         private readonly ISpaceShipFactory _spaceShipFactory;
         private readonly ICombatAIRegistry _combatAIRegistry;
@@ -18,7 +18,7 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
 
         private readonly GameStateMachine GameStateMachine;
 
-        public SetupBattleState(GameStateMachine gameStateMachine, ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleDataProvider battleDataProvider)
+        public CreateBattleState(GameStateMachine gameStateMachine, ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleDataProvider battleDataProvider)
         {
             GameStateMachine = gameStateMachine;
             _spaceShipFactory = spaceShipFactory;
@@ -30,7 +30,7 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
         public void Enter()
         {
             SetupBattle();
-            GameStateMachine.EnterState<BattleRunningState>();
+            GameStateMachine.EnterState<BattleState>();
         }
 
         public void Exit()
@@ -51,10 +51,11 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
             enemyAI.SetTarget(player);
 
             BattleData battle = new BattleData(player, enemy, playerAI, enemyAI, false, false);
+            _battleDataProvider.CurrentBattleData = battle;
 
             _battleUIService.CreateBattleUI();
             _battleUIService.SetBattle(battle);
-            _battleDataProvider.CurrentBattleData = battle;
+
         }
     }
 }

@@ -8,40 +8,20 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
 {
     public class CleanUpBattleState : IState
     {
-        private readonly ISpaceShipsGameObjectRegistry _spaceShipsGameObjectRegistry;
-        private readonly ISpaceShipRegistry _spaceShipRegistry;
-        private readonly ICombatAIRegistry _combatAIRegistry;
-        private readonly IBattleUIService _battleUIService;
+        private readonly IBattleCleanUpServce _battleCleanUpServce;
         private readonly IBattleDataProvider _battleDataProvider;
         private readonly GameStateMachine _gameStateMachine;
 
-        public CleanUpBattleState(GameStateMachine gameStateMachine, ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleDataProvider battleDataProvider)
+        public CleanUpBattleState(GameStateMachine gameStateMachine, IBattleDataProvider battleDataProvider, IBattleCleanUpServce battleCleanUpServce)
         {
             _gameStateMachine = gameStateMachine;
-            _spaceShipsGameObjectRegistry = spaceShipsGameObjectRegistry;
-            _spaceShipRegistry = spaceShipRegistry;
-            _combatAIRegistry = combatAIRegistry;
-            _battleUIService = battleUIService;
             _battleDataProvider = battleDataProvider;
-      
+            _battleCleanUpServce = battleCleanUpServce;
         }
 
         public void Enter()
         {
-            BattleData battleData = _battleDataProvider.CurrentBattleData;
-
-            GameObject.Destroy(_spaceShipsGameObjectRegistry.GetSpaceShipGameObject(battleData.PlayerSpaceShip));
-            GameObject.Destroy(_spaceShipsGameObjectRegistry.GetSpaceShipGameObject(battleData.EnemySpaceShip));
-
-            _spaceShipsGameObjectRegistry.UnregisterGameObject(_spaceShipsGameObjectRegistry.GetSpaceShipGameObject(battleData.PlayerSpaceShip));
-            _spaceShipsGameObjectRegistry.UnregisterGameObject(_spaceShipsGameObjectRegistry.GetSpaceShipGameObject(battleData.EnemySpaceShip));
-
-            _spaceShipRegistry.PlayerSpaceShip = null;
-            _spaceShipRegistry.EnemySpaceShip = null;
-
-            _combatAIRegistry.UnregisterAI(battleData.PlayerSpaceShip);
-            _combatAIRegistry.UnregisterAI(battleData.EnemySpaceShip);
-            _battleUIService.DestroyBattleUI();
+            _battleCleanUpServce.CleanUpBattle(_battleDataProvider.CurrentBattleData);
         }
 
         public void Exit()
