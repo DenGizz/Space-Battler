@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ScenesConfig", menuName = "Config/ScenesConfig")]
 public class ScenesConfig : ScriptableObject
 {
-    public SceneAsset BattleFieldScene => _battleFieldScene;
+    public string BattleFieldSceneName => _battleFieldSceneName;
 
-    [SerializeField] private SceneAsset _battleFieldScene;
+    [SerializeField] private string _battleFieldSceneName;
 }
