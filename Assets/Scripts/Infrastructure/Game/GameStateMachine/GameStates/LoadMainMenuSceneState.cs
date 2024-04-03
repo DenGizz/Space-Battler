@@ -21,7 +21,8 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine.GameStates
 
         public void Enter()
         {
-            _sceneLoader.LoadSceneAsync(_scenesConfig.MainMenuSceneName, () => _gameStateMachine.EnterState<MainMenuState>());
+            _sceneLoader.LoadSceneAsync(_scenesConfig.MainMenuSceneName, 
+                () => _gameStateMachine.EnterState<MainMenuState>());
         }
 
         public void Exit()
