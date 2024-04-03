@@ -30,7 +30,7 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine.GameStates
 
         public void Exit()
         {
-
+            _mainMenuUI.OnStartBattleButtonClicked -= OnStartBattleButtonClicked;
         }
 
         private void OnStartBattleButtonClicked()
