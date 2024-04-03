@@ -1,13 +1,8 @@
 ﻿using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.StateMachine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Zenject;
+using Assets.Scripts.UI;
 
-namespace Assets.Scripts.Infrastructure.Game.GameStateMachine.GameStates
+namespace Assets.Scripts.Game.GameStateMachine.GameStates
 {
     public class MainMenuState : IState
     {

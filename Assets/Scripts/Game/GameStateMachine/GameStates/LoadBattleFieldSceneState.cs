@@ -1,12 +1,8 @@
-﻿using System.Collections;
-using Assets.Scripts.Infrastructure.Config;
-using Assets.Scripts.Infrastructure.Services;
+﻿using Assets.Scripts.Infrastructure.Config;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.StateMachine;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 
-namespace Assets.Scripts.Infrastructure.Game.GameStateMachine.GameStates
+namespace Assets.Scripts.Game.GameStateMachine.GameStates
 {
     public class LoadBattleFieldSceneState : IState
     {

@@ -1,22 +1,23 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainMenuUI : MonoBehaviour
+namespace Assets.Scripts.UI
 {
-    [SerializeField] private Button _startBattleButton;
-
-    public event Action OnStartBattleButtonClicked;
-
-    private void Awake()
+    public class MainMenuUI : MonoBehaviour
     {
-        _startBattleButton.onClick.AddListener(OnStartBattleButtonClick);
-    }
+        [SerializeField] private Button _startBattleButton;
 
-    private void OnStartBattleButtonClick()
-    {
-        OnStartBattleButtonClicked?.Invoke();
+        public event Action OnStartBattleButtonClicked;
+
+        private void Awake()
+        {
+            _startBattleButton.onClick.AddListener(OnStartBattleButtonClick);
+        }
+
+        private void OnStartBattleButtonClick()
+        {
+            OnStartBattleButtonClicked?.Invoke();
+        }
     }
 }

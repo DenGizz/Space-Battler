@@ -1,10 +1,8 @@
 ﻿using Assets.Scripts.Infrastructure.Config;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.StateMachine;
-using System.Collections;
-using UnityEngine;
 
-namespace Assets.Scripts.Infrastructure.Game.GameStateMachine.GameStates
+namespace Assets.Scripts.Game.GameStateMachine.GameStates
 {
     public class LoadMainMenuSceneState : IState
     {

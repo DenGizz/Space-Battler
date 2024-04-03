@@ -1,7 +1,7 @@
 using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.StateMachine;
 
-namespace Assets.Scripts.Infrastructure.Game.GameStateMachine.GameStates
+namespace Assets.Scripts.Game.GameStateMachine.GameStates
 {
     public class CleanUpBattleState : IState
     {

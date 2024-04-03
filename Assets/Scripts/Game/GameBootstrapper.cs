@@ -1,8 +1,7 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Infrastructure.Game
+namespace Assets.Scripts.Game
 {
     [AddComponentMenu("Infrastructure/GameBootstrapper")]
     public class GameBootstrapper : MonoBehaviour

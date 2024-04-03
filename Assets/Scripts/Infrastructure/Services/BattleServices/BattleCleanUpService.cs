@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Infrastructure.Services.Registries;
+﻿using Assets.Scripts.Battle;
+using Assets.Scripts.Infrastructure.Services.Registries;
 using UnityEngine;
 using Zenject;
 

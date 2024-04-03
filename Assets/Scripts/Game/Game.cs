@@ -1,10 +1,7 @@
-﻿using Assets.Scripts.Infrastructure.Game.GameStateMachine;
-using System.Collections;
-using Assets.Scripts.Infrastructure.Game.GameStateMachine.GameStates;
-using UnityEngine;
+﻿using Assets.Scripts.Game.GameStateMachine.GameStates;
 using Zenject;
 
-namespace Assets.Scripts.Infrastructure.Game
+namespace Assets.Scripts.Game
 {
     public class Game
     {

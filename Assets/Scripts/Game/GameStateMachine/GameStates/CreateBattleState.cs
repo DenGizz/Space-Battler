@@ -1,13 +1,10 @@
-using Assets.Scripts.AI.UnitsAI;
 using Assets.Scripts.Infrastructure.Factories;
 using Assets.Scripts.Infrastructure.Services;
-using Assets.Scripts.Infrastructure.Services.BattleServices;
-using Assets.Scripts.Infrastructure.Services.Registries;
 using Assets.Scripts.SpaceShip;
 using Assets.Scripts.StateMachine;
 using UnityEngine;
 
-namespace Assets.Scripts.Infrastructure.Game.GameStateMachine.GameStates
+namespace Assets.Scripts.Game.GameStateMachine.GameStates
 {
     public class CreateBattleState : IState
     {

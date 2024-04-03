@@ -1,12 +1,7 @@
 ﻿using Assets.Scripts.AI.UnitsAI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Assets.Scripts.SpaceShip;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Battle
 {
     public class BattleData
     {

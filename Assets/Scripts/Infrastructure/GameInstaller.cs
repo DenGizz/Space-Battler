@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Assets.Scripts.Infrastructure.Game.GameStateMachine;
+using Assets.Scripts.Game.GameStateMachine;
 using UnityEngine;
 using Zenject;
 
