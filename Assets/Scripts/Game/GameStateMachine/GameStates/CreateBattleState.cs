@@ -45,8 +45,11 @@ namespace Assets.Scripts.Game.GameStateMachine.GameStates
             Color playerSpaceShipColor = Color.green;
             Color enemySpaceShipColor = Color.red;
 
-            ISpaceShip player = _spaceShipFactory.CreateSpaceShip(playerSpaceShipPosition, playerSpaceShipZRotation, playerSpaceShipColor);
-            ISpaceShip enemy = _spaceShipFactory.CreateSpaceShip(enemySpaceShipPosition, enemySpaceShipZRotation, enemySpaceShipColor);
+            SpaceShipConfig playerSpaceShipConfig = new SpaceShipConfig(25, 1);
+            SpaceShipConfig enemySpaceShipConfig = new SpaceShipConfig(25, 1);
+
+            ISpaceShip player = _spaceShipFactory.CreateSpaceShip(playerSpaceShipConfig, playerSpaceShipPosition, playerSpaceShipZRotation, playerSpaceShipColor);
+            ISpaceShip enemy = _spaceShipFactory.CreateSpaceShip(enemySpaceShipConfig, enemySpaceShipPosition, enemySpaceShipZRotation, enemySpaceShipColor);
 
             Battle.Battle battle = _battleFactory.CreateBattle(player, enemy);
 

@@ -7,5 +7,6 @@ namespace Assets.Scripts.SpaceShip
     {
         IHealthAttribute HealthAttribute { get; }
         Vector3 Position { get; }
+        SpaceShipConfig Config { get; }
     }
 }

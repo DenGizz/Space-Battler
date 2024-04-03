@@ -6,6 +6,7 @@ using Assets.Scripts.Infrastructure.Services.Registries;
 using Assets.Scripts.SpaceShip;
 using UnityEngine;
 using Zenject;
+using Assets.Scripts.SpaceShip.SpaceShipComponents;
 
 namespace Assets.Scripts.Infrastructure.Factories
 {
@@ -26,15 +27,17 @@ namespace Assets.Scripts.Infrastructure.Factories
             _spaceShipsGameObjectRegistry = spaceShipsGameObjectRegistry;
         }
 
-        public ISpaceShip CreateSpaceShip(Vector3 position, float zRotation, Color color)
+        public ISpaceShip CreateSpaceShip(SpaceShipConfig config, Vector3 position, float zRotation, Color color)
         {
             GameObject prefab = _assetsProvider.GetSpaceShipPrefab();
             GameObject gameObject = GameObject.Instantiate(prefab);
+            SpaceShipUnitComponent spaceShipUnitComponent = gameObject.GetComponent<SpaceShipUnitComponent>();
+            spaceShipUnitComponent.Construct(config);
 
             SetSpaceShipColor(gameObject, color);
             PlaceSpaceShip(gameObject, position, zRotation);
 
-            ISpaceShip spaceShip = gameObject.GetComponent<ISpaceShip>();
+            ISpaceShip spaceShip = spaceShipUnitComponent;
             ICombatAI combatAI = gameObject.GetComponent<ICombatAI>();
 
             _spaceShipRegistry.EnemySpaceShip = spaceShip;

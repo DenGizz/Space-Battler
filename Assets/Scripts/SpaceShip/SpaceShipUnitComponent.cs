@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Assets.Scripts.SpaceShip.SpaceShipAttributes;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 namespace Assets.Scripts.SpaceShip.SpaceShipComponents
@@ -13,20 +14,20 @@ namespace Assets.Scripts.SpaceShip.SpaceShipComponents
 
         public IEnumerable<IWeapon> Weapons => _weapons;
 
+        public SpaceShipConfig Config { get; private set; }
+
         private List<IWeapon> _weapons;
 
-        public void Construct()
+        public void Construct(SpaceShipConfig config)
         {
-            HealthAttribute = new HealthAttribute(20,20);
+            Config = config;
+            HealthAttribute = new HealthAttribute(config.MaxHP, config.MaxHP);
             _weapons = new List<IWeapon>();
 
-            if(TryGetComponent(out IWeapon weapon))
-                _weapons.Add(weapon);
-        }
-
-        private void Awake()
-        {
-            Construct();
+            if(TryGetComponent(out IWeapon weapon) && _weapons.Count <= Config.WeaponSlots)
+            {
+                AddWeapon(weapon);
+            }
         }
 
         public void TakeDamage(float damageAmount)
@@ -41,6 +42,9 @@ namespace Assets.Scripts.SpaceShip.SpaceShipComponents
 
         public void AddWeapon(IWeapon weapon)
         {
+            if (_weapons.Count >= Config.WeaponSlots)
+                throw new System.Exception("No more weapon slots available");
+
             _weapons.Add(weapon);
         }
 
