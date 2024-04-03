@@ -5,7 +5,6 @@ namespace Assets.Scripts.Infrastructure.Factories
 {
     public interface ISpaceShipFactory
     {
-        ISpaceShip CreatePlayerSpaceShip(Vector3 position);
-        ISpaceShip CreateEnemySpaceShip(Vector3 position);
+        ISpaceShip CreateSpaceShip(Vector3 position, float zRotation, Color color);
     }
 }

@@ -36,11 +36,19 @@ namespace Assets.Scripts.Game.GameStateMachine.GameStates
         private void CreateBattle()
         {
             //Instantiate units
-            ISpaceShip player = _spaceShipFactory.CreatePlayerSpaceShip(Vector3.zero - Vector3.right * 7);
-            ISpaceShip enemy = _spaceShipFactory.CreateEnemySpaceShip(Vector3.zero + Vector3.right * 7);
+            Vector3 playerSpaceShipPosition = Vector3.zero - Vector3.right * 7;
+            Vector3 enemySpaceShipPosition = Vector3.zero + Vector3.right * 7;
+
+            float playerSpaceShipZRotation = -90;
+            float enemySpaceShipZRotation = 90;
+
+            Color playerSpaceShipColor = Color.green;
+            Color enemySpaceShipColor = Color.red;
+
+            ISpaceShip player = _spaceShipFactory.CreateSpaceShip(playerSpaceShipPosition, playerSpaceShipZRotation, playerSpaceShipColor);
+            ISpaceShip enemy = _spaceShipFactory.CreateSpaceShip(enemySpaceShipPosition, enemySpaceShipZRotation, enemySpaceShipColor);
 
             Battle.Battle battle = _battleFactory.CreateBattle(player, enemy);
-
 
             _battleUIService.CreateBattleUI();
             _battleUIService.SetBattle(battle);

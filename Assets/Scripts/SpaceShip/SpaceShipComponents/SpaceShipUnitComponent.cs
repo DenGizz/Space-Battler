@@ -19,6 +19,9 @@ namespace Assets.Scripts.SpaceShip.SpaceShipComponents
         {
             HealthAttribute = new HealthAttribute(20,20);
             _weapons = new List<IWeapon>();
+
+            if(TryGetComponent(out IWeapon weapon))
+                _weapons.Add(weapon);
         }
 
         public void Construct(SpaceShipData unitData)
