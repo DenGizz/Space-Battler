@@ -10,15 +10,17 @@ namespace Assets.Scripts
 {
     public class BattleData
     {
-        public ISpaceShip PlayerSpaceShip { get; set; }
-        public ISpaceShip EnemySpaceShip { get; set; }
+        public ISpaceShip PlayerSpaceShip { get; }
+        public ISpaceShip EnemySpaceShip { get;}
+        public ICombatAI PlayerCombatAi { get; }
+        public ICombatAI EnemyCombatAi { get; }
 
-        public BattleData() { }
-
-        public BattleData(ISpaceShip playerUnit, ISpaceShip enemyUnit)
+        public BattleData( ISpaceShip playerSpaceShip, ISpaceShip enemySpaceShip, ICombatAI playerCombatAi, ICombatAI enemyCombatAi)
         {
-            PlayerSpaceShip = playerUnit;
-            EnemySpaceShip = enemyUnit;
+            PlayerSpaceShip = playerSpaceShip;
+            EnemySpaceShip = enemySpaceShip;
+            PlayerCombatAi = playerCombatAi;
+            EnemyCombatAi = enemyCombatAi;
         }
     }
 }

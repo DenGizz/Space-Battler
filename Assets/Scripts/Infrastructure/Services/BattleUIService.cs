@@ -28,9 +28,9 @@ namespace Assets.Scripts.Infrastructure.Services
             (_battleUI, _battleUIGameObject) = _uiFactory.CreateBattleUI();
         }
 
-        public void SetBattle(BattleData battleData)
+        public void SetBattle(Battle.Battle battle)
         {
-            _battleUI.Setup(battleData);
+            _battleUI.Setup(battle.BattleData);
         }
 
         public void DestroyBattleUI()

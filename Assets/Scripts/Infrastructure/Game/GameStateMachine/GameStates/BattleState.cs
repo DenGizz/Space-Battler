@@ -9,23 +9,22 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine.GameStates
     public class BattleState : IState
     {
         private readonly IBattleObserver _battleObserver;
-        private readonly IBattleDataProvider _battleDataProvider;
-        private readonly ICombatAiRegistry _combatAiRegistry;
+        private readonly IBattleProvider _battleDataProvider;
 
 
         private readonly GameStateMachine GameStateMachine;
 
-        public BattleState(GameStateMachine gameStateMachine, IBattleObserver battleObserver, IBattleDataProvider battleDataProvider, ICombatAiRegistry combatAiRegistry)
+        public BattleState(GameStateMachine gameStateMachine, IBattleObserver battleObserver, IBattleProvider battleDataProvider)
         {
             GameStateMachine = gameStateMachine;
             _battleObserver = battleObserver;
             _battleDataProvider = battleDataProvider;
-            _combatAiRegistry = combatAiRegistry;
         }
 
         public void Enter()
         {
             StartBattle();
+            _battleObserver.StartObserve(_battleDataProvider.CurrentBattle);
             _battleObserver.OnWinnerDetermined += OnWinnerDeterminedEventHandler;
         }
 
@@ -42,34 +41,17 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine.GameStates
 
         private void StartBattle()
         {
-            _battleObserver.StartObserve(_battleDataProvider.CurrentBattleData);
-
-            ICombatAI playerAi = _combatAiRegistry.GetAI(_battleDataProvider.CurrentBattleData.PlayerSpaceShip);
-            ICombatAI enemyAi = _combatAiRegistry.GetAI(_battleDataProvider.CurrentBattleData.EnemySpaceShip);
-
-            playerAi.SetTarget(_battleDataProvider.CurrentBattleData.EnemySpaceShip);
-            enemyAi.SetTarget(_battleDataProvider.CurrentBattleData.PlayerSpaceShip);
-
-            playerAi.StartCombat();
-            enemyAi.StartCombat();
+            _battleDataProvider.CurrentBattle.StartBattle();
         }
 
         private void StopBattle()
         {
-            ICombatAI playerAi = _combatAiRegistry.GetAI(_battleDataProvider.CurrentBattleData.PlayerSpaceShip);
-            ICombatAI enemyAi = _combatAiRegistry.GetAI(_battleDataProvider.CurrentBattleData.EnemySpaceShip);
-
-            playerAi.StopCombat();
-            enemyAi.StopCombat();
+            _battleDataProvider.CurrentBattle.StopBattle();
         }
 
         private void ResumeBattle()
         {
-            ICombatAI playerAi = _combatAiRegistry.GetAI(_battleDataProvider.CurrentBattleData.PlayerSpaceShip);
-            ICombatAI enemyAi = _combatAiRegistry.GetAI(_battleDataProvider.CurrentBattleData.EnemySpaceShip);
-
-            playerAi.StartCombat();
-            enemyAi.StartCombat();
+            _battleDataProvider.CurrentBattle.ResumeBattle();
         }
     }
 }

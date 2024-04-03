@@ -12,19 +12,17 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine.GameStates
     public class CreateBattleState : IState
     {
         private readonly ISpaceShipFactory _spaceShipFactory;
-        private readonly ICombatAiRegistry _combatAIRegistry;
         private readonly IBattleUIService _battleUIService;
-        private readonly IBattleDataProvider _battleDataProvider;
+        private readonly IBattleFactory _battleFactory;
 
         private readonly GameStateMachine GameStateMachine;
 
-        public CreateBattleState(GameStateMachine gameStateMachine, ISpaceShipFactory spaceShipFactory, ICombatAiRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleDataProvider battleDataProvider)
+        public CreateBattleState(GameStateMachine gameStateMachine, ISpaceShipFactory spaceShipFactory , IBattleUIService battleUIService, IBattleFactory battleFactory)
         {
             GameStateMachine = gameStateMachine;
             _spaceShipFactory = spaceShipFactory;
-            _combatAIRegistry = combatAIRegistry;
             _battleUIService = battleUIService;
-            _battleDataProvider = battleDataProvider;
+            _battleFactory = battleFactory;
         }
 
         public void Enter()
@@ -44,8 +42,9 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine.GameStates
             ISpaceShip player = _spaceShipFactory.CreatePlayerSpaceShip(Vector3.zero - Vector3.right * 7);
             ISpaceShip enemy = _spaceShipFactory.CreateEnemySpaceShip(Vector3.zero + Vector3.right * 7);
 
-            BattleData battle = new BattleData(player, enemy);
-            _battleDataProvider.CurrentBattleData = battle;
+            Battle.Battle battle = _battleFactory.CreateBattle(player, enemy);
+
+
             _battleUIService.CreateBattleUI();
             _battleUIService.SetBattle(battle);
         }

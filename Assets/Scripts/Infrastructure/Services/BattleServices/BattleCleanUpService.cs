@@ -1,10 +1,6 @@
 ﻿using Assets.Scripts.Infrastructure.Services.Registries;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
@@ -14,19 +10,21 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
         private readonly ISpaceShipRegistry _spaceShipRegistry;
         private readonly ICombatAiRegistry _combatAIRegistry;
         private readonly IBattleUIService _battleUIService;
-        private readonly IBattleDataProvider _battleDataProvider;
+        private readonly IBattleProvider _battleProvider;
 
-        public BattleCleanUpService(ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry, ICombatAiRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleDataProvider battleDataProvider)
+        [Inject]
+        public BattleCleanUpService(ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry, ICombatAiRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleProvider battleProvider)
         {
             _spaceShipsGameObjectRegistry = spaceShipsGameObjectRegistry;
             _spaceShipRegistry = spaceShipRegistry;
             _combatAIRegistry = combatAIRegistry;
             _battleUIService = battleUIService;
-            _battleDataProvider = battleDataProvider;
+            _battleProvider = battleProvider;
         }
 
-        public void CleanUpBattle(BattleData battleData)
+        public void CleanUpBattle(Battle.Battle battle)
         {
+            BattleData battleData = battle.BattleData;
             GameObject.Destroy(_spaceShipsGameObjectRegistry.GetSpaceShipGameObject(battleData.PlayerSpaceShip));
             GameObject.Destroy(_spaceShipsGameObjectRegistry.GetSpaceShipGameObject(battleData.EnemySpaceShip));
 
@@ -39,6 +37,8 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
             _combatAIRegistry.UnregisterAI(battleData.PlayerSpaceShip);
             _combatAIRegistry.UnregisterAI(battleData.EnemySpaceShip);
             _battleUIService.DestroyBattleUI();
+
+            _battleProvider.CurrentBattle = null;
         }
     }
 }

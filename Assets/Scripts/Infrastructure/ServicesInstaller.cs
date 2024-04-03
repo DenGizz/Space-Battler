@@ -44,8 +44,9 @@ namespace Assets.Scripts.Infrastructure
 
         private void BindBattleServices()
         {
-            Container.Bind<IBattleDataProvider>().To<BattleDataProvider>().AsSingle();
-            Container.Bind<IBattleCleanUpServce>().To<BattleCleanUpServce>().AsSingle();
+            Container.Bind<IBattleFactory>().To<BattleFactory>().AsSingle();
+            Container.Bind<IBattleProvider>().To<BattleProvider>().AsSingle();
+            Container.Bind<IBattleCleanUpServce>().To<BattleCleanUpService>().AsSingle();
         }
 
         private void BindBattleObserver()

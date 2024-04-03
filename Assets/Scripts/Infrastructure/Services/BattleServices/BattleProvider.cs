@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
-    public class BattleDataProvider : IBattleDataProvider
+    public class BattleProvider : IBattleProvider
     {
-        public BattleData CurrentBattleData { get; set; }
+        public Battle.Battle CurrentBattle { get; set; }
     }
 }

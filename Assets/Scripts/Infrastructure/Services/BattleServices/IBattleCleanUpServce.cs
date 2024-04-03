@@ -2,6 +2,6 @@
 {
     public interface IBattleCleanUpServce
     {
-        public void CleanUpBattle(BattleData battleData);
+        void CleanUpBattle(Battle.Battle battle);
     }
 }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
-    public interface IBattleDataProvider
+    public interface IBattleProvider
     {
-        BattleData CurrentBattleData { get; set; }
+        Battle.Battle CurrentBattle { get; set; }
     }
 }

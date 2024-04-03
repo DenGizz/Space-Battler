@@ -9,7 +9,7 @@ namespace Assets.Scripts.Infrastructure.Services
     public interface IBattleUIService
     {
         void CreateBattleUI();
-        void SetBattle(BattleData battleData);
+        void SetBattle(Battle.Battle battle);
         void DestroyBattleUI();
     }
 }

@@ -6,15 +6,15 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
     public class BattleObserver : IBattleObserver, ITickable
     {
-        public BattleData CurrentBattle { get; private set; }
+        public Battle.Battle _currentBattle;
 
         public event Action<ISpaceShip> OnWinnerDetermined;
 
         private bool _isObserving;
 
-        public void StartObserve(BattleData battle)
+        public void StartObserve(Battle.Battle battle)
         {
-            CurrentBattle = battle;
+            _currentBattle = battle;
             _isObserving = true;
         }
 
@@ -28,15 +28,15 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
             if (!_isObserving)
                 return;
 
-            if (CurrentBattle.PlayerSpaceShip.HealthAttribute.HP <= 0)
+            if (_currentBattle.BattleData.PlayerSpaceShip.HealthAttribute.HP <= 0)
             {
-                OnWinnerDetermined?.Invoke(CurrentBattle.EnemySpaceShip);
+                OnWinnerDetermined?.Invoke(_currentBattle.BattleData.EnemySpaceShip);
                 return;
             }
 
-            if (CurrentBattle.EnemySpaceShip.HealthAttribute.HP <= 0)
+            if (_currentBattle.BattleData.EnemySpaceShip.HealthAttribute.HP <= 0)
             {
-                OnWinnerDetermined?.Invoke(CurrentBattle.PlayerSpaceShip);
+                OnWinnerDetermined?.Invoke(_currentBattle.BattleData.PlayerSpaceShip);
                 return;
             }
         }
