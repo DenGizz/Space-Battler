@@ -6,5 +6,6 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
     {
         GameObject GetBattleUIPrefab();
         GameObject GetSpaceShipPrefab();
+        GameObject GetMainMenuUIPrefab();
     }
 }
