@@ -18,7 +18,7 @@ namespace Assets.Scripts.Infrastructure.Game
 
         public void Start()
         {
-            _gameStateMachine.EnterState<LoadBattleFieldSceneState>();
+            _gameStateMachine.EnterState<LoadMainMenuSceneState>();
         }
     }
 }
