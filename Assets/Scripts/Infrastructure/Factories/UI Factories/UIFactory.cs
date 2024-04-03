@@ -23,5 +23,12 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
 
             return (battleUI.GetComponentInChildren<BattleUI>(), battleUI);
         }
+
+        public MainMenuUI CreateMainMenuUI()
+        {
+            GameObject mainMenuUI = GameObject.Instantiate(_assetsProvider.GetMainMenuUIPrefab());
+
+            return mainMenuUI.GetComponentInChildren<MainMenuUI>();
+        }
     }
 }
