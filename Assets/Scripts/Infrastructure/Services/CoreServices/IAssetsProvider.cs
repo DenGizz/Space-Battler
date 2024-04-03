@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.ScriptableObjects;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Services.CoreServices
 {
@@ -7,5 +9,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         GameObject GetBattleUIPrefab();
         GameObject GetSpaceShipPrefab();
         GameObject GetMainMenuUIPrefab();
+
+        IEnumerable<SpaceShipConfigSO> GetSpaceShipConfigurationSOs();
     }
 }

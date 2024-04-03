@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.ScriptableObjects;
+using System.Collections.Generic;
+using UnityEngine;
+using System.IO;
 
 namespace Assets.Scripts.Infrastructure.Services.CoreServices
 {
@@ -14,6 +17,9 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         private const string UIPathRoot = "UI";
         private const string BattleUIPrefabRelativePath = "Battle UI";
         private const string MainMenuUIPrefabRelativePath = "Main Menu UI";
+
+        private const string StaticDataPathRoot = "StaticData";
+        private const string SpaceShipConfigSOPath = "SpaceShipConfigs";
 
         public GameObject GetSpaceShipPrefab()
         {
@@ -39,10 +45,15 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         {
             if (_mainMenuUIPrefab == null)
             {
-                _mainMenuUIPrefab = LoadPrefab(System.IO.Path.Combine(PrefabsPathRoot, UIPathRoot, MainMenuUIPrefabRelativePath));
+                _mainMenuUIPrefab = LoadPrefab(Path.Combine(PrefabsPathRoot, UIPathRoot, MainMenuUIPrefabRelativePath));
             }
 
             return _mainMenuUIPrefab;
+        }
+
+        public IEnumerable<SpaceShipConfigSO> GetSpaceShipConfigurationSOs()
+        {
+            return Resources.LoadAll<SpaceShipConfigSO>(Path.Combine(StaticDataPathRoot, SpaceShipConfigSOPath));
         }
 
         private GameObject LoadPrefab(string path)
