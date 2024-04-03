@@ -4,7 +4,7 @@ using Assets.Scripts.SpaceShip;
 
 namespace Assets.Scripts.Infrastructure.Services.Registries
 {
-    public interface ICombatAIRegistry
+    public interface ICombatAiRegistry
     {
         public IEnumerable<ICombatAI> CombatAIs { get; }
         public ICombatAI GetAI(ISpaceShip spaceShip);

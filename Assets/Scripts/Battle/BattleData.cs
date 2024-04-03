@@ -13,18 +13,12 @@ namespace Assets.Scripts
         public ISpaceShip PlayerSpaceShip { get; set; }
         public ISpaceShip EnemySpaceShip { get; set; }
 
-        public ICombatAI PlayerAI { get;  set; }
-        public ICombatAI EnemyAI { get;  set; }
-
         public BattleData() { }
 
-        public BattleData(ISpaceShip playerUnit, ISpaceShip enemyUnit, 
-            ICombatAI playerAI, ICombatAI enemyAI)
+        public BattleData(ISpaceShip playerUnit, ISpaceShip enemyUnit)
         {
             PlayerSpaceShip = playerUnit;
             EnemySpaceShip = enemyUnit;
-            PlayerAI = playerAI;
-            EnemyAI = enemyAI;
         }
     }
 }

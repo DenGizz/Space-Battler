@@ -4,7 +4,7 @@ using Assets.Scripts.SpaceShip;
 
 namespace Assets.Scripts.Infrastructure.Services.Registries
 {
-    public class CombatAIRegistry : ICombatAIRegistry
+    public class CombatAIRegistry : ICombatAiRegistry
     {
         public IEnumerable<ICombatAI> CombatAIs => _combatAIs.Values;
 

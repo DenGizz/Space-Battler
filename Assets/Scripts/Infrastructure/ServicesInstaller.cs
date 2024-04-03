@@ -25,7 +25,7 @@ namespace Assets.Scripts.Infrastructure
         {
             Container.Bind<ISpaceShipFactory>().To<SpaceShipFactory>().AsSingle();
             Container.Bind<ISpaceShipsGameObjectRegistry>().To<SpaceShipsGameObjectsRegistry>().AsSingle();
-            Container.Bind<ICombatAIRegistry>().To<CombatAIRegistry>().AsSingle();
+            Container.Bind<ICombatAiRegistry>().To<CombatAIRegistry>().AsSingle();
             Container.Bind<ISpaceShipRegistry>().To<SpaceShipRegistry>().AsSingle();
         }
 
@@ -44,8 +44,6 @@ namespace Assets.Scripts.Infrastructure
 
         private void BindBattleServices()
         {
-            Container.Bind<IBattleFactory>().To<BattleFactory>().AsSingle();
-            Container.Bind<IBattleController>().To<BattleController>().AsSingle();
             Container.Bind<IBattleDataProvider>().To<BattleDataProvider>().AsSingle();
             Container.Bind<IBattleCleanUpServce>().To<BattleCleanUpServce>().AsSingle();
         }

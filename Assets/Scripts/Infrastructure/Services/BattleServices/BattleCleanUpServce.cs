@@ -8,11 +8,11 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
     {
         ISpaceShipsGameObjectRegistry _spaceShipsGameObjectRegistry;
         ISpaceShipRegistry _spaceShipRegistry;
-        ICombatAIRegistry _combatAIRegistry;
+        ICombatAiRegistry _combatAIRegistry;
         IBattleUIService _battleUIService;
 
         [Inject]
-        public BattleCleanUpServce(ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService)
+        public BattleCleanUpServce(ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry, ICombatAiRegistry combatAIRegistry, IBattleUIService battleUIService)
         {
             _spaceShipsGameObjectRegistry = spaceShipsGameObjectRegistry;
             _spaceShipRegistry = spaceShipRegistry;

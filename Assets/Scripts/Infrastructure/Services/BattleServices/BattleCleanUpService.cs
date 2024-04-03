@@ -12,11 +12,11 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
     {
         private readonly ISpaceShipsGameObjectRegistry _spaceShipsGameObjectRegistry;
         private readonly ISpaceShipRegistry _spaceShipRegistry;
-        private readonly ICombatAIRegistry _combatAIRegistry;
+        private readonly ICombatAiRegistry _combatAIRegistry;
         private readonly IBattleUIService _battleUIService;
         private readonly IBattleDataProvider _battleDataProvider;
 
-        public BattleCleanUpService(ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleDataProvider battleDataProvider)
+        public BattleCleanUpService(ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry, ICombatAiRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleDataProvider battleDataProvider)
         {
             _spaceShipsGameObjectRegistry = spaceShipsGameObjectRegistry;
             _spaceShipRegistry = spaceShipRegistry;

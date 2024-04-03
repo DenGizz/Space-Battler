@@ -13,11 +13,11 @@ namespace Assets.Scripts.Infrastructure.Factories
     {
         IAssetsProvider _assetsProvider;
         ISpaceShipRegistry _spaceShipRegistry;
-        ICombatAIRegistry _combatAIRegistry;
+        ICombatAiRegistry _combatAIRegistry;
         ISpaceShipsGameObjectRegistry _spaceShipsGameObjectRegistry;
 
         [Inject]
-        public SpaceShipFactory(IAssetsProvider assetsProvider, ISpaceShipRegistry spaceShipRegistry, ICombatAIRegistry combatAIRegistry, ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry)
+        public SpaceShipFactory(IAssetsProvider assetsProvider, ISpaceShipRegistry spaceShipRegistry, ICombatAiRegistry combatAIRegistry, ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry)
         {
             _assetsProvider = assetsProvider;
             _spaceShipRegistry = spaceShipRegistry;
