@@ -24,13 +24,6 @@ namespace Assets.Scripts.SpaceShip.SpaceShipComponents
                 _weapons.Add(weapon);
         }
 
-        public void Construct(SpaceShipData unitData)
-        {
-            transform.position = unitData.Position;
-            HealthAttribute = new HealthAttribute(unitData.Health, unitData.MaxHealth);
-            _weapons = new List<IWeapon>(unitData.Weapons);
-        }
-
         private void Awake()
         {
             Construct();
