@@ -1,5 +1,6 @@
 using Assets.Scripts.Infrastructure.Config;
 using Assets.Scripts.Infrastructure.Factories;
+using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Game.GameStateMachine.GameStates;
 using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
@@ -17,8 +18,10 @@ namespace Assets.Scripts.Infrastructure.Game.GameStateMachine
         public GameStateMachine(ISpaceShipFactory spaceShipFactory, ICombatAIRegistry combatAIRegistry, 
             IBattleUIService battleUIService, IBattleObserver battleObserver, IBattleCleanUpServce battleCleanUpServce, 
             IBattleDataProvider battleDataProvider, IBattleController battleController, IBattleFactory battleFactory,
-            ScenesConfig scenesConfig, ISceneLoader sceneLoader)
+            ScenesConfig scenesConfig, ISceneLoader sceneLoader, IUIFactory uiFactory)
         {
+            States[typeof(LoadMainMenuSceneState)] = new LoadMainMenuSceneState(this, sceneLoader, scenesConfig);
+            States[typeof(MainMenuState)] = new MainMenuState(this, uiFactory);
             States[typeof(LoadBattleFieldSceneState)] = new LoadBattleFieldSceneState(this, scenesConfig, sceneLoader);
             States[typeof(CreateBattleState)] = new CreateBattleState(this, spaceShipFactory, combatAIRegistry, battleUIService, battleDataProvider, battleFactory);
             States[typeof(BattleState)] = new BattleState(this, battleObserver, battleDataProvider, battleController);
