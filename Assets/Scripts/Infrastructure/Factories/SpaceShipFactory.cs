@@ -15,15 +15,15 @@ namespace Assets.Scripts.Infrastructure.Factories
     {
         private readonly IAssetsProvider _assetsProvider;
         private readonly ICombatAiRegistry _combatAIRegistry;
-        private readonly ISpaceShipsGameObjectRegistry _spaceShipsGameObjectRegistry;
+        private readonly IGameObjectRegistry _gameObjectRegistry;
 
         [Inject]
         public SpaceShipFactory(IAssetsProvider assetsProvider, 
-            ICombatAiRegistry combatAIRegistry, ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry)
+            ICombatAiRegistry combatAIRegistry, IGameObjectRegistry gameObjectRegistry)
         {
             _assetsProvider = assetsProvider;
             _combatAIRegistry = combatAIRegistry;
-            _spaceShipsGameObjectRegistry = spaceShipsGameObjectRegistry;
+            _gameObjectRegistry = gameObjectRegistry;
         }
 
         public ISpaceShip CreateSpaceShip(SpaceShipType type, Vector3 position, float zRotation, Color color)
@@ -38,7 +38,7 @@ namespace Assets.Scripts.Infrastructure.Factories
             ICombatAI combatAI = gameObject.GetComponent<ICombatAI>();
 
             _combatAIRegistry.RegisterAI(spaceShip, combatAI);
-            _spaceShipsGameObjectRegistry.RegisterGameObject(spaceShip, gameObject);
+            _gameObjectRegistry.RegisterGameObject(spaceShip, gameObject);
 
             return spaceShip;
         }
