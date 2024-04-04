@@ -25,10 +25,7 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
         {
             BattleData battleData = battle.BattleData;
 
-
-
             DestroyAndUnregisterGameObjects(battleData);
-
 
             _combatAIRegistry.UnregisterAI(battleData.PlayerSpaceShip);
             _combatAIRegistry.UnregisterAI(battleData.EnemySpaceShip);
