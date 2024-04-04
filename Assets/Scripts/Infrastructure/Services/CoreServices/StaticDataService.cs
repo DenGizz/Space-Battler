@@ -18,7 +18,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             _assetsProvider = assetsProvider;
         }
 
-        public SpaceShipConfig GetSpaceShipConfiguration(SpaceShipCorpusType corpusType)
+        public SpaceShipConfig GetSpaceShipConfiguration(SpaceShipType corpusType)
         {
             var configs = _assetsProvider.GetSpaceShipConfigurationSOs();
 

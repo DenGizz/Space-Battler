@@ -23,6 +23,7 @@ namespace Assets.Scripts.Infrastructure
 
         private void BindUnitsManagementServices()
         {
+            Container.Bind<IWeaponFactory>().To<WeaponFactory>().AsSingle();
             Container.Bind<ISpaceShipFactory>().To<SpaceShipFactory>().AsSingle();
             Container.Bind<ISpaceShipsGameObjectRegistry>().To<SpaceShipsGameObjectsRegistry>().AsSingle();
             Container.Bind<ICombatAiRegistry>().To<CombatAIRegistry>().AsSingle();
