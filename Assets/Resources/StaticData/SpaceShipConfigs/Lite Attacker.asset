@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Lite Attacker
   m_EditorClassIdentifier: 
   _corpusType: 1
-  _maxHealth: 0
-  _weaponSlotsCount: 0
+  _maxHealth: 27
+  _weaponSlotsCount: 2

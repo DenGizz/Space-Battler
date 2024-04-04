@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Heavy Defender
   m_EditorClassIdentifier: 
   _corpusType: 0
-  _maxHealth: 0
-  _weaponSlotsCount: 0
+  _maxHealth: 50
+  _weaponSlotsCount: 1
