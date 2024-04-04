@@ -26,9 +26,6 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         private const string BattleUIPrefabRelativePath = "Battle UI";
         private const string MainMenuUIPrefabRelativePath = "Main Menu UI";
 
-        private const string SpaceShipConfigSOPath = "SpaceShipConfigs";
-        private const string WeaponConfigSOPath = "WeaponConfigs";
-
         public AssetsProvider()
         {
             _weaponPrefabs = new Dictionary<WeaponType, GameObject>();
