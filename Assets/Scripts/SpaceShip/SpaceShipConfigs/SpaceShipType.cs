@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.SpaceShip.SpaceShipConfigs
 {
-    public enum SpaceShipCorpusType 
+    public enum SpaceShipType 
     {
         HeavyDefender = 0,
         LiteAttacker = 1,

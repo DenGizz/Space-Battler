@@ -23,11 +23,6 @@ namespace Assets.Scripts.SpaceShip.SpaceShipComponents
             Config = config;
             HealthAttribute = new HealthAttribute(config.MaxHP, config.MaxHP);
             _weapons = new List<IWeapon>();
-
-            if(TryGetComponent(out IWeapon weapon) && _weapons.Count <= Config.WeaponSlots)
-            {
-                AddWeapon(weapon);
-            }
         }
 
         public void TakeDamage(float damageAmount)
