@@ -7,19 +7,17 @@ namespace Assets.Scripts.SpaceShip.SpaceShipComponents
     [AddComponentMenu("Weapon")]
     public class WeaponComponent : MonoBehaviour, IWeapon
     {
-        public float Damage => _damage;
-        public float ColdDownTime => _coldDownTime;
+        public float Damage { get; private set; }
+        public float ColdDownTime { get; private set; }
         public bool CanShoot => !_isOnColdDown;
 
-        [SerializeField] private float _damage;
-        [SerializeField] private float _coldDownTime;
 
         private bool _isOnColdDown;
 
         public void Construct(WeaponConfig weaponConfig)
         {
-            _damage = weaponConfig.Damage;
-            _coldDownTime = weaponConfig.ColdDownTime;
+            Damage = weaponConfig.Damage;
+            ColdDownTime = weaponConfig.ColdDownTime;
         }
 
         public void Shoot(IDamagable target)
