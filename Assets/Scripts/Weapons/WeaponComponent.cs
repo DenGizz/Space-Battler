@@ -1,3 +1,4 @@
+using Assets.Scripts.Weapons.WeaponConfigs;
 using System.Collections;
 using UnityEngine;
 
@@ -14,6 +15,12 @@ namespace Assets.Scripts.SpaceShip.SpaceShipComponents
         [SerializeField] private float _coldDownTime;
 
         private bool _isOnColdDown;
+
+        public void Construct(WeaponConfig weaponConfig)
+        {
+            _damage = weaponConfig.Damage;
+            _coldDownTime = weaponConfig.ColdDownTime;
+        }
 
         public void Shoot(IDamagable target)
         {
