@@ -31,13 +31,13 @@ namespace Assets.Scripts.Infrastructure.Factories
         {
             GameObject prefab = _assetsProvider.GetSpaceShipPrefab();
             GameObject gameObject = GameObject.Instantiate(prefab);
-            SpaceShipUnitComponent spaceShipUnitComponent = gameObject.GetComponent<SpaceShipUnitComponent>();
-            spaceShipUnitComponent.Construct(config);
+            SpaceShipComponent spaceShipComponent = gameObject.GetComponent<SpaceShipComponent>();
+            spaceShipComponent.Construct(config);
 
             SetSpaceShipColor(gameObject, color);
             PlaceSpaceShip(gameObject, position, zRotation);
 
-            ISpaceShip spaceShip = spaceShipUnitComponent;
+            ISpaceShip spaceShip = spaceShipComponent;
             ICombatAI combatAI = gameObject.GetComponent<ICombatAI>();
 
             _spaceShipRegistry.EnemySpaceShip = spaceShip;

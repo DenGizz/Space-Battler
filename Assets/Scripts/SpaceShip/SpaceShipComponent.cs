@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Assets.Scripts.SpaceShip.SpaceShipComponents
 {
     [AddComponentMenu("Units/SpaceShip")]
-    public class SpaceShipUnitComponent : MonoBehaviour, ISpaceShip
+    public class SpaceShipComponent : MonoBehaviour, ISpaceShip
     {
         public IHealthAttribute HealthAttribute { get; private set; }
 
