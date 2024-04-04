@@ -27,7 +27,6 @@ namespace Assets.Scripts.Infrastructure
             Container.Bind<ISpaceShipFactory>().To<SpaceShipFactory>().AsSingle();
             Container.Bind<ISpaceShipsGameObjectRegistry>().To<SpaceShipsGameObjectsRegistry>().AsSingle();
             Container.Bind<ICombatAiRegistry>().To<CombatAIRegistry>().AsSingle();
-            Container.Bind<ISpaceShipRegistry>().To<SpaceShipRegistry>().AsSingle();
         }
 
         private void BindCoreServices()
