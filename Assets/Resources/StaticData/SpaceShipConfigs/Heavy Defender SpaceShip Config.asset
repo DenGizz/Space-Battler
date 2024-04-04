@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Heavy Defender SpaceShip Config
   m_EditorClassIdentifier: 
   _corpusType: 0
-  _maxHealth: 50
-  _weaponSlotsCount: 1
+  _maxHealth: 115
+  _weaponSlotsCount: 2

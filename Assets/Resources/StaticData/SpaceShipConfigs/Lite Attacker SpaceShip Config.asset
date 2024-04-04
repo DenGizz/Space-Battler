@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Lite Attacker SpaceShip Config
   m_EditorClassIdentifier: 
   _corpusType: 1
-  _maxHealth: 27
-  _weaponSlotsCount: 2
+  _maxHealth: 75
+  _weaponSlotsCount: 3

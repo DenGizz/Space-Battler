@@ -1,5 +1,6 @@
 using Assets.Scripts.Weapons.WeaponConfigs;
 using System.Collections;
+using Assets.Scripts.ScriptableObjects;
 using UnityEngine;
 
 namespace Assets.Scripts.SpaceShip.SpaceShipComponents
@@ -10,14 +11,14 @@ namespace Assets.Scripts.SpaceShip.SpaceShipComponents
         public float Damage { get; private set; }
         public float ColdDownTime { get; private set; }
         public bool CanShoot => !_isOnColdDown;
-
-
         private bool _isOnColdDown;
 
-        public void Construct(WeaponConfig weaponConfig)
+        [SerializeField] private WeaponConfigSO _config;
+
+        private void Awake()
         {
-            Damage = weaponConfig.Damage;
-            ColdDownTime = weaponConfig.ColdDownTime;
+            Damage = _config.Damage;
+            ColdDownTime = _config.ColdDownTime;
         }
 
         public void Shoot(IDamagable target)

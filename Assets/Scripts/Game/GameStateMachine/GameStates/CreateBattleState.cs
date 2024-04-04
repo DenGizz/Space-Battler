@@ -14,19 +14,17 @@ namespace Assets.Scripts.Game.GameStateMachine.GameStates
         private readonly ISpaceShipFactory _spaceShipFactory;
         private readonly IBattleUIService _battleUIService;
         private readonly IBattleFactory _battleFactory;
-        private readonly IStaticDataService _staticDataService;
         private readonly IWeaponFactory _weaponFactory;
 
         private readonly GameStateMachine GameStateMachine;
 
         public CreateBattleState(GameStateMachine gameStateMachine, ISpaceShipFactory spaceShipFactory , IBattleUIService battleUIService, 
-            IBattleFactory battleFactory, IStaticDataService staticDataService, IWeaponFactory weaponFactory)
+            IBattleFactory battleFactory, IWeaponFactory weaponFactory)
         {
             GameStateMachine = gameStateMachine;
             _spaceShipFactory = spaceShipFactory;
             _battleUIService = battleUIService;
             _battleFactory = battleFactory;
-            _staticDataService = staticDataService;
             _weaponFactory = weaponFactory;
         }
 
@@ -56,19 +54,17 @@ namespace Assets.Scripts.Game.GameStateMachine.GameStates
             IWeapon playerRocketLauncher = _weaponFactory.CreateWeapon(WeaponType.RocketLauncher, playerSpaceShipPosition + Vector3.up, playerSpaceShipZRotation);
             IWeapon playerHeavyMachineGun = _weaponFactory.CreateWeapon(WeaponType.HeavyMachineGun, playerSpaceShipPosition + Vector3.down, playerSpaceShipZRotation);
 
-            IWeapon enemyLiteBlaster = _weaponFactory.CreateWeapon(WeaponType.LiteBlaster, enemySpaceShipPosition + Vector3.up, enemySpaceShipZRotation);
+            IWeapon enemyLiteBlaster1 = _weaponFactory.CreateWeapon(WeaponType.LiteBlaster, enemySpaceShipPosition + Vector3.up, enemySpaceShipZRotation);
             IWeapon enemyGrenadeLauncher = _weaponFactory.CreateWeapon(WeaponType.GrenadeLauncher, enemySpaceShipPosition + Vector3.down, enemySpaceShipZRotation);
+            IWeapon enemyLiteBlaster2 = _weaponFactory.CreateWeapon(WeaponType.LiteBlaster, enemySpaceShipPosition + Vector3.down*0.5f, enemySpaceShipZRotation);
 
-            //TODO: Move to SpaceShipFactory
-            SpaceShipConfig playerSpaceShipConfig = _staticDataService.GetSpaceShipConfiguration(SpaceShipType.HeavyDefender);
-            SpaceShipConfig enemySpaceShipConfig = _staticDataService.GetSpaceShipConfiguration(SpaceShipType.LiteAttacker);
-
-            ISpaceShip player = _spaceShipFactory.CreateSpaceShip(playerSpaceShipConfig, playerSpaceShipPosition, playerSpaceShipZRotation, playerSpaceShipColor);
-            ISpaceShip enemy = _spaceShipFactory.CreateSpaceShip(enemySpaceShipConfig, enemySpaceShipPosition, enemySpaceShipZRotation, enemySpaceShipColor);
+            ISpaceShip player = _spaceShipFactory.CreateSpaceShip(SpaceShipType.HeavyDefender, playerSpaceShipPosition, playerSpaceShipZRotation, playerSpaceShipColor);
+            ISpaceShip enemy = _spaceShipFactory.CreateSpaceShip(SpaceShipType.LiteAttacker, enemySpaceShipPosition, enemySpaceShipZRotation, enemySpaceShipColor);
 
             player.AddWeapon(playerRocketLauncher);
             player.AddWeapon(playerHeavyMachineGun);
-            enemy.AddWeapon(enemyLiteBlaster);
+            enemy.AddWeapon(enemyLiteBlaster1);
+            enemy.AddWeapon(enemyLiteBlaster2);
             enemy.AddWeapon(enemyGrenadeLauncher);
 
             Battle.Battle battle = _battleFactory.CreateBattle(player, enemy);

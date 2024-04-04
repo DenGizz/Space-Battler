@@ -14,21 +14,16 @@ namespace Assets.Scripts.Infrastructure.Factories
     public class WeaponFactory : IWeaponFactory
     {
         private readonly IAssetsProvider _assetsProvider;
-        private readonly IStaticDataService _staticDataService;
 
-        public WeaponFactory(IAssetsProvider assetsProvider, IStaticDataService staticDataService)
+        public WeaponFactory(IAssetsProvider assetsProvider)
         {
             _assetsProvider = assetsProvider;
-            _staticDataService = staticDataService;
         }
 
         public IWeapon CreateWeapon(WeaponType weaponType, Vector3 position, float zRotation)
         {
             GameObject weaponPrefab = _assetsProvider.GetWeaponPrefab(weaponType);
             GameObject weaponGameObject = GameObject.Instantiate(weaponPrefab, position, Quaternion.Euler(0, 0, zRotation));
-            WeaponConfig weaponConfig = _staticDataService.GetWeaponConfiguration(weaponType);
-            WeaponComponent weaponComponent = weaponGameObject.GetComponentInChildren<WeaponComponent>();
-            weaponComponent.Construct(weaponConfig);
             return weaponGameObject.GetComponentInChildren<IWeapon>();
         }
     }

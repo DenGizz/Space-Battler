@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Assets.Scripts.ScriptableObjects;
 using Assets.Scripts.SpaceShip.SpaceShipAttributes;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
@@ -18,11 +19,18 @@ namespace Assets.Scripts.SpaceShip.SpaceShipComponents
 
         private List<IWeapon> _weapons;
 
-        public void Construct(SpaceShipConfig config)
+        [SerializeField] private SpaceShipConfigSO _config;
+
+        private void Construct(SpaceShipConfig config)
         {
             Config = config;
             HealthAttribute = new HealthAttribute(config.MaxHP, config.MaxHP);
             _weapons = new List<IWeapon>();
+        }
+
+        private void Awake()
+        {
+            Construct(_config.GetSpaceShipConfig());
         }
 
         public void TakeDamage(float damageAmount)
