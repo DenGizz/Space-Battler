@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e487278c9d3814042b70534a8c9b12ef, type: 3}
   m_Name: Rocket Launcher Weapon Config
   m_EditorClassIdentifier: 
-  _weaponType: 
-  _damage: 0
-  _coldDownTime: 0
+  _weaponType: 0
+  _damage: 31
+  _coldDownTime: 5

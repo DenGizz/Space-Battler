@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Lite Blaster  Weapon Config
   m_EditorClassIdentifier: 
   _weaponType: 3
-  _damage: 0
-  _coldDownTime: 0
+  _damage: 6.5
+  _coldDownTime: 1

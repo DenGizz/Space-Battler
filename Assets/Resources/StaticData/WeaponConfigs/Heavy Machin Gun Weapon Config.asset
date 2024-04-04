@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Heavy Machin Gun Weapon Config
   m_EditorClassIdentifier: 
   _weaponType: 2
-  _damage: 0
-  _coldDownTime: 0
+  _damage: 3.3
+  _coldDownTime: 0.5

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Grenade Launcher Weapon Config
   m_EditorClassIdentifier: 
   _weaponType: 1
-  _damage: 0
-  _coldDownTime: 0
+  _damage: 16
+  _coldDownTime: 2.4

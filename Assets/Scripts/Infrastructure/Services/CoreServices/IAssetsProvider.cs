@@ -11,5 +11,6 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         GameObject GetMainMenuUIPrefab();
 
         IEnumerable<SpaceShipConfigSO> GetSpaceShipConfigurationSOs();
+        IEnumerable<WeaponConfigSO> GetWeaponConfigurationSOs();
     }
 }

@@ -20,7 +20,7 @@ namespace Assets.Scripts.ScriptableObjects
         [SerializeField] private float _coldDownTime;
 
 
-        public WeaponConfig GenWeaponConfig()
+        public WeaponConfig GetWeaponConfig()
         {
             return new WeaponConfig(Damage, ColdDownTime);
         }

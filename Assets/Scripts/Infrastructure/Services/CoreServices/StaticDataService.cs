@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.SpaceShip;
 using Assets.Scripts.SpaceShip.SpaceShipConfigs;
+using Assets.Scripts.Weapons.WeaponConfigs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,13 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             var configs = _assetsProvider.GetSpaceShipConfigurationSOs();
 
             return configs.FirstOrDefault(c => c.CorpusType == corpusType)?.GetSpaceShipConfig();
+        }
+
+        public WeaponConfig GetWeaponConfiguration(WeaponType weaponType)
+        {
+            var configs = _assetsProvider.GetWeaponConfigurationSOs();
+
+            return configs.FirstOrDefault(c => c.WeaponType == weaponType)?.GetWeaponConfig();
         }
     }
 }

@@ -20,6 +20,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
 
         private const string StaticDataPathRoot = "StaticData";
         private const string SpaceShipConfigSOPath = "SpaceShipConfigs";
+        private const string WeaponConfigSOPath = "WeaponConfigs";
 
         public GameObject GetSpaceShipPrefab()
         {
@@ -53,12 +54,24 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
 
         public IEnumerable<SpaceShipConfigSO> GetSpaceShipConfigurationSOs()
         {
-            return Resources.LoadAll<SpaceShipConfigSO>(Path.Combine(StaticDataPathRoot, SpaceShipConfigSOPath));
+            return LoadStaticDataScriptableObjects<SpaceShipConfigSO>(SpaceShipConfigSOPath);
+        }
+
+        public IEnumerable<WeaponConfigSO> GetWeaponConfigurationSOs()
+        {      
+            return LoadStaticDataScriptableObjects<WeaponConfigSO>(WeaponConfigSOPath);
+        }
+
+        private IEnumerable<T> LoadStaticDataScriptableObjects<T>(string relativePath) where T : ScriptableObject
+        {
+            return Resources.LoadAll<T>(Path.Combine(StaticDataPathRoot, relativePath));
         }
 
         private GameObject LoadPrefab(string path)
         {
             return Resources.Load<GameObject>(path);
         }
+
+
     }
 }
