@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 7143811032421555265}
   - component: {fileID: 8504349443835490796}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Space Ships Setup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,6 +315,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startBattleButton: {fileID: 8773138918809372113}
+  _playerShipSetup: {fileID: 3652034936562180507}
+  _enemyShipSetup: {fileID: 7326899260832579486}
 --- !u!1 &7440559315299490280
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,7 +461,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 605363189913215905, guid: 5083c37a78e106a408f12c66509816e6, type: 3}
       propertyPath: m_Name
-      value: Space Ship Setup Panel (1)
+      value: Enemy Space Ship Setup Panel
       objectReference: {fileID: 0}
     - target: {fileID: 3378228944060377382, guid: 5083c37a78e106a408f12c66509816e6, type: 3}
       propertyPath: m_Pivot.x
@@ -551,6 +553,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3378228944060377382, guid: 5083c37a78e106a408f12c66509816e6, type: 3}
   m_PrefabInstance: {fileID: 3490621129958649494}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7326899260832579486 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6187749498787664136, guid: 5083c37a78e106a408f12c66509816e6, type: 3}
+  m_PrefabInstance: {fileID: 3490621129958649494}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce99037afb4b768419d6e7f1d7898f4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7454001703819276435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -561,7 +574,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 605363189913215905, guid: 5083c37a78e106a408f12c66509816e6, type: 3}
       propertyPath: m_Name
-      value: Space Ship Setup Panel
+      value: Player Space Ship Setup Panel
       objectReference: {fileID: 0}
     - target: {fileID: 3378228944060377382, guid: 5083c37a78e106a408f12c66509816e6, type: 3}
       propertyPath: m_Pivot.x
@@ -648,6 +661,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5083c37a78e106a408f12c66509816e6, type: 3}
+--- !u!114 &3652034936562180507 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6187749498787664136, guid: 5083c37a78e106a408f12c66509816e6, type: 3}
+  m_PrefabInstance: {fileID: 7454001703819276435}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce99037afb4b768419d6e7f1d7898f4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5300752554209352117 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3378228944060377382, guid: 5083c37a78e106a408f12c66509816e6, type: 3}
