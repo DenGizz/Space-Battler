@@ -30,5 +30,19 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
 
             return mainMenuUI.GetComponentInChildren<MainMenuUI>();
         }
+
+        public DescriptionRowView CreateWeaponDescriptionRowView()
+        {
+            GameObject descriptionRow = GameObject.Instantiate(_assetsProvider.GetWeaponDescriptionRowViewPrefab());
+
+            return descriptionRow.GetComponentInChildren<DescriptionRowView>();
+        }
+
+        public WeaponSelectionPanelViewModel WeaponSelectionPanelViewPanel()
+        {
+            GameObject weaponSelectionPanel = GameObject.Instantiate(_assetsProvider.GetWeaponSelectionPanelPrefab());
+
+            return weaponSelectionPanel.GetComponentInChildren<WeaponSelectionPanelViewModel>();
+        }
     }
 }

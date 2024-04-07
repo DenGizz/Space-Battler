@@ -6,11 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.SpaceShip.SpaceShipConfigs;
 using UnityEngine;
+using Assets.Scripts.ScriptableObjects;
 
 namespace Assets.Scripts.Infrastructure.Services.CoreServices
 {
     public interface IStaticDataService
     {
         Sprite GetSpriteFor(SpaceShipType spaceShipType);
+        IEnumerable<WeaponConfigSO> GetWeaponConfigs();
     }
 }

@@ -8,5 +8,7 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
     {
         (BattleUI battleUIm, GameObject gameObject) CreateBattleUI();
         MainMenuUI CreateMainMenuUI();
+        DescriptionRowView CreateWeaponDescriptionRowView();
+        WeaponSelectionPanelViewModel WeaponSelectionPanelViewPanel();
     }
 }

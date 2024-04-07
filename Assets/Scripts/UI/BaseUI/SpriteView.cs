@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SpriteView : MonoBehaviour
@@ -18,10 +20,12 @@ public class SpriteView : MonoBehaviour
     [SerializeField] private Image _image;
     [SerializeField] private Sprite _defaultSprite;
 
+
 #if UNITY_EDITOR
     private void OnValidate()
     {
         Sprite = _defaultSprite;
     }
 #endif
+
 }

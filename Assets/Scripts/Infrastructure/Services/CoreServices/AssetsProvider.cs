@@ -24,6 +24,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         private const string SpaceShipPrefabs = "SpaceShips";
 
         private const string UIPathRoot = "UI";
+        private const string BaseUI = "Base UI";
         private const string BattleUIPrefabRelativePath = "Battle UI";
         private const string MainMenuUIPrefabRelativePath = "Main Menu UI";
 
@@ -93,10 +94,26 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             return _mainMenuUIPrefab;
         }
 
+        public GameObject GetWeaponDescriptionRowViewPrefab()
+        {
+            return Resources.Load<GameObject>(Path.Combine(PrefabsPathRoot, UIPathRoot,"Space Ship Setup UI", "Weapon Description Row View"));
+        }
+
+        public GameObject GetWeaponSelectionPanelPrefab()
+        {
+            return Resources.Load<GameObject>(Path.Combine(PrefabsPathRoot, UIPathRoot,
+                "Space Ship Setup UI", "Weapon Selection Panel"));
+        }
+
         public SpaceShipConfigSO GetSpaceShipConfig(SpaceShipType spaceShipType)
         {
             var sgos = Resources.LoadAll<SpaceShipConfigSO>(Path.Combine("StaticData","SpaceShipConfigs"));
             return sgos.FirstOrDefault(sgo => sgo.CorpusType == spaceShipType);
+        }
+
+        public IEnumerable<WeaponConfigSO> GetWeaponConfigs()
+        {
+            return Resources.LoadAll<WeaponConfigSO>(Path.Combine("StaticData", "WeaponConfigs"));
         }
 
         private GameObject LoadPrefab(string path)

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.ScriptableObjects;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Services.CoreServices
@@ -20,6 +21,11 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         public Sprite GetSpriteFor(SpaceShipType spaceShipType)
         {
             return _assetsProvider.GetSpaceShipConfig(spaceShipType).Sprite;
+        }
+
+        public IEnumerable<WeaponConfigSO> GetWeaponConfigs()
+        {
+            return _assetsProvider.GetWeaponConfigs();
         }
     }
 }
