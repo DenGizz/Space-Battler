@@ -15,3 +15,4 @@ MonoBehaviour:
   _corpusType: 0
   _maxHealth: 115
   _weaponSlotsCount: 2
+  _sprite: {fileID: 21300000, guid: 905d10c8864f6e344b7bcbe2071c411e, type: 3}
