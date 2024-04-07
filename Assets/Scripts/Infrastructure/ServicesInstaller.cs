@@ -31,6 +31,7 @@ namespace Assets.Scripts.Infrastructure
 
         private void BindCoreServices()
         {
+            Container.Bind<IRootTransformsProvider>().To<RootTransformsProvider>().AsSingle();
             Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
             Container.Bind<ISceneLoader>().To<SceneLoader>().AsSingle();
             Container.Bind<ICoroutineRunner>().To<CoroutineRunner>().AsSingle();

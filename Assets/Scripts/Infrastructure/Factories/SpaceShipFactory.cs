@@ -16,20 +16,22 @@ namespace Assets.Scripts.Infrastructure.Factories
         private readonly IAssetsProvider _assetsProvider;
         private readonly ICombatAiRegistry _combatAIRegistry;
         private readonly IGameObjectRegistry _gameObjectRegistry;
+        private readonly IRootTransformsProvider _rootTransformsProvider;
 
         [Inject]
         public SpaceShipFactory(IAssetsProvider assetsProvider, 
-            ICombatAiRegistry combatAIRegistry, IGameObjectRegistry gameObjectRegistry)
+            ICombatAiRegistry combatAIRegistry, IGameObjectRegistry gameObjectRegistry, IRootTransformsProvider rootTransformsProvider)
         {
             _assetsProvider = assetsProvider;
             _combatAIRegistry = combatAIRegistry;
             _gameObjectRegistry = gameObjectRegistry;
+            _rootTransformsProvider = rootTransformsProvider;
         }
 
         public ISpaceShip CreateSpaceShip(SpaceShipType type, Vector3 position, float zRotation, Color color)
         {
             GameObject prefab = _assetsProvider.GetSpaceShipPrefab(type);
-            GameObject gameObject = GameObject.Instantiate(prefab);
+            GameObject gameObject = GameObject.Instantiate(prefab, _rootTransformsProvider.SpaceShipsRoot);
             SpaceShipComponent spaceShipComponent = gameObject.GetComponent<SpaceShipComponent>();
 
             PlaceSpaceShip(gameObject, position, zRotation);
