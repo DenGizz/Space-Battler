@@ -105,6 +105,12 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
                 "Space Ship Setup UI", "Weapon Selection Panel"));
         }
 
+        public GameObject GetSlotForSelectWeaponPrefab()
+        {
+            return Resources.Load<GameObject>(Path.Combine(PrefabsPathRoot, UIPathRoot,
+                "Space Ship Setup UI", "Slot For Select Weapon View"));
+        }
+
         public SpaceShipConfigSO GetSpaceShipConfig(SpaceShipType spaceShipType)
         {
             var sgos = Resources.LoadAll<SpaceShipConfigSO>(Path.Combine("StaticData","SpaceShipConfigs"));
@@ -127,5 +133,19 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             return Resources.Load<GameObject>(path);
         }
 
+        public GameObject GetSpaceShipSelectionPanelPrefab()
+        {
+            return Resources.Load<GameObject>(Path.Combine(PrefabsPathRoot, UIPathRoot, "Space Ship Setup UI", "Space Ship Selection Panel"));
+        }
+
+        public GameObject GetSpaceShipDescriptionRowViewPrefab()
+        {
+            return Resources.Load<GameObject>(Path.Combine(PrefabsPathRoot, UIPathRoot, "Space Ship Setup UI", "Space Ship Description Row View"));
+        }
+
+        public IEnumerable<SpaceShipConfigSO> GetSpaceShipsConfigs()
+        {
+            return Resources.LoadAll<SpaceShipConfigSO>(Path.Combine("StaticData", "SpaceShipConfigs"));
+        }
     }
 }

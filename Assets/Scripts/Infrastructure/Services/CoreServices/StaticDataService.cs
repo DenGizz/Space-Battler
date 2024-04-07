@@ -33,5 +33,10 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         {
             return _assetsProvider.GetWeaponConfigs();
         }
+
+        public IEnumerable<SpaceShipConfigSO> GetSpaceShipsConfigs()
+        {
+            return _assetsProvider.GetSpaceShipsConfigs();
+        }
     }
 }
