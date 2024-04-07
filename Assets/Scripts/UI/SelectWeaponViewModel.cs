@@ -9,7 +9,7 @@ public class SelectWeaponViewModel : MonoBehaviour //ClickHandler
 {
     public WeaponType SelectedWeaponType { get; private set; }
 
-    [SerializeField] private WeaponView _weaponView;
+    [SerializeField] private SpriteView _spriteView;
 
     private IStaticDataService _staticDataService;
 
@@ -21,8 +21,8 @@ public class SelectWeaponViewModel : MonoBehaviour //ClickHandler
 
     private void SelectWeapon(WeaponType weaponType)
     {
-        Sprite weaponSprite = _staticDataService.GetUISpriteFor(weaponType);
-        _weaponView.WeaponImage.sprite = weaponSprite;
+       // Sprite weaponSprite = _staticDataService.GetUISpriteFor(weaponType);
+        //_spriteView.Image.sprite = weaponSprite;
     }
 
     /*
