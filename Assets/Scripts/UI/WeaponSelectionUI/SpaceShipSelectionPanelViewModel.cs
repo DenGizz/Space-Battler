@@ -41,7 +41,7 @@ public class SpaceShipSelectionPanelViewModel : MonoBehaviour
         {
             DescriptionRowView descriptionRow = _uiFactory.CreateSpaceShipDescriptionRowView();
             descriptionRow.TitleText = config.CorpusType.ToString();
-            descriptionRow.DescriptionText = $"Weapon slots: {config.WeaponSlotsCount}";
+            descriptionRow.DescriptionText = $"HP: {config.MaxHealth}\nWeapon slots: {config.WeaponSlotsCount}";
             descriptionRow.Sprite = config.Sprite;
             _clickableViewsPanel.AddContent(descriptionRow.gameObject);
             _viewToType.Add(descriptionRow.gameObject, config.CorpusType);
