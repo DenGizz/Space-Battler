@@ -6,10 +6,14 @@ using System.Collections.Generic;
 using Assets.Scripts.ScriptableObjects;
 using UnityEngine;
 using Zenject;
+using System;
 
 public class WeaponSelectionPanelViewModel : MonoBehaviour
 {
     [SerializeField] private ClickableViewsPanel _clickableViewsPanel;
+
+    public event Action OnCloseButtonClicked;
+    public event Action<WeaponType> OnWeaponSelected;
 
     private Dictionary<GameObject, WeaponType> _viewToType;
     private List<ClickableView> _clickableViews;
@@ -26,6 +30,7 @@ public class WeaponSelectionPanelViewModel : MonoBehaviour
 
     private void Start()
     {
+        _clickableViewsPanel.OnCloseButtonClicked += OnCloseButtonClickedEventHandler;
         _clickableViews = new List<ClickableView>();
         _viewToType = new Dictionary<GameObject, WeaponType>();
 
@@ -49,8 +54,13 @@ public class WeaponSelectionPanelViewModel : MonoBehaviour
 
     }
 
+    private void OnCloseButtonClickedEventHandler()
+    {
+        OnCloseButtonClicked?.Invoke();
+    }
+
     private void OnRowClickedEventHandler(ClickableView row)
     {
-        Debug.Log($"Weapon selected: {_viewToType[row.gameObject]}");
+
     }
 }

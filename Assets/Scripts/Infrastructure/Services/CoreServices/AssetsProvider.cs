@@ -111,6 +111,12 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             return sgos.FirstOrDefault(sgo => sgo.CorpusType == spaceShipType);
         }
 
+        public WeaponConfigSO GetWeaponConfig(WeaponType weaponType)
+        {
+            var sgos = Resources.LoadAll<WeaponConfigSO>(Path.Combine("StaticData", "WeaponConfigs"));
+            return sgos.FirstOrDefault(sgo => sgo.WeaponType == weaponType);
+        }
+
         public IEnumerable<WeaponConfigSO> GetWeaponConfigs()
         {
             return Resources.LoadAll<WeaponConfigSO>(Path.Combine("StaticData", "WeaponConfigs"));

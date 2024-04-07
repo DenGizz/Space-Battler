@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3378228944060377382}
   m_Layer: 5
-  m_Name: Space Ship Setup
+  m_Name: Space Ship Setup Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

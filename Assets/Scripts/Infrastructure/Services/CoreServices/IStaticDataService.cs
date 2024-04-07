@@ -13,6 +13,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
     public interface IStaticDataService
     {
         Sprite GetSpriteFor(SpaceShipType spaceShipType);
+        Sprite GetSpriteFor(WeaponType weaponType);
         IEnumerable<WeaponConfigSO> GetWeaponConfigs();
     }
 }

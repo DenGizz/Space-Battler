@@ -24,6 +24,9 @@ public class SpriteView : MonoBehaviour
 #if UNITY_EDITOR
     private void OnValidate()
     {
+        if (Application.isPlaying)
+            return;
+
         Sprite = _defaultSprite;
     }
 #endif

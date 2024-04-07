@@ -10,11 +10,13 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
     public class UIFactory : IUIFactory
     {
         private readonly IAssetsProvider _assetsProvider;
+        private readonly IInstantiator _instantiator;
 
         [Inject]
-        public UIFactory(IAssetsProvider assetsProvider)
+        public UIFactory(IAssetsProvider assetsProvider, IInstantiator instantiator)
         {
             _assetsProvider = assetsProvider;
+            _instantiator = instantiator;
         }
 
         public (BattleUI battleUIm, GameObject gameObject) CreateBattleUI()
@@ -38,11 +40,12 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
             return descriptionRow.GetComponentInChildren<DescriptionRowView>();
         }
 
-        public WeaponSelectionPanelViewModel WeaponSelectionPanelViewPanel()
+        public WeaponSelectionPanelViewModel CreateWeaponSelectionPanelViewPanel()
         {
-            GameObject weaponSelectionPanel = GameObject.Instantiate(_assetsProvider.GetWeaponSelectionPanelPrefab());
-
-            return weaponSelectionPanel.GetComponentInChildren<WeaponSelectionPanelViewModel>();
+            GameObject prefab = _assetsProvider.GetWeaponSelectionPanelPrefab();
+            GameObject weaponSelectionPanel = _instantiator.InstantiatePrefab(prefab/*, _rootTransformsProvider.GetUIRootTransform()*/);
+            weaponSelectionPanel.transform.SetAsLastSibling(); //TODO: Refactor
+            return weaponSelectionPanel.GetComponent<WeaponSelectionPanelViewModel>();
         }
     }
 }
