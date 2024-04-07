@@ -14,7 +14,7 @@ public class SpaceShipSetupPanelViewModel : MonoBehaviour
     [SerializeField] private RectTransform _contentContainer;
     [SerializeField] private SlotForSelectSpaceShipViewModel _slotForSelectSpaceShip;
 
-    public IEnumerable<WeaponType> SelectedWeaponTypes => _slots.Select(slot => slot.SelectedWeaponType);
+    public IEnumerable<WeaponType> SelectedWeaponTypes => _slots.Where(slot => slot.SelectedWeaponType != null).Select(slot => slot.SelectedWeaponType.Value);
     public SpaceShipType? SelectedSpaceShipType => _slotForSelectSpaceShip.SelectedSpaceShipType;
 
     private List<SlotForSelectWeaponViewModel> _slots = new List<SlotForSelectWeaponViewModel>();
