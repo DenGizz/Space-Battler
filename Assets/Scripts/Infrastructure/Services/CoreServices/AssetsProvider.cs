@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using Assets.Scripts.SpaceShip.SpaceShipConfigs;
 using Assets.Scripts.Weapons.WeaponConfigs;
+using System.Linq;
 
 namespace Assets.Scripts.Infrastructure.Services.CoreServices
 {
@@ -92,11 +93,16 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             return _mainMenuUIPrefab;
         }
 
-
+        public SpaceShipConfigSO GetSpaceShipConfig(SpaceShipType spaceShipType)
+        {
+            var sgos = Resources.LoadAll<SpaceShipConfigSO>(Path.Combine("StaticData","SpaceShipConfigs"));
+            return sgos.FirstOrDefault(sgo => sgo.CorpusType == spaceShipType);
+        }
 
         private GameObject LoadPrefab(string path)
         {
             return Resources.Load<GameObject>(path);
         }
+
     }
 }

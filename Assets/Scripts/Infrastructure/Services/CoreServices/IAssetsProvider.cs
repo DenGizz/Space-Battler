@@ -13,5 +13,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
 
         GameObject GetBattleUIPrefab();
         GameObject GetMainMenuUIPrefab();
+
+        SpaceShipConfigSO GetSpaceShipConfig(SpaceShipType spaceShipType);
     }
 }
