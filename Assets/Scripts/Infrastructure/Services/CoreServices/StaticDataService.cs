@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.ScriptableObjects;
+using Assets.Scripts.SpaceShip;
 using Assets.Scripts.Weapons.WeaponConfigs;
 using UnityEngine;
 
@@ -37,6 +38,11 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         public IEnumerable<SpaceShipConfigSO> GetSpaceShipsConfigs()
         {
             return _assetsProvider.GetSpaceShipsConfigs();
+        }
+
+        public SpaceShipConfig GetSpaceShipConfig(SpaceShipType spaceShipType)
+        {
+            return GetSpaceShipsConfigs().First(config => config.CorpusType == spaceShipType).GetSpaceShipConfig();
         }
     }
 }

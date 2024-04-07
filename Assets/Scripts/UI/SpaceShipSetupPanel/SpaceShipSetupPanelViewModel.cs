@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
+using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.SpaceShip;
 using Assets.Scripts.SpaceShip.SpaceShipConfigs;
 using Assets.Scripts.Weapons.WeaponConfigs;
@@ -19,25 +20,28 @@ public class SpaceShipSetupPanelViewModel : MonoBehaviour
     private List<SlotForSelectWeaponViewModel> _slots = new List<SlotForSelectWeaponViewModel>();
 
     private IUIFactory _uiFactory;
+    private IStaticDataService _staticDataService;
 
     [Inject]
-    public void Construct(IUIFactory uiFactory)
+    public void Construct(IUIFactory uiFactory, IStaticDataService staticDataService)
     {
         _uiFactory = uiFactory;
+        _staticDataService = staticDataService;
     }
 
-
-    private void Start()
+    private void Awake()
     {
-        SetWeaponSlotsCount(6);
+        _slotForSelectSpaceShip.OnSpaceShipTypeSelected += OnSpaceShipTypeSelectedEventHandler;
     }
 
-    public void SetWeaponSlotsCount(int slotsCount)
+    private void SetWeaponSlotsCount(int slotsCount)
     {
         foreach (var slot in _slots)
         {
             Destroy(slot.gameObject);
         }
+
+        _slots.Clear();
 
         for (int i = 0; i < slotsCount; i++)
         {
@@ -48,4 +52,9 @@ public class SpaceShipSetupPanelViewModel : MonoBehaviour
     }
 
 
+    private void OnSpaceShipTypeSelectedEventHandler(SpaceShipType spaceShipType)
+    {
+        int weaponSlots = _staticDataService.GetSpaceShipConfig(spaceShipType).WeaponSlots;
+        SetWeaponSlotsCount(weaponSlots);
+    }
 }

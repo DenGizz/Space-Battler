@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
@@ -13,6 +14,8 @@ public class SlotForSelectSpaceShipViewModel : MonoBehaviour
     [SerializeField] private ClickableView _clickableView;
 
     public SpaceShipType? SelectedSpaceShipType { get; private set; }
+
+    public Action<SpaceShipType> OnSpaceShipTypeSelected;
 
     private SpaceShipSelectionPanelViewModel _spaceShipSelectionPanelViewModel;
 
@@ -44,6 +47,7 @@ public class SlotForSelectSpaceShipViewModel : MonoBehaviour
         _view.Sprite = _staticDataService.GetSpriteFor(spaceShipType);
         Destroy(_spaceShipSelectionPanelViewModel.gameObject);
         _spaceShipSelectionPanelViewModel = null;
+        OnSpaceShipTypeSelected?.Invoke(spaceShipType);
     }
 
 
