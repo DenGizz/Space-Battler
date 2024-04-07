@@ -11,7 +11,10 @@ public class SlotForSelectWeaponViewModel : MonoBehaviour
     [SerializeField] private SpriteView _view;
     [SerializeField] private ClickableView _clickableView;
 
+    public WeaponType SelectedWeaponType { get; private set; }
+
     private WeaponSelectionPanelViewModel _weaponSelectionPanelViewModel;
+
 
     private IUIFactory _uiFactory;
     private IStaticDataService _staticDataService;
@@ -37,6 +40,7 @@ public class SlotForSelectWeaponViewModel : MonoBehaviour
 
     private void OnWeaponSelectedEventHandler(WeaponType weaponType)
     {
+        SelectedWeaponType = weaponType;
         _view.Sprite = _staticDataService.GetSpriteFor(weaponType);
         Destroy(_weaponSelectionPanelViewModel.gameObject);
         _weaponSelectionPanelViewModel = null;

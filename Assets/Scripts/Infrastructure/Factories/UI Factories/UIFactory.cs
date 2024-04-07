@@ -30,7 +30,7 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
 
         public MainMenuUI CreateMainMenuUI()
         {
-            GameObject mainMenuUI = GameObject.Instantiate(_assetsProvider.GetMainMenuUIPrefab(), _rootTransformsProvider.UIRoot);
+            GameObject mainMenuUI = _instantiator.InstantiatePrefab(_assetsProvider.GetMainMenuUIPrefab(), _rootTransformsProvider.UIRoot);
 
             return mainMenuUI.GetComponentInChildren<MainMenuUI>();
         }
@@ -48,6 +48,29 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
             GameObject weaponSelectionPanel = _instantiator.InstantiatePrefab(prefab, _rootTransformsProvider.UIRoot);
             weaponSelectionPanel.transform.SetAsLastSibling(); //TODO: Refactor
             return weaponSelectionPanel.GetComponent<WeaponSelectionPanelViewModel>();
+        }
+
+        public SpaceShipSelectionPanelViewModel CreateSpaceShipSelectionPanel()
+        {
+            GameObject prefab = _assetsProvider.GetSpaceShipSelectionPanelPrefab();
+            GameObject spaceShipSelectionPanel = _instantiator.InstantiatePrefab(prefab, _rootTransformsProvider.UIRoot);
+            spaceShipSelectionPanel.transform.SetAsLastSibling(); //TODO: Refactor
+            return spaceShipSelectionPanel.GetComponent<SpaceShipSelectionPanelViewModel>();
+        }
+
+        public SlotForSelectWeaponViewModel CreateSlotForSelectWeaponViewPanel()
+        {
+            GameObject prefab = _assetsProvider.GetSlotForSelectWeaponPrefab();
+            GameObject go = _instantiator.InstantiatePrefab(prefab, _rootTransformsProvider.UIRoot);
+
+            return go.GetComponent<SlotForSelectWeaponViewModel>();
+        }
+
+        public DescriptionRowView CreateSpaceShipDescriptionRowView()
+        {
+            GameObject descriptionRow = GameObject.Instantiate(_assetsProvider.GetSpaceShipDescriptionRowViewPrefab(), _rootTransformsProvider.UIRoot);
+
+            return descriptionRow.GetComponentInChildren<DescriptionRowView>();
         }
     }
 }

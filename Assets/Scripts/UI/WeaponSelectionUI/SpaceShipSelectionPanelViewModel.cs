@@ -7,15 +7,16 @@ using Assets.Scripts.ScriptableObjects;
 using UnityEngine;
 using Zenject;
 using System;
+using Assets.Scripts.SpaceShip.SpaceShipConfigs;
 
-public class WeaponSelectionPanelViewModel : MonoBehaviour
+public class SpaceShipSelectionPanelViewModel : MonoBehaviour
 {
     [SerializeField] private ClickableViewsPanel _clickableViewsPanel;
 
     public event Action OnCloseButtonClicked;
-    public event Action<WeaponType> OnWeaponSelected;
+    public event Action<SpaceShipType> OnSpaceShipSelected;
 
-    private Dictionary<GameObject, WeaponType> _viewToType;
+    private Dictionary<GameObject, SpaceShipType> _viewToType;
     private List<ClickableView> _clickableViews;
 
     private IUIFactory _uiFactory;
@@ -32,18 +33,18 @@ public class WeaponSelectionPanelViewModel : MonoBehaviour
     {
         _clickableViewsPanel.OnCloseButtonClicked += OnCloseButtonClickedEventHandler;
         _clickableViews = new List<ClickableView>();
-        _viewToType = new Dictionary<GameObject, WeaponType>();
+        _viewToType = new Dictionary<GameObject, SpaceShipType>();
 
-        IEnumerable<WeaponConfigSO> configs = _staticDataService.GetWeaponConfigs();
+        IEnumerable<SpaceShipConfigSO> configs = _staticDataService.GetSpaceShipsConfigs();
 
         foreach (var config in configs)
         {
-            DescriptionRowView descriptionRow = _uiFactory.CreateWeaponDescriptionRowView();
-            descriptionRow.TitleText = config.WeaponType.ToString();
-            descriptionRow.DescriptionText = $"Damage: {config.Damage}.\nCold down: {config.ColdDownTime} sec.";
+            DescriptionRowView descriptionRow = _uiFactory.CreateSpaceShipDescriptionRowView();
+            descriptionRow.TitleText = config.CorpusType.ToString();
+            descriptionRow.DescriptionText = $"Weapon slots: {config.WeaponSlotsCount}";
             descriptionRow.Sprite = config.Sprite;
             _clickableViewsPanel.AddContent(descriptionRow.gameObject);
-            _viewToType.Add(descriptionRow.gameObject, config.WeaponType);
+            _viewToType.Add(descriptionRow.gameObject, config.CorpusType);
 
             if(descriptionRow.TryGetComponent(out ClickableView clickable))
             {
@@ -61,6 +62,6 @@ public class WeaponSelectionPanelViewModel : MonoBehaviour
 
     private void OnRowClickedEventHandler(ClickableView row)
     {
-        OnWeaponSelected?.Invoke(_viewToType[row.gameObject]);
+        OnSpaceShipSelected?.Invoke(_viewToType[row.gameObject]);
     }
 }

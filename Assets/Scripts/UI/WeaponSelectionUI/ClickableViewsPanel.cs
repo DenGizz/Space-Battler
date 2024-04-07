@@ -32,6 +32,15 @@ public class ClickableViewsPanel : MonoBehaviour
         }
     }
 
+    public void RemoveContent(GameObject viewGameObject)
+    {
+        if (viewGameObject.TryGetComponent(out ClickableView clickableView))
+        {
+            _clickableViews.Remove(clickableView);
+            clickableView.OnClicked -= OnViewClickEventHandler;
+        }
+    }
+
 
     private void OnViewClickEventHandler(ClickableView view)
     {
