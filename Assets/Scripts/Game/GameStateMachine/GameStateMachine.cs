@@ -5,11 +5,12 @@ using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
+using Assets.Scripts.StateMachines;
 using Zenject;
 
 namespace Assets.Scripts.Game.GameStateMachine
 {
-    public class GameStateMachine : StateMachine.StateMachine
+    public class GameStateMachine : StateMachine
     {
         //TODO: Register GameStateMachine as service. Create state factory to auto resolve dependencies
         //TODO: Bind states in States installer

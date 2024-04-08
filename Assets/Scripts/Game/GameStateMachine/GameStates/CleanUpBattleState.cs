@@ -1,16 +1,16 @@
 using Assets.Scripts.Infrastructure.Services.BattleServices;
-using Assets.Scripts.StateMachine;
+using Assets.Scripts.StateMachines;
 
 namespace Assets.Scripts.Game.GameStateMachine.GameStates
 {
     public class CleanUpBattleState : IState, IStateWithArtuments<Battle.Battle>
     {
         private readonly IBattleCleanUpServce _battleCleanUpServce;
-        private readonly GameStateMachine _gameStateMachine;
+        private readonly StateMachine _stateMachine;
 
-        public CleanUpBattleState(GameStateMachine gameStateMachine, IBattleCleanUpServce battleCleanUpServce)
+        public CleanUpBattleState(StateMachine stateMachine, IBattleCleanUpServce battleCleanUpServce)
         {
-            _gameStateMachine = gameStateMachine;
+            _stateMachine = stateMachine;
             _battleCleanUpServce = battleCleanUpServce;
         }
 
@@ -22,7 +22,7 @@ namespace Assets.Scripts.Game.GameStateMachine.GameStates
         public void Enter(Battle.Battle args)
         {
             _battleCleanUpServce.CleanUpBattle(args);
-            _gameStateMachine.EnterState<LoadMainMenuSceneState>();
+            _stateMachine.EnterState<LoadMainMenuSceneState>();
         }
 
         public void Exit()

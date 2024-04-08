@@ -6,7 +6,7 @@ using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.SpaceShip;
 using Assets.Scripts.SpaceShip.SpaceShipConfigs;
-using Assets.Scripts.StateMachine;
+using Assets.Scripts.StateMachines;
 using Assets.Scripts.Weapons.WeaponConfigs;
 using UnityEngine;
 
@@ -20,13 +20,13 @@ namespace Assets.Scripts.Game.GameStateMachine.GameStates
         private readonly IWeaponFactory _weaponFactory;
         private readonly IBattleSetupProvider _battleSetupProvider;
 
-        private readonly GameStateMachine GameStateMachine;
+        private readonly StateMachine _stateMachine;
 
-        public CreateBattleState(GameStateMachine gameStateMachine, ISpaceShipFactory spaceShipFactory , 
+        public CreateBattleState(StateMachine stateMachine, ISpaceShipFactory spaceShipFactory , 
             IBattleUIService battleUIService, IBattleFactory battleFactory, IWeaponFactory weaponFactory, 
             IBattleSetupProvider battleSetupProvider)
         {
-            GameStateMachine = gameStateMachine;
+            _stateMachine = stateMachine;
             _spaceShipFactory = spaceShipFactory;
             _battleUIService = battleUIService;
             _battleFactory = battleFactory;
@@ -45,7 +45,7 @@ namespace Assets.Scripts.Game.GameStateMachine.GameStates
             _battleUIService.CreateBattleUI();
             _battleUIService.SetBattle(battle);
 
-            GameStateMachine.EnterState<BattleState,Battle.Battle>(battle);
+            _stateMachine.EnterState<BattleState,Battle.Battle>(battle);
         }
 
 

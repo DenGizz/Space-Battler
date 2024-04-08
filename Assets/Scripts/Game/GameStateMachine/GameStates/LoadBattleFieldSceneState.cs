@@ -1,18 +1,18 @@
 ﻿using Assets.Scripts.Infrastructure.Config;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
-using Assets.Scripts.StateMachine;
+using Assets.Scripts.StateMachines;
 
 namespace Assets.Scripts.Game.GameStateMachine.GameStates
 {
     public class LoadBattleFieldSceneState : IState
     {
-        private readonly GameStateMachine GameStateMachine;
+        private readonly StateMachine _stateMachine;
         private readonly ScenesConfig _scenesConfig;
         private readonly ISceneLoader _sceneLoader;
 
-        public LoadBattleFieldSceneState(GameStateMachine gameStateMachine, ScenesConfig scenesConfig, ISceneLoader sceneLoader)
+        public LoadBattleFieldSceneState(StateMachine stateMachine, ScenesConfig scenesConfig, ISceneLoader sceneLoader)
         {
-            GameStateMachine = gameStateMachine;
+            _stateMachine = stateMachine;
             _scenesConfig = scenesConfig;
             _sceneLoader = sceneLoader;
         }
@@ -21,7 +21,7 @@ namespace Assets.Scripts.Game.GameStateMachine.GameStates
         {
             _sceneLoader.LoadSceneAsync
                 (_scenesConfig.BattleFieldSceneName, 
-                () => GameStateMachine.EnterState<CreateBattleState>());
+                () => _stateMachine.EnterState<CreateBattleState>());
         }
 
         public void Exit()

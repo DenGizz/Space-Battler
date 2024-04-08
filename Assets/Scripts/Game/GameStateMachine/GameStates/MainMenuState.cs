@@ -1,44 +1,44 @@
 ﻿using Assets.Scripts.Battle;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services;
-using Assets.Scripts.StateMachine;
+using Assets.Scripts.StateMachines;
 using Assets.Scripts.UI;
 
 namespace Assets.Scripts.Game.GameStateMachine.GameStates
 {
     public class MainMenuState : IState
     {
-        private readonly GameStateMachine _gameStateMachine;
+        private readonly StateMachine _stateMachine;
         private readonly IUIFactory _uiFactory;
         private readonly IBattleSetupProvider _battleSetupProvider;
 
-        private MainMenuUI _mainMenuUI;
+        private MainMenuUI _mainMenuUi;
 
-        public MainMenuState(GameStateMachine gameStateMachine, IUIFactory uiFactory, IBattleSetupProvider battleSetupProvider)
+        public MainMenuState(StateMachine stateMachine, IUIFactory uiFactory, IBattleSetupProvider battleSetupProvider)
         {
-            _gameStateMachine = gameStateMachine;
+            _stateMachine = stateMachine;
             _uiFactory = uiFactory;
             _battleSetupProvider = battleSetupProvider;
         }
 
         public void Enter()
         {
-            _mainMenuUI = _uiFactory.CreateMainMenuUI();
-            _mainMenuUI.OnStartBattleButtonClicked += OnStartBattleButtonClicked;
+            _mainMenuUi = _uiFactory.CreateMainMenuUI();
+            _mainMenuUi.OnStartBattleButtonClicked += OnStartBattleButtonClicked;
         }
 
         public void Exit()
         {
-            _mainMenuUI.OnStartBattleButtonClicked -= OnStartBattleButtonClicked;
+            _mainMenuUi.OnStartBattleButtonClicked -= OnStartBattleButtonClicked;
         }
 
         private void OnStartBattleButtonClicked()
         {
-            if (_mainMenuUI.PlayerSetup.SpaceShipType == null || _mainMenuUI.EnemySetup.SpaceShipType == null)
+            if (_mainMenuUi.PlayerSetup.SpaceShipType == null || _mainMenuUi.EnemySetup.SpaceShipType == null)
                 return;
 
-            _battleSetupProvider.BattleSetup = new BattleSetup(_mainMenuUI.PlayerSetup, _mainMenuUI.EnemySetup);
-            _gameStateMachine.EnterState<LoadBattleFieldSceneState>();
+            _battleSetupProvider.BattleSetup = new BattleSetup(_mainMenuUi.PlayerSetup, _mainMenuUi.EnemySetup);
+            _stateMachine.EnterState<LoadBattleFieldSceneState>();
         }
     }
 }
