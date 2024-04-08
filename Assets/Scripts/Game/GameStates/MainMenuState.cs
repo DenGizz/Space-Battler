@@ -34,10 +34,12 @@ namespace Assets.Scripts.Game.GameStates
 
         private void OnStartBattleButtonClicked()
         {
-            if (_mainMenuUi.PlayerSetup.SpaceShipType == null || _mainMenuUi.EnemySetup.SpaceShipType == null)
+            BattleSetup battleSetup = new BattleSetup(_mainMenuUi.PlayerSetup, _mainMenuUi.EnemySetup);
+
+            if (!BattleSetupValidator.IsBattleSetupValidForStartBattle(battleSetup))
                 return;
 
-            _battleSetupProvider.BattleSetup = new BattleSetup(_mainMenuUi.PlayerSetup, _mainMenuUi.EnemySetup);
+            _battleSetupProvider.BattleSetup = battleSetup;
             _stateMachine.EnterState<LoadBattleFieldSceneState>();
         }
     }
