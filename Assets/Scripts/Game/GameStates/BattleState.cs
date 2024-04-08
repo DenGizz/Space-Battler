@@ -1,4 +1,5 @@
 using Assets.Scripts.Battles;
+using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.SpaceShips;
 using Assets.Scripts.StateMachines;
@@ -8,15 +9,16 @@ namespace Assets.Scripts.Game.GameStates
     public class BattleState : IState, IStateWithArtuments<Battle>
     {
         private readonly IBattleObserver _battleObserver;
-
+        private readonly IUIFactory _uIFactory;
         private readonly StateMachine _gameStateMachine;
 
         private Battle _battle;
 
-        public BattleState(StateMachine gameStateMachine, IBattleObserver battleObserver)
+        public BattleState(StateMachine gameStateMachine, IBattleObserver battleObserver, IUIFactory uIFactory)
         {
             _gameStateMachine = gameStateMachine;
             _battleObserver = battleObserver;
+            _uIFactory = uIFactory;
         }
 
         public void Enter()
@@ -30,6 +32,10 @@ namespace Assets.Scripts.Game.GameStates
             StartBattle();
             _battleObserver.StartObserve(_battle);
             _battleObserver.OnWinnerDetermined += OnWinnerDeterminedEventHandler;
+
+            PauseResumeUI pauseMenu = _uIFactory.CreatePauseResumeUi();
+
+            pauseMenu.OnPauseContinueButtonClicked += OnPauseContinueButtonClicked;
         }
 
         public void Exit()
@@ -56,6 +62,15 @@ namespace Assets.Scripts.Game.GameStates
         private void ResumeBattle()
         {
             _battle.ResumeBattle();
+        }
+
+
+        private void OnPauseContinueButtonClicked()
+        {
+            if (_battle.IsBattleActive)
+                StopBattle();
+            else
+                ResumeBattle();
         }
     }
 }

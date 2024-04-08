@@ -37,6 +37,13 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
             return mainMenuUI.GetComponentInChildren<MainMenuUI>();
         }
 
+        public PauseResumeUI CreatePauseResumeUi()
+        {
+            GameObject pauseResumeUI = _instantiator.InstantiatePrefab(_assetsProvider.GetPauseResumeUIPrefab(), _rootTransformsProvider.UIRoot);
+            pauseResumeUI.transform.SetAsLastSibling(); //TODO: Refactor
+            return pauseResumeUI.GetComponentInChildren<PauseResumeUI>();
+        }
+
         public DescriptionRowView CreateWeaponDescriptionRowView()
         {
             GameObject descriptionRow = GameObject.Instantiate(_assetsProvider.GetWeaponDescriptionRowViewPrefab(), _rootTransformsProvider.UIRoot);
@@ -74,5 +81,7 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
 
             return descriptionRow.GetComponentInChildren<DescriptionRowView>();
         }
+
+
     }
 }

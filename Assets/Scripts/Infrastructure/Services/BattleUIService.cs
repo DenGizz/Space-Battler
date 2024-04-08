@@ -31,7 +31,7 @@ namespace Assets.Scripts.Infrastructure.Services
 
         public void SetBattle(Battle battle)
         {
-            _battleUI.Setup(battle.BattleData);
+            _battleUI.SetBattle(battle);
         }
 
         public void DestroyBattleUI()

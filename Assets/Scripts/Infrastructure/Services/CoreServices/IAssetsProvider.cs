@@ -13,6 +13,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
 
         GameObject GetBattleUIPrefab();
         GameObject GetMainMenuUIPrefab();
+        GameObject GetPauseResumeUIPrefab();
         GameObject GetWeaponDescriptionRowViewPrefab();
         GameObject GetWeaponSelectionPanelPrefab();
         GameObject GetSlotForSelectWeaponPrefab();

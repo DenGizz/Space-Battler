@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Assets.Scripts.Battles;
 using Assets.Scripts.Infrastructure.Factories;
+using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.SpaceShips;
 using Assets.Scripts.SpaceShips.SpaceShipConfigs;
@@ -8,6 +9,7 @@ using Assets.Scripts.StateMachines;
 using Assets.Scripts.Weapons;
 using Assets.Scripts.Weapons.WeaponConfigs;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts.Game.GameStates
 {
@@ -18,12 +20,13 @@ namespace Assets.Scripts.Game.GameStates
         private readonly IBattleFactory _battleFactory;
         private readonly IWeaponFactory _weaponFactory;
         private readonly IBattleSetupProvider _battleSetupProvider;
+        private readonly IUIFactory _uIFactory;
 
         private readonly StateMachine _stateMachine;
 
         public CreateBattleState(StateMachine stateMachine, ISpaceShipFactory spaceShipFactory , 
             IBattleUIService battleUIService, IBattleFactory battleFactory, IWeaponFactory weaponFactory, 
-            IBattleSetupProvider battleSetupProvider)
+            IBattleSetupProvider battleSetupProvider, IUIFactory uIFactory)
         {
             _stateMachine = stateMachine;
             _spaceShipFactory = spaceShipFactory;
@@ -31,6 +34,7 @@ namespace Assets.Scripts.Game.GameStates
             _battleFactory = battleFactory;
             _weaponFactory = weaponFactory;
             _battleSetupProvider = battleSetupProvider;
+            _uIFactory = uIFactory;
         }
 
         public void Enter()

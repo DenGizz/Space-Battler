@@ -1,3 +1,4 @@
+using System;
 using Assets.Scripts.Battles;
 using UnityEngine;
 
@@ -6,16 +7,13 @@ namespace Assets.Scripts.UI
     [AddComponentMenu("UI/BattleUI")]
     public class BattleUI : MonoBehaviour
     {
-        private BattleData _battleData;
+        private Battle _battle;
+        [SerializeField] private BattleView _battleView;
 
-        [SerializeField] private HealthView _playerHealthView;
-        [SerializeField] private HealthView _enemyHealthView;
-
-        public void Setup(BattleData battleData)
+        public void SetBattle(Battle battle)
         {
-            _battleData = battleData;
-            _playerHealthView.Setup(battleData.PlayerSpaceShip);
-            _enemyHealthView.Setup(battleData.EnemySpaceShip);
+            _battle = battle;
+            _battleView.Setup(battle.BattleData);
         }
     }
 }

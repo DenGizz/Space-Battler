@@ -49,6 +49,11 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             return GetOrLoadAndCacheUiPrefabsBanlde().MainMenuUIPrefab;
         }
 
+        public GameObject GetPauseResumeUIPrefab()
+        {
+            return GetOrLoadAndCacheUiPrefabsBanlde().PauseResumeUIPrefab;
+        }
+
         public GameObject GetWeaponDescriptionRowViewPrefab()
         {
             return GetOrLoadAndCacheUiPrefabsBanlde().WeaponDescriptionRowViewPrefab;
