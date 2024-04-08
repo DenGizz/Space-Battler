@@ -5,147 +5,123 @@ using System.IO;
 using Assets.Scripts.Weapons.WeaponConfigs;
 using System.Linq;
 using Assets.Scripts.SpaceShips.SpaceShipConfigs;
+using Unity.VisualScripting;
+using UnityEditor;
 
 namespace Assets.Scripts.Infrastructure.Services.CoreServices
 {
     public class AssetsProvider : IAssetsProvider
     {
-        private GameObject _battleUIPrefab;
-        private GameObject _mainMenuUIPrefab;
+        private const string PrefabsPath = "Prefabs";
 
-        private readonly Dictionary<SpaceShipType, GameObject> _spaceShipPrefabs;
-        private readonly Dictionary<SpaceShipType, string> _spaceShipPrefabNames;
+        private const string UIPrefabsPath = "UI";
+        private const string BattleUIPrefabsPath = "Battle UI";
+        private const string MainMenuUIPrefabsPath = "Main Menu UI";
+        private const string SpaceShipSetupUIPrefabsPath = "Space Ship Setup UI";
+        private const string WeaponDescriptionRowViewPrefabName = "Weapon Description Row View";
+        private const string WeaponSelectionPanelPrefabName = "Weapon Selection Panel";
+        private const string SlotForSelectWeaponViewPrefabName = "Slot For Select Weapon View";
+        private const string SpaceShipSelectionPanelPrefabName = "Space Ship Selection Panel";
+        private const string SpaceShipDescriptionRowViewPrefabName = "Space Ship Description Row View";
 
-        private readonly Dictionary<WeaponType, GameObject> _weaponPrefabs;
-        private readonly Dictionary<WeaponType, string> _weaponPrefabNames;
-
-        private const string PrefabsPathRoot = "Prefabs";
-        private const string WeaponPrefabs = "Weapons";
-        private const string SpaceShipPrefabs = "SpaceShips";
-
-        private const string UIPathRoot = "UI";
-        private const string BaseUI = "Base UI";
-        private const string BattleUIPrefabRelativePath = "Battle UI";
-        private const string MainMenuUIPrefabRelativePath = "Main Menu UI";
-
-        public AssetsProvider()
+        private const string SpaceShipPrefabsPath = "SpaceShips";
+        private readonly Dictionary<SpaceShipType, string> _spaceShipPrefabNames = new Dictionary<SpaceShipType, string>
         {
-            _weaponPrefabs = new Dictionary<WeaponType, GameObject>();
-            //TODO: refactor this to use WeaponConfigSO
-            _weaponPrefabNames = new Dictionary<WeaponType, string>
-            {
-                { WeaponType.HeavyMachineGun, "HeavyMachineGun" },
-                { WeaponType.GrenadeLauncher, "GrenadeLauncher" },
-                { WeaponType.RocketLauncher, "RockerLauncher" },
-                { WeaponType.LiteBlaster, "LiteBlaster" },
-            };
-
-            _spaceShipPrefabs = new Dictionary<SpaceShipType, GameObject>();
-
-            _spaceShipPrefabNames = new Dictionary<SpaceShipType, string>()
-            {
                 {SpaceShipType.HeavyDefender, "HeavyDefender"},
                 {SpaceShipType.LiteAttacker, "LiteAttacker"}
-            };
-        }
+        };
+
+        private const string WeaponPrefabsPath = "Weapons";
+        private readonly Dictionary<WeaponType, string> _weaponPrefabNames = new Dictionary<WeaponType, string>
+        {
+                {WeaponType.HeavyMachineGun, "HeavyMachineGun"},
+                {WeaponType.GrenadeLauncher, "GrenadeLauncher"},
+                {WeaponType.RocketLauncher, "RockerLauncher"},
+                {WeaponType.LiteBlaster, "LiteBlaster"}
+        };
+
+        private const string StaticDataPath = "StaticData";
+        private const string SpaceShipsStaticDataPath = "SpaceShipConfigs";
+        private const string WeaponStaticDataPath = "WeaponConfigs";
 
         public GameObject GetSpaceShipPrefab(SpaceShipType spaceShipType)
         {
-            if (_spaceShipPrefabs.ContainsKey(spaceShipType))
-                return _spaceShipPrefabs[spaceShipType];
-
-            string spaceShipPrefabName = _spaceShipPrefabNames[spaceShipType];
-            GameObject weaponPrefab = LoadPrefab(Path.Combine(PrefabsPathRoot, SpaceShipPrefabs, spaceShipPrefabName));
-            _spaceShipPrefabs.Add(spaceShipType, weaponPrefab);
-
-            return _spaceShipPrefabs[spaceShipType];
+            string path = Path.Combine(PrefabsPath, SpaceShipPrefabsPath, _spaceShipPrefabNames[spaceShipType]);
+            return Resources.Load<GameObject>(path);
         }
 
         public GameObject GetWeaponPrefab(WeaponType weaponType)
         {
-            if (_weaponPrefabs.ContainsKey(weaponType))
-                return _weaponPrefabs[weaponType];
-
-            string weaponPrefabName = _weaponPrefabNames[weaponType];
-            GameObject weaponPrefab = LoadPrefab(Path.Combine(PrefabsPathRoot, WeaponPrefabs, weaponPrefabName));
-            _weaponPrefabs.Add(weaponType, weaponPrefab);
-
-            return _weaponPrefabs[weaponType];
+            string path = Path.Combine(PrefabsPath, WeaponPrefabsPath, _weaponPrefabNames[weaponType]);
+            return Resources.Load<GameObject>(path);
         }
-
 
         public GameObject GetBattleUIPrefab()
         {
-            if (_battleUIPrefab == null)
-            {
-                _battleUIPrefab = LoadPrefab(System.IO.Path.Combine(PrefabsPathRoot, UIPathRoot, BattleUIPrefabRelativePath));
-            }
-
-            return _battleUIPrefab;
+            string path = Path.Combine(PrefabsPath, UIPrefabsPath, BattleUIPrefabsPath);
+            return Resources.Load<GameObject>(path);
         }
 
         public GameObject GetMainMenuUIPrefab()
         {
-            if (_mainMenuUIPrefab == null)
-            {
-                _mainMenuUIPrefab = LoadPrefab(Path.Combine(PrefabsPathRoot, UIPathRoot, MainMenuUIPrefabRelativePath));
-            }
-
-            return _mainMenuUIPrefab;
+            string path = Path.Combine(PrefabsPath, UIPrefabsPath, MainMenuUIPrefabsPath);
+            return Resources.Load<GameObject>(path);
         }
 
         public GameObject GetWeaponDescriptionRowViewPrefab()
         {
-            return Resources.Load<GameObject>(Path.Combine(PrefabsPathRoot, UIPathRoot,"Space Ship Setup UI", "Weapon Description Row View"));
+            string path = Path.Combine(PrefabsPath, UIPrefabsPath, SpaceShipSetupUIPrefabsPath, WeaponDescriptionRowViewPrefabName);
+            return Resources.Load<GameObject>(path);
         }
 
         public GameObject GetWeaponSelectionPanelPrefab()
         {
-            return Resources.Load<GameObject>(Path.Combine(PrefabsPathRoot, UIPathRoot,
-                "Space Ship Setup UI", "Weapon Selection Panel"));
+            string path = Path.Combine(PrefabsPath, UIPrefabsPath, SpaceShipSetupUIPrefabsPath, WeaponSelectionPanelPrefabName);
+            return Resources.Load<GameObject>(path);
         }
 
         public GameObject GetSlotForSelectWeaponPrefab()
         {
-            return Resources.Load<GameObject>(Path.Combine(PrefabsPathRoot, UIPathRoot,
-                "Space Ship Setup UI", "Slot For Select Weapon View"));
-        }
-
-        public SpaceShipDescriptor GetSpaceShipConfig(SpaceShipType spaceShipType)
-        {
-            var sgos = Resources.LoadAll<SpaceShipDescriptor>(Path.Combine("StaticData","SpaceShipConfigs"));
-            return sgos.FirstOrDefault(sgo => sgo.CorpusType == spaceShipType);
-        }
-
-        public WeaponDescriptor GetWeaponConfig(WeaponType weaponType)
-        {
-            var sgos = Resources.LoadAll<WeaponDescriptor>(Path.Combine("StaticData", "WeaponConfigs"));
-            return sgos.FirstOrDefault(sgo => sgo.WeaponType == weaponType);
-        }
-
-        public IEnumerable<WeaponDescriptor> GetWeaponConfigs()
-        {
-            return Resources.LoadAll<WeaponDescriptor>(Path.Combine("StaticData", "WeaponConfigs"));
-        }
-
-        private GameObject LoadPrefab(string path)
-        {
+            string path = Path.Combine(PrefabsPath, UIPrefabsPath, SpaceShipSetupUIPrefabsPath, SlotForSelectWeaponViewPrefabName);
             return Resources.Load<GameObject>(path);
         }
 
         public GameObject GetSpaceShipSelectionPanelPrefab()
         {
-            return Resources.Load<GameObject>(Path.Combine(PrefabsPathRoot, UIPathRoot, "Space Ship Setup UI", "Space Ship Selection Panel"));
+            string path = Path.Combine(PrefabsPath, UIPrefabsPath, SpaceShipSetupUIPrefabsPath, SpaceShipSelectionPanelPrefabName);
+            return Resources.Load<GameObject>(path);
         }
 
         public GameObject GetSpaceShipDescriptionRowViewPrefab()
         {
-            return Resources.Load<GameObject>(Path.Combine(PrefabsPathRoot, UIPathRoot, "Space Ship Setup UI", "Space Ship Description Row View"));
+            string path = Path.Combine(PrefabsPath, UIPrefabsPath, SpaceShipSetupUIPrefabsPath, SpaceShipDescriptionRowViewPrefabName);
+            return Resources.Load<GameObject>(path);
         }
 
         public IEnumerable<SpaceShipDescriptor> GetSpaceShipsConfigs()
         {
-            return Resources.LoadAll<SpaceShipDescriptor>(Path.Combine("StaticData", "SpaceShipConfigs"));
+            string path = Path.Combine(StaticDataPath, SpaceShipsStaticDataPath);
+            return Resources.LoadAll<SpaceShipDescriptor>(path);
+        }
+
+        public IEnumerable<WeaponDescriptor> GetWeaponConfigs()
+        {
+            string path = Path.Combine(StaticDataPath, WeaponStaticDataPath);
+            return Resources.LoadAll<WeaponDescriptor>(path);
+        }
+
+        public SpaceShipDescriptor GetSpaceShipConfig(SpaceShipType spaceShipType)
+        {
+            string path = Path.Combine(StaticDataPath, SpaceShipsStaticDataPath);
+            SpaceShipDescriptor[] descriptors = Resources.LoadAll<SpaceShipDescriptor>(path);
+            return descriptors.FirstOrDefault(d => d.CorpusType == spaceShipType);
+        }
+
+        public WeaponDescriptor GetWeaponConfig(WeaponType weaponType)
+        {
+            string path = Path.Combine(StaticDataPath, WeaponStaticDataPath);
+            WeaponDescriptor[] descriptors = Resources.LoadAll<WeaponDescriptor>(path);
+            return descriptors.FirstOrDefault(d => d.WeaponType == weaponType);
         }
     }
 }

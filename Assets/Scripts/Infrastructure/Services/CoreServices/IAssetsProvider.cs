@@ -16,12 +16,12 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         GameObject GetWeaponDescriptionRowViewPrefab();
         GameObject GetWeaponSelectionPanelPrefab();
         GameObject GetSlotForSelectWeaponPrefab();
-
-        SpaceShipDescriptor GetSpaceShipConfig(SpaceShipType spaceShipType);
-        WeaponDescriptor GetWeaponConfig(WeaponType weaponType);
-        IEnumerable<WeaponDescriptor> GetWeaponConfigs();
         GameObject GetSpaceShipSelectionPanelPrefab();
         GameObject GetSpaceShipDescriptionRowViewPrefab();
+
+        IEnumerable<WeaponDescriptor> GetWeaponConfigs();
         IEnumerable<SpaceShipDescriptor> GetSpaceShipsConfigs();
+        SpaceShipDescriptor GetSpaceShipConfig(SpaceShipType spaceShipType);
+        WeaponDescriptor GetWeaponConfig(WeaponType weaponType);
     }
 }
