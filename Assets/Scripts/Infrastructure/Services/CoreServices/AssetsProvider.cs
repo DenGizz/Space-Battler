@@ -55,8 +55,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
 
         public GameObject GetSpaceShipPrefab(SpaceShipType spaceShipType)
         {
-            string path = Path.Combine(PrefabsPath, SpaceShipPrefabsPath, _spaceShipPrefabNames[spaceShipType]);
-            return Resources.Load<GameObject>(path);
+            return GetSpaceShipDescriptor(spaceShipType).Prefab;
         }
 
         public GameObject GetWeaponPrefab(WeaponType weaponType)
