@@ -11,7 +11,6 @@ namespace Assets.Scripts.Infrastructure
         public override void InstallBindings()
         {
             Container.Bind<Game.Game>().AsSingle();
-            Container.Bind<GameStateMachine>().AsSingle();
         }
     }
 }

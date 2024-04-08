@@ -13,6 +13,11 @@ namespace Assets.Scripts.StateMachines
             States = new Dictionary<Type, IState>();
         }
 
+        public void AddState<TState>(IState state) where TState : IState
+        {
+            States.Add(typeof(TState), state);
+        }
+
         public void EnterState<TState>() where TState : IState
         {
             _currentState?.Exit();
