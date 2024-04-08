@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
-    public class BattleCleanUpService : IBattleCleanUpServce
+    public class BattleCleanUpService : IBattleCleanUpService
     {
         private readonly IGameObjectRegistry _gameObjectRegistry;
         private readonly ICombatAiRegistry _combatAIRegistry;

@@ -16,7 +16,7 @@ namespace Assets.Scripts.Game.GameStateMachine
         //TODO: Bind states in States installer
         [Inject]
         public GameStateMachine(ISpaceShipFactory spaceShipFactory, 
-            IBattleUIService battleUIService, IBattleObserver battleObserver, IBattleCleanUpServce battleCleanUpServce, 
+            IBattleUIService battleUIService, IBattleObserver battleObserver, IBattleCleanUpService battleCleanUpService, 
             ScenesConfig scenesConfig, ISceneLoader sceneLoader, IUIFactory uiFactory, IBattleFactory battleFactory, IWeaponFactory weaponFactory, IBattleSetupProvider battleSetupProvider)
         {
             States[typeof(LoadMainMenuSceneState)] = new LoadMainMenuSceneState(this, sceneLoader, scenesConfig);
@@ -24,7 +24,7 @@ namespace Assets.Scripts.Game.GameStateMachine
             States[typeof(LoadBattleFieldSceneState)] = new LoadBattleFieldSceneState(this, scenesConfig, sceneLoader);
             States[typeof(CreateBattleState)] = new CreateBattleState(this, spaceShipFactory,battleUIService,battleFactory, weaponFactory, battleSetupProvider);
             States[typeof(BattleState)] = new BattleState(this,  battleObserver);
-            States[typeof(CleanUpBattleState)] = new CleanUpBattleState(this, battleCleanUpServce);
+            States[typeof(CleanUpBattleState)] = new CleanUpBattleState(this, battleCleanUpService);
         }
     }
 }

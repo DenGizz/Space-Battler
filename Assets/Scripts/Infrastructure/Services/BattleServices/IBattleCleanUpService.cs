@@ -1,6 +1,6 @@
 ﻿namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
-    public interface IBattleCleanUpServce
+    public interface IBattleCleanUpService
     {
         void CleanUpBattle(Battle.Battle battle);
     }

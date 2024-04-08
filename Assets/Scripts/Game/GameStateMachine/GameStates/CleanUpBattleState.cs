@@ -5,13 +5,13 @@ namespace Assets.Scripts.Game.GameStateMachine.GameStates
 {
     public class CleanUpBattleState : IState, IStateWithArtuments<Battle.Battle>
     {
-        private readonly IBattleCleanUpServce _battleCleanUpServce;
+        private readonly IBattleCleanUpService _battleCleanUpService;
         private readonly StateMachine _stateMachine;
 
-        public CleanUpBattleState(StateMachine stateMachine, IBattleCleanUpServce battleCleanUpServce)
+        public CleanUpBattleState(StateMachine stateMachine, IBattleCleanUpService battleCleanUpService)
         {
             _stateMachine = stateMachine;
-            _battleCleanUpServce = battleCleanUpServce;
+            _battleCleanUpService = battleCleanUpService;
         }
 
         public void Enter()
@@ -21,7 +21,7 @@ namespace Assets.Scripts.Game.GameStateMachine.GameStates
 
         public void Enter(Battle.Battle args)
         {
-            _battleCleanUpServce.CleanUpBattle(args);
+            _battleCleanUpService.CleanUpBattle(args);
             _stateMachine.EnterState<LoadMainMenuSceneState>();
         }
 
