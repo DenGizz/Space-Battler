@@ -24,13 +24,6 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         private const string SpaceShipSelectionPanelPrefabName = "Space Ship Selection Panel";
         private const string SpaceShipDescriptionRowViewPrefabName = "Space Ship Description Row View";
 
-        private const string SpaceShipPrefabsPath = "SpaceShips";
-        private readonly Dictionary<SpaceShipType, string> _spaceShipPrefabNames = new Dictionary<SpaceShipType, string>
-        {
-                {SpaceShipType.HeavyDefender, "HeavyDefender"},
-                {SpaceShipType.LiteAttacker, "LiteAttacker"}
-        };
-
         private const string WeaponPrefabsPath = "Weapons";
         private readonly Dictionary<WeaponType, string> _weaponPrefabNames = new Dictionary<WeaponType, string>
         {
