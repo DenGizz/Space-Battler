@@ -107,7 +107,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             return Resources.Load<GameObject>(path);
         }
 
-        public IEnumerable<SpaceShipDescriptor> GetSpaceShipsConfigs()
+        public IEnumerable<SpaceShipDescriptor> GetSpaceShipsDescriptors()
         {
             if(_loadedSpaceShipDescriptorsCache.Count != 0)
                 return _loadedSpaceShipDescriptorsCache.Values;
@@ -121,7 +121,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             return descriptors;
         }
 
-        public IEnumerable<WeaponDescriptor> GetWeaponConfigs()
+        public IEnumerable<WeaponDescriptor> GetWeaponDescriptors()
         {
             if(_loadedWeaponDescriptorsCache.Count != 0)
                 return _loadedWeaponDescriptorsCache.Values;
@@ -135,20 +135,20 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             return descriptors;
         }
 
-        public SpaceShipDescriptor GetSpaceShipConfig(SpaceShipType spaceShipType)
+        public SpaceShipDescriptor GetSpaceShipDescriptor(SpaceShipType spaceShipType)
         {
             if(_loadedSpaceShipDescriptorsCache.Count > 0)
                 return _loadedSpaceShipDescriptorsCache[spaceShipType];
 
-            return GetSpaceShipsConfigs().FirstOrDefault(d => d.CorpusType == spaceShipType);
+            return GetSpaceShipsDescriptors().FirstOrDefault(d => d.CorpusType == spaceShipType);
         }
 
-        public WeaponDescriptor GetWeaponConfig(WeaponType weaponType)
+        public WeaponDescriptor GetWeaponDescriptor(WeaponType weaponType)
         {
             if(_loadedWeaponDescriptorsCache.Count > 0)
                 return _loadedWeaponDescriptorsCache[weaponType];
 
-            return GetWeaponConfigs().FirstOrDefault(d => d.WeaponType == weaponType);
+            return GetWeaponDescriptors().FirstOrDefault(d => d.WeaponType == weaponType);
         }
     }
 }

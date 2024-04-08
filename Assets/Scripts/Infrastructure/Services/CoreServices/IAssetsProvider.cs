@@ -19,9 +19,9 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         GameObject GetSpaceShipSelectionPanelPrefab();
         GameObject GetSpaceShipDescriptionRowViewPrefab();
 
-        IEnumerable<WeaponDescriptor> GetWeaponConfigs();
-        IEnumerable<SpaceShipDescriptor> GetSpaceShipsConfigs();
-        SpaceShipDescriptor GetSpaceShipConfig(SpaceShipType spaceShipType);
-        WeaponDescriptor GetWeaponConfig(WeaponType weaponType);
+        IEnumerable<WeaponDescriptor> GetWeaponDescriptors();
+        IEnumerable<SpaceShipDescriptor> GetSpaceShipsDescriptors();
+        SpaceShipDescriptor GetSpaceShipDescriptor(SpaceShipType spaceShipType);
+        WeaponDescriptor GetWeaponDescriptor(WeaponType weaponType);
     }
 }

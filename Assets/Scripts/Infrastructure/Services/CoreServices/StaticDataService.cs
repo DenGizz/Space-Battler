@@ -21,22 +21,22 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
 
         public Sprite GetSpriteFor(SpaceShipType spaceShipType)
         {
-            return _assetsProvider.GetSpaceShipConfig(spaceShipType).Sprite;
+            return _assetsProvider.GetSpaceShipDescriptor(spaceShipType).Sprite;
         }
 
         public Sprite GetSpriteFor(WeaponType weaponType)
         {
-            return _assetsProvider.GetWeaponConfig(weaponType).Sprite;
+            return _assetsProvider.GetWeaponDescriptor(weaponType).Sprite;
         }
 
         public IEnumerable<WeaponDescriptor> GetWeaponConfigs()
         {
-            return _assetsProvider.GetWeaponConfigs();
+            return _assetsProvider.GetWeaponDescriptors();
         }
 
         public IEnumerable<SpaceShipDescriptor> GetSpaceShipsConfigs()
         {
-            return _assetsProvider.GetSpaceShipsConfigs();
+            return _assetsProvider.GetSpaceShipsDescriptors();
         }
 
         public SpaceShipConfig GetSpaceShipConfig(SpaceShipType spaceShipType)
