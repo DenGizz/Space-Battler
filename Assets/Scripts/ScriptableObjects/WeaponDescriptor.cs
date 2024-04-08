@@ -15,11 +15,13 @@ namespace Assets.Scripts.ScriptableObjects
         public float Damage => _damage;
         public float ColdDownTime => _coldDownTime;
         public Sprite Sprite => _sprite;
+        public GameObject Prefab => _prefab;
 
         [SerializeField] private WeaponType _weaponType;
         [SerializeField] private float _damage;
         [SerializeField] private float _coldDownTime;
         [SerializeField] private Sprite _sprite;
+        [SerializeField] GameObject _prefab;
 
 
         public WeaponConfig GetWeaponConfig()

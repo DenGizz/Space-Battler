@@ -16,3 +16,4 @@ MonoBehaviour:
   _damage: 31
   _coldDownTime: 5
   _sprite: {fileID: 21300000, guid: ee628cf6a9276b24f88b49041b178952, type: 3}
+  _prefab: {fileID: 6018869550614338231, guid: ec7b9bc2ff809b84c9734ebc6427d257, type: 3}

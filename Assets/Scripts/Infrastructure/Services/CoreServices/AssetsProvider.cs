@@ -53,8 +53,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
 
         public GameObject GetWeaponPrefab(WeaponType weaponType)
         {
-            string path = Path.Combine(PrefabsPath, WeaponPrefabsPath, _weaponPrefabNames[weaponType]);
-            return Resources.Load<GameObject>(path);
+            return GetWeaponDescriptor(weaponType).Prefab;
         }
 
         public GameObject GetBattleUIPrefab()
