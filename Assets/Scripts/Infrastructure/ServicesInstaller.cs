@@ -19,6 +19,8 @@ namespace Assets.Scripts.Infrastructure
             BindBattleObserver();
             BindBattleServices();
             BindUI();
+
+            Container.Bind<IStatesFactory>().To<StatesFactory>().AsSingle();
         }
 
         private void BindUnitsManagementServices()
