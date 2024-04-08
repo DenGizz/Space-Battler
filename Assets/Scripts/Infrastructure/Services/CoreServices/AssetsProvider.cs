@@ -41,8 +41,8 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         };
 
         private const string StaticDataPath = "StaticData";
-        private const string SpaceShipsStaticDataPath = "SpaceShipConfigs";
-        private const string WeaponStaticDataPath = "WeaponConfigs";
+        private const string SpaceShipsStaticDataPath = "SpaceShipDescriptors";
+        private const string WeaponStaticDataPath = "WeaponDescriptors";
 
         public GameObject GetSpaceShipPrefab(SpaceShipType spaceShipType)
         {
