@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.SpaceShip
+﻿namespace Assets.Scripts.SpaceShips
 {
     public interface IDamagable
     {

@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.Infrastructure.Services.Registries;
-using Assets.Scripts.SpaceShip;
 using Assets.Scripts.Weapons.WeaponConfigs;
 using System;
 using System.Collections.Generic;

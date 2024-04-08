@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using Assets.Scripts.ScriptableObjects;
-using Assets.Scripts.SpaceShip.SpaceShipAttributes;
-using Assets.Scripts.SpaceShip.SpaceShipConfigs;
+using Assets.Scripts.SpaceShips.SpaceShipAttributes;
+using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Weapons;
 using UnityEngine;
 
-namespace Assets.Scripts.SpaceShip
+namespace Assets.Scripts.SpaceShips
 {
     [AddComponentMenu("Units/SpaceShip")]
     public class SpaceShipComponent : MonoBehaviour, ISpaceShip

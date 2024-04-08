@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.Infrastructure.Services.Registries;
-using Assets.Scripts.SpaceShip;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.AI.UnitsAI;
 using Assets.Scripts.Battles;
+using Assets.Scripts.SpaceShips;
 
 namespace Assets.Scripts.Infrastructure.Factories
 {

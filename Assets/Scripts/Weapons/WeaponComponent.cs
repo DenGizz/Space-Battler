@@ -1,6 +1,6 @@
 using System.Collections;
 using Assets.Scripts.ScriptableObjects;
-using Assets.Scripts.SpaceShip;
+using Assets.Scripts.SpaceShips;
 using UnityEngine;
 
 namespace Assets.Scripts.Weapons

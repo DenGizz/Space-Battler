@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.SpaceShip;
-using Assets.Scripts.SpaceShip.SpaceShipConfigs;
+﻿using Assets.Scripts.SpaceShips;
+using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Factories

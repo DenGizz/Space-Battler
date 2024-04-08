@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.SpaceShip.SpaceShipConfigs
+﻿namespace Assets.Scripts.SpaceShips.SpaceShipConfigs
 {
     public class SpaceShipConfig
     {

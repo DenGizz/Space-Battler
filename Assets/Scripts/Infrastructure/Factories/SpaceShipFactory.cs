@@ -3,10 +3,10 @@ using Assets.Scripts.Infrastructure.Services;
 using System.Collections;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.Infrastructure.Services.Registries;
-using Assets.Scripts.SpaceShip;
+using Assets.Scripts.SpaceShips;
+using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using UnityEngine;
 using Zenject;
-using Assets.Scripts.SpaceShip.SpaceShipConfigs;
 
 namespace Assets.Scripts.Infrastructure.Factories
 {

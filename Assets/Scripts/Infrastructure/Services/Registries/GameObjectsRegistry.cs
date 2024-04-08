@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Assets.Scripts.SpaceShip;
+using Assets.Scripts.SpaceShips;
 using Assets.Scripts.Weapons;
 using UnityEngine;
 

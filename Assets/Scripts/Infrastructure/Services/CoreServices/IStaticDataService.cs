@@ -4,10 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Scripts.SpaceShip.SpaceShipConfigs;
 using UnityEngine;
 using Assets.Scripts.ScriptableObjects;
-using Assets.Scripts.SpaceShip;
+using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 
 namespace Assets.Scripts.Infrastructure.Services.CoreServices
 {

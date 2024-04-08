@@ -1,6 +1,6 @@
 using Assets.Scripts.Battles;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
-using Assets.Scripts.SpaceShip;
+using Assets.Scripts.SpaceShips;
 using Assets.Scripts.StateMachines;
 
 namespace Assets.Scripts.Game.GameStates

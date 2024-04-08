@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.ScriptableObjects;
-using Assets.Scripts.SpaceShip.SpaceShipConfigs;
+using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.UI.BaseUI;
 using UnityEngine;
 using Zenject;

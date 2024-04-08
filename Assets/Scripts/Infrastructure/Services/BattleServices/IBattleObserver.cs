@@ -1,6 +1,6 @@
 ﻿using System;
 using Assets.Scripts.Battles;
-using Assets.Scripts.SpaceShip;
+using Assets.Scripts.SpaceShips;
 
 namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {

@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.SpaceShip.SpaceShipConfigs;
+﻿using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 
 namespace Assets.Scripts.Battles
 {

@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.SpaceShip;
-using System.Linq;
+﻿using System.Linq;
+using Assets.Scripts.SpaceShips;
 using UnityEngine;
 
 namespace Assets.Scripts.AI.UnitsAI
