@@ -44,6 +44,15 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         private const string SpaceShipsStaticDataPath = "SpaceShipDescriptors";
         private const string WeaponStaticDataPath = "WeaponDescriptors";
 
+        private readonly Dictionary<SpaceShipType, SpaceShipDescriptor> _loadedSpaceShipDescriptorsCache;
+        private readonly Dictionary<WeaponType, WeaponDescriptor> _loadedWeaponDescriptorsCache;
+
+        public AssetsProvider()
+        {
+            _loadedSpaceShipDescriptorsCache = new Dictionary<SpaceShipType, SpaceShipDescriptor>();
+            _loadedWeaponDescriptorsCache = new Dictionary<WeaponType, WeaponDescriptor>();
+        }
+
         public GameObject GetSpaceShipPrefab(SpaceShipType spaceShipType)
         {
             string path = Path.Combine(PrefabsPath, SpaceShipPrefabsPath, _spaceShipPrefabNames[spaceShipType]);
@@ -100,28 +109,46 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
 
         public IEnumerable<SpaceShipDescriptor> GetSpaceShipsConfigs()
         {
+            if(_loadedSpaceShipDescriptorsCache.Count != 0)
+                return _loadedSpaceShipDescriptorsCache.Values;
+
             string path = Path.Combine(StaticDataPath, SpaceShipsStaticDataPath);
-            return Resources.LoadAll<SpaceShipDescriptor>(path);
+            SpaceShipDescriptor[] descriptors = Resources.LoadAll<SpaceShipDescriptor>(path);
+
+            foreach (SpaceShipDescriptor descriptor in descriptors)
+                _loadedSpaceShipDescriptorsCache.Add(descriptor.CorpusType, descriptor);
+
+            return descriptors;
         }
 
         public IEnumerable<WeaponDescriptor> GetWeaponConfigs()
         {
+            if(_loadedWeaponDescriptorsCache.Count != 0)
+                return _loadedWeaponDescriptorsCache.Values;
+
             string path = Path.Combine(StaticDataPath, WeaponStaticDataPath);
-            return Resources.LoadAll<WeaponDescriptor>(path);
+            WeaponDescriptor[] descriptors = Resources.LoadAll<WeaponDescriptor>(path);
+
+            foreach (WeaponDescriptor descriptor in descriptors)
+                _loadedWeaponDescriptorsCache.Add(descriptor.WeaponType, descriptor);
+
+            return descriptors;
         }
 
         public SpaceShipDescriptor GetSpaceShipConfig(SpaceShipType spaceShipType)
         {
-            string path = Path.Combine(StaticDataPath, SpaceShipsStaticDataPath);
-            SpaceShipDescriptor[] descriptors = Resources.LoadAll<SpaceShipDescriptor>(path);
-            return descriptors.FirstOrDefault(d => d.CorpusType == spaceShipType);
+            if(_loadedSpaceShipDescriptorsCache.Count > 0)
+                return _loadedSpaceShipDescriptorsCache[spaceShipType];
+
+            return GetSpaceShipsConfigs().FirstOrDefault(d => d.CorpusType == spaceShipType);
         }
 
         public WeaponDescriptor GetWeaponConfig(WeaponType weaponType)
         {
-            string path = Path.Combine(StaticDataPath, WeaponStaticDataPath);
-            WeaponDescriptor[] descriptors = Resources.LoadAll<WeaponDescriptor>(path);
-            return descriptors.FirstOrDefault(d => d.WeaponType == weaponType);
+            if(_loadedWeaponDescriptorsCache.Count > 0)
+                return _loadedWeaponDescriptorsCache[weaponType];
+
+            return GetWeaponConfigs().FirstOrDefault(d => d.WeaponType == weaponType);
         }
     }
 }
