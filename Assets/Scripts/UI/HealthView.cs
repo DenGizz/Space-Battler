@@ -1,4 +1,4 @@
-using Assets.Scripts.SpaceShip;
+using Assets.Scripts.SpaceShips;
 using UnityEngine;
 
 namespace Assets.Scripts.UI

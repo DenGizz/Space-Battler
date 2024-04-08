@@ -2,6 +2,7 @@ using Assets.Scripts.Infrastructure.Factories;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
+using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.Infrastructure.Services.Registries;
 using UnityEngine;
 using Zenject;
@@ -18,18 +19,22 @@ namespace Assets.Scripts.Infrastructure
             BindBattleObserver();
             BindBattleServices();
             BindUI();
+
+            Container.Bind<IStatesFactory>().To<StatesFactory>().AsSingle();
         }
 
         private void BindUnitsManagementServices()
         {
+            Container.Bind<IWeaponFactory>().To<WeaponFactory>().AsSingle();
             Container.Bind<ISpaceShipFactory>().To<SpaceShipFactory>().AsSingle();
-            Container.Bind<ISpaceShipsGameObjectRegistry>().To<SpaceShipsGameObjectsRegistry>().AsSingle();
-            Container.Bind<ICombatAIRegistry>().To<CombatAIRegistry>().AsSingle();
-            Container.Bind<ISpaceShipRegistry>().To<SpaceShipRegistry>().AsSingle();
+            Container.Bind<IGameObjectRegistry>().To<GameObjectsRegistry>().AsSingle();
+            Container.Bind<ICombatAiRegistry>().To<CombatAIRegistry>().AsSingle();
         }
 
         private void BindCoreServices()
         {
+            Container.Bind<IRootTransformsProvider>().To<RootTransformsProvider>().AsSingle();
+            Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
             Container.Bind<ISceneLoader>().To<SceneLoader>().AsSingle();
             Container.Bind<ICoroutineRunner>().To<CoroutineRunner>().AsSingle();
             Container.Bind<IAssetsProvider>().To<AssetsProvider>().AsSingle();
@@ -43,10 +48,9 @@ namespace Assets.Scripts.Infrastructure
 
         private void BindBattleServices()
         {
+            Container.Bind<IBattleSetupProvider>().To<BattleSetupProvider>().AsSingle();
             Container.Bind<IBattleFactory>().To<BattleFactory>().AsSingle();
-            Container.Bind<IBattleController>().To<BattleController>().AsSingle();
-            Container.Bind<IBattleDataProvider>().To<BattleDataProvider>().AsSingle();
-            Container.Bind<IBattleCleanUpServce>().To<BattleCleanUpServce>().AsSingle();
+            Container.Bind<IBattleCleanUpService>().To<BattleCleanUpService>().AsSingle();
         }
 
         private void BindBattleObserver()

@@ -1,13 +1,13 @@
 ﻿using System;
-using Assets.Scripts.SpaceShip;
+using Assets.Scripts.Battles;
+using Assets.Scripts.SpaceShips;
 
 namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
     public interface IBattleObserver
     {
-        BattleData CurrentBattle { get; }
         event Action<ISpaceShip> OnWinnerDetermined;
-        void StartObserve(BattleData battle);
+        void StartObserve(Battle battle);
         void StopObserve();
     }
 }

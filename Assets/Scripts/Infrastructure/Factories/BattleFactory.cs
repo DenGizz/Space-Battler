@@ -1,25 +1,31 @@
-﻿using Assets.Scripts.Infrastructure.Services.Registries;
-using Assets.Scripts.SpaceShip;
+﻿using Assets.Scripts.Infrastructure.Services.BattleServices;
+using Assets.Scripts.Infrastructure.Services.Registries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.AI.UnitsAI;
+using Assets.Scripts.Battles;
+using Assets.Scripts.SpaceShips;
 
 namespace Assets.Scripts.Infrastructure.Factories
 {
     public class BattleFactory : IBattleFactory
     {
-        ICombatAIRegistry _combatAIRegistry;
+        private readonly ICombatAiRegistry _combatAiRegistry;
 
-        public BattleFactory(ICombatAIRegistry combatAIRegistry)
+        public BattleFactory(ICombatAiRegistry combatAiRegistry)
         {
-            _combatAIRegistry = combatAIRegistry;
+            _combatAiRegistry = combatAiRegistry;
         }
 
-        public BattleData CreateBattleForSpaceShips(ISpaceShip player, ISpaceShip enemy)
+        public Battle CreateBattle(ISpaceShip playerSpaceShip, ISpaceShip enemySpaceShip)
         {
-           return new BattleData(player, enemy, _combatAIRegistry.GetAI(player), _combatAIRegistry.GetAI(enemy));
+            ICombatAI playerAi = _combatAiRegistry.GetAI(playerSpaceShip);
+            ICombatAI enemyAi = _combatAiRegistry.GetAI(enemySpaceShip);
+
+            return new Battle(playerSpaceShip, enemySpaceShip, playerAi, enemyAi);
         }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using Assets.Scripts.AI.UnitsAI;
 using Assets.Scripts.Infrastructure.Services;
 using System.Collections;
+using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.Infrastructure.Services.Registries;
-using Assets.Scripts.SpaceShip;
+using Assets.Scripts.SpaceShips;
+using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using UnityEngine;
 using Zenject;
 
@@ -10,60 +12,36 @@ namespace Assets.Scripts.Infrastructure.Factories
 {
     public class SpaceShipFactory : ISpaceShipFactory
     {
-        IAssetsProvider _assetsProvider;
-        ISpaceShipRegistry _spaceShipRegistry;
-        ICombatAIRegistry _combatAIRegistry;
-        ISpaceShipsGameObjectRegistry _spaceShipsGameObjectRegistry;
+        private readonly IAssetsProvider _assetsProvider;
+        private readonly ICombatAiRegistry _combatAIRegistry;
+        private readonly IGameObjectRegistry _gameObjectRegistry;
+        private readonly IRootTransformsProvider _rootTransformsProvider;
 
         [Inject]
-        public SpaceShipFactory(IAssetsProvider assetsProvider, ISpaceShipRegistry spaceShipRegistry, ICombatAIRegistry combatAIRegistry, ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry)
+        public SpaceShipFactory(IAssetsProvider assetsProvider, 
+            ICombatAiRegistry combatAIRegistry, IGameObjectRegistry gameObjectRegistry, IRootTransformsProvider rootTransformsProvider)
         {
             _assetsProvider = assetsProvider;
-            _spaceShipRegistry = spaceShipRegistry;
             _combatAIRegistry = combatAIRegistry;
-            _spaceShipsGameObjectRegistry = spaceShipsGameObjectRegistry;
+            _gameObjectRegistry = gameObjectRegistry;
+            _rootTransformsProvider = rootTransformsProvider;
         }
 
-        public ISpaceShip CreatePlayerSpaceShip(Vector3 position)
+        public ISpaceShip CreateSpaceShip(SpaceShipType type, Vector3 position, float zRotation, Color color)
         {
-            (GameObject spaceShipGO, ISpaceShip spaceShip) = CreateSpaceShip(_assetsProvider.GetSpaceShipPrefab());
+            GameObject prefab = _assetsProvider.GetSpaceShipPrefab(type);
+            GameObject gameObject = GameObject.Instantiate(prefab, _rootTransformsProvider.SpaceShipsRoot);
+            SpaceShipComponent spaceShipComponent = gameObject.GetComponent<SpaceShipComponent>();
 
-            SetSpaceShipColor(spaceShipGO, Color.green);
-            PlaceSpaceShip(spaceShipGO, position, -90);
-            spaceShip.AddWeapon(spaceShipGO.GetComponent<IWeapon>());
+            PlaceSpaceShip(gameObject, position, zRotation);
 
-            return spaceShip;
-        }
-
-        public ISpaceShip CreateEnemySpaceShip(Vector3 position)
-        {
-           (GameObject spaceShipGO, ISpaceShip spaceShip) = CreateSpaceShip(_assetsProvider.GetSpaceShipPrefab());
-
-            SetSpaceShipColor(spaceShipGO, Color.red);
-            PlaceSpaceShip(spaceShipGO, position, 90);
-            spaceShip.AddWeapon(spaceShipGO.GetComponent<IWeapon>());
-
-            return spaceShip;
-        }
-
-        private (GameObject gameObject, ISpaceShip spaceShip) CreateSpaceShip(GameObject prefab)
-        {
-            GameObject gameObject = GameObject.Instantiate(prefab);
-            ISpaceShip spaceShip = gameObject.GetComponent<ISpaceShip>();
-
+            ISpaceShip spaceShip = spaceShipComponent;
             ICombatAI combatAI = gameObject.GetComponent<ICombatAI>();
 
-            _spaceShipRegistry.EnemySpaceShip = spaceShip;
             _combatAIRegistry.RegisterAI(spaceShip, combatAI);
+            _gameObjectRegistry.RegisterGameObject(spaceShip, gameObject);
 
-            _spaceShipsGameObjectRegistry.RegisterGameObject(spaceShip, gameObject);
-
-            return (gameObject, spaceShip);
-        }
-
-        private void SetSpaceShipColor(GameObject go, Color color)
-        {
-            go.GetComponent<SpriteRenderer>().color = color;
+            return spaceShip;
         }
 
         private void PlaceSpaceShip(GameObject go, Vector3 position, float zRotation)

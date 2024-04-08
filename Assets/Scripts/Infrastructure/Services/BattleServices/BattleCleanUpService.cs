@@ -1,44 +1,59 @@
-﻿using Assets.Scripts.Infrastructure.Services.Registries;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Assets.Scripts.Battles;
+using Assets.Scripts.Infrastructure.Services.Registries;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
-    public class BattleCleanUpService : IBattleCleanUpServce
+    public class BattleCleanUpService : IBattleCleanUpService
     {
-        private readonly ISpaceShipsGameObjectRegistry _spaceShipsGameObjectRegistry;
-        private readonly ISpaceShipRegistry _spaceShipRegistry;
-        private readonly ICombatAIRegistry _combatAIRegistry;
+        private readonly IGameObjectRegistry _gameObjectRegistry;
+        private readonly ICombatAiRegistry _combatAIRegistry;
         private readonly IBattleUIService _battleUIService;
-        private readonly IBattleDataProvider _battleDataProvider;
 
-        public BattleCleanUpService(ISpaceShipsGameObjectRegistry spaceShipsGameObjectRegistry, ISpaceShipRegistry spaceShipRegistry, ICombatAIRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleDataProvider battleDataProvider)
+        [Inject]
+        public BattleCleanUpService(IGameObjectRegistry gameObjectRegistry, ICombatAiRegistry combatAIRegistry, IBattleUIService battleUIService)
         {
-            _spaceShipsGameObjectRegistry = spaceShipsGameObjectRegistry;
-            _spaceShipRegistry = spaceShipRegistry;
+            _gameObjectRegistry = gameObjectRegistry;
             _combatAIRegistry = combatAIRegistry;
             _battleUIService = battleUIService;
-            _battleDataProvider = battleDataProvider;
         }
 
-        public void CleanUpBattle(BattleData battleData)
+        public void CleanUpBattle(Battle battle)
         {
-            GameObject.Destroy(_spaceShipsGameObjectRegistry.GetSpaceShipGameObject(battleData.PlayerSpaceShip));
-            GameObject.Destroy(_spaceShipsGameObjectRegistry.GetSpaceShipGameObject(battleData.EnemySpaceShip));
+            BattleData battleData = battle.BattleData;
 
-            _spaceShipsGameObjectRegistry.UnregisterGameObject(_spaceShipsGameObjectRegistry.GetSpaceShipGameObject(battleData.PlayerSpaceShip));
-            _spaceShipsGameObjectRegistry.UnregisterGameObject(_spaceShipsGameObjectRegistry.GetSpaceShipGameObject(battleData.EnemySpaceShip));
-
-            _spaceShipRegistry.PlayerSpaceShip = null;
-            _spaceShipRegistry.EnemySpaceShip = null;
+            DestroyAndUnregisterGameObjects(battleData);
 
             _combatAIRegistry.UnregisterAI(battleData.PlayerSpaceShip);
             _combatAIRegistry.UnregisterAI(battleData.EnemySpaceShip);
             _battleUIService.DestroyBattleUI();
+        }
+
+        private void DestroyAndUnregisterGameObjects(BattleData battleData)
+        {
+            foreach (var weapon in battleData.PlayerSpaceShip.Weapons)
+            {
+                GameObject weaponGameObject = _gameObjectRegistry.GetWeaponGameObject(weapon);
+                GameObject.Destroy(weaponGameObject);
+                _gameObjectRegistry.UnregisterGameObject(weaponGameObject);
+            }
+
+            foreach (var weapon in battleData.EnemySpaceShip.Weapons)
+            {
+                GameObject weaponGameObject = _gameObjectRegistry.GetWeaponGameObject(weapon);
+                GameObject.Destroy(weaponGameObject);
+                _gameObjectRegistry.UnregisterGameObject(weaponGameObject);
+            }
+
+            GameObject playerSpaceChipGameObject = _gameObjectRegistry.GetSpaceShipGameObject(battleData.PlayerSpaceShip);
+            GameObject enemySpaceChipGameObject = _gameObjectRegistry.GetSpaceShipGameObject(battleData.EnemySpaceShip);
+
+            GameObject.Destroy(playerSpaceChipGameObject);
+            GameObject.Destroy(enemySpaceChipGameObject);
+
+            _gameObjectRegistry.UnregisterGameObject(playerSpaceChipGameObject);
+            _gameObjectRegistry.UnregisterGameObject(enemySpaceChipGameObject);
         }
     }
 }

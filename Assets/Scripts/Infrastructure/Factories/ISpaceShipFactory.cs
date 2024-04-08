@@ -1,11 +1,11 @@
-﻿using Assets.Scripts.SpaceShip;
+﻿using Assets.Scripts.SpaceShips;
+using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Factories
 {
     public interface ISpaceShipFactory
     {
-        ISpaceShip CreatePlayerSpaceShip(Vector3 position);
-        ISpaceShip CreateEnemySpaceShip(Vector3 position);
+        ISpaceShip CreateSpaceShip(SpaceShipType type, Vector3 position, float zRotation, Color color);
     }
 }

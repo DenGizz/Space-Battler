@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using Assets.Scripts.Infrastructure.Game.GameStateMachine;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
 namespace Assets.Scripts.Infrastructure
@@ -11,7 +9,6 @@ namespace Assets.Scripts.Infrastructure
         public override void InstallBindings()
         {
             Container.Bind<Game.Game>().AsSingle();
-            Container.Bind<GameStateMachine>().AsSingle();
         }
     }
 }
