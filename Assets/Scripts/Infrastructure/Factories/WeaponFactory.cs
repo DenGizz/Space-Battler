@@ -1,13 +1,13 @@
 ﻿using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.Infrastructure.Services.Registries;
 using Assets.Scripts.SpaceShip;
-using Assets.Scripts.SpaceShip.SpaceShipComponents;
 using Assets.Scripts.Weapons.WeaponConfigs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Weapons;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Factories

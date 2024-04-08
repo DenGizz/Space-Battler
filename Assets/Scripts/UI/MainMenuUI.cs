@@ -1,5 +1,6 @@
 using System;
 using Assets.Scripts.SpaceShip.SpaceShipConfigs;
+using Assets.Scripts.UI.SpaceShipSetupPanel;
 using UnityEngine;
 using UnityEngine.UI;
 

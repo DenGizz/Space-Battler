@@ -6,7 +6,6 @@ using Assets.Scripts.Infrastructure.Services.Registries;
 using Assets.Scripts.SpaceShip;
 using UnityEngine;
 using Zenject;
-using Assets.Scripts.SpaceShip.SpaceShipComponents;
 using Assets.Scripts.SpaceShip.SpaceShipConfigs;
 
 namespace Assets.Scripts.Infrastructure.Factories

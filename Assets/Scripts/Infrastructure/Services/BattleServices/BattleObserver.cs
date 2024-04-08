@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.Scripts.Battles;
 using Assets.Scripts.SpaceShip;
 using Zenject;
 
@@ -6,13 +7,13 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
     public class BattleObserver : IBattleObserver, ITickable
     {
-        public Battle.Battle _currentBattle;
+        public Battle _currentBattle;
 
         public event Action<ISpaceShip> OnWinnerDetermined;
 
         private bool _isObserving;
 
-        public void StartObserve(Battle.Battle battle)
+        public void StartObserve(Battle battle)
         {
             _currentBattle = battle;
             _isObserving = true;

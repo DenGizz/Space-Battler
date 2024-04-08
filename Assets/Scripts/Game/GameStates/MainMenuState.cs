@@ -1,10 +1,10 @@
-﻿using Assets.Scripts.Battle;
+﻿using Assets.Scripts.Battles;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.StateMachines;
 using Assets.Scripts.UI;
 
-namespace Assets.Scripts.Game.GameStateMachine.GameStates
+namespace Assets.Scripts.Game.GameStates
 {
     public class MainMenuState : IState
     {

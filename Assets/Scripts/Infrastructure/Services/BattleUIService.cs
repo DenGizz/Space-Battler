@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Battles;
 using Assets.Scripts.UI;
 using UnityEngine;
 using Zenject;
@@ -28,7 +29,7 @@ namespace Assets.Scripts.Infrastructure.Services
             (_battleUI, _battleUIGameObject) = _uiFactory.CreateBattleUI();
         }
 
-        public void SetBattle(Battle.Battle battle)
+        public void SetBattle(Battle battle)
         {
             _battleUI.Setup(battle.BattleData);
         }

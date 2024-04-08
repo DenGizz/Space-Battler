@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Battle;
+﻿using Assets.Scripts.Battles;
 using Assets.Scripts.Infrastructure.Services.Registries;
 using UnityEngine;
 using Zenject;
@@ -19,7 +19,7 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
             _battleUIService = battleUIService;
         }
 
-        public void CleanUpBattle(Battle.Battle battle)
+        public void CleanUpBattle(Battle battle)
         {
             BattleData battleData = battle.BattleData;
 

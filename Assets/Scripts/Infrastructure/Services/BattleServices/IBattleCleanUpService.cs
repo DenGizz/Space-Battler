@@ -1,7 +1,9 @@
-﻿namespace Assets.Scripts.Infrastructure.Services.BattleServices
+﻿using Assets.Scripts.Battles;
+
+namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
     public interface IBattleCleanUpService
     {
-        void CleanUpBattle(Battle.Battle battle);
+        void CleanUpBattle(Battle battle);
     }
 }

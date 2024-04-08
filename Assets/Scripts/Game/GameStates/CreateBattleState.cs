@@ -1,16 +1,15 @@
-using System;
 using System.Collections.Generic;
-using Assets.Scripts.Battle;
+using Assets.Scripts.Battles;
 using Assets.Scripts.Infrastructure.Factories;
 using Assets.Scripts.Infrastructure.Services;
-using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.SpaceShip;
 using Assets.Scripts.SpaceShip.SpaceShipConfigs;
 using Assets.Scripts.StateMachines;
+using Assets.Scripts.Weapons;
 using Assets.Scripts.Weapons.WeaponConfigs;
 using UnityEngine;
 
-namespace Assets.Scripts.Game.GameStateMachine.GameStates
+namespace Assets.Scripts.Game.GameStates
 {
     public class CreateBattleState : IState
     {
@@ -40,12 +39,12 @@ namespace Assets.Scripts.Game.GameStateMachine.GameStates
 
             (ISpaceShip player, ISpaceShip enemy) = CreateSpaceShipsAndWeapons(battleSetup);
 
-            Battle.Battle battle = _battleFactory.CreateBattle(player, enemy);
+            Battle battle = _battleFactory.CreateBattle(player, enemy);
 
             _battleUIService.CreateBattleUI();
             _battleUIService.SetBattle(battle);
 
-            _stateMachine.EnterState<BattleState,Battle.Battle>(battle);
+            _stateMachine.EnterState<BattleState,Battle>(battle);
         }
 
 

@@ -1,15 +1,16 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ClickableView : MonoBehaviour, IPointerClickHandler
+namespace Assets.Scripts.UI.BaseUI
 {
-    public Action<ClickableView> OnClicked;
-
-    public void OnPointerClick(PointerEventData eventData)
+    public class ClickableView : MonoBehaviour, IPointerClickHandler
     {
-        OnClicked?.Invoke(this);
+        public Action<ClickableView> OnClicked;
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            OnClicked?.Invoke(this);
+        }
     }
 }

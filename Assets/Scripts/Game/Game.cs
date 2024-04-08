@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Game.GameStateMachine.GameStates;
+﻿using Assets.Scripts.Game.GameStates;
 using Assets.Scripts.Infrastructure.Factories;
 using Assets.Scripts.StateMachines;
 using Zenject;

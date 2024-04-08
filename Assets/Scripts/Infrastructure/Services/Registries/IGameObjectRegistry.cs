@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.SpaceShip;
+using Assets.Scripts.Weapons;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Services.Registries

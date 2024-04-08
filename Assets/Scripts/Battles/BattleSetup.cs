@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using Assets.Scripts.SpaceShip.SpaceShipConfigs;
-using UnityEngine;
+﻿using Assets.Scripts.SpaceShip.SpaceShipConfigs;
 
-namespace Assets.Scripts.Battle
+namespace Assets.Scripts.Battles
 {
     public class BattleSetup
     {

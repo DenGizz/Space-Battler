@@ -1,33 +1,33 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class DescriptionRowView : MonoBehaviour
+namespace Assets.Scripts.UI.BaseUI
 {
-    public string TitleText
+    public class DescriptionRowView : MonoBehaviour
     {
-        get => _titleText.text;
-        set => _titleText.text = value;
+        public string TitleText
+        {
+            get => _titleText.text;
+            set => _titleText.text = value;
+        }
+
+        public string DescriptionText
+        {
+            get => _descriptionText.text;
+            set => _descriptionText.text = value;
+        }
+
+        public Sprite Sprite
+        {
+            get => _spriteView.Sprite;
+            set => _spriteView.Sprite = value;
+        }
+
+        public event Action<DescriptionRowView> OnClick;
+
+        [SerializeField] private TMPro.TextMeshProUGUI _titleText;
+        [SerializeField] private TMPro.TextMeshProUGUI _descriptionText;
+        [SerializeField] private SpriteView _spriteView;
+
     }
-
-    public string DescriptionText
-    {
-        get => _descriptionText.text;
-        set => _descriptionText.text = value;
-    }
-
-    public Sprite Sprite
-    {
-        get => _spriteView.Sprite;
-        set => _spriteView.Sprite = value;
-    }
-
-    public event Action<DescriptionRowView> OnClick;
-
-    [SerializeField] private TMPro.TextMeshProUGUI _titleText;
-    [SerializeField] private TMPro.TextMeshProUGUI _descriptionText;
-    [SerializeField] private SpriteView _spriteView;
-
 }

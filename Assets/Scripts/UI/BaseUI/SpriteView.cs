@@ -1,34 +1,33 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SpriteView : MonoBehaviour
+namespace Assets.Scripts.UI.BaseUI
 {
-    public Sprite Sprite
+    public class SpriteView : MonoBehaviour
     {
-        get => _image.sprite;
-        set
+        public Sprite Sprite
         {
-            _image.color = value == null ? new Color(0, 0, 0, 0) : Color.white;
-            _image.sprite = value;
+            get => _image.sprite;
+            set
+            {
+                _image.color = value == null ? new Color(0, 0, 0, 0) : Color.white;
+                _image.sprite = value;
+            }
         }
-    }
 
-    [SerializeField] private Image _image;
-    [SerializeField] private Sprite _defaultSprite;
+        [SerializeField] private Image _image;
+        [SerializeField] private Sprite _defaultSprite;
 
 
 #if UNITY_EDITOR
-    private void OnValidate()
-    {
-        if (Application.isPlaying)
-            return;
+        private void OnValidate()
+        {
+            if (Application.isPlaying)
+                return;
 
-        Sprite = _defaultSprite;
-    }
+            Sprite = _defaultSprite;
+        }
 #endif
 
+    }
 }

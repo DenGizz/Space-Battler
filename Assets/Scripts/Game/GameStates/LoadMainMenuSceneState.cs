@@ -2,7 +2,7 @@
 using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.StateMachines;
 
-namespace Assets.Scripts.Game.GameStateMachine.GameStates
+namespace Assets.Scripts.Game.GameStates
 {
     public class LoadMainMenuSceneState : IState
     {

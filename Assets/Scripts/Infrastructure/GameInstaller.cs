@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using Assets.Scripts.Game.GameStateMachine;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
 namespace Assets.Scripts.Infrastructure

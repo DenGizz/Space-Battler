@@ -2,6 +2,8 @@
 using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.UI;
+using Assets.Scripts.UI.BaseUI;
+using Assets.Scripts.UI.WeaponSelectionUI;
 using UnityEngine;
 using Zenject;
 

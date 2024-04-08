@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.AI.UnitsAI;
 using Assets.Scripts.SpaceShip;
 
-namespace Assets.Scripts.Battle
+namespace Assets.Scripts.Battles
 {
     public class BattleData
     {

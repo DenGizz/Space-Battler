@@ -1,16 +1,17 @@
+using Assets.Scripts.Battles;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.SpaceShip;
 using Assets.Scripts.StateMachines;
 
-namespace Assets.Scripts.Game.GameStateMachine.GameStates
+namespace Assets.Scripts.Game.GameStates
 {
-    public class BattleState : IState, IStateWithArtuments<Battle.Battle>
+    public class BattleState : IState, IStateWithArtuments<Battle>
     {
         private readonly IBattleObserver _battleObserver;
 
         private readonly StateMachine _gameStateMachine;
 
-        private Battle.Battle _battle;
+        private Battle _battle;
 
         public BattleState(StateMachine gameStateMachine, IBattleObserver battleObserver)
         {
@@ -23,7 +24,7 @@ namespace Assets.Scripts.Game.GameStateMachine.GameStates
 
         }
 
-        public void Enter(Battle.Battle args)
+        public void Enter(Battle args)
         {
             _battle = args;
             StartBattle();
@@ -39,7 +40,7 @@ namespace Assets.Scripts.Game.GameStateMachine.GameStates
         private void OnWinnerDeterminedEventHandler(ISpaceShip winner)
         {
             StopBattle();
-            _gameStateMachine.EnterState<CleanUpBattleState,Battle.Battle>(_battle);
+            _gameStateMachine.EnterState<CleanUpBattleState,Battle>(_battle);
         }
 
         private void StartBattle()

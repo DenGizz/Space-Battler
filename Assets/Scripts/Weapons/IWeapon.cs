@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts.SpaceShip
+﻿using Assets.Scripts.SpaceShip;
+
+namespace Assets.Scripts.Weapons
 {
     public interface IWeapon
     {

@@ -1,4 +1,5 @@
 using Assets.Scripts.SpaceShip.SpaceShipAttributes;
+using Assets.Scripts.SpaceShip.SpaceShipConfigs;
 using UnityEngine;
 
 namespace Assets.Scripts.SpaceShip

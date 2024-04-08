@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.AI.UnitsAI;
+using Assets.Scripts.Battles;
 
 namespace Assets.Scripts.Infrastructure.Factories
 {
@@ -19,12 +20,12 @@ namespace Assets.Scripts.Infrastructure.Factories
             _combatAiRegistry = combatAiRegistry;
         }
 
-        public Battle.Battle CreateBattle(ISpaceShip playerSpaceShip, ISpaceShip enemySpaceShip)
+        public Battle CreateBattle(ISpaceShip playerSpaceShip, ISpaceShip enemySpaceShip)
         {
             ICombatAI playerAi = _combatAiRegistry.GetAI(playerSpaceShip);
             ICombatAI enemyAi = _combatAiRegistry.GetAI(enemySpaceShip);
 
-            return new Battle.Battle(playerSpaceShip, enemySpaceShip, playerAi, enemyAi);
+            return new Battle(playerSpaceShip, enemySpaceShip, playerAi, enemyAi);
         }
     }
 }
