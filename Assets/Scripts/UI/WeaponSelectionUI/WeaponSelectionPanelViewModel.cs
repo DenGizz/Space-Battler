@@ -36,7 +36,7 @@ namespace Assets.Scripts.UI.WeaponSelectionUI
             _clickableViews = new List<ClickableView>();
             _viewToType = new Dictionary<GameObject, WeaponType>();
 
-            IEnumerable<WeaponConfigSO> configs = _staticDataService.GetWeaponConfigs();
+            IEnumerable<WeaponDescriptor> configs = _staticDataService.GetWeaponConfigs();
 
             foreach (var config in configs)
             {

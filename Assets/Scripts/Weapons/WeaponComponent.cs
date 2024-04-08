@@ -13,7 +13,7 @@ namespace Assets.Scripts.Weapons
         public bool CanShoot => !_isOnColdDown;
         private bool _isOnColdDown;
 
-        [SerializeField] private WeaponConfigSO _config;
+        [SerializeField] private WeaponDescriptor _config;
 
         private void Awake()
         {

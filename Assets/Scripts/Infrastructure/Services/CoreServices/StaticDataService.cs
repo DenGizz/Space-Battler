@@ -29,7 +29,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             return _assetsProvider.GetWeaponConfig(weaponType).Sprite;
         }
 
-        public IEnumerable<WeaponConfigSO> GetWeaponConfigs()
+        public IEnumerable<WeaponDescriptor> GetWeaponConfigs()
         {
             return _assetsProvider.GetWeaponConfigs();
         }

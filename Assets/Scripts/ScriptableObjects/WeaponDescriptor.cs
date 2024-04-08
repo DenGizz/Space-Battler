@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Assets.Scripts.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "WeaponConfig", menuName = "StaticData/WeaponConfig", order = 0)]
-    public class WeaponConfigSO : ScriptableObject
+    public class WeaponDescriptor : ScriptableObject
     {
         public WeaponType WeaponType => _weaponType;
         public float Damage => _damage;
