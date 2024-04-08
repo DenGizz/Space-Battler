@@ -111,9 +111,9 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
                 "Space Ship Setup UI", "Slot For Select Weapon View"));
         }
 
-        public SpaceShipConfigSO GetSpaceShipConfig(SpaceShipType spaceShipType)
+        public SpaceShipDescriptor GetSpaceShipConfig(SpaceShipType spaceShipType)
         {
-            var sgos = Resources.LoadAll<SpaceShipConfigSO>(Path.Combine("StaticData","SpaceShipConfigs"));
+            var sgos = Resources.LoadAll<SpaceShipDescriptor>(Path.Combine("StaticData","SpaceShipConfigs"));
             return sgos.FirstOrDefault(sgo => sgo.CorpusType == spaceShipType);
         }
 
@@ -143,9 +143,9 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             return Resources.Load<GameObject>(Path.Combine(PrefabsPathRoot, UIPathRoot, "Space Ship Setup UI", "Space Ship Description Row View"));
         }
 
-        public IEnumerable<SpaceShipConfigSO> GetSpaceShipsConfigs()
+        public IEnumerable<SpaceShipDescriptor> GetSpaceShipsConfigs()
         {
-            return Resources.LoadAll<SpaceShipConfigSO>(Path.Combine("StaticData", "SpaceShipConfigs"));
+            return Resources.LoadAll<SpaceShipDescriptor>(Path.Combine("StaticData", "SpaceShipConfigs"));
         }
     }
 }

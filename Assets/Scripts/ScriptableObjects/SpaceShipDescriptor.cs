@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Assets.Scripts.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "SpaceShipConfig", menuName = "StaticData/SpaceShipConfig", order = 0)]
-    public class SpaceShipConfigSO : ScriptableObject
+    public class SpaceShipDescriptor : ScriptableObject
     {
         public SpaceShipType CorpusType  => _corpusType;
         public float MaxHealth  => _maxHealth;

@@ -20,7 +20,7 @@ namespace Assets.Scripts.SpaceShips
 
         private List<IWeapon> _weapons;
 
-        [SerializeField] private SpaceShipConfigSO _config;
+        [SerializeField] private SpaceShipDescriptor _config;
 
         private void Construct(SpaceShipConfig config)
         {
