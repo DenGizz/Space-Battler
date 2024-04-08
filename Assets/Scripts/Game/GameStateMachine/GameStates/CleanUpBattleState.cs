@@ -3,22 +3,25 @@ using Assets.Scripts.StateMachine;
 
 namespace Assets.Scripts.Game.GameStateMachine.GameStates
 {
-    public class CleanUpBattleState : IState
+    public class CleanUpBattleState : IState, IStateWithArtuments<Battle.Battle>
     {
         private readonly IBattleCleanUpServce _battleCleanUpServce;
-        private readonly IBattleProvider _battleDataProvider;
         private readonly GameStateMachine _gameStateMachine;
 
-        public CleanUpBattleState(GameStateMachine gameStateMachine, IBattleProvider battleDataProvider, IBattleCleanUpServce battleCleanUpServce)
+        public CleanUpBattleState(GameStateMachine gameStateMachine, IBattleCleanUpServce battleCleanUpServce)
         {
             _gameStateMachine = gameStateMachine;
-            _battleDataProvider = battleDataProvider;
             _battleCleanUpServce = battleCleanUpServce;
         }
 
         public void Enter()
         {
-            _battleCleanUpServce.CleanUpBattle(_battleDataProvider.CurrentBattle);
+
+        }
+
+        public void Enter(Battle.Battle args)
+        {
+            _battleCleanUpServce.CleanUpBattle(args);
             _gameStateMachine.EnterState<LoadMainMenuSceneState>();
         }
 

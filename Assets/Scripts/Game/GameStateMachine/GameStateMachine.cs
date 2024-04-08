@@ -16,15 +16,14 @@ namespace Assets.Scripts.Game.GameStateMachine
         [Inject]
         public GameStateMachine(ISpaceShipFactory spaceShipFactory, 
             IBattleUIService battleUIService, IBattleObserver battleObserver, IBattleCleanUpServce battleCleanUpServce, 
-            IBattleProvider battleDataProvider,
             ScenesConfig scenesConfig, ISceneLoader sceneLoader, IUIFactory uiFactory, IBattleFactory battleFactory, IWeaponFactory weaponFactory, IBattleSetupProvider battleSetupProvider)
         {
             States[typeof(LoadMainMenuSceneState)] = new LoadMainMenuSceneState(this, sceneLoader, scenesConfig);
             States[typeof(MainMenuState)] = new MainMenuState(this, uiFactory, battleSetupProvider);
             States[typeof(LoadBattleFieldSceneState)] = new LoadBattleFieldSceneState(this, scenesConfig, sceneLoader);
             States[typeof(CreateBattleState)] = new CreateBattleState(this, spaceShipFactory,battleUIService,battleFactory, weaponFactory, battleSetupProvider);
-            States[typeof(BattleState)] = new BattleState(this,  battleObserver,  battleDataProvider);
-            States[typeof(CleanUpBattleState)] = new CleanUpBattleState(this,battleDataProvider, battleCleanUpServce);
+            States[typeof(BattleState)] = new BattleState(this,  battleObserver);
+            States[typeof(CleanUpBattleState)] = new CleanUpBattleState(this, battleCleanUpServce);
         }
     }
 }

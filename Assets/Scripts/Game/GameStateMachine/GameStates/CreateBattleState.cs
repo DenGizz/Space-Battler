@@ -22,8 +22,9 @@ namespace Assets.Scripts.Game.GameStateMachine.GameStates
 
         private readonly GameStateMachine GameStateMachine;
 
-        public CreateBattleState(GameStateMachine gameStateMachine, ISpaceShipFactory spaceShipFactory , IBattleUIService battleUIService, 
-            IBattleFactory battleFactory, IWeaponFactory weaponFactory, IBattleSetupProvider battleSetupProvider)
+        public CreateBattleState(GameStateMachine gameStateMachine, ISpaceShipFactory spaceShipFactory , 
+            IBattleUIService battleUIService, IBattleFactory battleFactory, IWeaponFactory weaponFactory, 
+            IBattleSetupProvider battleSetupProvider)
         {
             GameStateMachine = gameStateMachine;
             _spaceShipFactory = spaceShipFactory;
@@ -35,8 +36,16 @@ namespace Assets.Scripts.Game.GameStateMachine.GameStates
 
         public void Enter()
         {
-            CreateBattle(_battleSetupProvider.BattleSetup);
-            GameStateMachine.EnterState<BattleState>();
+            BattleSetup battleSetup = _battleSetupProvider.BattleSetup;
+
+            (ISpaceShip player, ISpaceShip enemy) = CreateSpaceShipsAndWeapons(battleSetup);
+
+            Battle.Battle battle = _battleFactory.CreateBattle(player, enemy);
+
+            _battleUIService.CreateBattleUI();
+            _battleUIService.SetBattle(battle);
+
+            GameStateMachine.EnterState<BattleState,Battle.Battle>(battle);
         }
 
 
@@ -45,7 +54,7 @@ namespace Assets.Scripts.Game.GameStateMachine.GameStates
 
         }
 
-        private void CreateBattle(BattleSetup setup)
+        private (ISpaceShip player, ISpaceShip enemy) CreateSpaceShipsAndWeapons(BattleSetup setup)
         {
             //Instantiate units
             Vector3 playerSpaceShipPosition = Vector3.zero - Vector3.right * 7;
@@ -78,11 +87,7 @@ namespace Assets.Scripts.Game.GameStateMachine.GameStates
                 enemy.AddWeapon(weapon);
             }
 
-
-            Battle.Battle battle = _battleFactory.CreateBattle(player, enemy);
-
-            _battleUIService.CreateBattleUI();
-            _battleUIService.SetBattle(battle);
+            return (player, enemy);
         }
     }
 }

@@ -6,27 +6,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.AI.UnitsAI;
 
 namespace Assets.Scripts.Infrastructure.Factories
 {
     public class BattleFactory : IBattleFactory
     {
-        private readonly IBattleProvider _battleDataProvider;
         private readonly ICombatAiRegistry _combatAiRegistry;
 
-        public BattleFactory(IBattleProvider battleDataProvider, ICombatAiRegistry combatAiRegistry)
+        public BattleFactory(ICombatAiRegistry combatAiRegistry)
         {
-            _battleDataProvider = battleDataProvider;
             _combatAiRegistry = combatAiRegistry;
         }
 
         public Battle.Battle CreateBattle(ISpaceShip playerSpaceShip, ISpaceShip enemySpaceShip)
         {
-            Battle.Battle battle = new Battle.Battle(playerSpaceShip, enemySpaceShip, _combatAiRegistry.GetAI(playerSpaceShip), _combatAiRegistry.GetAI(enemySpaceShip)); ;
-            _battleDataProvider.CurrentBattle = battle;
+            ICombatAI playerAi = _combatAiRegistry.GetAI(playerSpaceShip);
+            ICombatAI enemyAi = _combatAiRegistry.GetAI(enemySpaceShip);
 
-
-            return battle;
+            return new Battle.Battle(playerSpaceShip, enemySpaceShip, playerAi, enemyAi);
         }
     }
 }

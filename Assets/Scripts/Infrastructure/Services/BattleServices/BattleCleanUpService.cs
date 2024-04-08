@@ -10,15 +10,13 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
         private readonly IGameObjectRegistry _gameObjectRegistry;
         private readonly ICombatAiRegistry _combatAIRegistry;
         private readonly IBattleUIService _battleUIService;
-        private readonly IBattleProvider _battleProvider;
 
         [Inject]
-        public BattleCleanUpService(IGameObjectRegistry gameObjectRegistry, ICombatAiRegistry combatAIRegistry, IBattleUIService battleUIService, IBattleProvider battleProvider)
+        public BattleCleanUpService(IGameObjectRegistry gameObjectRegistry, ICombatAiRegistry combatAIRegistry, IBattleUIService battleUIService)
         {
             _gameObjectRegistry = gameObjectRegistry;
             _combatAIRegistry = combatAIRegistry;
             _battleUIService = battleUIService;
-            _battleProvider = battleProvider;
         }
 
         public void CleanUpBattle(Battle.Battle battle)
@@ -30,8 +28,6 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
             _combatAIRegistry.UnregisterAI(battleData.PlayerSpaceShip);
             _combatAIRegistry.UnregisterAI(battleData.EnemySpaceShip);
             _battleUIService.DestroyBattleUI();
-
-            _battleProvider.CurrentBattle = null;
         }
 
         private void DestroyAndUnregisterGameObjects(BattleData battleData)

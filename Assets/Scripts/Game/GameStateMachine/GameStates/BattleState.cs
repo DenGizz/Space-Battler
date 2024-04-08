@@ -4,25 +4,30 @@ using Assets.Scripts.StateMachine;
 
 namespace Assets.Scripts.Game.GameStateMachine.GameStates
 {
-    public class BattleState : IState
+    public class BattleState : IState, IStateWithArtuments<Battle.Battle>
     {
         private readonly IBattleObserver _battleObserver;
-        private readonly IBattleProvider _battleDataProvider;
-
 
         private readonly GameStateMachine GameStateMachine;
 
-        public BattleState(GameStateMachine gameStateMachine, IBattleObserver battleObserver, IBattleProvider battleDataProvider)
+        private Battle.Battle _battle;
+
+        public BattleState(GameStateMachine gameStateMachine, IBattleObserver battleObserver)
         {
             GameStateMachine = gameStateMachine;
             _battleObserver = battleObserver;
-            _battleDataProvider = battleDataProvider;
         }
 
         public void Enter()
         {
+
+        }
+
+        public void Enter(Battle.Battle args)
+        {
+            _battle = args;
             StartBattle();
-            _battleObserver.StartObserve(_battleDataProvider.CurrentBattle);
+            _battleObserver.StartObserve(_battle);
             _battleObserver.OnWinnerDetermined += OnWinnerDeterminedEventHandler;
         }
 
@@ -34,22 +39,22 @@ namespace Assets.Scripts.Game.GameStateMachine.GameStates
         private void OnWinnerDeterminedEventHandler(ISpaceShip winner)
         {
             StopBattle();
-            GameStateMachine.EnterState<CleanUpBattleState>();
+            GameStateMachine.EnterState<CleanUpBattleState,Battle.Battle>(_battle);
         }
 
         private void StartBattle()
         {
-            _battleDataProvider.CurrentBattle.StartBattle();
+            _battle.StartBattle();
         }
 
         private void StopBattle()
         {
-            _battleDataProvider.CurrentBattle.StopBattle();
+            _battle.StopBattle();
         }
 
         private void ResumeBattle()
         {
-            _battleDataProvider.CurrentBattle.ResumeBattle();
+            _battle.ResumeBattle();
         }
     }
 }
