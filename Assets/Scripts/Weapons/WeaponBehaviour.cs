@@ -7,7 +7,7 @@ using Zenject;
 namespace Assets.Scripts.Weapons
 {
     [AddComponentMenu("Weapon")]
-    public class WeaponComponent : MonoBehaviour, IWeapon, ITickable
+    public class WeaponBehaviour : MonoBehaviour, IWeapon, ITickable
     {
         public float Damage { get; private set; }
         public float ColdDownTime { get; private set; }
@@ -16,12 +16,12 @@ namespace Assets.Scripts.Weapons
 
         private float _coldDownTimeLeft;
 
-        [SerializeField] private WeaponDescriptor _config;
+        [SerializeField] private WeaponDescriptor _descriptor;
 
         private void Awake()
         {
-            Damage = _config.Damage;
-            ColdDownTime = _config.ColdDownTime;
+            Damage = _descriptor.Damage;
+            ColdDownTime = _descriptor.ColdDownTime;
         }
 
         public void Shoot(IDamagable target)

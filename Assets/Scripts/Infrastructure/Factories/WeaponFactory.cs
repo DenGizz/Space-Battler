@@ -28,9 +28,9 @@ namespace Assets.Scripts.Infrastructure.Factories
         {
             GameObject weaponPrefab = _assetsProvider.GetWeaponPrefab(weaponType);
             GameObject weaponGameObject = GameObject.Instantiate(weaponPrefab, position, Quaternion.Euler(0, 0, zRotation));
-            WeaponComponent weaponComponent = weaponGameObject.GetComponentInChildren<WeaponComponent>();
-            _battleTickService.AddTickable(weaponComponent);
-            IWeapon weapon = weaponComponent;
+            WeaponBehaviour weaponBehaviour = weaponGameObject.GetComponentInChildren<WeaponBehaviour>();
+            _battleTickService.AddTickable(weaponBehaviour);
+            IWeapon weapon = weaponBehaviour;
             _gameObjectRegistry.RegisterGameObject(weapon, weaponGameObject);
             return weapon;
         }

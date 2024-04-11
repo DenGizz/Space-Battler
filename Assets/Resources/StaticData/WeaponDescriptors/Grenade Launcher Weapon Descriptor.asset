@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e487278c9d3814042b70534a8c9b12ef, type: 3}
-  m_Name: Heavy Machin Gun Weapon Config
+  m_Name: Grenade Launcher Weapon Descriptor
   m_EditorClassIdentifier: 
-  _weaponType: 3
-  _damage: 3.3
-  _coldDownTime: 0.5
-  _sprite: {fileID: 21300000, guid: e1d765ea019c6d842b52713013a0f79f, type: 3}
-  _prefab: {fileID: 4050760580197500463, guid: 5d41e0ff2a7377a4da1bc17527073a09, type: 3}
+  _weaponType: 2
+  _damage: 16
+  _coldDownTime: 2.4
+  _sprite: {fileID: 21300000, guid: 511d18cf5bc27914ca0e4800859d431d, type: 3}
+  _prefab: {fileID: 2717349723787489825, guid: c5a0729dfad1ccd4fab93dce96c555c2, type: 3}
