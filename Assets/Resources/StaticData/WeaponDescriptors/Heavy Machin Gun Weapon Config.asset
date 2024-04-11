@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e487278c9d3814042b70534a8c9b12ef, type: 3}
   m_Name: Heavy Machin Gun Weapon Config
   m_EditorClassIdentifier: 
-  _weaponType: 2
+  _weaponType: 3
   _damage: 3.3
   _coldDownTime: 0.5
   _sprite: {fileID: 21300000, guid: e1d765ea019c6d842b52713013a0f79f, type: 3}
