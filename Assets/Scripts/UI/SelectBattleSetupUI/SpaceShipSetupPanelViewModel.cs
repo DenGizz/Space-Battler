@@ -55,7 +55,7 @@ namespace Assets.Scripts.UI.SpaceShipSetupPanel
 
         private void OnSpaceShipTypeSelectedEventHandler(SpaceShipType spaceShipType)
         {
-            int weaponSlots = _staticDataService.GetSpaceShipConfig(spaceShipType).WeaponSlots;
+            int weaponSlots = _staticDataService.GetSpaceShipDescriptor(spaceShipType).WeaponSlotsCount;
             SetWeaponSlotsCount(weaponSlots);
         }
     }

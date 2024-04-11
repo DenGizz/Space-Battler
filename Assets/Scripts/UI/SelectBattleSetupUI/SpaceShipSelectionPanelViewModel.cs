@@ -36,7 +36,7 @@ namespace Assets.Scripts.UI.WeaponSelectionUI
             _clickableViews = new List<ClickableView>();
             _viewToType = new Dictionary<GameObject, SpaceShipType>();
 
-            IEnumerable<SpaceShipDescriptor> configs = _staticDataService.GetSpaceShipsConfigs();
+            IEnumerable<SpaceShipDescriptor> configs = _staticDataService.GetSpaceShipDescriptors();
 
             foreach (var config in configs)
             {

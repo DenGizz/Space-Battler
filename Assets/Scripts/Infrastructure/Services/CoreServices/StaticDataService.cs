@@ -29,19 +29,24 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             return _assetsProvider.GetWeaponDescriptor(weaponType).Sprite;
         }
 
-        public IEnumerable<WeaponDescriptor> GetWeaponConfigs()
+        public IEnumerable<WeaponDescriptor> GetWeaponDescriptors()
         {
             return _assetsProvider.GetWeaponDescriptors();
         }
 
-        public IEnumerable<SpaceShipDescriptor> GetSpaceShipsConfigs()
+        public IEnumerable<SpaceShipDescriptor> GetSpaceShipDescriptors()
         {
             return _assetsProvider.GetSpaceShipsDescriptors();
         }
 
-        public SpaceShipConfig GetSpaceShipConfig(SpaceShipType spaceShipType)
+        public WeaponDescriptor GetWeaponDescriptor(WeaponType weaponType)
         {
-            return GetSpaceShipsConfigs().First(config => config.CorpusType == spaceShipType).GetSpaceShipConfig();
+            return _assetsProvider.GetWeaponDescriptor(weaponType);
+        }
+
+        public SpaceShipDescriptor GetSpaceShipDescriptor(SpaceShipType spaceShipType)
+        {
+            return _assetsProvider.GetSpaceShipDescriptor(spaceShipType);
         }
     }
 }
