@@ -45,13 +45,26 @@ public class SpaceShipSelectionSlot : MonoBehaviour
     {
         _selectionPanel = _uiFactory.CreateSpaceShipSelectionPanel();
         _selectionPanel.OnSpaceShipSelected += OnSpaceShipSelectedEventHandler;
+        _selectionPanel.OnCloseButtonClicked += OnSelectionPanelCloseButtonClickedEventHandler;
 
     }
 
     private void OnSpaceShipSelectedEventHandler(SpaceShipType type)
     {
         SelectedSpaceShipType = type;
-        _selectionPanel.OnSpaceShipSelected -= OnSpaceShipSelectedEventHandler;
+        CloseSelectionPanel();
+
+    }
+
+    private void OnSelectionPanelCloseButtonClickedEventHandler()
+    {
+        CloseSelectionPanel();
+    }
+
+    private void CloseSelectionPanel()
+    {
+
+        _selectionPanel.OnCloseButtonClicked -= OnSelectionPanelCloseButtonClickedEventHandler;
         Destroy(_selectionPanel.gameObject);
         _selectionPanel = null;
     }
