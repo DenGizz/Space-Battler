@@ -42,14 +42,26 @@ public class WeaponSelectionSlot : MonoBehaviour
     {
         _selectionPanel = _uiFactory.CreateWeaponSelectionPanel();
         _selectionPanel.OnWeaponSelected += OnWeaponSelectedEventHandler;
-
+        _selectionPanel.OnCloseButtonClicked += OnSelectionPanelCloseButtonClickedEventHandler;
     }
 
     private void OnWeaponSelectedEventHandler(WeaponType type)
     {
         SelectedWeaponType = type;
-        _selectionPanel.OnWeaponSelected -= OnWeaponSelectedEventHandler;
+        CloseSelectionPanel();
+
+    }
+
+    private void OnSelectionPanelCloseButtonClickedEventHandler()
+    {
+        CloseSelectionPanel();
+    }
+
+    private void CloseSelectionPanel()
+    {
+        _selectionPanel.OnCloseButtonClicked -= OnSelectionPanelCloseButtonClickedEventHandler;
         Destroy(_selectionPanel.gameObject);
+        _selectionPanel = null;
     }
 }
 
