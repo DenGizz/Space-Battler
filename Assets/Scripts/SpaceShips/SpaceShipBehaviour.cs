@@ -20,7 +20,7 @@ namespace Assets.Scripts.SpaceShips
 
         private List<IWeapon> _weapons;
 
-        [SerializeField] private SpaceShipDescriptor _config;
+        [SerializeField] private SpaceShipDescriptor _descriptor;
 
         private void Construct(SpaceShipConfig config)
         {
@@ -31,7 +31,7 @@ namespace Assets.Scripts.SpaceShips
 
         private void Awake()
         {
-            Construct(_config.GetSpaceShipConfig());
+            Construct(_descriptor.GetSpaceShipConfig());
         }
 
         public void TakeDamage(float damageAmount)
