@@ -15,26 +15,21 @@ namespace Assets.Scripts.Game.GameStates
 {
     public class CreateBattleState : IState
     {
-        private readonly ISpaceShipFactory _spaceShipFactory;
         private readonly IBattleUIService _battleUIService;
         private readonly IBattleFactory _battleFactory;
-        private readonly IWeaponFactory _weaponFactory;
         private readonly IBattleSetupProvider _battleSetupProvider;
-        private readonly IUIFactory _uIFactory;
+        private readonly ISpaceShipFromSetupFactory _spaceShipFromSetupFactory;
 
         private readonly StateMachine _stateMachine;
 
-        public CreateBattleState(StateMachine stateMachine, ISpaceShipFactory spaceShipFactory , 
-            IBattleUIService battleUIService, IBattleFactory battleFactory, IWeaponFactory weaponFactory, 
-            IBattleSetupProvider battleSetupProvider, IUIFactory uIFactory)
+        public CreateBattleState(StateMachine stateMachine,IBattleUIService battleUIService, IBattleFactory battleFactory,
+            IBattleSetupProvider battleSetupProvider, ISpaceShipFromSetupFactory spaceShipFromSetupFactory)
         {
             _stateMachine = stateMachine;
-            _spaceShipFactory = spaceShipFactory;
             _battleUIService = battleUIService;
             _battleFactory = battleFactory;
-            _weaponFactory = weaponFactory;
             _battleSetupProvider = battleSetupProvider;
-            _uIFactory = uIFactory;
+            _spaceShipFromSetupFactory = spaceShipFromSetupFactory;
         }
 
         public void Enter()
@@ -66,29 +61,9 @@ namespace Assets.Scripts.Game.GameStates
             float playerSpaceShipZRotation = -90;
             float enemySpaceShipZRotation = 90;
 
-            Color playerSpaceShipColor = Color.green;
-            Color enemySpaceShipColor = Color.red;
+            ISpaceShip player = _spaceShipFromSetupFactory.CreateSpaceShipFromSetup(setup.PlayerSetup, playerSpaceShipPosition, playerSpaceShipZRotation);
+            ISpaceShip enemy = _spaceShipFromSetupFactory.CreateSpaceShipFromSetup(setup.EnemySetup, enemySpaceShipPosition, enemySpaceShipZRotation);
 
-            SpaceShipType playerSpaceShipType = setup.PlayerSetup.SpaceShipType;
-            SpaceShipType enemySpaceShipType = setup.EnemySetup.SpaceShipType;
-
-            IEnumerable<WeaponType> playerWeaponTypes = setup.PlayerSetup.WeaponTypes;
-            IEnumerable<WeaponType> enemyWeaponTypes = setup.EnemySetup.WeaponTypes;
-
-            ISpaceShip player = _spaceShipFactory.CreateSpaceShip(playerSpaceShipType, playerSpaceShipPosition, playerSpaceShipZRotation, playerSpaceShipColor);
-            ISpaceShip enemy = _spaceShipFactory.CreateSpaceShip(enemySpaceShipType, enemySpaceShipPosition, enemySpaceShipZRotation, enemySpaceShipColor);
-
-            foreach (var weaponType in playerWeaponTypes)
-            {
-                IWeapon weapon = _weaponFactory.CreateWeapon(weaponType, playerSpaceShipPosition + UnityEngine.Random.insideUnitSphere, playerSpaceShipZRotation);
-                player.AddWeapon(weapon);
-            }
-
-            foreach (var weaponType in enemyWeaponTypes)
-            {
-                IWeapon weapon = _weaponFactory.CreateWeapon(weaponType, enemySpaceShipPosition + UnityEngine.Random.insideUnitSphere, enemySpaceShipZRotation);
-                enemy.AddWeapon(weapon);
-            }
 
             return (player, enemy);
         }

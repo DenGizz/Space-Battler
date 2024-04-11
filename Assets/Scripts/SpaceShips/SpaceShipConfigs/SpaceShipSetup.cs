@@ -11,7 +11,7 @@ namespace Assets.Scripts.SpaceShips.SpaceShipConfigs
         public SpaceShipSetup(SpaceShipType spaceShipType, IEnumerable<WeaponType> weaponTypes)
         {
             SpaceShipType = spaceShipType;
-            WeaponTypes = weaponTypes;
+            WeaponTypes = new List<WeaponType>(weaponTypes);
         }
     }
 }

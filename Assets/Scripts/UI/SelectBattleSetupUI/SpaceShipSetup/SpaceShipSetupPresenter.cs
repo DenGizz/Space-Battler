@@ -31,7 +31,10 @@ public class SpaceShipSetupPresenter : MonoBehaviour
 
     public IEnumerable<WeaponType> WeaponTypes
     {
-        get => _weaponSelectionSlots.Select(slot => slot.SelectedWeaponType).Where(weaponType => weaponType != WeaponType.None);
+        get => _weaponSelectionSlots
+            .Where(slot => slot.gameObject.activeSelf)
+            .Select(slot => slot.SelectedWeaponType)
+            .Where(weaponType => weaponType != WeaponType.None);
         set
         {
             int i = 0;

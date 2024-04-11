@@ -27,7 +27,7 @@ namespace Assets.Scripts.Infrastructure.Factories
             _rootTransformsProvider = rootTransformsProvider;
         }
 
-        public ISpaceShip CreateSpaceShip(SpaceShipType type, Vector3 position, float zRotation, Color color)
+        public ISpaceShip CreateSpaceShip(SpaceShipType type, Vector3 position, float zRotation)
         {
             GameObject prefab = _assetsProvider.GetSpaceShipPrefab(type);
             GameObject gameObject = GameObject.Instantiate(prefab, _rootTransformsProvider.SpaceShipsRoot);
