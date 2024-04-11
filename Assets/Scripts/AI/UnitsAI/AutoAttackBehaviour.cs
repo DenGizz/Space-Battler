@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace Assets.Scripts.AI.UnitsAI
 {
-    [AddComponentMenu("AI/CombatUnit/AutoAttackAI")]
+    [AddComponentMenu("AI/CombatUnit/AutoAttackBehaviour")]
     [RequireComponent(typeof(ISpaceShip))]
-    public class AutoAttackAI : MonoBehaviour, ICombatAI
+    public class AutoAttackBehaviour : MonoBehaviour, ICombatAI
     {
         public ISpaceShip Target { get; private set; }
         public bool IsInCombatState { get; private set; }
