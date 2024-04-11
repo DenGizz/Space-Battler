@@ -58,6 +58,10 @@ namespace Assets.Scripts.Infrastructure
             Container.Bind<BattleObserver>().AsSingle();
             Container.Bind<IBattleObserver>().To<BattleObserver>().FromResolve();
             Container.Bind<ITickable>().To<BattleObserver>().FromResolve();
+
+            Container.Bind<BattleTickService>().AsSingle();
+            Container.Bind<IBattleTickService>().To<BattleTickService>().FromResolve();
+            Container.Bind<ITickable>().To<BattleTickService>().FromResolve();
         }
     }
 }

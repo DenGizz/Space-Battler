@@ -2,16 +2,19 @@ using System.Collections;
 using Assets.Scripts.ScriptableObjects;
 using Assets.Scripts.SpaceShips;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts.Weapons
 {
     [AddComponentMenu("Weapon")]
-    public class WeaponComponent : MonoBehaviour, IWeapon
+    public class WeaponComponent : MonoBehaviour, IWeapon, ITickable
     {
         public float Damage { get; private set; }
         public float ColdDownTime { get; private set; }
         public bool CanShoot => !_isOnColdDown;
         private bool _isOnColdDown;
+
+        private float _coldDownTimeLeft;
 
         [SerializeField] private WeaponDescriptor _config;
 
@@ -33,13 +36,15 @@ namespace Assets.Scripts.Weapons
 
         private void StartColdDown(float time)
         {
-            StartCoroutine(ColdDown(time));
+            _coldDownTimeLeft = time;
         }
 
-        private IEnumerator ColdDown(float time)
+        public void Tick()
         {
-            yield return new WaitForSeconds(time);
-            _isOnColdDown = false;
+           if(_coldDownTimeLeft > 0)
+                _coldDownTimeLeft -= Time.deltaTime;
+           else
+                _isOnColdDown = false;
         }
     }
 }

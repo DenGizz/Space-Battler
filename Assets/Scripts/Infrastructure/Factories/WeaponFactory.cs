@@ -15,18 +15,22 @@ namespace Assets.Scripts.Infrastructure.Factories
     {
         private readonly IAssetsProvider _assetsProvider;
         private readonly IGameObjectRegistry _gameObjectRegistry;
+        private readonly IBattleTickService _battleTickService;
 
-        public WeaponFactory(IAssetsProvider assetsProvider, IGameObjectRegistry gameObjectRegistry)
+        public WeaponFactory(IAssetsProvider assetsProvider, IGameObjectRegistry gameObjectRegistry, IBattleTickService battleTickService)
         {
             _assetsProvider = assetsProvider;
             _gameObjectRegistry = gameObjectRegistry;
+            _battleTickService = battleTickService;
         }
 
         public IWeapon CreateWeapon(WeaponType weaponType, Vector3 position, float zRotation)
         {
             GameObject weaponPrefab = _assetsProvider.GetWeaponPrefab(weaponType);
             GameObject weaponGameObject = GameObject.Instantiate(weaponPrefab, position, Quaternion.Euler(0, 0, zRotation));
-            IWeapon weapon = weaponGameObject.GetComponentInChildren<IWeapon>();
+            WeaponComponent weaponComponent = weaponGameObject.GetComponentInChildren<WeaponComponent>();
+            _battleTickService.AddTickable(weaponComponent);
+            IWeapon weapon = weaponComponent;
             _gameObjectRegistry.RegisterGameObject(weapon, weaponGameObject);
             return weapon;
         }
