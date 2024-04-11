@@ -13,7 +13,7 @@ namespace Assets.Scripts.UI.WeaponSelectionUI
         [SerializeField] private SpriteView _view;
         [SerializeField] private ClickableView _clickableView;
 
-        public SpaceShipType? SelectedSpaceShipType { get; private set; }
+        public SpaceShipType SelectedSpaceShipType { get; private set; }
 
         public Action<SpaceShipType> OnSpaceShipTypeSelected;
 

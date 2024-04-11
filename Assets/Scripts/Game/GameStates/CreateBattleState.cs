@@ -69,8 +69,8 @@ namespace Assets.Scripts.Game.GameStates
             Color playerSpaceShipColor = Color.green;
             Color enemySpaceShipColor = Color.red;
 
-            SpaceShipType playerSpaceShipType = setup.PlayerSetup.SpaceShipType.Value;
-            SpaceShipType enemySpaceShipType = setup.EnemySetup.SpaceShipType.Value;
+            SpaceShipType playerSpaceShipType = setup.PlayerSetup.SpaceShipType;
+            SpaceShipType enemySpaceShipType = setup.EnemySetup.SpaceShipType;
 
             IEnumerable<WeaponType> playerWeaponTypes = setup.PlayerSetup.WeaponTypes;
             IEnumerable<WeaponType> enemyWeaponTypes = setup.EnemySetup.WeaponTypes;

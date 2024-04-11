@@ -5,10 +5,10 @@ namespace Assets.Scripts.SpaceShips.SpaceShipConfigs
 {
     public class SpaceShipSetup
     {
-        public SpaceShipType? SpaceShipType { get; }
+        public SpaceShipType SpaceShipType { get; }
         public IEnumerable<WeaponType> WeaponTypes { get; }
 
-        public SpaceShipSetup(SpaceShipType? spaceShipType, IEnumerable<WeaponType> weaponTypes)
+        public SpaceShipSetup(SpaceShipType spaceShipType, IEnumerable<WeaponType> weaponTypes)
         {
             SpaceShipType = spaceShipType;
             WeaponTypes = weaponTypes;

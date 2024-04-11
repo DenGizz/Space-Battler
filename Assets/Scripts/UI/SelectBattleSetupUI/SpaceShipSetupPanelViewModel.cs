@@ -16,7 +16,7 @@ namespace Assets.Scripts.UI.SpaceShipSetupPanel
         [SerializeField] private SlotForSelectSpaceShipViewModel _slotForSelectSpaceShip;
 
         public IEnumerable<WeaponType> SelectedWeaponTypes => _slots.Where(slot => slot.SelectedWeaponType != null).Select(slot => slot.SelectedWeaponType.Value);
-        public SpaceShipType? SelectedSpaceShipType => _slotForSelectSpaceShip.SelectedSpaceShipType;
+        public SpaceShipType SelectedSpaceShipType => _slotForSelectSpaceShip.SelectedSpaceShipType;
 
         private List<SlotForSelectWeaponViewModel> _slots = new List<SlotForSelectWeaponViewModel>();
 
