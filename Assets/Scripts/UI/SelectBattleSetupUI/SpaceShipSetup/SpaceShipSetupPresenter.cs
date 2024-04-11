@@ -6,14 +6,19 @@ using Assets.Scripts.Weapons.WeaponConfigs;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Infrastructure.Services;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 public class SpaceShipSetupPresenter : MonoBehaviour
 {
     [SerializeField] private SpaceShipSelectionSlot _spaceShipSelectionSlot;
     [SerializeField] private List<WeaponSelectionSlot> _weaponSelectionSlots;
+    [SerializeField] private Button _randomizeButton;
+
+    private IRandomSetupService _randomSetupService;
 
     public SpaceShipType SpaceShipType
     {
@@ -41,15 +46,18 @@ public class SpaceShipSetupPresenter : MonoBehaviour
     private IStaticDataService _staticDataService;
 
     [Inject]
-    public void Construct(IStaticDataService staticDataService)
+    public void Construct(IStaticDataService staticDataService, IRandomSetupService randomSetupService)
     {
         _staticDataService = staticDataService;
+        _randomSetupService = randomSetupService;
     }
 
     private void Awake()
     {
         ClearData();
         _spaceShipSelectionSlot.OnSelectedSpaceShipTypeChanged += OnSelectedSpaceShipTypeChangedEventHandler;
+
+        _randomizeButton.onClick.AddListener(OnRandomizeButtonClicked);
     }
 
     public void ClearData()
@@ -77,6 +85,13 @@ public class SpaceShipSetupPresenter : MonoBehaviour
 
         foreach (var weaponSelectionSlot in _weaponSelectionSlots)
             weaponSelectionSlot.SelectedWeaponType = WeaponType.None;
+    }
+
+    private void OnRandomizeButtonClicked()
+    {
+        SpaceShipSetup spaceShipSetup = _randomSetupService.GetRandomSpaceShipSetup();
+        SpaceShipType = spaceShipSetup.SpaceShipType;
+        WeaponTypes = spaceShipSetup.WeaponTypes;
     }
 
     private void OnDestroy()
