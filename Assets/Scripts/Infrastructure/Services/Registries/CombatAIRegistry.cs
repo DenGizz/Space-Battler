@@ -6,11 +6,11 @@ namespace Assets.Scripts.Infrastructure.Services.Registries
 {
     public class CombatAIRegistry : ICombatAiRegistry
     {
-        public IEnumerable<ICombatAI> CombatAIs => _combatAIs.Values;
+        public IEnumerable<ICombatAi> CombatAIs => _combatAIs.Values;
 
-        private Dictionary<ISpaceShip, ICombatAI> _combatAIs = new Dictionary<ISpaceShip, ICombatAI>();
+        private Dictionary<ISpaceShip, ICombatAi> _combatAIs = new Dictionary<ISpaceShip, ICombatAi>();
 
-        public ICombatAI GetAI(ISpaceShip spaceShip)
+        public ICombatAi GetAI(ISpaceShip spaceShip)
         {         
             if (_combatAIs.ContainsKey(spaceShip))
             {
@@ -22,7 +22,7 @@ namespace Assets.Scripts.Infrastructure.Services.Registries
             }
         }
 
-        public void RegisterAI(ISpaceShip spaceShip, ICombatAI combatUnitAI)
+        public void RegisterAI(ISpaceShip spaceShip, ICombatAi combatUnitAI)
         {
            
             if (_combatAIs.ContainsKey(spaceShip))

@@ -2,7 +2,7 @@ using Assets.Scripts.SpaceShips;
 
 namespace Assets.Scripts.AI.UnitsAI
 {
-    public interface ICombatAI
+    public interface ICombatAi
     {
         ISpaceShip Target { get; }
 

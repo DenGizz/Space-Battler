@@ -6,7 +6,7 @@ namespace Assets.Scripts.AI.UnitsAI
 {
     [AddComponentMenu("AI/CombatUnit/AutoAttackBehaviour")]
     [RequireComponent(typeof(ISpaceShip))]
-    public class AutoAttackBehaviour : MonoBehaviour, ICombatAI
+    public class AutoAttackBehaviour : MonoBehaviour, ICombatAi
     {
         public ISpaceShip Target { get; private set; }
         public bool IsInCombatState { get; private set; }
