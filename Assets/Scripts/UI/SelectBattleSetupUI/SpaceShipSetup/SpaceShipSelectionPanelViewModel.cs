@@ -41,11 +41,11 @@ namespace Assets.Scripts.UI.WeaponSelectionUI
             foreach (var config in configs)
             {
                 DescriptionRowView descriptionRow = _uiFactory.CreateSpaceShipDescriptionRowView();
-                descriptionRow.TitleText = config.CorpusType.ToString();
+                descriptionRow.TitleText = config.SpaceShipType.ToString();
                 descriptionRow.DescriptionText = $"HP: {config.MaxHealth}\nWeapon slots: {config.WeaponSlotsCount}";
                 descriptionRow.Sprite = config.Sprite;
                 _clickableViewsPanel.AddContent(descriptionRow.gameObject);
-                _viewToType.Add(descriptionRow.gameObject, config.CorpusType);
+                _viewToType.Add(descriptionRow.gameObject, config.SpaceShipType);
 
                 if(descriptionRow.TryGetComponent(out ClickableView clickable))
                 {

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f1b590bdefd9b46aba29618b3373ae, type: 3}
   m_Name: Heavy Defender SpaceShip Descriptor
   m_EditorClassIdentifier: 
-  _corpusType: 1
+  _spaceShipType: 1
   _maxHealth: 115
   _weaponSlotsCount: 2
   _sprite: {fileID: 21300000, guid: 905d10c8864f6e344b7bcbe2071c411e, type: 3}

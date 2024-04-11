@@ -25,7 +25,7 @@ namespace Assets.Scripts.Infrastructure.Services
             SpaceShipDescriptor randomSpaceShipDescriptor = spaceShipDescriptors[randomSpaceShipDescriptorIndex];
             WeaponDescriptor[] randomWeaponDescriptors = weaponDescriptors
                 .OrderBy(weaponDescriptor => UnityEngine.Random.value).Take(UnityEngine.Random.Range(1, 4)).ToArray();
-            return new SpaceShipSetup(randomSpaceShipDescriptor.CorpusType, randomWeaponDescriptors.Select(weaponDescriptor => weaponDescriptor.WeaponType));
+            return new SpaceShipSetup(randomSpaceShipDescriptor.SpaceShipType, randomWeaponDescriptors.Select(weaponDescriptor => weaponDescriptor.WeaponType));
         }
     }
 }

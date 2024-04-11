@@ -11,13 +11,13 @@ namespace Assets.Scripts.ScriptableObjects
     [CreateAssetMenu(fileName = "SpaceShipConfig", menuName = "StaticData/SpaceShipConfig", order = 0)]
     public class SpaceShipDescriptor : ScriptableObject
     {
-        public SpaceShipType CorpusType  => _corpusType;
+        public SpaceShipType SpaceShipType  => _spaceShipType;
         public float MaxHealth  => _maxHealth;
         public int WeaponSlotsCount => _weaponSlotsCount;
         public Sprite Sprite => _sprite;
         public GameObject Prefab => _prefab;
 
-        [SerializeField] private SpaceShipType _corpusType;
+        [SerializeField] private SpaceShipType _spaceShipType;
         [SerializeField] private float _maxHealth;
         [SerializeField] private int _weaponSlotsCount;
         [SerializeField] private Sprite _sprite;

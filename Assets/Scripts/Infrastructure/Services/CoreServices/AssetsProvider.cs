@@ -83,7 +83,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             SpaceShipDescriptor[] descriptors = Resources.LoadAll<SpaceShipDescriptor>(path);
 
             foreach (SpaceShipDescriptor descriptor in descriptors)
-                _loadedSpaceShipDescriptorsCache.Add(descriptor.CorpusType, descriptor);
+                _loadedSpaceShipDescriptorsCache.Add(descriptor.SpaceShipType, descriptor);
 
             return descriptors;
         }
@@ -107,7 +107,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             if(_loadedSpaceShipDescriptorsCache.Count > 0)
                 return _loadedSpaceShipDescriptorsCache[spaceShipType];
 
-            return GetSpaceShipsDescriptors().FirstOrDefault(d => d.CorpusType == spaceShipType);
+            return GetSpaceShipsDescriptors().FirstOrDefault(d => d.SpaceShipType == spaceShipType);
         }
 
         public WeaponDescriptor GetWeaponDescriptor(WeaponType weaponType)
