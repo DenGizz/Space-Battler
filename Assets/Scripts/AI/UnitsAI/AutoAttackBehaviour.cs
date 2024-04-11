@@ -50,8 +50,8 @@ namespace Assets.Scripts.AI.UnitsAI
             if (Target is ISpaceShip combatUnit && combatUnit.HealthAttribute.HP <= 0)
                 return;
 
-            if (_controlledSpaceShip.Weapons == null || _controlledSpaceShip.Weapons.Count() == 0)
-                Debug.Log($"{gameObject.name} doesent have weapon to attack.");
+            if (_controlledSpaceShip.Weapons == null || !_controlledSpaceShip.Weapons.Any())
+                Debug.Log($"{gameObject.name} does`nt have weapon to attack.");
 
             foreach(var weapon in _controlledSpaceShip.Weapons)
                 if (weapon.CanShoot)
