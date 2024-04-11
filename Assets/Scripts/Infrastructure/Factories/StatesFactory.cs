@@ -10,16 +10,16 @@ namespace Assets.Scripts.Infrastructure.Factories
 {
     public class StatesFactory : IStatesFactory
     {
-        private readonly DiContainer _diContainer;
+        private readonly IInstantiator _instantiator;
 
-        public StatesFactory(DiContainer diContainer)
+        public StatesFactory(IInstantiator instantiator)
         {
-            _diContainer = diContainer;
+            _instantiator = instantiator;
         }
 
         public T CreateState<T>(StateMachine stateMachine) where T : IState
         {
-            return _diContainer.Instantiate<T>(new object[] { stateMachine });
+            return _instantiator.Instantiate<T>(new object[] { stateMachine });
         }
     }
 }
