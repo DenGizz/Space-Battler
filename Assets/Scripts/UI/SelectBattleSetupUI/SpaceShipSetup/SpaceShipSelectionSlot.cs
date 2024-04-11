@@ -28,10 +28,10 @@ public class SpaceShipSelectionSlot : MonoBehaviour
 
     public Action OnSelectedSpaceShipTypeChanged;
 
-    private IUIFactory _uiFactory;
+    private IUiFactory _uiFactory;
 
     [Inject]
-    public void Construct(IUIFactory uiFactory)
+    public void Construct(IUiFactory uiFactory)
     {
         _uiFactory = uiFactory;
     }

@@ -9,10 +9,10 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
     {
         private readonly IGameObjectRegistry _gameObjectRegistry;
         private readonly ICombatAiRegistry _combatAIRegistry;
-        private readonly IBattleUIService _battleUIService;
+        private readonly IBattleUiService _battleUIService;
 
         [Inject]
-        public BattleCleanUpService(IGameObjectRegistry gameObjectRegistry, ICombatAiRegistry combatAIRegistry, IBattleUIService battleUIService)
+        public BattleCleanUpService(IGameObjectRegistry gameObjectRegistry, ICombatAiRegistry combatAIRegistry, IBattleUiService battleUIService)
         {
             _gameObjectRegistry = gameObjectRegistry;
             _combatAIRegistry = combatAIRegistry;

@@ -6,16 +6,16 @@ using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
 {
-    public interface IUIFactory
+    public interface IUiFactory
     {
-        (BattleUI battleUIm, GameObject gameObject) CreateBattleUI();
-        MainMenuUI CreateMainMenuUI();
+        (BattleUI battleUIm, GameObject gameObject) CreateBattleUi();
+        MainMenuUI CreateMainMenuUi();
         PauseResumeUI CreatePauseResumeUi();
 
-        DescriptionRowView CreateWeaponDescriptionRowView();
-        DescriptionRowView CreateSpaceShipDescriptionRowView();
+        DescriptionRowView CreateWeaponDescriptionRow();
+        DescriptionRowView CreateSpaceShipDescriptionRow();
 
-        WeaponSelectionPanelViewModel CreateWeaponSelectionPanelViewPanel();
+        WeaponSelectionPanelViewModel CreateWeaponSelectionPanel();
         SpaceShipSelectionPanelViewModel CreateSpaceShipSelectionPanel();
     }
 }

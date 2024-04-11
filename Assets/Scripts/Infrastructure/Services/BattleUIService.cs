@@ -11,22 +11,22 @@ using Zenject;
 
 namespace Assets.Scripts.Infrastructure.Services
 {
-    public class BattleUIService : IBattleUIService
+    public class BattleUIService : IBattleUiService
     {
-        private readonly IUIFactory _uiFactory;
+        private readonly IUiFactory _uiFactory;
 
         public BattleUI BattleUI { get; private set; }
         private GameObject _battleUIGameObject;
 
         [Inject]
-        public BattleUIService(IUIFactory uiFactory)
+        public BattleUIService(IUiFactory uiFactory)
         {
             _uiFactory = uiFactory;
         }
 
         public void CreateBattleUI()
         {
-            (BattleUI, _battleUIGameObject) = _uiFactory.CreateBattleUI();
+            (BattleUI, _battleUIGameObject) = _uiFactory.CreateBattleUi();
         }
 
         public void SetBattle(Battle battle)

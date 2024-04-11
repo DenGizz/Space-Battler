@@ -9,12 +9,12 @@ namespace Assets.Scripts.Game.GameStates
     public class MainMenuState : IState
     {
         private readonly StateMachine _stateMachine;
-        private readonly IUIFactory _uiFactory;
+        private readonly IUiFactory _uiFactory;
         private readonly IBattleSetupProvider _battleSetupProvider;
 
         private MainMenuUI _mainMenuUi;
 
-        public MainMenuState(StateMachine stateMachine, IUIFactory uiFactory, IBattleSetupProvider battleSetupProvider)
+        public MainMenuState(StateMachine stateMachine, IUiFactory uiFactory, IBattleSetupProvider battleSetupProvider)
         {
             _stateMachine = stateMachine;
             _uiFactory = uiFactory;
@@ -23,7 +23,7 @@ namespace Assets.Scripts.Game.GameStates
 
         public void Enter()
         {
-            _mainMenuUi = _uiFactory.CreateMainMenuUI();
+            _mainMenuUi = _uiFactory.CreateMainMenuUi();
             _mainMenuUi.OnStartBattleButtonClicked += OnStartBattleButtonClicked;
         }
 

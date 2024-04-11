@@ -20,11 +20,11 @@ namespace Assets.Scripts.UI.WeaponSelectionUI
         private Dictionary<GameObject, SpaceShipType> _viewToType;
         private List<ClickableView> _clickableViews;
 
-        private IUIFactory _uiFactory;
+        private IUiFactory _uiFactory;
         private IStaticDataService _staticDataService;
 
         [Inject]
-        public void Construct(IUIFactory uiFactory, IStaticDataService staticDataService)
+        public void Construct(IUiFactory uiFactory, IStaticDataService staticDataService)
         {
             _uiFactory = uiFactory;
             _staticDataService = staticDataService;
@@ -40,7 +40,7 @@ namespace Assets.Scripts.UI.WeaponSelectionUI
 
             foreach (var config in configs)
             {
-                DescriptionRowView descriptionRow = _uiFactory.CreateSpaceShipDescriptionRowView();
+                DescriptionRowView descriptionRow = _uiFactory.CreateSpaceShipDescriptionRow();
                 descriptionRow.TitleText = config.SpaceShipType.ToString();
                 descriptionRow.DescriptionText = $"HP: {config.MaxHealth}\nWeapon slots: {config.WeaponSlotsCount}";
                 descriptionRow.Sprite = config.Sprite;

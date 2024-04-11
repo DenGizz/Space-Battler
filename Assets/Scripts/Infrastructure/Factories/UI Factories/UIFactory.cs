@@ -9,7 +9,7 @@ using Zenject;
 
 namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
 {
-    public class UIFactory : IUIFactory
+    public class UIFactory : IUiFactory
     {
         private readonly IAssetsProvider _assetsProvider;
         private readonly IInstantiator _instantiator;
@@ -23,36 +23,36 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
             _rootTransformsProvider = rootTransformsProvider;
         }
 
-        public (BattleUI battleUIm, GameObject gameObject) CreateBattleUI()
+        public (BattleUI battleUIm, GameObject gameObject) CreateBattleUi()
         {
-            GameObject battleUI = _instantiator.InstantiatePrefab(_assetsProvider.GetBattleUIPrefab(), _rootTransformsProvider.UIRoot);
+            GameObject battleUi = _instantiator.InstantiatePrefab(_assetsProvider.GetBattleUIPrefab(), _rootTransformsProvider.UIRoot);
 
 
-            return (battleUI.GetComponentInChildren<BattleUI>(), battleUI);
+            return (battleUi.GetComponentInChildren<BattleUI>(), battleUI: battleUi);
         }
 
-        public MainMenuUI CreateMainMenuUI()
+        public MainMenuUI CreateMainMenuUi()
         {
-            GameObject mainMenuUI = _instantiator.InstantiatePrefab(_assetsProvider.GetMainMenuUIPrefab(), _rootTransformsProvider.UIRoot);
+            GameObject mainMenuUi = _instantiator.InstantiatePrefab(_assetsProvider.GetMainMenuUIPrefab(), _rootTransformsProvider.UIRoot);
 
-            return mainMenuUI.GetComponentInChildren<MainMenuUI>();
+            return mainMenuUi.GetComponentInChildren<MainMenuUI>();
         }
 
         public PauseResumeUI CreatePauseResumeUi()
         {
-            GameObject pauseResumeUI = _instantiator.InstantiatePrefab(_assetsProvider.GetPauseResumeUIPrefab(), _rootTransformsProvider.UIRoot);
-            pauseResumeUI.transform.SetAsLastSibling(); //TODO: Refactor
-            return pauseResumeUI.GetComponentInChildren<PauseResumeUI>();
+            GameObject pauseResumeUi = _instantiator.InstantiatePrefab(_assetsProvider.GetPauseResumeUIPrefab(), _rootTransformsProvider.UIRoot);
+            pauseResumeUi.transform.SetAsLastSibling(); //TODO: Refactor
+            return pauseResumeUi.GetComponentInChildren<PauseResumeUI>();
         }
 
-        public DescriptionRowView CreateWeaponDescriptionRowView()
+        public DescriptionRowView CreateWeaponDescriptionRow()
         {
-            GameObject descriptionRow = GameObject.Instantiate(_assetsProvider.GetWeaponDescriptionRowViewPrefab(), _rootTransformsProvider.UIRoot);
+            GameObject descriptionRow = Object.Instantiate(_assetsProvider.GetWeaponDescriptionRowViewPrefab(), _rootTransformsProvider.UIRoot);
 
             return descriptionRow.GetComponentInChildren<DescriptionRowView>();
         }
 
-        public WeaponSelectionPanelViewModel CreateWeaponSelectionPanelViewPanel()
+        public WeaponSelectionPanelViewModel CreateWeaponSelectionPanel()
         {
             GameObject prefab = _assetsProvider.GetWeaponSelectionPanelPrefab();
             GameObject weaponSelectionPanel = _instantiator.InstantiatePrefab(prefab, _rootTransformsProvider.UIRoot);
@@ -68,9 +68,9 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
             return spaceShipSelectionPanel.GetComponent<SpaceShipSelectionPanelViewModel>();
         }
 
-        public DescriptionRowView CreateSpaceShipDescriptionRowView()
+        public DescriptionRowView CreateSpaceShipDescriptionRow()
         {
-            GameObject descriptionRow = GameObject.Instantiate(_assetsProvider.GetSpaceShipDescriptionRowViewPrefab(), _rootTransformsProvider.UIRoot);
+            GameObject descriptionRow = Object.Instantiate(_assetsProvider.GetSpaceShipDescriptionRowViewPrefab(), _rootTransformsProvider.UIRoot);
 
             return descriptionRow.GetComponentInChildren<DescriptionRowView>();
         }

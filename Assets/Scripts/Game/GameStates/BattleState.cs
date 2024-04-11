@@ -5,28 +5,26 @@ using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.SpaceShips;
 using Assets.Scripts.StateMachines;
-using System.Threading.Tasks;
-using UnityEngine;
 
 namespace Assets.Scripts.Game.GameStates
 {
     public class BattleState : IState, IStateWithArtuments<Battle>
     {
         private readonly IBattleObserver _battleObserver;
-        private readonly IUIFactory _uIFactory;
+        private readonly IUiFactory _uiFactory;
         private readonly StateMachine _gameStateMachine;
         private readonly IBattleTickService _battleTickService;
-        private readonly IBattleUIService _battleUIService;
+        private readonly IBattleUiService _battleUiService;
 
         private Battle _battle;
 
-        public BattleState(StateMachine gameStateMachine, IBattleObserver battleObserver, IUIFactory uIFactory, IBattleTickService battleTickService, IBattleUIService battleUIService)
+        public BattleState(StateMachine gameStateMachine, IBattleObserver battleObserver, IUiFactory uiFactory, IBattleTickService battleTickService, IBattleUiService battleUIService)
         {
             _gameStateMachine = gameStateMachine;
             _battleObserver = battleObserver;
-            _uIFactory = uIFactory;
+            _uiFactory = uiFactory;
             _battleTickService = battleTickService;
-            _battleUIService = battleUIService;
+            _battleUiService = battleUIService;
         }
 
         public void Enter()
@@ -39,7 +37,7 @@ namespace Assets.Scripts.Game.GameStates
             _battle = args;
             _battle.StartBattle();
 
-            PauseResumeUI pauseMenu = _uIFactory.CreatePauseResumeUi();
+            PauseResumeUI pauseMenu = _uiFactory.CreatePauseResumeUi();
             pauseMenu.OnPauseContinueButtonClicked += OnPauseContinueButtonClicked;
 
             _battleObserver.StartObserve(_battle);
@@ -54,8 +52,8 @@ namespace Assets.Scripts.Game.GameStates
         private void OnWinnerDeterminedEventHandler(ISpaceShip winner)
         {
             _battle.StopBattle();
-            _battleUIService.BattleUI.HideBattleView();
-            _battleUIService.BattleUI.ShowWinner(winner, _battle.BattleData.PlayerSpaceShip == winner);
+            _battleUiService.BattleUI.HideBattleView();
+            _battleUiService.BattleUI.ShowWinner(winner, _battle.BattleData.PlayerSpaceShip == winner);
 
             System.Threading.Thread.Sleep(3000);
             _gameStateMachine.EnterState<CleanUpBattleState, Battle>(_battle);

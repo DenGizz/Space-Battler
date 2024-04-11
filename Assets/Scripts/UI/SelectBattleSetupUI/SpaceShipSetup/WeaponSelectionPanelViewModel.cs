@@ -20,11 +20,11 @@ namespace Assets.Scripts.UI.WeaponSelectionUI
         private Dictionary<GameObject, WeaponType> _viewToType;
         private List<ClickableView> _clickableViews;
 
-        private IUIFactory _uiFactory;
+        private IUiFactory _uiFactory;
         private IStaticDataService _staticDataService;
 
         [Inject]
-        public void Construct(IUIFactory uiFactory, IStaticDataService staticDataService)
+        public void Construct(IUiFactory uiFactory, IStaticDataService staticDataService)
         {
             _uiFactory = uiFactory;
             _staticDataService = staticDataService;
@@ -40,7 +40,7 @@ namespace Assets.Scripts.UI.WeaponSelectionUI
 
             foreach (var config in configs)
             {
-                DescriptionRowView descriptionRow = _uiFactory.CreateWeaponDescriptionRowView();
+                DescriptionRowView descriptionRow = _uiFactory.CreateWeaponDescriptionRow();
                 descriptionRow.TitleText = config.WeaponType.ToString();
                 descriptionRow.DescriptionText = $"Damage: {config.Damage}.\nCold down: {config.ColdDownTime} sec.";
                 descriptionRow.Sprite = config.Sprite;

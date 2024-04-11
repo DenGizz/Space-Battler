@@ -44,8 +44,8 @@ namespace Assets.Scripts.Infrastructure
 
         private void BindUI()
         {
-            Container.Bind<IBattleUIService>().To<BattleUIService>().AsSingle();
-            Container.Bind<IUIFactory>().To<UIFactory>().AsSingle();
+            Container.Bind<IBattleUiService>().To<BattleUIService>().AsSingle();
+            Container.Bind<IUiFactory>().To<UIFactory>().AsSingle();
         }
 
         private void BindBattleServices()

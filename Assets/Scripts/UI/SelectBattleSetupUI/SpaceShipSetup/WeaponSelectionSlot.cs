@@ -25,10 +25,10 @@ public class WeaponSelectionSlot : MonoBehaviour
         set => _weaponTypeView.WeaponType = value;
     }
 
-    private IUIFactory _uiFactory;
+    private IUiFactory _uiFactory;
 
     [Inject]
-    public void Construct(IUIFactory uiFactory)
+    public void Construct(IUiFactory uiFactory)
     {
         _uiFactory = uiFactory;
     }
@@ -40,7 +40,7 @@ public class WeaponSelectionSlot : MonoBehaviour
 
     private void OnWeaponTypeClick(ClickableView view)
     {
-        _selectionPanel = _uiFactory.CreateWeaponSelectionPanelViewPanel();
+        _selectionPanel = _uiFactory.CreateWeaponSelectionPanel();
         _selectionPanel.OnWeaponSelected += OnWeaponSelectedEventHandler;
 
     }

@@ -8,7 +8,7 @@ using Assets.Scripts.UI;
 
 namespace Assets.Scripts.Infrastructure.Services
 {
-    public interface IBattleUIService
+    public interface IBattleUiService
     {
         BattleUI BattleUI { get; }
         void CreateBattleUI();

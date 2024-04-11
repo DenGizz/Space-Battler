@@ -15,14 +15,14 @@ namespace Assets.Scripts.Game.GameStates
 {
     public class CreateBattleState : IState
     {
-        private readonly IBattleUIService _battleUIService;
+        private readonly IBattleUiService _battleUIService;
         private readonly IBattleFactory _battleFactory;
         private readonly IBattleSetupProvider _battleSetupProvider;
         private readonly ISpaceShipFromSetupFactory _spaceShipFromSetupFactory;
 
         private readonly StateMachine _stateMachine;
 
-        public CreateBattleState(StateMachine stateMachine,IBattleUIService battleUIService, IBattleFactory battleFactory,
+        public CreateBattleState(StateMachine stateMachine,IBattleUiService battleUIService, IBattleFactory battleFactory,
             IBattleSetupProvider battleSetupProvider, ISpaceShipFromSetupFactory spaceShipFromSetupFactory)
         {
             _stateMachine = stateMachine;
