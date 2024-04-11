@@ -25,9 +25,9 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
 
             DestroyAndUnregisterGameObjects(battleData);
 
-            _combatAIRegistry.UnregisterAI(battleData.PlayerSpaceShip);
-            _combatAIRegistry.UnregisterAI(battleData.EnemySpaceShip);
-            _battleUIService.DestroyBattleUI();
+            _combatAIRegistry.UnRegisterAi(battleData.PlayerSpaceShip);
+            _combatAIRegistry.UnRegisterAi(battleData.EnemySpaceShip);
+            _battleUIService.DestroyBattleUi();
         }
 
         private void DestroyAndUnregisterGameObjects(BattleData battleData)
@@ -36,14 +36,14 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
             {
                 GameObject weaponGameObject = _gameObjectRegistry.GetWeaponGameObject(weapon);
                 GameObject.Destroy(weaponGameObject);
-                _gameObjectRegistry.UnregisterGameObject(weaponGameObject);
+                _gameObjectRegistry.UnRegisterGameObject(weaponGameObject);
             }
 
             foreach (var weapon in battleData.EnemySpaceShip.Weapons)
             {
                 GameObject weaponGameObject = _gameObjectRegistry.GetWeaponGameObject(weapon);
                 GameObject.Destroy(weaponGameObject);
-                _gameObjectRegistry.UnregisterGameObject(weaponGameObject);
+                _gameObjectRegistry.UnRegisterGameObject(weaponGameObject);
             }
 
             GameObject playerSpaceChipGameObject = _gameObjectRegistry.GetSpaceShipGameObject(battleData.PlayerSpaceShip);
@@ -52,8 +52,8 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
             GameObject.Destroy(playerSpaceChipGameObject);
             GameObject.Destroy(enemySpaceChipGameObject);
 
-            _gameObjectRegistry.UnregisterGameObject(playerSpaceChipGameObject);
-            _gameObjectRegistry.UnregisterGameObject(enemySpaceChipGameObject);
+            _gameObjectRegistry.UnRegisterGameObject(playerSpaceChipGameObject);
+            _gameObjectRegistry.UnRegisterGameObject(enemySpaceChipGameObject);
         }
     }
 }

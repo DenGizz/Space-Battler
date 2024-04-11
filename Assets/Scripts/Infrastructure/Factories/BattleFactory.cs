@@ -22,8 +22,8 @@ namespace Assets.Scripts.Infrastructure.Factories
 
         public Battle CreateBattle(ISpaceShip playerSpaceShip, ISpaceShip enemySpaceShip)
         {
-            ICombatAi playerAi = _combatAiRegistry.GetAI(playerSpaceShip);
-            ICombatAi enemyAi = _combatAiRegistry.GetAI(enemySpaceShip);
+            ICombatAi playerAi = _combatAiRegistry.GetAi(playerSpaceShip);
+            ICombatAi enemyAi = _combatAiRegistry.GetAi(enemySpaceShip);
 
             return new Battle(playerSpaceShip, enemySpaceShip, playerAi, enemyAi);
         }

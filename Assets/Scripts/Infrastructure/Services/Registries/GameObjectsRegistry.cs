@@ -7,8 +7,8 @@ namespace Assets.Scripts.Infrastructure.Services.Registries
 {
     public class GameObjectsRegistry : IGameObjectRegistry
     {
-        private Dictionary<ISpaceShip, GameObject> _spaceShipsGameObjects;
-        private Dictionary<IWeapon, GameObject> _weaponGameObjects;
+        private readonly Dictionary<ISpaceShip, GameObject> _spaceShipsGameObjects;
+        private readonly Dictionary<IWeapon, GameObject> _weaponGameObjects;
 
         public GameObjectsRegistry()
         {
@@ -36,7 +36,7 @@ namespace Assets.Scripts.Infrastructure.Services.Registries
             _weaponGameObjects.Add(weapon, gameObject);  
         }
 
-        public void UnregisterGameObject(GameObject gameObject)
+        public void UnRegisterGameObject(GameObject gameObject)
         {      
             foreach (var pair in _spaceShipsGameObjects)
             {

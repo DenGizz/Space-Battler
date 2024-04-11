@@ -52,8 +52,8 @@ namespace Assets.Scripts.Game.GameStates
         private void OnWinnerDeterminedEventHandler(ISpaceShip winner)
         {
             _battle.StopBattle();
-            _battleUiService.BattleUI.HideBattleView();
-            _battleUiService.BattleUI.ShowWinner(winner, _battle.BattleData.PlayerSpaceShip == winner);
+            _battleUiService.BattleUi.HideBattleView();
+            _battleUiService.BattleUi.ShowWinner(winner, _battle.BattleData.PlayerSpaceShip == winner);
 
             System.Threading.Thread.Sleep(3000);
             _gameStateMachine.EnterState<CleanUpBattleState, Battle>(_battle);

@@ -1,13 +1,9 @@
 ﻿using Assets.Scripts.Infrastructure.Factories.UI_Factories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Assets.Scripts.Battles;
 using Assets.Scripts.UI;
 using UnityEngine;
 using Zenject;
+using Object = UnityEngine.Object;
 
 namespace Assets.Scripts.Infrastructure.Services
 {
@@ -15,8 +11,8 @@ namespace Assets.Scripts.Infrastructure.Services
     {
         private readonly IUiFactory _uiFactory;
 
-        public BattleUI BattleUI { get; private set; }
-        private GameObject _battleUIGameObject;
+        public BattleUI BattleUi { get; private set; }
+        private GameObject _battleUiGameObject;
 
         [Inject]
         public BattleUIService(IUiFactory uiFactory)
@@ -24,20 +20,21 @@ namespace Assets.Scripts.Infrastructure.Services
             _uiFactory = uiFactory;
         }
 
-        public void CreateBattleUI()
+        public void CreateBattleUi()
         {
-            (BattleUI, _battleUIGameObject) = _uiFactory.CreateBattleUi();
+            (BattleUi, _battleUiGameObject) = _uiFactory.CreateBattleUi();
+
         }
 
         public void SetBattle(Battle battle)
         {
-            BattleUI.ShowBattleView(battle);
+            BattleUi.ShowBattleView(battle);
         }
 
-        public void DestroyBattleUI()
+        public void DestroyBattleUi()
         {
-            BattleUI = null;
-            GameObject.Destroy(_battleUIGameObject);
+            BattleUi = null;
+            Object.Destroy(_battleUiGameObject);
         }
     }
 }

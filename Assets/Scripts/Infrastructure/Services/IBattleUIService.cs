@@ -10,9 +10,9 @@ namespace Assets.Scripts.Infrastructure.Services
 {
     public interface IBattleUiService
     {
-        BattleUI BattleUI { get; }
-        void CreateBattleUI();
+        BattleUI BattleUi { get; }
+        void CreateBattleUi();
         void SetBattle(Battle battle);
-        void DestroyBattleUI();
+        void DestroyBattleUi();
     }
 }

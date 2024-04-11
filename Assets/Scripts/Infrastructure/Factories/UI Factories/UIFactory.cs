@@ -28,7 +28,7 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
             GameObject battleUi = _instantiator.InstantiatePrefab(_assetsProvider.GetBattleUIPrefab(), _rootTransformsProvider.UIRoot);
 
 
-            return (battleUi.GetComponentInChildren<BattleUI>(), battleUI: battleUi);
+            return (battleUi.GetComponentInChildren<BattleUI>(), battleUi);
         }
 
         public MainMenuUI CreateMainMenuUi()

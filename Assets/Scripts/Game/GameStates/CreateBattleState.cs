@@ -40,7 +40,7 @@ namespace Assets.Scripts.Game.GameStates
 
             Battle battle = _battleFactory.CreateBattle(player, enemy);
 
-            _battleUIService.CreateBattleUI();
+            _battleUIService.CreateBattleUi();
             _battleUIService.SetBattle(battle);
 
             _stateMachine.EnterState<BattleState,Battle>(battle);
