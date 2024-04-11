@@ -17,7 +17,5 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
 
         WeaponSelectionPanelViewModel CreateWeaponSelectionPanelViewPanel();
         SpaceShipSelectionPanelViewModel CreateSpaceShipSelectionPanel();
-
-        SlotForSelectWeaponViewModel CreateSlotForSelectWeaponViewPanel();
     }
 }

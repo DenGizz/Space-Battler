@@ -64,11 +64,6 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             return GetOrLoadAndCacheUiPrefabsBanlde().WeaponSelectionPanelPrefab;
         }
 
-        public GameObject GetSlotForSelectWeaponPrefab()
-        {
-            return GetOrLoadAndCacheUiPrefabsBanlde().SlotForSelectWeaponViewPrefab;
-        }
-
         public GameObject GetSpaceShipSelectionPanelPrefab()
         {
             return GetOrLoadAndCacheUiPrefabsBanlde().SpaceShipSelectionPanelPrefab;

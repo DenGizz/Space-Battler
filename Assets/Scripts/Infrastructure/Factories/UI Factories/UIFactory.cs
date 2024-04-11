@@ -67,14 +67,6 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
             return spaceShipSelectionPanel.GetComponent<SpaceShipSelectionPanelViewModel>();
         }
 
-        public SlotForSelectWeaponViewModel CreateSlotForSelectWeaponViewPanel()
-        {
-            GameObject prefab = _assetsProvider.GetSlotForSelectWeaponPrefab();
-            GameObject go = _instantiator.InstantiatePrefab(prefab, _rootTransformsProvider.UIRoot);
-
-            return go.GetComponent<SlotForSelectWeaponViewModel>();
-        }
-
         public DescriptionRowView CreateSpaceShipDescriptionRowView()
         {
             GameObject descriptionRow = GameObject.Instantiate(_assetsProvider.GetSpaceShipDescriptionRowViewPrefab(), _rootTransformsProvider.UIRoot);

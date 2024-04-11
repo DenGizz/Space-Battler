@@ -16,7 +16,6 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         GameObject GetPauseResumeUIPrefab();
         GameObject GetWeaponDescriptionRowViewPrefab();
         GameObject GetWeaponSelectionPanelPrefab();
-        GameObject GetSlotForSelectWeaponPrefab();
         GameObject GetSpaceShipSelectionPanelPrefab();
         GameObject GetSpaceShipDescriptionRowViewPrefab();
 
