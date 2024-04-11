@@ -51,7 +51,10 @@ namespace Assets.Scripts.AI.UnitsAI
                 return;
 
             if (_controlledSpaceShip.Weapons == null || !_controlledSpaceShip.Weapons.Any())
+            {
                 Debug.Log($"{gameObject.name} does`nt have weapon to attack.");
+                return;
+            }
 
             foreach(var weapon in _controlledSpaceShip.Weapons)
                 if (weapon.CanShoot)
