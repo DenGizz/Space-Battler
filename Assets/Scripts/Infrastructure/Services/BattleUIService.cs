@@ -15,7 +15,7 @@ namespace Assets.Scripts.Infrastructure.Services
     {
         private readonly IUIFactory _uiFactory;
 
-        private BattleUI _battleUI;
+        public BattleUI BattleUI { get; private set; }
         private GameObject _battleUIGameObject;
 
         [Inject]
@@ -26,17 +26,17 @@ namespace Assets.Scripts.Infrastructure.Services
 
         public void CreateBattleUI()
         {
-            (_battleUI, _battleUIGameObject) = _uiFactory.CreateBattleUI();
+            (BattleUI, _battleUIGameObject) = _uiFactory.CreateBattleUI();
         }
 
         public void SetBattle(Battle battle)
         {
-            _battleUI.SetBattle(battle);
+            BattleUI.ShowBattleView(battle);
         }
 
         public void DestroyBattleUI()
         {
-            _battleUI = null;
+            BattleUI = null;
             GameObject.Destroy(_battleUIGameObject);
         }
     }

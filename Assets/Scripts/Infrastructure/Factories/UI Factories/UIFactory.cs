@@ -25,7 +25,8 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
 
         public (BattleUI battleUIm, GameObject gameObject) CreateBattleUI()
         {
-            GameObject battleUI = GameObject.Instantiate(_assetsProvider.GetBattleUIPrefab(), _rootTransformsProvider.UIRoot);
+            GameObject battleUI = _instantiator.InstantiatePrefab(_assetsProvider.GetBattleUIPrefab(), _rootTransformsProvider.UIRoot);
+
 
             return (battleUI.GetComponentInChildren<BattleUI>(), battleUI);
         }
