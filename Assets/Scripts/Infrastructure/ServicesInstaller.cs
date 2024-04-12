@@ -20,6 +20,7 @@ namespace Assets.Scripts.Infrastructure
             BindBattleServices();
             BindUI();
 
+            Container.Bind<IWeaponAttachService>().To<WeaponAttachService>().AsSingle();
             Container.Bind<ISpaceShipFromSetupFactory>().To<SpaceShipFromSetupFactory>().AsSingle();
             Container.Bind<IRandomSetupService>().To<RandomSetupService>().AsSingle();
             Container.Bind<IStatesFactory>().To<StatesFactory>().AsSingle();

@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.SpaceShips;
+﻿using Assets.Scripts.Infrastructure.Services;
+using Assets.Scripts.SpaceShips;
 using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Weapons;
 using Assets.Scripts.Weapons.WeaponConfigs;
@@ -10,11 +11,13 @@ namespace Assets.Scripts.Infrastructure.Factories
     {
         private  readonly ISpaceShipFactory _spaceShipFactory;
         private readonly IWeaponFactory _weaponFactory;
+        private readonly IWeaponAttachService _weaponAttachService;
 
-        public SpaceShipFromSetupFactory(ISpaceShipFactory spaceShipFactory, IWeaponFactory weaponFactory)
+        public SpaceShipFromSetupFactory(ISpaceShipFactory spaceShipFactory, IWeaponFactory weaponFactory, IWeaponAttachService weaponAttachService)
         {
             _spaceShipFactory = spaceShipFactory;
             _weaponFactory = weaponFactory;
+            _weaponAttachService = weaponAttachService;
         }
 
         public ISpaceShip CreateSpaceShipFromSetup(SpaceShipSetup setup, Vector3 position, float zRotation)
@@ -27,7 +30,7 @@ namespace Assets.Scripts.Infrastructure.Factories
                     continue;
 
                 IWeapon weapon = _weaponFactory.CreateWeapon(weaponType, position + Random.insideUnitSphere, zRotation);
-                player.AddWeapon(weapon);
+                _weaponAttachService.AttachWeaponToSpaceShip(player, weapon);
             }
 
             return player;
