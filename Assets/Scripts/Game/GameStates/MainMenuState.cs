@@ -26,10 +26,8 @@ namespace Assets.Scripts.Game.GameStates
             _mainMenuUi = _uiFactory.CreateMainMenuUi();
             _mainMenuUi.OnStartBattleButtonClicked += OnStartBattleButtonClicked;
 
-            return;
             if (_battleSetupProvider.BattleSetup != null)
             {
-                return;
                 _mainMenuUi.EnemySetup = _battleSetupProvider.BattleSetup.EnemySetup;
                 _mainMenuUi.PlayerSetup = _battleSetupProvider.BattleSetup.PlayerSetup;
             }
