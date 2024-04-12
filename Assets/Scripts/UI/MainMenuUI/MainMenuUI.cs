@@ -14,11 +14,21 @@ namespace Assets.Scripts.UI
         public SpaceShipSetup PlayerSetup
         {
             get => new SpaceShipSetup(_playerShipSetup.SpaceShipType, _playerShipSetup.WeaponTypes);
+            set
+            {
+                _playerShipSetup.SpaceShipType = value.SpaceShipType;
+                _playerShipSetup.WeaponTypes = value.WeaponTypes;
+            }
         }
 
         public SpaceShipSetup EnemySetup
         {
             get => new SpaceShipSetup(_enemyShipSetup.SpaceShipType, _enemyShipSetup.WeaponTypes);
+            set
+            {
+                _enemyShipSetup.SpaceShipType = value.SpaceShipType;
+                _enemyShipSetup.WeaponTypes = value.WeaponTypes;
+             }
         }
 
 
