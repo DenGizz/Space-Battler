@@ -36,7 +36,7 @@ namespace Assets.Scripts.Game.GameStates
         {
             _battle = args;
             _battle.StartBattle();
-
+            _battleTickService.IsPaused = false;
             PauseResumeUI pauseMenu = _uiFactory.CreatePauseResumeUi();
             pauseMenu.OnPauseContinueButtonClicked += OnPauseContinueButtonClicked;
 
@@ -54,9 +54,9 @@ namespace Assets.Scripts.Game.GameStates
             _battle.StopBattle();
             _battleUiService.BattleUi.HideBattleView();
             _battleUiService.BattleUi.ShowWinner(winner, _battle.BattleData.PlayerSpaceShip == winner);
+            _battleTickService.IsPaused = true;
 
-            System.Threading.Thread.Sleep(3000);
-            _gameStateMachine.EnterState<CleanUpBattleState, Battle>(_battle);
+            _battleUiService.BattleUi.OnReturnToMainMenuButtonClicked += OnPauseMenuReturnToMainMenuButtonClicked;
         }
 
         private void OnPauseContinueButtonClicked()
@@ -71,6 +71,11 @@ namespace Assets.Scripts.Game.GameStates
                 _battleTickService.IsPaused = false;
                 _battle.ResumeBattle();
             }
+        }
+
+        private void OnPauseMenuReturnToMainMenuButtonClicked()
+        {
+            _gameStateMachine.EnterState<CleanUpBattleState, Battle>(_battle);
         }
     }
 }
