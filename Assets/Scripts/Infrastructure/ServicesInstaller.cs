@@ -67,6 +67,10 @@ namespace Assets.Scripts.Infrastructure
             Container.Bind<BattleTickService>().AsSingle();
             Container.Bind<IBattleTickService>().To<BattleTickService>().FromResolve();
             Container.Bind<ITickable>().To<BattleTickService>().FromResolve();
+
+            Container.Bind<ProjectileAutoDestroyService>().AsSingle();
+            Container.Bind<IProjectileAutoDestroyService>().To<ProjectileAutoDestroyService>().FromResolve();
+            Container.Bind<ITickable>().To<ProjectileAutoDestroyService>().FromResolve();
         }
     }
 }

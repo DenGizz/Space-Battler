@@ -15,9 +15,10 @@ namespace Assets.Scripts.ScriptableObjects
         private float _speed => _projectileDescriptor.Speed;
         private float _damage;
 
-        public IDamagable Target { get; private set; }
+        public ISpaceShip Target { get; private set; }
 
         public bool IsLunched { get; private set; }
+        public bool IsReachedTarget => Vector3.Distance(transform.position, Target.Position) < 0.1f;
 
         [SerializeField] private ProjectileDescriptor _projectileDescriptor;
 
