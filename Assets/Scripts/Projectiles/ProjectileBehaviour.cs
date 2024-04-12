@@ -12,39 +12,22 @@ namespace Assets.Scripts.ScriptableObjects
 {
     public class ProjectileBehaviour : MonoBehaviour
     {
-        private float _speed => _projectileDescriptor.Speed;
+        public float Speed => _projectileDescriptor.Speed;
         private float _damage;
 
         public ISpaceShip Target { get; private set; }
-
-        public bool IsLunched { get; private set; }
         public bool IsReachedTarget => Vector3.Distance(transform.position, Target.Position) < 0.1f;
+        public Action<ISpaceShip> OnTargetChanged;
 
         [SerializeField] private ProjectileDescriptor _projectileDescriptor;
 
-        private IAutomoveMove _automove;
-
-        private void Awake()
-        {
-            _automove = GetComponentInChildren<IAutomoveMove>();
-        }
 
         public void Lunch(ISpaceShip target, float damage)
         {
             Target = target;
-            IsLunched = true;
-            _automove.Speed = _projectileDescriptor.Speed;
-            _automove.IsMoving = true;
-            _automove.EndPoint = target.Position;
             _damage = damage;
-        }
 
-        public void ResetProjectile()
-        {
-            Target = null;
-            IsLunched = false;
-            _damage = 0;
-            _automove.IsMoving = false;
+            OnTargetChanged?.Invoke(target);
         }
     }
 }

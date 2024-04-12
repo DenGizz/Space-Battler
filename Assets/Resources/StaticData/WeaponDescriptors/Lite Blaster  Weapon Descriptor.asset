@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lite Blaster  Weapon Descriptor
   m_EditorClassIdentifier: 
   _weaponType: 4
-  _projectileType: 1
+  _projectileType: 4
   _damage: 6.5
   _coldDownTime: 1
   _sprite: {fileID: 21300000, guid: 67c5b0077db987a47ad7b2142b99c96a, type: 3}
