@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Bullet Projectile Descriptor
   m_EditorClassIdentifier: 
   _projectileType: 1
-  _speed: 2
+  _speed: 25
   _sprite: {fileID: 21300000, guid: ee3a3bc9abcbb92458866fc0a86b0f06, type: 3}
   _prefab: {fileID: 4694740808256190424, guid: c57795b84c976ec479605262e62bf7aa, type: 3}

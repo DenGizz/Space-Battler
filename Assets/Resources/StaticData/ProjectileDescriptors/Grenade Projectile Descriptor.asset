@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Grenade Projectile Descriptor
   m_EditorClassIdentifier: 
   _projectileType: 3
-  _speed: 0.85
+  _speed: 15
   _sprite: {fileID: 21300000, guid: ee3a3bc9abcbb92458866fc0a86b0f06, type: 3}
   _prefab: {fileID: 0}
