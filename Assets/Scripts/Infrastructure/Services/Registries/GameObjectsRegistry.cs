@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Scripts.ScriptableObjects;
 using Assets.Scripts.SpaceShips;
 using Assets.Scripts.Weapons;
 using UnityEngine;
@@ -9,11 +10,13 @@ namespace Assets.Scripts.Infrastructure.Services.Registries
     {
         private readonly Dictionary<ISpaceShip, GameObject> _spaceShipsGameObjects;
         private readonly Dictionary<IWeapon, GameObject> _weaponGameObjects;
+        private readonly Dictionary<ProjectileBehaviour, GameObject> _projectileGameObjects;
 
         public GameObjectsRegistry()
         {
             _spaceShipsGameObjects = new Dictionary<ISpaceShip, GameObject>();
             _weaponGameObjects = new Dictionary<IWeapon, GameObject>();
+            _projectileGameObjects = new Dictionary<ProjectileBehaviour, GameObject>();
         }
 
         public GameObject GetSpaceShipGameObject(ISpaceShip spaceShip)
@@ -26,14 +29,29 @@ namespace Assets.Scripts.Infrastructure.Services.Registries
             return _weaponGameObjects[weapon];
         }
 
-        public void RegisterGameObject(ISpaceShip spaceShip, GameObject gameObject)
+        public GameObject GetProjectileGameObject(ProjectileBehaviour projectile)
+        {
+            return _projectileGameObjects[projectile];
+        }
+
+        public void RegisterProjectileGameObject(ProjectileBehaviour projectile, GameObject gameObject)
+        {
+            _projectileGameObjects.Add(projectile, gameObject);
+        }
+
+        public void RegisterSpaceShipGameObject(ISpaceShip spaceShip, GameObject gameObject)
         {
             _spaceShipsGameObjects.Add(spaceShip, gameObject);
         }
 
-        public void RegisterGameObject(IWeapon weapon, GameObject gameObject)
+        public void RegisterWeaponGameObject(IWeapon weapon, GameObject gameObject)
         {
             _weaponGameObjects.Add(weapon, gameObject);  
+        }
+
+        public void UnRegisterAllProjectiles()
+        {
+            _spaceShipsGameObjects.Clear();
         }
 
         public void UnRegisterGameObject(GameObject gameObject)

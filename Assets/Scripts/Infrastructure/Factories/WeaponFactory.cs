@@ -34,7 +34,7 @@ namespace Assets.Scripts.Infrastructure.Factories
             WeaponBehaviour weaponBehaviour = weaponGameObject.GetComponentInChildren<WeaponBehaviour>();
             _battleTickService.AddTickable(weaponBehaviour);
             IWeapon weapon = weaponBehaviour;
-            _gameObjectRegistry.RegisterGameObject(weapon, weaponGameObject);
+            _gameObjectRegistry.RegisterWeaponGameObject(weapon, weaponGameObject);
             return weapon;
         }
     }

@@ -39,7 +39,7 @@ namespace Assets.Scripts.Infrastructure.Factories
             ICombatAi combatAi = gameObject.GetComponent<ICombatAi>();
 
             _combatAiRegistry.RegisterAi(spaceShip, combatAi);
-            _gameObjectRegistry.RegisterGameObject(spaceShip, gameObject);
+            _gameObjectRegistry.RegisterSpaceShipGameObject(spaceShip, gameObject);
 
             return spaceShip;
         }

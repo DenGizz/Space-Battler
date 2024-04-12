@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Infrastructure.Services.CoreServices;
+using Assets.Scripts.Infrastructure.Services.Registries;
 using Assets.Scripts.Projectiles;
 using Assets.Scripts.ScriptableObjects;
 using System;
@@ -17,13 +18,17 @@ namespace Assets.Scripts.Infrastructure.Factories
         private readonly IInstantiator _instantiator;
         private readonly IRootTransformsProvider _rootTransformsProvider;
         private readonly IBattleTickService _battleTickService;
+        private readonly IProjectilesRegister _projectilesRegister;
+        private readonly IGameObjectRegistry _gameObjectRegistry;
 
-        public ProjectileFactory(IStaticDataService staticDataService, IInstantiator instantiator, IRootTransformsProvider rootTransformsProvider, IBattleTickService battleTickService)
+        public ProjectileFactory(IStaticDataService staticDataService, IInstantiator instantiator, IRootTransformsProvider rootTransformsProvider, IBattleTickService battleTickService, IProjectilesRegister projectilesRegister, IGameObjectRegistry gameObjectRegistry)
         {
             _staticDataService = staticDataService;
             _instantiator = instantiator;
             _rootTransformsProvider = rootTransformsProvider;
             _battleTickService = battleTickService;
+            _projectilesRegister = projectilesRegister;
+            _gameObjectRegistry = gameObjectRegistry;
         }
 
 
@@ -36,6 +41,10 @@ namespace Assets.Scripts.Infrastructure.Factories
 
             foreach (ITickable tickable in tickables)
                 _battleTickService.AddTickable(tickable);
+
+            ProjectileBehaviour projectileBehaviour = projectile.GetComponent<ProjectileBehaviour>();
+            _projectilesRegister.RegisterProjectile(projectileBehaviour);
+            _gameObjectRegistry.RegisterProjectileGameObject(projectileBehaviour, projectile);
 
             return projectile.GetComponent<ProjectileBehaviour>();
         }

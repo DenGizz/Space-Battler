@@ -15,7 +15,6 @@ namespace Assets.Scripts.Projectiles
             if (!IsMoving)
                 return;
 
-            Debug.Log(Vector3.MoveTowards(transform.position, EndPoint, Speed * Time.deltaTime));
             transform.position = Vector3.MoveTowards(transform.position, EndPoint, Speed * Time.deltaTime);
         }
     }
