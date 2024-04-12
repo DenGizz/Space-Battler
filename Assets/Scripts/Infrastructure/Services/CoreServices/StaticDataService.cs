@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Projectiles;
 using Assets.Scripts.ScriptableObjects;
 using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Weapons.WeaponConfigs;
@@ -47,6 +48,11 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         public SpaceShipDescriptor GetSpaceShipDescriptor(SpaceShipType spaceShipType)
         {
             return _assetsProvider.GetSpaceShipDescriptor(spaceShipType);
+        }
+
+        public ProjectileDescriptor GetProjectileDescriptor(ProjectileType projectileType)
+        {
+            return _assetsProvider.GetProjectileDescriptor(projectileType);
         }
     }
 }

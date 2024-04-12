@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.SpaceShips;
+﻿using Assets.Scripts.ScriptableObjects;
+using Assets.Scripts.SpaceShips;
 using Assets.Scripts.Weapons;
 using UnityEngine;
 

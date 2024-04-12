@@ -39,7 +39,7 @@ namespace Assets.Scripts.SpaceShips
             HealthAttribute.TakeDamage(damageAmount);
         }
     
-        public void Attack(IWeapon weapon, IDamagable target)
+        public void Attack(IWeapon weapon, ISpaceShip target)
         {
             weapon.Shoot(target);
         }

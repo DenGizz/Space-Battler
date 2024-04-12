@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Assets.Scripts.ScriptableObjects;
 using Assets.Scripts.SpaceShips.SpaceShipConfigs;
+using Assets.Scripts.Projectiles;
 
 namespace Assets.Scripts.Infrastructure.Services.CoreServices
 {
@@ -18,5 +19,6 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         IEnumerable<SpaceShipDescriptor> GetSpaceShipDescriptors();
         WeaponDescriptor GetWeaponDescriptor(WeaponType weaponType);
         SpaceShipDescriptor GetSpaceShipDescriptor(SpaceShipType spaceShipType);
+        ProjectileDescriptor GetProjectileDescriptor(ProjectileType projectileType);
     }
 }

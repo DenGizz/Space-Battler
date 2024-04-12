@@ -3,6 +3,7 @@ using Assets.Scripts.Weapons.WeaponConfigs;
 using System.Collections.Generic;
 using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using UnityEngine;
+using Assets.Scripts.Projectiles;
 
 namespace Assets.Scripts.Infrastructure.Services.CoreServices
 {
@@ -21,7 +22,9 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
 
         IEnumerable<WeaponDescriptor> GetWeaponDescriptors();
         IEnumerable<SpaceShipDescriptor> GetSpaceShipsDescriptors();
+        IEnumerable<ProjectileDescriptor> GetProjectileDescriptors();
         SpaceShipDescriptor GetSpaceShipDescriptor(SpaceShipType spaceShipType);
         WeaponDescriptor GetWeaponDescriptor(WeaponType weaponType);
+        ProjectileDescriptor GetProjectileDescriptor(ProjectileType projectileType);
     }
 }

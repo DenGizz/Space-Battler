@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "SpaceShipConfig", menuName = "StaticData/SpaceShipConfig", order = 0)]
+    [CreateAssetMenu(fileName = "SpaceShipDescriptor", menuName = "StaticData/SpaceShipDescriptor", order = 0)]
     public class SpaceShipDescriptor : ScriptableObject
     {
         public SpaceShipType SpaceShipType  => _spaceShipType;

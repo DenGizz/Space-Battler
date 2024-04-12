@@ -8,6 +8,6 @@ namespace Assets.Scripts.Weapons
         float ColdDownTime { get; }
 
         bool CanShoot { get; }
-        void Shoot(IDamagable target);
+        void Shoot(ISpaceShip target);
     }
 }
