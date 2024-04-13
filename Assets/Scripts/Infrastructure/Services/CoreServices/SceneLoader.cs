@@ -23,11 +23,8 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         {
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
             while (!asyncLoad.isDone)
-            {
                 yield return null;
-            }
 
-            // Вызов события после загрузки сцены
             onSceneLoaded?.Invoke();
         }
     }
