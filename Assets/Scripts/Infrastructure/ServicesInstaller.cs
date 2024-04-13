@@ -21,6 +21,8 @@ namespace Assets.Scripts.Infrastructure
             BindBattleServices();
             BindUI();
 
+            Container.Bind<ISpaceShipDestroyer>().To<SpaceShipDestoyer>().AsSingle();
+            Container.Bind<IWeaponDestroyer>().To<WeaponDestroyer>().AsSingle();
             Container.Bind<IProjectileDestroyer>().To<ProjectileDestroyer>().AsSingle();
             Container.Bind<IProjectilesRegister>().To<ProjectilesRegister>().AsSingle();
             Container.Bind<IProjectileFactory>().To<ProjectileFactory>().AsSingle();
