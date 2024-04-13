@@ -1,3 +1,4 @@
+using Assets.Scripts.Infrastructure.Destroyers;
 using Assets.Scripts.Infrastructure.Factories;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services;
@@ -20,6 +21,7 @@ namespace Assets.Scripts.Infrastructure
             BindBattleServices();
             BindUI();
 
+            Container.Bind<IProjectileDestroyer>().To<ProjectileDestroyer>().AsSingle();
             Container.Bind<IProjectilesRegister>().To<ProjectilesRegister>().AsSingle();
             Container.Bind<IProjectileFactory>().To<ProjectileFactory>().AsSingle();
             Container.Bind<IWeaponAttachService>().To<WeaponAttachService>().AsSingle();

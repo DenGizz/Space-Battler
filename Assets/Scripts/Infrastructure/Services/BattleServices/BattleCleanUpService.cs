@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Battles;
+using Assets.Scripts.Infrastructure.Destroyers;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.Infrastructure.Services.Registries;
 using Assets.Scripts.ScriptableObjects;
@@ -14,18 +15,17 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
         private readonly ICombatAiRegistry _combatAIRegistry;
         private readonly IBattleUiService _battleUIService;
         private readonly IProjectilesRegister _projectilesRegister;
-        private readonly IBattleTickService _battleTickService;
-        private readonly IProjectileAutoDestroyService _projectileAutoDestroyService;
+        private readonly IProjectileDestroyer _projectileDestroyer;
 
         [Inject]
-        public BattleCleanUpService(IGameObjectRegistry gameObjectRegistry, ICombatAiRegistry combatAIRegistry, IBattleUiService battleUIService, IProjectilesRegister projectilesRegister, IBattleTickService battleTickService, IProjectileAutoDestroyService projectileAutoDestroyService)
+        public BattleCleanUpService(IGameObjectRegistry gameObjectRegistry, ICombatAiRegistry combatAIRegistry, IBattleUiService battleUIService, 
+            IProjectilesRegister projectilesRegister, IProjectileDestroyer projectileDestroyer)
         {
             _gameObjectRegistry = gameObjectRegistry;
             _combatAIRegistry = combatAIRegistry;
             _battleUIService = battleUIService;
             _projectilesRegister = projectilesRegister;
-            _battleTickService = battleTickService;
-            _projectileAutoDestroyService = projectileAutoDestroyService;
+            _projectileDestroyer = projectileDestroyer;
         }
 
         public void CleanUpBattle(Battle battle)
@@ -70,19 +70,7 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
 
             foreach (var projectile in sss)
             {
-                _projectileAutoDestroyService.UntrackProjectile(projectile);
-                _projectilesRegister.UnRegisterProjectile(projectile);
-                GameObject projectileGameObject = _gameObjectRegistry.GetProjectileGameObject(projectile);
-                
-                _gameObjectRegistry.UnRegisterGameObject(projectileGameObject);
-
-                ITickable[] s = projectileGameObject.GetComponentsInChildren<ITickable>();
-                foreach (ITickable ss in s)
-                {
-                    _battleTickService.RemoveTickable(ss);
-                }
-
-                GameObject.Destroy(projectileGameObject);
+                _projectileDestroyer.Destroy(projectile);
             }
         }
     }

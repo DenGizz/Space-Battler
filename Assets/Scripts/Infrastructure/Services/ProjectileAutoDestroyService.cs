@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Infrastructure.Services.CoreServices;
+﻿using Assets.Scripts.Infrastructure.Destroyers;
+using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.Infrastructure.Services.Registries;
 using Assets.Scripts.ScriptableObjects;
 using System;
@@ -13,19 +14,14 @@ namespace Assets.Scripts.Infrastructure.Services
 {
     public class ProjectileAutoDestroyService : IProjectileAutoDestroyService, ITickable
     {
-
-        private readonly IGameObjectRegistry _gameObjectRegistry;
-        private readonly IProjectilesRegister _projectilesRegister;
-        private readonly IBattleTickService _battleTickService;
+        private readonly IProjectileDestroyer _projectileDestroyer;
 
         private readonly List<ProjectileBehaviour> _projectiles;
 
         [Inject]
-        public ProjectileAutoDestroyService(IGameObjectRegistry gameObjectRegistry, IProjectilesRegister projectilesRegister, IBattleTickService battleTickService)
+        public ProjectileAutoDestroyService(IProjectileDestroyer projectileDestroyer)
         {
-            _gameObjectRegistry = gameObjectRegistry;
-            _projectilesRegister = projectilesRegister;
-            _battleTickService = battleTickService;
+            _projectileDestroyer = projectileDestroyer;
             _projectiles = new List<ProjectileBehaviour>();
         }
 
@@ -39,32 +35,22 @@ namespace Assets.Scripts.Infrastructure.Services
             _projectiles.Remove(projectile);
         }
 
-        private void DestroyProjectile(ProjectileBehaviour projectile)
-        {
-           GameObject gameObject = _gameObjectRegistry.GetProjectileGameObject(projectile);
-
-            GameObject.Destroy(gameObject);
-            _gameObjectRegistry.UnRegisterGameObject(gameObject);
-
-            _projectilesRegister.UnRegisterProjectile(projectile);
-
-
-            ITickable[] s = gameObject.GetComponentsInChildren<ITickable>();
-            foreach (ITickable ss in s)
-            {
-                _battleTickService.RemoveTickable(ss);
-            }
-        }
 
         public void Tick()
         {
             List< ProjectileBehaviour > projectilesToDelete = new List<ProjectileBehaviour>();
             foreach (var projectile in _projectiles)
             {
+                if(projectile == null)
+                {
+                    projectilesToDelete.Add(projectile);
+                    continue;
+                }
+
                 if (!projectile.IsReachedTarget) 
                     continue;
 
-                DestroyProjectile(projectile);
+                _projectileDestroyer.Destroy(projectile);
                 projectilesToDelete.Add(projectile);
             }
 
