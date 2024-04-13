@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Heavy Defender SpaceShip Descriptor
   m_EditorClassIdentifier: 
   _spaceShipType: 1
-  _maxHealth: 575
+  _maxHealth: 100
   _weaponSlotsCount: 2
   _sprite: {fileID: 21300000, guid: 905d10c8864f6e344b7bcbe2071c411e, type: 3}
   _prefab: {fileID: 8985553459634921049, guid: fd32a6324c3bc9244a6d7358d755a8b8, type: 3}
