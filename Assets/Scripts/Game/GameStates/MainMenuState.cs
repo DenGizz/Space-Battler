@@ -24,13 +24,14 @@ namespace Assets.Scripts.Game.GameStates
         public void Enter()
         {
             _mainMenuUi = _uiFactory.CreateMainMenuUi();
+
+            BattleSetup savedBattleSetup = _battleSetupProvider.BattleSetup;
+
+            if (savedBattleSetup != null)
+                _mainMenuUi.LoadBattleSetupInUi(savedBattleSetup);
+
             _mainMenuUi.OnStartBattleButtonClicked += OnStartBattleButtonClicked;
 
-            if (_battleSetupProvider.BattleSetup != null)
-            {
-                _mainMenuUi.EnemySetup = _battleSetupProvider.BattleSetup.EnemySetup;
-                _mainMenuUi.PlayerSetup = _battleSetupProvider.BattleSetup.PlayerSetup;
-            }
         }
 
         public void Exit()
@@ -40,7 +41,7 @@ namespace Assets.Scripts.Game.GameStates
 
         private void OnStartBattleButtonClicked()
         {
-            BattleSetup battleSetup = new BattleSetup(_mainMenuUi.PlayerSetup, _mainMenuUi.EnemySetup);
+            BattleSetup battleSetup = _mainMenuUi.CreateSetupFromUi();
 
             if (!BattleSetupValidator.IsBattleSetupValidForStartBattle(battleSetup))
                 return;

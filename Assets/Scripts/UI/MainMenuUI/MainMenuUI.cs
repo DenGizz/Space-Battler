@@ -1,4 +1,5 @@
 using System;
+using Assets.Scripts.Battles;
 using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +12,7 @@ namespace Assets.Scripts.UI
         [SerializeField] private SpaceShipSetupPresenter _playerShipSetup;
         [SerializeField] private SpaceShipSetupPresenter _enemyShipSetup;
 
-        public SpaceShipSetup PlayerSetup
+        private SpaceShipSetup PlayerSetup
         {
             get => new SpaceShipSetup(_playerShipSetup.SpaceShipType, _playerShipSetup.WeaponTypes);
             set
@@ -21,7 +22,7 @@ namespace Assets.Scripts.UI
             }
         }
 
-        public SpaceShipSetup EnemySetup
+        private SpaceShipSetup EnemySetup
         {
             get => new SpaceShipSetup(_enemyShipSetup.SpaceShipType, _enemyShipSetup.WeaponTypes);
             set
@@ -33,6 +34,18 @@ namespace Assets.Scripts.UI
 
 
         public event Action OnStartBattleButtonClicked;
+
+        public BattleSetup CreateSetupFromUi()
+        {
+            return new BattleSetup(PlayerSetup, EnemySetup);
+        }
+
+        public void LoadBattleSetupInUi(BattleSetup battleSetup)
+        {
+            PlayerSetup = battleSetup.PlayerSetup;
+            EnemySetup = battleSetup.EnemySetup;
+        }
+
 
         private void Awake()
         {
