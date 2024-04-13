@@ -37,6 +37,14 @@ public class SpaceShipSetupPresenter : MonoBehaviour
             .Where(weaponType => weaponType != WeaponType.None);
         set
         {
+            if (value == null)
+            {
+                foreach (var slot in _weaponSelectionSlots)
+                    slot.SelectedWeaponType = WeaponType.None;
+
+                return;
+            }
+
             int i = 0;
             foreach (var weaponType in value)
             {
@@ -84,7 +92,11 @@ public class SpaceShipSetupPresenter : MonoBehaviour
 
     private void OnSelectedSpaceShipTypeChangedEventHandler()
     {
-        SetWeaponSelectionSlotVidibility(_staticDataService.GetSpaceShipDescriptor(_spaceShipSelectionSlot.SelectedSpaceShipType).WeaponSlotsCount);
+        int visibleSlots = _spaceShipSelectionSlot.SelectedSpaceShipType == SpaceShipType.None ? 
+            0
+            : _staticDataService.GetSpaceShipDescriptor(_spaceShipSelectionSlot.SelectedSpaceShipType).WeaponSlotsCount;
+
+        SetWeaponSelectionSlotVidibility(visibleSlots);
 
         foreach (var weaponSelectionSlot in _weaponSelectionSlots)
             weaponSelectionSlot.SelectedWeaponType = WeaponType.None;

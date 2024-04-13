@@ -21,6 +21,7 @@ namespace Assets.Scripts.Infrastructure
             BindBattleServices();
             BindUI();
 
+            Container.Bind<IPersistentDataService>().To<PersistentDataService>().AsSingle();
             Container.Bind<ISpaceShipDestroyer>().To<SpaceShipDestoyer>().AsSingle();
             Container.Bind<IWeaponDestroyer>().To<WeaponDestroyer>().AsSingle();
             Container.Bind<IProjectileDestroyer>().To<ProjectileDestroyer>().AsSingle();

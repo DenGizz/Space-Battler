@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts.SpaceShips.SpaceShipConfigs
+﻿using System;
+
+namespace Assets.Scripts.SpaceShips.SpaceShipConfigs
 {
     public enum SpaceShipType 
     {

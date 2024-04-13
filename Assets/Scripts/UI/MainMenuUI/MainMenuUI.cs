@@ -17,6 +17,13 @@ namespace Assets.Scripts.UI
             get => new SpaceShipSetup(_playerShipSetup.SpaceShipType, _playerShipSetup.WeaponTypes);
             set
             {
+                if(value == null)
+                {
+                    _playerShipSetup.SpaceShipType = SpaceShipType.None;
+                    _playerShipSetup.WeaponTypes = null;
+                    return;
+                }
+
                 _playerShipSetup.SpaceShipType = value.SpaceShipType;
                 _playerShipSetup.WeaponTypes = value.WeaponTypes;
             }
@@ -27,6 +34,12 @@ namespace Assets.Scripts.UI
             get => new SpaceShipSetup(_enemyShipSetup.SpaceShipType, _enemyShipSetup.WeaponTypes);
             set
             {
+                if (value == null)
+                {
+                    _enemyShipSetup.SpaceShipType = SpaceShipType.None;
+                    _enemyShipSetup.WeaponTypes = null;
+                    return;
+                }
                 _enemyShipSetup.SpaceShipType = value.SpaceShipType;
                 _enemyShipSetup.WeaponTypes = value.WeaponTypes;
              }
