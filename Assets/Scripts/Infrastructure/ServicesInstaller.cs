@@ -21,6 +21,8 @@ namespace Assets.Scripts.Infrastructure
             BindBattleServices();
             BindUI();
 
+            Container.Bind<ISerializer>().To<NewtonJsonSerializer>().AsSingle();
+            Container.Bind<IFileSystem>().To<FileSystem>().AsSingle();
             Container.Bind<IPersistentDataService>().To<PersistentDataService>().AsSingle();
             Container.Bind<ISpaceShipDestroyer>().To<SpaceShipDestoyer>().AsSingle();
             Container.Bind<IWeaponDestroyer>().To<WeaponDestroyer>().AsSingle();
