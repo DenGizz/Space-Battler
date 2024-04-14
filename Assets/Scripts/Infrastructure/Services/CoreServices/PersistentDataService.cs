@@ -1,8 +1,10 @@
 ﻿using Assets.Scripts.Battles;
 using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Weapons.WeaponConfigs;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Json;
 using System.Text;
@@ -13,53 +15,52 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
 {
     public class PersistentDataService : IPersistentDataService
     {
-        //TODO: Mock implementation. Replace with real implementation
+        private readonly ISerializer _serializer;
+        private readonly IFileSystem _fileSystem;
+
+        private const string RelativeSaveDataPath = "SaveData";
+        private const string BattleSetupFileName = "BattleSetup.json";
+
+        public PersistentDataService(ISerializer serializer, IFileSystem fileSystem)
+        {
+            _serializer = serializer;
+            _fileSystem = fileSystem;
+        }
 
         public void SaveBattleSetup(BattleSetup battleSetup)
         {
-            SpaceShipSetup playerSetup = battleSetup.PlayerSetup;
-            SpaceShipSetup enemySetup = battleSetup.EnemySetup;
-
-            PlayerPrefs.SetInt("Player_SpaceShip", (int)playerSetup.SpaceShipType);
-            PlayerPrefs.SetInt("Player_WeaponCount", playerSetup.WeaponTypes.Count);
-
-            for (int i = 0; i < playerSetup.WeaponTypes.Count; i++)
-                PlayerPrefs.SetInt($"Player_Weapon_{i}", (int)playerSetup.WeaponTypes[i]);
-
-            PlayerPrefs.SetInt("Enemy_SpaceShip", (int)enemySetup.SpaceShipType);
-            PlayerPrefs.SetInt("Enemy_WeaponCount", enemySetup.WeaponTypes.Count);
-
-            for (int i = 0; i < enemySetup.WeaponTypes.Count; i++)
-                PlayerPrefs.SetInt($"Enemy_Weapon_{i}", (int)enemySetup.WeaponTypes[i]);
+            string json = _serializer.Serialize(battleSetup);
+            string path = GetBattleSetupSaveFilePath();
+            SaveToFile(path, json);
         }
 
         public BattleSetup LoadBattleSetup()
         {
-            int playerSpaceShip = PlayerPrefs.GetInt("Player_SpaceShip");
-            int playerWeaponCount = PlayerPrefs.GetInt("Player_WeaponCount");
-            int[] playerWeapons = new int[playerWeaponCount];
+            string path = GetBattleSetupSaveFilePath();
 
-            for (int i = 0; i < playerWeaponCount; i++)
-                playerWeapons[i] = PlayerPrefs.GetInt($"Player_Weapon_{i}");
+            if (!_fileSystem.IsFileExist(path))
+                return null;
 
-            SpaceShipType playerSpaceShipType = (SpaceShipType)playerSpaceShip;
-            List<WeaponType> playerWeaponTypes = playerWeapons.Select(w => (WeaponType)w).ToList();
+            string json = LoadFromFile(path);
+            return _serializer.Deserialize<BattleSetup>(json);
+        }
 
-            SpaceShipSetup playerSetup = new SpaceShipSetup(playerSpaceShipType, playerWeaponTypes);
+        private void SaveToFile(string path, string content)
+        {
+            if (!_fileSystem.IsFileExist(path))
+                _fileSystem.CreateTextFile(RelativeSaveDataPath,BattleSetupFileName );
 
-            int enemySpaceShip = PlayerPrefs.GetInt("Enemy_SpaceShip");
-            int enemyWeaponCount = PlayerPrefs.GetInt("Enemy_WeaponCount");
-            int[] enemyWeapons = new int[enemyWeaponCount];
+            _fileSystem.OverwriteTextFile(path, content);
+        }
 
-            for (int i = 0; i < enemyWeaponCount; i++)
-                enemyWeapons[i] = PlayerPrefs.GetInt($"Enemy_Weapon_{i}");
+        private string LoadFromFile(string path)
+        {
+            return _fileSystem.ReadTextFile(path);
+        }
 
-            SpaceShipType enemySpaceShipType = (SpaceShipType)enemySpaceShip;
-            List<WeaponType> enemyWeaponTypes = enemyWeapons.Select(w => (WeaponType)w).ToList();
-
-            SpaceShipSetup enemySetup = new SpaceShipSetup(enemySpaceShipType, enemyWeaponTypes);
-
-            return new BattleSetup(playerSetup, enemySetup);
+        private string GetBattleSetupSaveFilePath()
+        {
+            return Path.Combine(RelativeSaveDataPath, BattleSetupFileName);
         }
     }
 }
