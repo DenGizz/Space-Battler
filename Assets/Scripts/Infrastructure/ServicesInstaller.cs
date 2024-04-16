@@ -17,13 +17,15 @@ namespace Assets.Scripts.Infrastructure
         {
             BindCoreServices();
             BindUnitsManagementServices();
-            BindBattleObserver();
             BindBattleServices();
-            BindUI();
+            BindUiServices();
+        }
 
-            Container.Bind<ISerializer>().To<NewtonJsonSerializer>().AsSingle();
-            Container.Bind<IFileSystem>().To<FileSystem>().AsSingle();
-            Container.Bind<IPersistentDataService>().To<PersistentDataService>().AsSingle();
+        private void BindUnitsManagementServices()
+        {
+            Container.Bind<IWeaponFactory>().To<WeaponFactory>().AsSingle();
+            Container.Bind<ISpaceShipFactory>().To<SpaceShipFactory>().AsSingle();
+            Container.Bind<ICombatAiRegistry>().To<CombatAIRegistry>().AsSingle();
             Container.Bind<ISpaceShipDestroyer>().To<SpaceShipDestoyer>().AsSingle();
             Container.Bind<IWeaponDestroyer>().To<WeaponDestroyer>().AsSingle();
             Container.Bind<IProjectileDestroyer>().To<ProjectileDestroyer>().AsSingle();
@@ -32,27 +34,23 @@ namespace Assets.Scripts.Infrastructure
             Container.Bind<IWeaponAttachService>().To<WeaponAttachService>().AsSingle();
             Container.Bind<ISpaceShipFromSetupFactory>().To<SpaceShipFromSetupFactory>().AsSingle();
             Container.Bind<IRandomSetupService>().To<RandomSetupService>().AsSingle();
-            Container.Bind<IStatesFactory>().To<StatesFactory>().AsSingle();
-        }
-
-        private void BindUnitsManagementServices()
-        {
-            Container.Bind<IWeaponFactory>().To<WeaponFactory>().AsSingle();
-            Container.Bind<ISpaceShipFactory>().To<SpaceShipFactory>().AsSingle();
-            Container.Bind<IGameObjectRegistry>().To<GameObjectsRegistry>().AsSingle();
-            Container.Bind<ICombatAiRegistry>().To<CombatAIRegistry>().AsSingle();
         }
 
         private void BindCoreServices()
         {
+            Container.Bind<IPersistentDataService>().To<PersistentDataService>().AsSingle();
             Container.Bind<IRootTransformsProvider>().To<RootTransformsProvider>().AsSingle();
+            Container.Bind<ISerializer>().To<NewtonJsonSerializer>().AsSingle();
+            Container.Bind<IFileSystem>().To<FileSystem>().AsSingle();
             Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
             Container.Bind<ISceneLoader>().To<SceneLoader>().AsSingle();
             Container.Bind<ICoroutineRunner>().To<CoroutineRunner>().AsSingle();
             Container.Bind<IAssetsProvider>().To<AssetsProvider>().AsSingle();
+            Container.Bind<IStatesFactory>().To<StatesFactory>().AsSingle();
+            Container.Bind<IGameObjectRegistry>().To<GameObjectsRegistry>().AsSingle();
         }
 
-        private void BindUI()
+        private void BindUiServices()
         {
             Container.Bind<IBattleUiService>().To<BattleUIService>().AsSingle();
             Container.Bind<IUiFactory>().To<UIFactory>().AsSingle();
@@ -63,10 +61,7 @@ namespace Assets.Scripts.Infrastructure
             Container.Bind<IBattleSetupProvider>().To<BattleSetupProvider>().AsSingle();
             Container.Bind<IBattleFactory>().To<BattleFactory>().AsSingle();
             Container.Bind<IBattleCleanUpService>().To<BattleCleanUpService>().AsSingle();
-        }
 
-        private void BindBattleObserver()
-        {
             Container.Bind<BattleObserver>().AsSingle();
             Container.Bind<IBattleObserver>().To<BattleObserver>().FromResolve();
             Container.Bind<ITickable>().To<BattleObserver>().FromResolve();
