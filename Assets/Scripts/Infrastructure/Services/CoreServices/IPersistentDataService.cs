@@ -9,7 +9,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
 {
     public interface IPersistentDataService
     {
-        public void SaveBattleSetup(BattleSetup battleSetup);
-        public BattleSetup LoadBattleSetup();
+        void SaveBattleSetup(BattleSetup battleSetup);
+        BattleSetup LoadBattleSetup();
     }
 }
