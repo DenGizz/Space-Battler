@@ -13,10 +13,10 @@ namespace Assets.Scripts.Game.GameStates
     {
         private readonly IBattleObserver _battleObserver;
         private readonly IUiFactory _uiFactory;
-        private readonly StateMachine _gameStateMachine;
         private readonly IBattleTickService _battleTickService;
         private readonly IBattleUiService _battleUiService;
 
+        private readonly StateMachine _gameStateMachine;
         private Battle _battle;
 
         public BattleState(StateMachine gameStateMachine, IBattleObserver battleObserver, IUiFactory uiFactory, IBattleTickService battleTickService, IBattleUiService battleUIService)
