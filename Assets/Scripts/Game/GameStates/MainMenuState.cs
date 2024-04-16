@@ -32,13 +32,15 @@ namespace Assets.Scripts.Game.GameStates
             BattleSetup sessionBattleSetup = _battleSetupProvider.BattleSetup;
 
             if (sessionBattleSetup == null)
+            {
                 sessionBattleSetup = _persistentDataService.LoadBattleSetup();
+                _battleSetupProvider.BattleSetup = sessionBattleSetup;
+            }
 
             if (sessionBattleSetup != null)
                 _mainMenuUi.LoadBattleSetupInUi(sessionBattleSetup);
 
             _mainMenuUi.OnStartBattleButtonClicked += OnStartBattleButtonClicked;
-
         }
 
         public void Exit()
