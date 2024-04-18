@@ -20,6 +20,8 @@ namespace Assets.Scripts.Projectiles
             _projectileBehaviour = GetComponent<ProjectileBehaviour>();
             _projectileBehaviour.OnTargetChanged += OnProjectileTargetChanged;
             Speed = _projectileBehaviour.Speed;
+
+            _projectileBehaviour.OnReset += ResetBehaviour;
         }
 
         public void Tick()
@@ -40,6 +42,12 @@ namespace Assets.Scripts.Projectiles
 
             IsMoving = true;
             EndPoint = target.Position;
+        }
+
+        public void ResetBehaviour()
+        {
+            IsMoving = false;
+            EndPoint = Vector3.zero;
         }
     }
 }

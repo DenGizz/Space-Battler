@@ -14,5 +14,6 @@ namespace Assets.Scripts.Infrastructure.Services
         void Initialize();
         ProjectileBehaviour GetProjectile(ProjectileType type);
         void ReleaseProjectile(ProjectileBehaviour projectile);
+        void ClearAll();
     }
 }

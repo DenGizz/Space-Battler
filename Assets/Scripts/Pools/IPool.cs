@@ -8,5 +8,6 @@ namespace Assets.Scripts.Pools
     {
         T Get();
         void Release(T element);
+        void Clear();
     }
 }

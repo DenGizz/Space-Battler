@@ -15,6 +15,7 @@ namespace Assets.Scripts.Projectiles
         private void Awake()
         {
             _projectileBehaviour = GetComponent<ProjectileBehaviour>();
+            _projectileBehaviour.OnReset += ResetBehaviour;
         }
 
         public void Tick()
@@ -36,6 +37,11 @@ namespace Assets.Scripts.Projectiles
             var target = _projectileBehaviour.Target;
             var damage = _projectileBehaviour.Damage;
             target.TakeDamage(damage);
+        }
+
+        public void ResetBehaviour()
+        {
+            IsDamageDealt = false;
         }
     }
 }

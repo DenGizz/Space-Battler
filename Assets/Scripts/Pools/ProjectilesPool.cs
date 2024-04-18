@@ -18,6 +18,7 @@ namespace Assets.Scripts.Pools
 
         private readonly Func<ProjectileBehaviour> _createFunc;
         private readonly Action<ProjectileBehaviour> _actionOnRelease;
+        private readonly Action<ProjectileBehaviour> _actionOnGet;
         private readonly Action<ProjectileBehaviour> _actionOnDestroy;
         private readonly ObjectPool<ProjectileBehaviour> _objectPool;
 
@@ -29,12 +30,15 @@ namespace Assets.Scripts.Pools
 
             _createFunc = createFunc;
             _actionOnRelease = actionOnRelease;
+            _actionOnGet = actionOnGet;
             _actionOnDestroy = actionOnDestroy;
+
 
             _objectPool = new ObjectPool<ProjectileBehaviour>(
                 _createFunc,
                 actionOnRelease: _actionOnRelease,
                 actionOnDestroy: _actionOnDestroy,
+                actionOnGet: _actionOnGet,
                 defaultCapacity: 10,
                 maxSize: 100
                 );
@@ -51,7 +55,6 @@ namespace Assets.Scripts.Pools
             _objectPool.Release(element);
         }
 
-
         private ProjectileBehaviour createFunc()
         {
             ProjectileBehaviour projectile = _projectileFactory.CreateProjectile(_projectileType, Vector3.zero, 0);
@@ -60,12 +63,23 @@ namespace Assets.Scripts.Pools
 
         private void actionOnRelease(ProjectileBehaviour projectile)
         {
+            projectile.ResetBehaviour();
             projectile.gameObject.SetActive(false);
+        }
+
+        private void actionOnGet(ProjectileBehaviour projectile)
+        {
+            projectile.gameObject.SetActive(true);
         }
 
         private void actionOnDestroy(ProjectileBehaviour projectile)
         {
             _projectileDestroyer.Destroy(projectile);
+        }
+
+        public void Clear()
+        {
+            _objectPool.Clear();
         }
     }
 }

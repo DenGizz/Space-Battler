@@ -15,21 +15,25 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
         private readonly IProjectileDestroyer _projectileDestroyer;
         private readonly IWeaponDestroyer _weaponDestroyer;
         private readonly ISpaceShipDestroyer _spaceShipDestroyer;
+        private readonly IProjectilesPoolService _projectilesPoolService;
 
         [Inject]
         public BattleCleanUpService(IBattleUiService battleUIService, 
-            IProjectilesRegister projectilesRegister, IProjectileDestroyer projectileDestroyer, IWeaponDestroyer weaponDestroyer, ISpaceShipDestroyer spaceShipDestroyer)
+            IProjectilesRegister projectilesRegister, IProjectileDestroyer projectileDestroyer, IWeaponDestroyer weaponDestroyer, ISpaceShipDestroyer spaceShipDestroyer, IProjectilesPoolService projectilesPoolService)
         {
             _battleUIService = battleUIService;
             _projectilesRegister = projectilesRegister;
             _projectileDestroyer = projectileDestroyer;
             _weaponDestroyer = weaponDestroyer;
             _spaceShipDestroyer = spaceShipDestroyer;
+            _projectilesPoolService = projectilesPoolService;
         }
 
         public void CleanUpBattle(Battle battle)
         {
             BattleData battleData = battle.BattleData;
+
+            _projectilesPoolService.ClearAll();
 
             DestroyAndUnregisterGameObjects(battleData);
             _battleUIService.DestroyBattleUi();

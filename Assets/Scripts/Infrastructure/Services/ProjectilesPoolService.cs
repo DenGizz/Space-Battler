@@ -49,5 +49,11 @@ namespace Assets.Scripts.Infrastructure.Services
         {
             _projectilesPools[projectile.Type].Release(projectile);
         }
+
+        public void ClearAll()
+        {
+            foreach (var pool in _projectilesPools.Values)
+                pool.Clear();
+        }
     }
 }

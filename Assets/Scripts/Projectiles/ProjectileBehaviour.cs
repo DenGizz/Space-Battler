@@ -17,8 +17,10 @@ namespace Assets.Scripts.ScriptableObjects
         public float Speed => _projectileDescriptor.Speed;
         public float Damage;
 
+        public event Action OnReset;
+
         public ISpaceShip Target { get; private set; }
-        public bool IsReachedTarget => Vector3.Distance(transform.position, Target.Position) < 0.1f;
+        public bool IsReachedTarget => Target != null && Vector3.Distance(transform.position, Target.Position) < 0.1f;
         public Action<ISpaceShip> OnTargetChanged;
 
         [SerializeField] private ProjectileDescriptor _projectileDescriptor;
@@ -30,6 +32,13 @@ namespace Assets.Scripts.ScriptableObjects
             Damage = damage;
 
             OnTargetChanged?.Invoke(target);
+        }
+
+        public void ResetBehaviour()
+        {
+            Target = null;
+            Damage = 0;
+            OnReset?.Invoke();
         }
     }
 }
