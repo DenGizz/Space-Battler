@@ -41,7 +41,6 @@ namespace Assets.Scripts.Weapons
 
             var p = _projectileFactory.CreateProjectile(_descriptor.ProjectileType, transform.position, transform.rotation.eulerAngles.z);
             p.Lunch(target,Damage);
-            target.TakeDamage(Damage);
             _isOnColdDown = true;
             StartColdDown(ColdDownTime);
         }

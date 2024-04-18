@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 using Assets.Scripts.Projectiles;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
+using Zenject;
 
 namespace Assets.Scripts.ScriptableObjects
 {
     public class ProjectileBehaviour : MonoBehaviour
     {
         public float Speed => _projectileDescriptor.Speed;
-        private float _damage;
+        public float Damage;
 
         public ISpaceShip Target { get; private set; }
         public bool IsReachedTarget => Vector3.Distance(transform.position, Target.Position) < 0.1f;
@@ -25,7 +26,7 @@ namespace Assets.Scripts.ScriptableObjects
         public void Lunch(ISpaceShip target, float damage)
         {
             Target = target;
-            _damage = damage;
+            Damage = damage;
 
             OnTargetChanged?.Invoke(target);
         }

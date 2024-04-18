@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 750565737403993806}
   - component: {fileID: 6151330167951998465}
   - component: {fileID: -8809416813795284080}
+  - component: {fileID: -8717062465809014317}
   m_Layer: 0
   m_Name: Granade
   m_TagString: Untagged
@@ -99,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7136ec791f64c64eb76bceee383e449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 0
   _projectileDescriptor: {fileID: 11400000, guid: 381198c70e9e8cc42a0266353c574600, type: 2}
 --- !u!114 &6151330167951998465
 MonoBehaviour:
@@ -127,3 +129,15 @@ MonoBehaviour:
   _startColor: {r: 1, g: 1, b: 1, a: 1}
   _endColor: {r: 1, g: 0, b: 0, a: 1}
   _period: 0.3
+--- !u!114 &-8717062465809014317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860154323450606118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e1a4e17d715f7b44bc11101b2590ca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
