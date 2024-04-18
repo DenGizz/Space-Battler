@@ -17,6 +17,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         Sprite GetSpriteFor(WeaponType weaponType);
         IEnumerable<WeaponDescriptor> GetWeaponDescriptors();
         IEnumerable<SpaceShipDescriptor> GetSpaceShipDescriptors();
+        IEnumerable<ProjectileDescriptor> GetProjectilesDescriptors();
         WeaponDescriptor GetWeaponDescriptor(WeaponType weaponType);
         SpaceShipDescriptor GetSpaceShipDescriptor(SpaceShipType spaceShipType);
         ProjectileDescriptor GetProjectileDescriptor(ProjectileType projectileType);

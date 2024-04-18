@@ -40,6 +40,11 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             return _assetsProvider.GetSpaceShipsDescriptors();
         }
 
+        public IEnumerable<ProjectileDescriptor> GetProjectilesDescriptors()
+        {
+            return _assetsProvider.GetProjectileDescriptors();
+        }
+
         public WeaponDescriptor GetWeaponDescriptor(WeaponType weaponType)
         {
             return _assetsProvider.GetWeaponDescriptor(weaponType);
