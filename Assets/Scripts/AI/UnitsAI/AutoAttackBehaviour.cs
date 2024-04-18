@@ -1,64 +1,50 @@
 ﻿using System.Linq;
 using Assets.Scripts.SpaceShips;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts.AI.UnitsAI
 {
     [AddComponentMenu("AI/CombatUnit/AutoAttackBehaviour")]
-    [RequireComponent(typeof(ISpaceShip))]
-    public class AutoAttackBehaviour : MonoBehaviour, ICombatAi
+    [RequireComponent(typeof(IAttackable))]
+    public class AutoAttackBehaviour : MonoBehaviour, ICombatAi, ITickable
     {
-        public ISpaceShip Target { get; private set; }
-        public bool IsInCombatState { get; private set; }
+        private ISpaceShip _target;
+        private bool _isInCombatState;
 
-        [SerializeField] private ISpaceShip _target;
-        private ISpaceShip _controlledSpaceShip;
+        private IAttackable _controledAttackable;
 
         private void Awake()
         {
-            _controlledSpaceShip = GetComponent<ISpaceShip>();
+            _controledAttackable = GetComponent<IAttackable>();
         }
 
         public void SetTarget(ISpaceShip target)
         {
-            Target = target;
-        }
-
-        public void RemoveTarget()
-        {
-            Target = null;
+            _target = target;
         }
 
         public void StartCombat()
         {
-            IsInCombatState = true;
+            _isInCombatState = true;
         }
 
         public void StopCombat()
         {
-            IsInCombatState = false;
+            _isInCombatState = false;
         }
 
-        private void Update()
+        public void Tick()
         {
-            if (!IsInCombatState)
+            if (!_isInCombatState)
                 return;
 
-            if (Target == null)
+            if (_target == null)
                 return;
 
-            if (Target is ISpaceShip combatUnit && combatUnit.HealthAttribute.HP <= 0)
+            if (_target.IsDead)
                 return;
-
-            if (_controlledSpaceShip.Weapons == null || !_controlledSpaceShip.Weapons.Any())
-            {
-                Debug.Log($"{gameObject.name} does`nt have weapon to attack.");
-                return;
-            }
-
-            foreach(var weapon in _controlledSpaceShip.Weapons)
-                if (weapon.CanShoot)
-                    weapon.Shoot(Target);     
+            _controledAttackable.Attack(_target);
         }
     }
 }

@@ -34,13 +34,23 @@ namespace Assets.Scripts.Weapons
             ColdDownTime = _descriptor.ColdDownTime;
         }
 
-        public void Shoot(ISpaceShip target)
+        public void Tick()
+        {
+            if (_coldDownTimeLeft > 0)
+                _coldDownTimeLeft -= Time.deltaTime;
+            else
+                _isOnColdDown = false;
+        }
+
+        public void Attack(ISpaceShip target)
         {
             if (_isOnColdDown)
                 return;
 
-            var p = _projectileFactory.CreateProjectile(_descriptor.ProjectileType, transform.position, transform.rotation.eulerAngles.z);
-            p.Lunch(target,Damage);
+            ProjectileBehaviour projectile =
+                _projectileFactory.CreateProjectile(_descriptor.ProjectileType, transform.position, transform.rotation.eulerAngles.z);
+
+            projectile.Lunch(target, Damage);
             _isOnColdDown = true;
             StartColdDown(ColdDownTime);
         }
@@ -48,14 +58,6 @@ namespace Assets.Scripts.Weapons
         private void StartColdDown(float time)
         {
             _coldDownTimeLeft = time;
-        }
-
-        public void Tick()
-        {
-           if(_coldDownTimeLeft > 0)
-                _coldDownTimeLeft -= Time.deltaTime;
-           else
-                _isOnColdDown = false;
         }
     }
 }

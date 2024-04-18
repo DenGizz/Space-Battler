@@ -22,6 +22,8 @@ namespace Assets.Scripts.SpaceShips
 
         public SpaceShipConfig Config { get; private set; }
 
+        public bool IsDead => HealthAttribute.HP <= 0;
+
         private List<IWeapon> _weapons;
 
         [SerializeField] private SpaceShipDescriptor _descriptor;
@@ -49,9 +51,11 @@ namespace Assets.Scripts.SpaceShips
             HealthAttribute.TakeDamage(damageAmount);
         }
     
-        public void Attack(IWeapon weapon, ISpaceShip target)
+        public void Attack(ISpaceShip target)
         {
-            weapon.Shoot(target);
+            foreach (var weapon in _weapons)
+                if (weapon.CanShoot)
+                    weapon.Attack(target);
         }
 
         public void AddWeapon(IWeapon weapon)
@@ -66,7 +70,5 @@ namespace Assets.Scripts.SpaceShips
         {
             _weapons.Remove(weapon);
         }
-
-
     }
 }

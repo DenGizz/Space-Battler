@@ -11,16 +11,19 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
     {
         private List<ITickable> _tickables = new List<ITickable>();
 
+        private List<ITickable> tickablesToAdd = new List<ITickable>();
+        private List<ITickable> tickablesToRemove = new List<ITickable>();
+
         public bool IsPaused { get; set; }
 
         public void AddTickable(ITickable tickable)
         {
-            _tickables.Add(tickable);
+            tickablesToAdd.Add(tickable);
         }
 
         public void RemoveTickable(ITickable tickable)
         {
-            _tickables.Remove(tickable);
+            tickablesToRemove.Add(tickable);
         }
 
         public void Tick()
@@ -28,8 +31,15 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             if (IsPaused)
                 return;
 
+            _tickables.AddRange(tickablesToAdd);
+            _tickables = _tickables.Except(tickablesToRemove).ToList();
+
+            tickablesToAdd.Clear();
+            tickablesToRemove.Clear();
+
             foreach (var tickable in _tickables)
                 tickable.Tick();
+
         }
     }
 }
