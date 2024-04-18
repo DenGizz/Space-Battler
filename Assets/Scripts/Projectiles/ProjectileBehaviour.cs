@@ -13,6 +13,7 @@ namespace Assets.Scripts.ScriptableObjects
 {
     public class ProjectileBehaviour : MonoBehaviour
     {
+        public ProjectileType Type => _projectileDescriptor.ProjectileType;
         public float Speed => _projectileDescriptor.Speed;
         public float Damage;
 
