@@ -1,5 +1,6 @@
 using System.Collections;
 using Assets.Scripts.Infrastructure.Factories;
+using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Projectiles;
 using Assets.Scripts.ScriptableObjects;
 using Assets.Scripts.SpaceShips;
@@ -20,12 +21,12 @@ namespace Assets.Scripts.Weapons
 
         [SerializeField] private WeaponDescriptor _descriptor;
 
-        private IProjectileFactory _projectileFactory;
+        private IProjectilesPoolService _projectilesPoolService;
 
         [Inject]
-        public void Construct(IProjectileFactory projectileFactory)
+        public void Construct(IProjectilesPoolService projectilesPoolService)
         {
-            _projectileFactory = projectileFactory;
+            _projectilesPoolService = projectilesPoolService;
         }
 
         private void Awake()
@@ -47,9 +48,9 @@ namespace Assets.Scripts.Weapons
             if (_isOnColdDown)
                 return;
 
-            ProjectileBehaviour projectile =
-                _projectileFactory.CreateProjectile(_descriptor.ProjectileType, transform.position, transform.rotation.eulerAngles.z);
-
+            ProjectileBehaviour projectile = _projectilesPoolService.GetProjectile(_descriptor.ProjectileType);
+            projectile.transform.position = transform.position;
+            projectile.transform.rotation = transform.rotation;
             projectile.Lunch(target, Damage);
             _isOnColdDown = true;
             StartColdDown(ColdDownTime);
