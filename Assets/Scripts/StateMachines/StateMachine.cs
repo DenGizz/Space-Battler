@@ -25,13 +25,5 @@ namespace Assets.Scripts.StateMachines
             _currentState = state;
             _currentState.Enter();
         }
-
-        public void EnterState<TState, TArgs>(TArgs args) where TState : IState
-        {
-            _currentState?.Exit();
-            IState state = States[typeof(TState)];
-            _currentState = state;
-            (_currentState as IStateWithArtuments<TArgs>).Enter(args);
-        }
     }
 }

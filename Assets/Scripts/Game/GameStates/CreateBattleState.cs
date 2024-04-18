@@ -3,6 +3,7 @@ using Assets.Scripts.Battles;
 using Assets.Scripts.Infrastructure.Factories;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services;
+using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.SpaceShips;
 using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.StateMachines;
@@ -19,17 +20,19 @@ namespace Assets.Scripts.Game.GameStates
         private readonly IBattleFactory _battleFactory;
         private readonly IBattleSetupProvider _battleSetupProvider;
         private readonly ISpaceShipFromSetupFactory _spaceShipFromSetupFactory;
+        private readonly IBattleProvider _battleProvider;
 
         private readonly StateMachine _stateMachine;
 
         public CreateBattleState(StateMachine stateMachine,IBattleUiService battleUIService, IBattleFactory battleFactory,
-            IBattleSetupProvider battleSetupProvider, ISpaceShipFromSetupFactory spaceShipFromSetupFactory)
+            IBattleSetupProvider battleSetupProvider, ISpaceShipFromSetupFactory spaceShipFromSetupFactory, IBattleProvider battleProvider)
         {
             _stateMachine = stateMachine;
             _battleUIService = battleUIService;
             _battleFactory = battleFactory;
             _battleSetupProvider = battleSetupProvider;
             _spaceShipFromSetupFactory = spaceShipFromSetupFactory;
+            _battleProvider = battleProvider;
         }
 
         public void Enter()
@@ -39,11 +42,12 @@ namespace Assets.Scripts.Game.GameStates
             (ISpaceShip player, ISpaceShip enemy) = CreateSpaceShipsAndWeapons(battleSetup);
 
             Battle battle = _battleFactory.CreateBattle(player, enemy);
+            _battleProvider.CurrentBattle = battle;
 
             _battleUIService.CreateBattleUi();
             _battleUIService.SetBattle(battle);
 
-            _stateMachine.EnterState<BattleState,Battle>(battle);
+            _stateMachine.EnterState<BattleState>();
         }
 
 

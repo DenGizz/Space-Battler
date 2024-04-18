@@ -9,33 +9,32 @@ using Assets.Scripts.StateMachines;
 
 namespace Assets.Scripts.Game.GameStates
 {
-    public class BattleState : IState, IStateWithArtuments<Battle>
+    public class BattleState : IState
     {
         private readonly IBattleObserver _battleObserver;
         private readonly IUiFactory _uiFactory;
         private readonly IBattleTickService _battleTickService;
         private readonly IBattleUiService _battleUiService;
+        private readonly IBattleProvider _battleProvider;
 
         private readonly StateMachine _gameStateMachine;
         private Battle _battle;
 
-        public BattleState(StateMachine gameStateMachine, IBattleObserver battleObserver, IUiFactory uiFactory, IBattleTickService battleTickService, IBattleUiService battleUIService)
+        public BattleState(StateMachine gameStateMachine, IBattleObserver battleObserver, 
+            IUiFactory uiFactory, IBattleTickService battleTickService, IBattleUiService battleUIService,
+            IBattleProvider battleProvider)
         {
             _gameStateMachine = gameStateMachine;
             _battleObserver = battleObserver;
             _uiFactory = uiFactory;
             _battleTickService = battleTickService;
             _battleUiService = battleUIService;
+            _battleProvider = battleProvider;
         }
 
         public void Enter()
         {
-
-        }
-
-        public void Enter(Battle args)
-        {
-            _battle = args;
+            _battle = _battleProvider.CurrentBattle;
             _battle.StartBattle();
             _battleTickService.IsPaused = false;
             PauseResumeUI pauseMenu = _uiFactory.CreatePauseResumeUi();
@@ -79,7 +78,7 @@ namespace Assets.Scripts.Game.GameStates
 
         private void OnPauseMenuReturnToMainMenuButtonClicked()
         {
-            _gameStateMachine.EnterState<CleanUpBattleState, Battle>(_battle);
+            _gameStateMachine.EnterState<CleanUpBattleState>();
         }
     }
 }

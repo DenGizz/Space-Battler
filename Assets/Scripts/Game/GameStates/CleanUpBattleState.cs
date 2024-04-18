@@ -4,25 +4,23 @@ using Assets.Scripts.StateMachines;
 
 namespace Assets.Scripts.Game.GameStates
 {
-    public class CleanUpBattleState : IState, IStateWithArtuments<Battle>
+    public class CleanUpBattleState : IState
     {
         private readonly IBattleCleanUpService _battleCleanUpService;
+        private readonly IBattleProvider _battleProvider;
         private readonly StateMachine _stateMachine;
 
-        public CleanUpBattleState(StateMachine stateMachine, IBattleCleanUpService battleCleanUpService)
+        public CleanUpBattleState(StateMachine stateMachine, IBattleCleanUpService battleCleanUpService, IBattleProvider battleProvider)
         {
             _stateMachine = stateMachine;
             _battleCleanUpService = battleCleanUpService;
+            _battleProvider = battleProvider;
         }
 
         public void Enter()
         {
-
-        }
-
-        public void Enter(Battle args)
-        {
-            _battleCleanUpService.CleanUpBattle(args);
+            Battle battle = _battleProvider.CurrentBattle;
+            _battleCleanUpService.CleanUpBattle(battle);
             _stateMachine.EnterState<LoadMainMenuSceneState>();
         }
 
