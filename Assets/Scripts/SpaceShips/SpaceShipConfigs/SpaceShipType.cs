@@ -1,8 +1,11 @@
-﻿namespace Assets.Scripts.SpaceShips.SpaceShipConfigs
+﻿using System;
+
+namespace Assets.Scripts.SpaceShips.SpaceShipConfigs
 {
     public enum SpaceShipType 
     {
-        HeavyDefender = 0,
-        LiteAttacker = 1,
+        None = 0,
+        HeavyDefender = 1,
+        LiteAttacker = 2,
     }
 }

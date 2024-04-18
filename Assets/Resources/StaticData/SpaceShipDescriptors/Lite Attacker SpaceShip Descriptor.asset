@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f1b590bdefd9b46aba29618b3373ae, type: 3}
   m_Name: Lite Attacker SpaceShip Descriptor
   m_EditorClassIdentifier: 
-  _corpusType: 1
-  _maxHealth: 75
+  _spaceShipType: 2
+  _maxHealth: 70
   _weaponSlotsCount: 3
   _sprite: {fileID: 21300000, guid: e6fe267b7d564e144b04f1802a22e507, type: 3}
   _prefab: {fileID: 8985553459634921049, guid: 4792f783f26ee324994766d7081f0271, type: 3}

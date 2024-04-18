@@ -6,41 +6,33 @@ namespace Assets.Scripts.Infrastructure.Services.Registries
 {
     public class CombatAIRegistry : ICombatAiRegistry
     {
-        public IEnumerable<ICombatAI> CombatAIs => _combatAIs.Values;
+        public IEnumerable<ICombatAi> CombatAIs => _combatAis.Values;
 
-        private Dictionary<ISpaceShip, ICombatAI> _combatAIs = new Dictionary<ISpaceShip, ICombatAI>();
+        private readonly Dictionary<ISpaceShip, ICombatAi> _combatAis = new Dictionary<ISpaceShip, ICombatAi>();
 
-        public ICombatAI GetAI(ISpaceShip spaceShip)
-        {         
-            if (_combatAIs.ContainsKey(spaceShip))
-            {
-                return _combatAIs[spaceShip];
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public void RegisterAI(ISpaceShip spaceShip, ICombatAI combatUnitAI)
+        public ICombatAi GetAi(ISpaceShip spaceShip)
         {
-           
-            if (_combatAIs.ContainsKey(spaceShip))
+            return _combatAis.ContainsKey(spaceShip) ? _combatAis[spaceShip] : null;
+        }
+
+        public void RegisterAi(ISpaceShip spaceShip, ICombatAi combatAi)
+        {     
+            if (_combatAis.ContainsKey(spaceShip))
             {
-                _combatAIs[spaceShip] = combatUnitAI;
+                _combatAis[spaceShip] = combatAi;
             }
             else
             {
-                _combatAIs.Add(spaceShip, combatUnitAI);
+                _combatAis.Add(spaceShip, combatAi);
             }
         }
 
-        public void UnregisterAI(ISpaceShip spaceShip)
+        public void UnRegisterAi(ISpaceShip spaceShip)
         {
             
-            if (_combatAIs.ContainsKey(spaceShip))
+            if (_combatAis.ContainsKey(spaceShip))
             {
-                _combatAIs.Remove(spaceShip);
+                _combatAis.Remove(spaceShip);
             }
         }
     }

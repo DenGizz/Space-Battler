@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Assets.Scripts.ScriptableObjects;
 using Assets.Scripts.SpaceShips.SpaceShipConfigs;
+using Assets.Scripts.Projectiles;
 
 namespace Assets.Scripts.Infrastructure.Services.CoreServices
 {
@@ -14,8 +15,11 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
     {
         Sprite GetSpriteFor(SpaceShipType spaceShipType);
         Sprite GetSpriteFor(WeaponType weaponType);
-        IEnumerable<WeaponDescriptor> GetWeaponConfigs();
-        IEnumerable<SpaceShipDescriptor> GetSpaceShipsConfigs();
-        SpaceShipConfig GetSpaceShipConfig(SpaceShipType spaceShipType);
+        IEnumerable<WeaponDescriptor> GetWeaponDescriptors();
+        IEnumerable<SpaceShipDescriptor> GetSpaceShipDescriptors();
+        IEnumerable<ProjectileDescriptor> GetProjectilesDescriptors();
+        WeaponDescriptor GetWeaponDescriptor(WeaponType weaponType);
+        SpaceShipDescriptor GetSpaceShipDescriptor(SpaceShipType spaceShipType);
+        ProjectileDescriptor GetProjectileDescriptor(ProjectileType projectileType);
     }
 }

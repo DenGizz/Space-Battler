@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainMenuUIPrefab: {fileID: 3599784224756247553, guid: 1366850d432c4c34a8b131780841f83e, type: 3}
   _battleUIPrefab: {fileID: 9107548078776729842, guid: f911cd0ef4ff54c4bba0358b15147d93, type: 3}
+  _pauseResumeUIPrefab: {fileID: 7646495184946254497, guid: 867831c30fb6d56439c302e54af3d409, type: 3}
+  _winnerUiPrefab: {fileID: 9104222968968343872, guid: c97a03617d59da8459e27b8a3155b641, type: 3}
   _weaponDescriptionRowViewPrefab: {fileID: 8144534119667726728, guid: eb0e4ddc678c9144c9576bec63587583, type: 3}
   _weaponSelectionPanelPrefab: {fileID: 6253799520984432083, guid: e0644ae7fa1e39b4ea2c56dcc7a94a8d, type: 3}
-  _slotForSelectWeaponViewPrefab: {fileID: 4759730411235238076, guid: 165eba32d231f244fba2ef6c834ae1ae, type: 3}
   _spaceShipSelectionPanelPrefab: {fileID: 6253799520984432083, guid: 3ef2acbeb45e7f644968c8439f7100e4, type: 3}
   _spaceShipDescriptionRowViewPrefab: {fileID: 8144534119667726728, guid: 76705ff305b8ea546802521bb9d7625d, type: 3}

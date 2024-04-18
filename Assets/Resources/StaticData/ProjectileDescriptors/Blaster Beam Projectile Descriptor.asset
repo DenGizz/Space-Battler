@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8de2a463162e247a0934911a16bfa1, type: 3}
+  m_Name: Blaster Beam Projectile Descriptor
+  m_EditorClassIdentifier: 
+  _projectileType: 4
+  _speed: 15
+  _sprite: {fileID: 21300000, guid: d3b6541c84718124b83d2d219b0000f1, type: 3}
+  _prefab: {fileID: 6061028018398827022, guid: 1af7680023b93814f98066eb0a985504, type: 3}

@@ -1,4 +1,7 @@
-﻿namespace Assets.Scripts.SpaceShips.SpaceShipAttributes
+﻿using System;
+using UnityEngine;
+
+namespace Assets.Scripts.SpaceShips.SpaceShipAttributes
 {
     public class HealthAttribute : IHealthAttribute
     {
@@ -15,11 +18,13 @@
         public void TakeDamage(float damageAmount)
         {
             HP -= damageAmount;
+            HP = Mathf.Clamp(HP,0, BaseHP);
         }
 
         public void RestoreHP(float restoreAmount)
         {
             HP += restoreAmount;
+            HP = Mathf.Clamp(HP, 0, BaseHP);
         }
     }
 }

@@ -2,12 +2,11 @@
 
 namespace Assets.Scripts.Weapons
 {
-    public interface IWeapon
+    public interface IWeapon : IAttackable
     {
         float Damage { get; }
         float ColdDownTime { get; }
 
         bool CanShoot { get; }
-        void Shoot(IDamagable target);
     }
 }

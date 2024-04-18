@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Weapons;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts.Infrastructure.Factories
 {
@@ -15,19 +16,25 @@ namespace Assets.Scripts.Infrastructure.Factories
     {
         private readonly IAssetsProvider _assetsProvider;
         private readonly IGameObjectRegistry _gameObjectRegistry;
+        private readonly IBattleTickService _battleTickService;
+        private readonly IInstantiator _instantiator;
 
-        public WeaponFactory(IAssetsProvider assetsProvider, IGameObjectRegistry gameObjectRegistry)
+        public WeaponFactory(IAssetsProvider assetsProvider, IGameObjectRegistry gameObjectRegistry, IBattleTickService battleTickService, IInstantiator instantiator)
         {
             _assetsProvider = assetsProvider;
             _gameObjectRegistry = gameObjectRegistry;
+            _battleTickService = battleTickService;
+            _instantiator = instantiator;
         }
 
         public IWeapon CreateWeapon(WeaponType weaponType, Vector3 position, float zRotation)
         {
             GameObject weaponPrefab = _assetsProvider.GetWeaponPrefab(weaponType);
-            GameObject weaponGameObject = GameObject.Instantiate(weaponPrefab, position, Quaternion.Euler(0, 0, zRotation));
-            IWeapon weapon = weaponGameObject.GetComponentInChildren<IWeapon>();
-            _gameObjectRegistry.RegisterGameObject(weapon, weaponGameObject);
+            GameObject weaponGameObject = _instantiator.InstantiatePrefab(weaponPrefab, position, Quaternion.Euler(0, 0, zRotation), null);
+            WeaponBehaviour weaponBehaviour = weaponGameObject.GetComponentInChildren<WeaponBehaviour>();
+            _battleTickService.AddTickable(weaponBehaviour);
+            IWeapon weapon = weaponBehaviour;
+            _gameObjectRegistry.RegisterWeaponGameObject(weapon, weaponGameObject);
             return weapon;
         }
     }

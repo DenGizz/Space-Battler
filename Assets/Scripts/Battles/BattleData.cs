@@ -7,10 +7,10 @@ namespace Assets.Scripts.Battles
     {
         public ISpaceShip PlayerSpaceShip { get; }
         public ISpaceShip EnemySpaceShip { get;}
-        public ICombatAI PlayerCombatAi { get; }
-        public ICombatAI EnemyCombatAi { get; }
+        public ICombatAi PlayerCombatAi { get; }
+        public ICombatAi EnemyCombatAi { get; }
 
-        public BattleData( ISpaceShip playerSpaceShip, ISpaceShip enemySpaceShip, ICombatAI playerCombatAi, ICombatAI enemyCombatAi)
+        public BattleData( ISpaceShip playerSpaceShip, ISpaceShip enemySpaceShip, ICombatAi playerCombatAi, ICombatAi enemyCombatAi)
         {
             PlayerSpaceShip = playerSpaceShip;
             EnemySpaceShip = enemySpaceShip;

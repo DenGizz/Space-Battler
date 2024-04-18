@@ -8,6 +8,7 @@ using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using Unity.VisualScripting;
 using UnityEditor;
 using Assets.Scripts.Infrastructure.Config;
+using Assets.Scripts.Projectiles;
 
 namespace Assets.Scripts.Infrastructure.Services.CoreServices
 {
@@ -18,15 +19,19 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         private const string StaticDataPath = "StaticData";
         private const string SpaceShipsStaticDataPath = "SpaceShipDescriptors";
         private const string WeaponStaticDataPath = "WeaponDescriptors";
+        private const string ProjectileDataPath = "ProjectileDescriptors";
 
         private readonly Dictionary<SpaceShipType, SpaceShipDescriptor> _loadedSpaceShipDescriptorsCache;
         private readonly Dictionary<WeaponType, WeaponDescriptor> _loadedWeaponDescriptorsCache;
+        private readonly Dictionary<ProjectileType, ProjectileDescriptor> _loadedProjectileDescriptorsCache;
+
         private  UiPrefabsBanlde _uiPrefabsBandleCache;
 
         public AssetsProvider()
         {
             _loadedSpaceShipDescriptorsCache = new Dictionary<SpaceShipType, SpaceShipDescriptor>();
             _loadedWeaponDescriptorsCache = new Dictionary<WeaponType, WeaponDescriptor>();
+            _loadedProjectileDescriptorsCache = new Dictionary<ProjectileType, ProjectileDescriptor>();
         }
 
         public GameObject GetSpaceShipPrefab(SpaceShipType spaceShipType)
@@ -49,6 +54,11 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             return GetOrLoadAndCacheUiPrefabsBanlde().MainMenuUIPrefab;
         }
 
+        public GameObject GetPauseResumeUIPrefab()
+        {
+            return GetOrLoadAndCacheUiPrefabsBanlde().PauseResumeUIPrefab;
+        }
+
         public GameObject GetWeaponDescriptionRowViewPrefab()
         {
             return GetOrLoadAndCacheUiPrefabsBanlde().WeaponDescriptionRowViewPrefab;
@@ -59,9 +69,9 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             return GetOrLoadAndCacheUiPrefabsBanlde().WeaponSelectionPanelPrefab;
         }
 
-        public GameObject GetSlotForSelectWeaponPrefab()
+        public Object GetWinnerUIPrefab()
         {
-            return GetOrLoadAndCacheUiPrefabsBanlde().SlotForSelectWeaponViewPrefab;
+            return GetOrLoadAndCacheUiPrefabsBanlde().WinnerUi;
         }
 
         public GameObject GetSpaceShipSelectionPanelPrefab()
@@ -83,7 +93,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             SpaceShipDescriptor[] descriptors = Resources.LoadAll<SpaceShipDescriptor>(path);
 
             foreach (SpaceShipDescriptor descriptor in descriptors)
-                _loadedSpaceShipDescriptorsCache.Add(descriptor.CorpusType, descriptor);
+                _loadedSpaceShipDescriptorsCache.Add(descriptor.SpaceShipType, descriptor);
 
             return descriptors;
         }
@@ -107,7 +117,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             if(_loadedSpaceShipDescriptorsCache.Count > 0)
                 return _loadedSpaceShipDescriptorsCache[spaceShipType];
 
-            return GetSpaceShipsDescriptors().FirstOrDefault(d => d.CorpusType == spaceShipType);
+            return GetSpaceShipsDescriptors().FirstOrDefault(d => d.SpaceShipType == spaceShipType);
         }
 
         public WeaponDescriptor GetWeaponDescriptor(WeaponType weaponType)
@@ -126,5 +136,29 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             _uiPrefabsBandleCache = Resources.Load<UiPrefabsBanlde>(Path.Combine(BandlesPath,UiPrefabsBanldeAssetName));
             return _uiPrefabsBandleCache;
         }
+
+        public IEnumerable<ProjectileDescriptor> GetProjectileDescriptors()
+        {
+            if(_loadedProjectileDescriptorsCache.Count != 0)
+                return _loadedProjectileDescriptorsCache.Values;
+
+            string path = Path.Combine(StaticDataPath, ProjectileDataPath);
+            ProjectileDescriptor[] descriptors = Resources.LoadAll<ProjectileDescriptor>(path);
+
+            foreach (ProjectileDescriptor descriptor in descriptors)
+                _loadedProjectileDescriptorsCache.Add(descriptor.ProjectileType, descriptor);
+
+            return descriptors;
+        }
+
+        public ProjectileDescriptor GetProjectileDescriptor(ProjectileType projectileType)
+        {
+            if(_loadedProjectileDescriptorsCache.Count > 0)
+                return _loadedProjectileDescriptorsCache[projectileType];
+
+            return GetProjectileDescriptors().FirstOrDefault(d => d.ProjectileType == projectileType);
+        }
+
+
     }
 }

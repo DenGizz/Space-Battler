@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Projectiles;
 using Assets.Scripts.ScriptableObjects;
 using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Weapons.WeaponConfigs;
@@ -29,19 +30,34 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             return _assetsProvider.GetWeaponDescriptor(weaponType).Sprite;
         }
 
-        public IEnumerable<WeaponDescriptor> GetWeaponConfigs()
+        public IEnumerable<WeaponDescriptor> GetWeaponDescriptors()
         {
             return _assetsProvider.GetWeaponDescriptors();
         }
 
-        public IEnumerable<SpaceShipDescriptor> GetSpaceShipsConfigs()
+        public IEnumerable<SpaceShipDescriptor> GetSpaceShipDescriptors()
         {
             return _assetsProvider.GetSpaceShipsDescriptors();
         }
 
-        public SpaceShipConfig GetSpaceShipConfig(SpaceShipType spaceShipType)
+        public IEnumerable<ProjectileDescriptor> GetProjectilesDescriptors()
         {
-            return GetSpaceShipsConfigs().First(config => config.CorpusType == spaceShipType).GetSpaceShipConfig();
+            return _assetsProvider.GetProjectileDescriptors();
+        }
+
+        public WeaponDescriptor GetWeaponDescriptor(WeaponType weaponType)
+        {
+            return _assetsProvider.GetWeaponDescriptor(weaponType);
+        }
+
+        public SpaceShipDescriptor GetSpaceShipDescriptor(SpaceShipType spaceShipType)
+        {
+            return _assetsProvider.GetSpaceShipDescriptor(spaceShipType);
+        }
+
+        public ProjectileDescriptor GetProjectileDescriptor(ProjectileType projectileType)
+        {
+            return _assetsProvider.GetProjectileDescriptor(projectileType);
         }
     }
 }

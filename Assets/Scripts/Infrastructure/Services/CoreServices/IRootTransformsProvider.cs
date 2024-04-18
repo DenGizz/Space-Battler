@@ -11,5 +11,6 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
     {
         Transform SpaceShipsRoot { get; set; }
         Transform UIRoot { get; set; }
+        Transform ProjectilesRoot { get; set; }
     }
 }

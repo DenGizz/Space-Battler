@@ -6,9 +6,9 @@ namespace Assets.Scripts.Infrastructure.Services.Registries
 {
     public interface ICombatAiRegistry
     {
-        public IEnumerable<ICombatAI> CombatAIs { get; }
-        public ICombatAI GetAI(ISpaceShip spaceShip);
-        public void RegisterAI(ISpaceShip spaceShip, ICombatAI combatUnitAI);
-        public void UnregisterAI(ISpaceShip spaceShip);
+        public IEnumerable<ICombatAi> CombatAIs { get; }
+        public ICombatAi GetAi(ISpaceShip spaceShip);
+        public void RegisterAi(ISpaceShip spaceShip, ICombatAi combatAi);
+        public void UnRegisterAi(ISpaceShip spaceShip);
     }
 }

@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2277680283700208402}
-  - component: {fileID: -277094385935392940}
   - component: {fileID: 5575279362341261081}
+  - component: {fileID: -277094385935392940}
   m_Layer: 0
   m_Name: GrenadeLauncher
   m_TagString: Untagged
@@ -33,19 +33,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-277094385935392940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2717349723787489825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4bce0a564c49fa489ebe68ef26cf469, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _config: {fileID: 11400000, guid: bca82253e7ddfd947a02e078c4abbf57, type: 2}
 --- !u!212 &5575279362341261081
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -98,3 +85,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-277094385935392940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2717349723787489825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bce0a564c49fa489ebe68ef26cf469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _descriptor: {fileID: 11400000, guid: bca82253e7ddfd947a02e078c4abbf57, type: 2}
