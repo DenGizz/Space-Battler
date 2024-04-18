@@ -21,12 +21,10 @@ namespace Assets.Scripts.Infrastructure.Factories
         private readonly IBattleTickService _battleTickService;
         private readonly IProjectilesRegister _projectilesRegister;
         private readonly IGameObjectRegistry _gameObjectRegistry;
-        private readonly IProjectileAutoDestroyService _projectileAutoDestroyService;
 
         public ProjectileFactory(IStaticDataService staticDataService, IInstantiator instantiator,
             IRootTransformsProvider rootTransformsProvider, IBattleTickService battleTickService, 
-            IProjectilesRegister projectilesRegister, IGameObjectRegistry gameObjectRegistry, 
-            IProjectileAutoDestroyService projectileAutoDestroyService)
+            IProjectilesRegister projectilesRegister, IGameObjectRegistry gameObjectRegistry)
         {
             _staticDataService = staticDataService;
             _instantiator = instantiator;
@@ -34,7 +32,6 @@ namespace Assets.Scripts.Infrastructure.Factories
             _battleTickService = battleTickService;
             _projectilesRegister = projectilesRegister;
             _gameObjectRegistry = gameObjectRegistry;
-            _projectileAutoDestroyService = projectileAutoDestroyService;
         }
 
 
@@ -52,7 +49,6 @@ namespace Assets.Scripts.Infrastructure.Factories
             ProjectileBehaviour projectileBehaviour = projectile.GetComponent<ProjectileBehaviour>();
             _projectilesRegister.RegisterProjectile(projectileBehaviour);
             _gameObjectRegistry.RegisterProjectileGameObject(projectileBehaviour, projectile);
-            _projectileAutoDestroyService.TrackProjectile(projectileBehaviour);
             return projectile.GetComponent<ProjectileBehaviour>();
         }
     }
