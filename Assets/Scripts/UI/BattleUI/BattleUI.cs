@@ -11,10 +11,6 @@ namespace Assets.Scripts.UI
     {
         private Battle _battle;
         [SerializeField] private BattleView _battleView;
-        [SerializeField] private BattleWinnerUI _battleWinnerUI;
-        [SerializeField] private Button _returnToMainMenuButton;
-
-        public Action OnReturnToMainMenuButtonClicked;
 
         public void ShowBattleView(Battle battle)
         {
@@ -22,35 +18,10 @@ namespace Assets.Scripts.UI
             _battleView.Setup(battle.BattleData);
             _battleView.gameObject.SetActive(true);
         }
+
         public void HideBattleView()
         {
             _battleView.gameObject.SetActive(false);
-        }
-
-        public void ShowWinner(ISpaceShip winner, bool isPlayerWin)
-        {
-            _battleWinnerUI.gameObject.SetActive(true);
-            _battleWinnerUI.SetWinner(winner, isPlayerWin);
-        }
-
-        private void Awake()
-        {
-            _returnToMainMenuButton.onClick.AddListener(OnReturnToMainMenuButtonClickedEventHandler);
-        }
-
-        private void Start()
-        {
-            _battleWinnerUI.gameObject.SetActive(false);
-        }
-
-        private void OnReturnToMainMenuButtonClickedEventHandler()
-        {
-            OnReturnToMainMenuButtonClicked?.Invoke();
-        }
-
-        private void OnDestroy()
-        {
-            _returnToMainMenuButton.onClick.RemoveListener(OnReturnToMainMenuButtonClickedEventHandler);
         }
     }
 }

@@ -38,6 +38,12 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
             return mainMenuUi.GetComponentInChildren<MainMenuUI>();
         }
 
+        public BattleWinnerUI CreateWinnerUi()
+        {
+            GameObject winnerUi = _instantiator.InstantiatePrefab(_assetsProvider.GetWinnerUIPrefab(), _rootTransformsProvider.UIRoot);
+            return winnerUi.GetComponentInChildren<BattleWinnerUI>();
+        }
+
         public PauseResumeUI CreatePauseResumeUi()
         {
             GameObject pauseResumeUi = _instantiator.InstantiatePrefab(_assetsProvider.GetPauseResumeUIPrefab(), _rootTransformsProvider.UIRoot);
@@ -67,6 +73,8 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
             spaceShipSelectionPanel.transform.SetAsLastSibling(); //TODO: Refactor
             return spaceShipSelectionPanel.GetComponent<SpaceShipSelectionPanelViewModel>();
         }
+
+
 
         public DescriptionRowView CreateSpaceShipDescriptionRow()
         {

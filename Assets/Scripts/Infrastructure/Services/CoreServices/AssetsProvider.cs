@@ -69,6 +69,11 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             return GetOrLoadAndCacheUiPrefabsBanlde().WeaponSelectionPanelPrefab;
         }
 
+        public Object GetWinnerUIPrefab()
+        {
+            return GetOrLoadAndCacheUiPrefabsBanlde().WinnerUi;
+        }
+
         public GameObject GetSpaceShipSelectionPanelPrefab()
         {
             return GetOrLoadAndCacheUiPrefabsBanlde().SpaceShipSelectionPanelPrefab;
@@ -153,5 +158,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
 
             return GetProjectileDescriptors().FirstOrDefault(d => d.ProjectileType == projectileType);
         }
+
+
     }
 }

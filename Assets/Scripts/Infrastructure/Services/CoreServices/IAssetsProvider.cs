@@ -26,5 +26,6 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         SpaceShipDescriptor GetSpaceShipDescriptor(SpaceShipType spaceShipType);
         WeaponDescriptor GetWeaponDescriptor(WeaponType weaponType);
         ProjectileDescriptor GetProjectileDescriptor(ProjectileType projectileType);
+        Object GetWinnerUIPrefab();
     }
 }

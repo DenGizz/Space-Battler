@@ -15,6 +15,16 @@ public class PauseResumeUI : MonoBehaviour
         _pauseContinueButton.onClick.AddListener(OnPauseContinueButtonClickedEventHandler);
     }
 
+    public void Show()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void OnPauseContinueButtonClickedEventHandler()
     {
         OnPauseContinueButtonClicked?.Invoke();

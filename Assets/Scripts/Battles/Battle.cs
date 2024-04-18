@@ -7,6 +7,7 @@ namespace Assets.Scripts.Battles
     {
         public BattleData BattleData { get; }
         public bool IsBattleActive { get; private set; }
+        public ISpaceShip Winner { get; set; }
 
         public Battle(ISpaceShip playerSpaceShip, ISpaceShip enemySpaceShip, ICombatAi playerAi, ICombatAi enemyAi)
         {

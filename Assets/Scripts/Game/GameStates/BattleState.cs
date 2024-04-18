@@ -19,6 +19,7 @@ namespace Assets.Scripts.Game.GameStates
 
         private readonly StateMachine _gameStateMachine;
         private Battle _battle;
+        private PauseResumeUI _pauseResumeUi;
 
         public BattleState(StateMachine gameStateMachine, IBattleObserver battleObserver, 
             IUiFactory uiFactory, IBattleTickService battleTickService, IBattleUiService battleUIService,
@@ -37,8 +38,9 @@ namespace Assets.Scripts.Game.GameStates
             _battle = _battleProvider.CurrentBattle;
             _battle.StartBattle();
             _battleTickService.IsPaused = false;
-            PauseResumeUI pauseMenu = _uiFactory.CreatePauseResumeUi();
-            pauseMenu.OnPauseContinueButtonClicked += OnPauseContinueButtonClicked;
+            _pauseResumeUi = _uiFactory.CreatePauseResumeUi();
+            _pauseResumeUi.Show();
+            _pauseResumeUi.OnPauseContinueButtonClicked += OnPauseContinueButtonClicked;
 
             _battleObserver.StartObserve(_battle);
             _battleObserver.OnWinnerDetermined += OnWinnerDeterminedEventHandler;
@@ -46,8 +48,9 @@ namespace Assets.Scripts.Game.GameStates
 
         public void Exit()
         {
+            _pauseResumeUi.OnPauseContinueButtonClicked -= OnPauseContinueButtonClicked;
             _battleObserver.OnWinnerDetermined -= OnWinnerDeterminedEventHandler;
-            _battleUiService.BattleUi.OnReturnToMainMenuButtonClicked -= OnPauseMenuReturnToMainMenuButtonClicked;
+            _pauseResumeUi.Hide();
 
         }
 
@@ -56,10 +59,9 @@ namespace Assets.Scripts.Game.GameStates
             _battle.StopBattle();
             _battleObserver.StopObserve();
             _battleUiService.BattleUi.HideBattleView();
-            _battleUiService.BattleUi.ShowWinner(winner, _battle.BattleData.PlayerSpaceShip == winner);
             _battleTickService.IsPaused = true;
 
-            _battleUiService.BattleUi.OnReturnToMainMenuButtonClicked += OnPauseMenuReturnToMainMenuButtonClicked;
+            _gameStateMachine.EnterState<ShowWinnerState>();
         }
 
         private void OnPauseContinueButtonClicked()
@@ -74,11 +76,6 @@ namespace Assets.Scripts.Game.GameStates
                 _battleTickService.IsPaused = false;
                 _battle.ResumeBattle();
             }
-        }
-
-        private void OnPauseMenuReturnToMainMenuButtonClicked()
-        {
-            _gameStateMachine.EnterState<CleanUpBattleState>();
         }
     }
 }

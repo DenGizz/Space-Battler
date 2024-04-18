@@ -172,7 +172,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.000022888, y: -323}
+  m_AnchoredPosition: {x: -0.000022888, y: -240.3}
   m_SizeDelta: {x: 271.03, y: 71.0385}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8904038695574420041
@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 5358598578573481431}
   - component: {fileID: 4326189069074743368}
   m_Layer: 5
-  m_Name: Winner View
+  m_Name: Winner UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -444,6 +444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _winnerSpaceShipTypeView: {fileID: 3215044915668689910}
   _winnerNameText: {fileID: 829254246387870257}
+  _returnToMainMenuButton: {fileID: 9085564677178412182}
   winText: You win!
   loseText: You lose!
 --- !u!1001 &3458486480424381055
