@@ -64,9 +64,7 @@ namespace Assets.Scripts.Infrastructure
             Container.Bind<IBattleFactory>().To<BattleFactory>().AsSingle();
             Container.Bind<IBattleCleanUpService>().To<BattleCleanUpService>().AsSingle();
 
-            Container.Bind<BattleObserver>().AsSingle();
-            Container.Bind<IBattleObserver>().To<BattleObserver>().FromResolve();
-            Container.Bind<ITickable>().To<BattleObserver>().FromResolve();
+            Container.Bind<IBattleObserver>().To<BattleObserver>().AsSingle();
 
             Container.Bind<BattleTickService>().AsSingle();
             Container.Bind<IBattleTickService>().To<BattleTickService>().FromResolve();

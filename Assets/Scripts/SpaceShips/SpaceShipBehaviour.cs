@@ -1,16 +1,20 @@
+using System;
 using System.Collections.Generic;
 using Assets.Scripts.ScriptableObjects;
 using Assets.Scripts.SpaceShips.SpaceShipAttributes;
 using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Weapons;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts.SpaceShips
 {
     [AddComponentMenu("Units/SpaceShip")]
-    public class SpaceShipBehaviour : MonoBehaviour, ISpaceShip
+    public class SpaceShipBehaviour : MonoBehaviour, ISpaceShip, ITickable
     {
         public IHealthAttribute HealthAttribute { get; private set; }
+
+        public event Action<ISpaceShip> OnDeath;
 
         public Vector3 Position => transform.position;
 
@@ -32,6 +36,12 @@ namespace Assets.Scripts.SpaceShips
         private void Awake()
         {
             Construct(_descriptor.GetSpaceShipConfig());
+        }
+
+        public void Tick()
+        {
+            if (HealthAttribute.HP <= 0)
+                OnDeath?.Invoke(this);
         }
 
         public void TakeDamage(float damageAmount)
@@ -56,5 +66,7 @@ namespace Assets.Scripts.SpaceShips
         {
             _weapons.Remove(weapon);
         }
+
+
     }
 }

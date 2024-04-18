@@ -5,11 +5,12 @@ using Zenject;
 
 namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
-    public class BattleObserver : IBattleObserver, ITickable
+    public class BattleObserver : IBattleObserver
     {
         public Battle _currentBattle;
 
         public event Action<ISpaceShip> OnWinnerDetermined;
+        public ISpaceShip Winner { get; private set; }
 
         private bool _isObserving;
 
@@ -17,6 +18,10 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
         {
             _currentBattle = battle;
             _isObserving = true;
+            Winner = null;
+
+            _currentBattle.BattleData.PlayerSpaceShip.OnDeath += OnSpaceShipDeathEventHandler;
+            _currentBattle.BattleData.EnemySpaceShip.OnDeath += OnSpaceShipDeathEventHandler;
         }
 
         public void StopObserve()
@@ -24,22 +29,16 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
             _isObserving = false;
         }
 
-        public void Tick()
+        private void OnSpaceShipDeathEventHandler(ISpaceShip spaceShip)
         {
-            if (!_isObserving)
-                return;
+            Winner = spaceShip == _currentBattle.BattleData.EnemySpaceShip ? 
+                _currentBattle.BattleData.PlayerSpaceShip : 
+                _currentBattle.BattleData.EnemySpaceShip;
 
-            if (_currentBattle.BattleData.PlayerSpaceShip.HealthAttribute.HP <= 0)
-            {
-                OnWinnerDetermined?.Invoke(_currentBattle.BattleData.EnemySpaceShip);
-                return;
-            }
+            _currentBattle.BattleData.PlayerSpaceShip.OnDeath -= OnSpaceShipDeathEventHandler;
+            _currentBattle.BattleData.EnemySpaceShip.OnDeath -= OnSpaceShipDeathEventHandler;
 
-            if (_currentBattle.BattleData.EnemySpaceShip.HealthAttribute.HP <= 0)
-            {
-                OnWinnerDetermined?.Invoke(_currentBattle.BattleData.PlayerSpaceShip);
-                return;
-            }
+            OnWinnerDetermined?.Invoke(spaceShip);
         }
     }
 }

@@ -16,15 +16,17 @@ namespace Assets.Scripts.Infrastructure.Factories
         private readonly ICombatAiRegistry _combatAiRegistry;
         private readonly IGameObjectRegistry _gameObjectRegistry;
         private readonly IRootTransformsProvider _rootTransformsProvider;
+        private readonly IBattleTickService _battleTickService;
 
         [Inject]
         public SpaceShipFactory(IAssetsProvider assetsProvider, 
-            ICombatAiRegistry combatAiRegistry, IGameObjectRegistry gameObjectRegistry, IRootTransformsProvider rootTransformsProvider)
+            ICombatAiRegistry combatAiRegistry, IGameObjectRegistry gameObjectRegistry, IRootTransformsProvider rootTransformsProvider, IBattleTickService battleTickService)
         {
             _assetsProvider = assetsProvider;
             _combatAiRegistry = combatAiRegistry;
             _gameObjectRegistry = gameObjectRegistry;
             _rootTransformsProvider = rootTransformsProvider;
+            _battleTickService = battleTickService;
         }
 
         public ISpaceShip CreateSpaceShip(SpaceShipType type, Vector3 position, float zRotation)
@@ -32,6 +34,13 @@ namespace Assets.Scripts.Infrastructure.Factories
             GameObject prefab = _assetsProvider.GetSpaceShipPrefab(type);
             GameObject gameObject = Object.Instantiate(prefab, _rootTransformsProvider.SpaceShipsRoot);
             var spaceShipComponent = gameObject.GetComponent<SpaceShipBehaviour>();
+
+            ITickable[] tickableBehaviours = gameObject.GetComponentsInChildren<ITickable>();
+
+            foreach (var tickable in tickableBehaviours)
+            {
+                _battleTickService.AddTickable(tickable);
+            }
 
             PlaceSpaceShip(gameObject, position, zRotation);
 
