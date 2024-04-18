@@ -7,7 +7,7 @@ using Zenject;
 namespace Assets.Scripts.Projectiles
 {
     [RequireComponent(typeof(ProjectileBehaviour))]
-    public class ProjectileAutoMoveBehaviour : MonoBehaviour, IAutomoveMove, ITickable
+    public class ProjectileAutoMoveBehaviour : MonoBehaviour, ITickable
     {
         public Vector3 EndPoint { get; set; }
         public float Speed { get; set; }
