@@ -26,6 +26,8 @@ namespace Assets.Scripts.Game.GameStates
 
         public void Enter()
         {
+            _persistentDataService.Initialize();
+
             LoadOrCreateBattleSetup();
             _stateMachine.EnterState<LoadMainMenuSceneState>();
         }

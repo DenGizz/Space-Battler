@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Battles;
+using Assets.Scripts.Infrastructure.Services.PersistentDataServices;
 using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Weapons.WeaponConfigs;
 using Newtonsoft.Json;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Services.CoreServices
@@ -21,52 +23,37 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         private const string RelativeSaveDataPath = "SaveData";
         private const string BattleSetupFileName = "BattleSetup.json";
 
+        private PersistentJsonFile _battleSetupDataFile;
+
         public PersistentDataService(ISerializer serializer, IFileSystem fileSystem)
         {
             _serializer = serializer;
             _fileSystem = fileSystem;
         }
 
+        public void Initialize()
+        {
+            _battleSetupDataFile = new PersistentJsonFile(RelativeSaveDataPath, BattleSetupFileName, _fileSystem);
+        }
+
         public bool IsBattleSetupStored()
         {
-            string path = GetBattleSetupSaveFilePath();
-            return _fileSystem.IsFileExist(path);
+           return _battleSetupDataFile.IsDataExist();
         }
 
         public void SaveBattleSetup(BattleSetup battleSetup)
         {
             string json = _serializer.Serialize(battleSetup);
-            string path = GetBattleSetupSaveFilePath();
-            SaveToFile(path, json);
+
+            if(!_battleSetupDataFile.IsDataExist())
+                _battleSetupDataFile.CreateData();
+
+            _battleSetupDataFile.OverwriteData(json);
         }
 
         public BattleSetup LoadBattleSetup()
         {
-            string path = GetBattleSetupSaveFilePath();
-
-            if (!_fileSystem.IsFileExist(path))
-                return null;
-
-            string json = LoadFromFile(path);
-            return _serializer.Deserialize<BattleSetup>(json);
-        }
-
-        private void SaveToFile(string path, string content)
-        {
-            if (!_fileSystem.IsFileExist(path))
-                _fileSystem.CreateTextFile(RelativeSaveDataPath,BattleSetupFileName );
-
-            _fileSystem.OverwriteTextFile(path, content);
-        }
-
-        private string LoadFromFile(string path)
-        {
-            return _fileSystem.ReadTextFile(path);
-        }
-
-        private string GetBattleSetupSaveFilePath()
-        {
-            return Path.Combine(RelativeSaveDataPath, BattleSetupFileName);
+            return _serializer.Deserialize<BattleSetup>(_battleSetupDataFile.GetData());
         }
     }
 }

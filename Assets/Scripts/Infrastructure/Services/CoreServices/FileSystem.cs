@@ -38,6 +38,14 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             return File.Exists(path);
         }
 
+        public bool IsFileEmpty(string relativeFilePath)
+        {
+            string path = GetFullFilePath(relativeFilePath);
+            FileInfo fileInfo = new FileInfo(path);
+
+            return fileInfo.Length == 0;
+        }
+
         public void OverwriteTextFile(string relativeFilePath, string content)
         {
             string path = GetFullFilePath(relativeFilePath);

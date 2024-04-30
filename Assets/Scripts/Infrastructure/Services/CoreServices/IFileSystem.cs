@@ -11,6 +11,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         void CreateTextFile(string relativePath, string fileName);
         string ReadTextFile(string relativeFilePath);
         bool IsFileExist(string relativeFilePath);
+        bool IsFileEmpty(string relativeFilePath);
         void OverwriteTextFile(string relativeFilePath, string content);
     }
 }
