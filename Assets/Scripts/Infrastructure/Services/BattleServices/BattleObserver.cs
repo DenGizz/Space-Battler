@@ -38,7 +38,7 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
             _currentBattle.BattleData.PlayerSpaceShip.OnDeath -= OnSpaceShipDeathEventHandler;
             _currentBattle.BattleData.EnemySpaceShip.OnDeath -= OnSpaceShipDeathEventHandler;
 
-            OnWinnerDetermined?.Invoke(spaceShip);
+            OnWinnerDetermined?.Invoke(Winner);
         }
     }
 }
