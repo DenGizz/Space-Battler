@@ -28,11 +28,7 @@ namespace Assets.Scripts.Infrastructure.Destroyers
 
             _projectilesRegister.UnRegisterProjectile(projectile);
             _gameObjectRegistry.UnRegisterGameObject(gameObject);
-
-            ITickable[] tickableBehaviours = gameObject.GetComponentsInChildren<ITickable>();
-
-            foreach (var tickableBehaviour in tickableBehaviours)
-                _battleTickService.RemoveTickable(tickableBehaviour);
+            _battleTickService.UnRegisterGameObjectTickables(gameObject);
 
             Object.Destroy(gameObject);
         }

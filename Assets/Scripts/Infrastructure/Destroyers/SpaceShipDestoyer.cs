@@ -24,9 +24,7 @@ namespace Assets.Scripts.Infrastructure.Destroyers
         {
             GameObject gameObject = _gameObjectRegistry.GetSpaceShipGameObject(spaceShip);
 
-            ITickable[] tickableBehaviours = gameObject.GetComponents<ITickable>();
-            foreach (var tickableBehaviour in tickableBehaviours)
-                _battleTickService.RemoveTickable(tickableBehaviour);
+            _battleTickService.UnRegisterGameObjectTickables(gameObject);
 
             _gameObjectRegistry.UnRegisterGameObject(gameObject);
             _combatAIRegistry.UnRegisterAi(spaceShip);

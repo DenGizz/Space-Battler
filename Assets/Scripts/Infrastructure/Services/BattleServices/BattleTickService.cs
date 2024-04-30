@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 using Zenject;
 
 namespace Assets.Scripts.Infrastructure.Services.CoreServices
@@ -16,14 +17,16 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
 
         public bool IsPaused { get; set; }
 
-        public void AddTickable(ITickable tickable)
+        public void RegisterGameObjectTickables(GameObject gameObject)
         {
-            tickablesToAdd.Add(tickable);
+            ITickable[] tickables = gameObject.GetComponentsInChildren<ITickable>();
+            tickablesToAdd.AddRange(tickables);
         }
 
-        public void RemoveTickable(ITickable tickable)
+        public void UnRegisterGameObjectTickables(GameObject gameObject)
         {
-            tickablesToRemove.Add(tickable);
+            ITickable[] tickables = gameObject.GetComponentsInChildren<ITickable>();
+            tickablesToRemove.AddRange(tickables);
         }
 
         public void Tick()

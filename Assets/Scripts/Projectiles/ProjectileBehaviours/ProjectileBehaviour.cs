@@ -23,12 +23,6 @@ namespace Assets.Scripts.ScriptableObjects
 
         [SerializeField] private ProjectileDescriptor _descriptor;
 
-        public void Construct(Vector3 position)
-        {
-            Data = new ProjectileData(transform.position);
-            Config = new ProjectileConfig(_descriptor.ProjectileType, _descriptor.Speed);
-        }
-
         public void Construct(ProjectileData data)
         {
             Data = data;

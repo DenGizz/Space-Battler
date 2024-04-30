@@ -32,7 +32,7 @@ namespace Assets.Scripts.Infrastructure.Factories
             GameObject weaponPrefab = _assetsProvider.GetWeaponPrefab(weaponType);
             GameObject weaponGameObject = _instantiator.InstantiatePrefab(weaponPrefab, position, Quaternion.Euler(0, 0, zRotation), null);
             WeaponBehaviour weaponBehaviour = weaponGameObject.GetComponentInChildren<WeaponBehaviour>();
-            _battleTickService.AddTickable(weaponBehaviour);
+            _battleTickService.RegisterGameObjectTickables(weaponGameObject);
             IWeapon weapon = weaponBehaviour;
             _gameObjectRegistry.RegisterWeaponGameObject(weapon, weaponGameObject);
             return weapon;

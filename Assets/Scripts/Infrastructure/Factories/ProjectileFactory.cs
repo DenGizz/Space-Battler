@@ -38,19 +38,18 @@ namespace Assets.Scripts.Infrastructure.Factories
 
         public ProjectileBehaviour CreateProjectile(ProjectileType projectileType, Vector3 position, float zRotation)
         {
-            GameObject prefab = _staticDataService.GetProjectileDescriptor(projectileType).Prefab;
-            GameObject projectile = _instantiator.InstantiatePrefab(prefab, position, Quaternion.Euler(0, 0, zRotation), _rootTransformsProvider.ProjectilesRoot);
+            GameObject projectilePrefab = _staticDataService.GetProjectileDescriptor(projectileType).Prefab;
+            GameObject projectileGO = _instantiator.InstantiatePrefab(projectilePrefab, position,
+                Quaternion.Euler(0, 0, zRotation), _rootTransformsProvider.ProjectilesRoot);
 
-            ITickable[] tickables = projectile.GetComponentsInChildren<ITickable>();
+            _battleTickService.RegisterGameObjectTickables(projectileGO);
 
-            foreach (ITickable tickable in tickables)
-                _battleTickService.AddTickable(tickable);
-
-            ProjectileBehaviour projectileBehaviour = projectile.GetComponent<ProjectileBehaviour>();
-            projectileBehaviour.Construct(position);
+            ProjectileBehaviour projectileBehaviour = projectileGO.GetComponent<ProjectileBehaviour>();
+            ProjectileData projectileData = new ProjectileData(position);
+            projectileBehaviour.Construct(projectileData);
             _projectilesRegister.RegisterProjectile(projectileBehaviour);
-            _gameObjectRegistry.RegisterProjectileGameObject(projectileBehaviour, projectile);
-            return projectile.GetComponent<ProjectileBehaviour>();
+            _gameObjectRegistry.RegisterProjectileGameObject(projectileBehaviour, projectileGO);
+            return projectileGO.GetComponent<ProjectileBehaviour>();
         }
     }
 }

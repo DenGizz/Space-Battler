@@ -9,8 +9,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
     {
         bool IsPaused { get; set; }
 
-        public void AddTickable(ITickable tickable);
-
-        public void RemoveTickable(ITickable tickable);
+        void RegisterGameObjectTickables(GameObject gameObject);
+        void UnRegisterGameObjectTickables(GameObject gameObject);
     }
 }

@@ -22,9 +22,7 @@ namespace Assets.Scripts.Infrastructure.Destroyers
         {
             GameObject gameObject = _gameObjectRegistry.GetWeaponGameObject(weapon);
 
-            ITickable[] tickableBehaviours = gameObject.GetComponents<ITickable>();
-            foreach (var tickableBehaviour in tickableBehaviours)
-                _battleTickService.RemoveTickable(tickableBehaviour);
+            _battleTickService.UnRegisterGameObjectTickables(gameObject);
 
             _gameObjectRegistry.UnRegisterGameObject(gameObject);
             Object.Destroy(gameObject);

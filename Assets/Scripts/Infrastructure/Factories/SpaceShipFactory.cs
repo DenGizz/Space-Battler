@@ -35,12 +35,7 @@ namespace Assets.Scripts.Infrastructure.Factories
             GameObject gameObject = Object.Instantiate(prefab, _rootTransformsProvider.SpaceShipsRoot);
             var spaceShipComponent = gameObject.GetComponent<SpaceShipBehaviour>();
 
-            ITickable[] tickableBehaviours = gameObject.GetComponentsInChildren<ITickable>();
-
-            foreach (var tickable in tickableBehaviours)
-            {
-                _battleTickService.AddTickable(tickable);
-            }
+            _battleTickService.RegisterGameObjectTickables(gameObject);
 
             PlaceSpaceShip(gameObject, position, zRotation);
 
