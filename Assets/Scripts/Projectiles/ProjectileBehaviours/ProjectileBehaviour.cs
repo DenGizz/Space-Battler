@@ -61,7 +61,6 @@ namespace Assets.Scripts.ScriptableObjects
 
             if ( Vector3.Distance(Data.Target.Position, Data.Position) < 0.05)
             {
-                Debug.Log(gameObject.name + " Reach");
                 Data.IsReachedTarget = true;
                 OnReachedTarget?.Invoke();
             }
