@@ -27,6 +27,12 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
             _fileSystem = fileSystem;
         }
 
+        public bool IsBattleSetupStored()
+        {
+            string path = GetBattleSetupSaveFilePath();
+            return _fileSystem.IsFileExist(path);
+        }
+
         public void SaveBattleSetup(BattleSetup battleSetup)
         {
             string json = _serializer.Serialize(battleSetup);

@@ -13,6 +13,7 @@ namespace Assets.Scripts.Game
         public Game(IStatesFactory statesFactory)
         {
             _gameStateMachine = new StateMachine();
+            _gameStateMachine.AddState<InitializeAndLoadGame>(statesFactory.CreateState<InitializeAndLoadGame>(_gameStateMachine));
             _gameStateMachine.AddState<LoadMainMenuSceneState>(statesFactory.CreateState<LoadMainMenuSceneState>(_gameStateMachine));
             _gameStateMachine.AddState<MainMenuState>(statesFactory.CreateState<MainMenuState>(_gameStateMachine));
             _gameStateMachine.AddState<LoadBattleFieldSceneState>(statesFactory.CreateState<LoadBattleFieldSceneState>(_gameStateMachine));
@@ -24,7 +25,7 @@ namespace Assets.Scripts.Game
 
         public void Start()
         {
-            _gameStateMachine.EnterState<LoadMainMenuSceneState>();
+            _gameStateMachine.EnterState<InitializeAndLoadGame>();
         }
     }
 }

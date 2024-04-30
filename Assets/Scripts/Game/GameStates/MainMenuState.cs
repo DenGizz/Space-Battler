@@ -28,18 +28,7 @@ namespace Assets.Scripts.Game.GameStates
         public void Enter()
         {
             _mainMenuUi = _uiFactory.CreateMainMenuUi();
-
-            BattleSetup sessionBattleSetup = _battleSetupProvider.BattleSetup;
-
-            if (sessionBattleSetup == null)
-            {
-                sessionBattleSetup = _persistentDataService.LoadBattleSetup();
-                _battleSetupProvider.BattleSetup = sessionBattleSetup;
-            }
-
-            if (sessionBattleSetup != null)
-                _mainMenuUi.LoadBattleSetupInUi(sessionBattleSetup);
-
+            _mainMenuUi.LoadBattleSetupInUi(_battleSetupProvider.BattleSetup);
             _mainMenuUi.OnStartBattleButtonClicked += OnStartBattleButtonClicked;
         }
 
@@ -54,7 +43,6 @@ namespace Assets.Scripts.Game.GameStates
 
             if (!BattleSetupValidator.IsBattleSetupValidForStartBattle(battleSetup))
                 return;
-
 
             _persistentDataService.SaveBattleSetup(battleSetup);
             _battleSetupProvider.BattleSetup = battleSetup;
