@@ -20,7 +20,7 @@ namespace Assets.Scripts.Game
             _gameStateMachine.AddState<CreateBattleState>(statesFactory.CreateState<CreateBattleState>(_gameStateMachine));
             _gameStateMachine.AddState<BattleState>(statesFactory.CreateState<BattleState>(_gameStateMachine));
             _gameStateMachine.AddState<CleanUpBattleState>(statesFactory.CreateState<CleanUpBattleState>(_gameStateMachine));
-            _gameStateMachine.AddState<ShowWinnerState>(statesFactory.CreateState<ShowWinnerState>(_gameStateMachine));
+            _gameStateMachine.AddState<WinnerDetermined>(statesFactory.CreateState<WinnerDetermined>(_gameStateMachine));
         }
 
         public void Start()
