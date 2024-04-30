@@ -4,6 +4,7 @@ using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
+using Assets.Scripts.Infrastructure.Services.PersistentProgressServices;
 using Assets.Scripts.Infrastructure.Services.Registries;
 using UnityEngine;
 using Zenject;
@@ -20,6 +21,7 @@ namespace Assets.Scripts.Infrastructure
             BindBattleServices();
             BindUiServices();
 
+            Container.Bind<IProgressProvider>().To<ProgressProvider>().AsSingle();
             Container.Bind<IProjectilesPoolService>().To<ProjectilesPoolService>().AsSingle();
         }
 
