@@ -4,27 +4,35 @@ using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Infrastructure.Services.PersistentProgressServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class BattleWinnerUI : MonoBehaviour
 {
-    [SerializeField] SpaceShipTypeView _winnerSpaceShipTypeView;
-    [SerializeField] TextMeshProUGUI _winnerNameText;
+    [SerializeField] private TextMeshProUGUI _winnerNameText;
+    [SerializeField] private TextMeshProUGUI _winLoseStatisticText;
     [SerializeField] private Button _returnToMainMenuButton;
 
     [SerializeField] string winText = "You win!";
     [SerializeField] string loseText = "You lose!";
 
-    public Action OnReturnMainMenuButtonPressed { get; internal set; }
+    public event Action OnReturnMainMenuButtonPressed;
+
+    private IProgressProvider _progressProvider;
+
+    [Inject]
+    public void Construct(IProgressProvider progressProvider)
+    {
+        _progressProvider = progressProvider;
+    }
 
     public void SetWinner(ISpaceShip winnerSpaceShip, bool isPlayerWin)
     {
-        SpaceShipType winnerSpaceShipType = SpaceShipType.HeavyDefender;
-
-        _winnerSpaceShipTypeView.SpaceShipType = winnerSpaceShipType;
         _winnerNameText.text = isPlayerWin ? winText : loseText;
+        _winLoseStatisticText.text = $"Wins: {_progressProvider.PlayerProgressData.BattlesWon}. Loses: {_progressProvider.PlayerProgressData.BattlesLost}";
     }
 
     private void Awake()
