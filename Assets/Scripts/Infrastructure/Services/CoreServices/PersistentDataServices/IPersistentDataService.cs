@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Battles;
+using Assets.Scripts.Progress;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,9 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         bool IsBattleSetupStored();
         void SaveBattleSetup(BattleSetup battleSetup);
         BattleSetup LoadBattleSetup();
+
+        bool IsPlayerProgressDataStored();
+        void SavePlayerProgressData(PlayerProgressData playerProgressData);
+        PlayerProgressData LoadPlayerProgressData();
     }
 }
