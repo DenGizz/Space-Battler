@@ -20,7 +20,8 @@ namespace Assets.Scripts.Game.GameStates
         private readonly IProgressProvider _progressProvider;
         private readonly IPersistentDataService _persistentDataService;
 
-        public InitializeAndLoadGame(StateMachine stateMachine, IBattleSetupProvider battleSetupProvider, IPersistentDataService persistentDataService, IProgressProvider progressProvider)
+        public InitializeAndLoadGame(StateMachine stateMachine, IBattleSetupProvider battleSetupProvider, 
+            IPersistentDataService persistentDataService, IProgressProvider progressProvider)
         {
             _stateMachine = stateMachine;
             _battleSetupProvider = battleSetupProvider;
