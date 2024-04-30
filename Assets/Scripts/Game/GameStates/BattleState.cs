@@ -63,6 +63,7 @@ namespace Assets.Scripts.Game.GameStates
         private void OnWinnerDeterminedEventHandler(ISpaceShip winner)
         {
             StopBattle();
+            _battle.Winner = winner;
             UpdateAndSaveProgress(winner);
 
 
