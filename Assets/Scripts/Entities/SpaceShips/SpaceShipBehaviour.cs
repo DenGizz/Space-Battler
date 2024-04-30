@@ -4,71 +4,58 @@ using Assets.Scripts.Entities.SpaceShips.SpaceShipAttributes;
 using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Entities.Weapons;
 using Assets.Scripts.ScriptableObjects;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using Zenject;
 
 namespace Assets.Scripts.Entities.SpaceShips
 {
     [AddComponentMenu("Units/SpaceShip")]
-    public class SpaceShipBehaviour : MonoBehaviour, ISpaceShip, ITickable
+    public class SpaceShipBehaviour : MonoBehaviour, ISpaceShip
     {
-        public IHealthAttribute HealthAttribute { get; private set; }
+        [SerializeField] private SpaceShipDescriptor _descriptor;
 
-        public event Action<ISpaceShip> OnDeath;
-
-        public Vector3 Position => transform.position;
-
-        public IEnumerable<IWeapon> Weapons => _weapons;
+        public SpaceShipData Data { get; private set; }
 
         public SpaceShipConfig Config { get; private set; }
 
-        public bool IsDead => HealthAttribute.HP <= 0;
+        public event Action<ISpaceShip> OnDeath;
 
-        private List<IWeapon> _weapons;
-
-        [SerializeField] private SpaceShipDescriptor _descriptor;
-
-        private void Construct(SpaceShipConfig config)
+        [Inject]
+        public void Construct(SpaceShipData data)
         {
-            Config = config;
-            HealthAttribute = new HealthAttribute(config.MaxHP, config.MaxHP);
-            _weapons = new List<IWeapon>();
-        }
-
-        private void Awake()
-        {
-            Construct(_descriptor.GetSpaceShipConfig());
-        }
-
-        public void Tick()
-        {
-            if (HealthAttribute.HP <= 0)
-                OnDeath?.Invoke(this);
-        }
-
-        public void TakeDamage(float damageAmount)
-        {
-            HealthAttribute.TakeDamage(damageAmount);
-        }
-    
-        public void Attack(ISpaceShip target)
-        {
-            foreach (var weapon in _weapons)
-                if (weapon.CanShoot)
-                    weapon.Attack(target);
+            Data = data;
+            Config = _descriptor.GetSpaceShipConfig();
+            Data.HealthPoints = Config.MaxHP;
+            transform.position = Data.Position;
         }
 
         public void AddWeapon(IWeapon weapon)
         {
-            if (_weapons.Count >= Config.WeaponSlots)
-                throw new System.Exception("No more weapon slots available");
+            if (Data.Weapons.Count >= Config.WeaponSlots)
+                throw new Exception("No more weapon slots available");
 
-            _weapons.Add(weapon);
+            Data.Weapons.Add(weapon);
+        }
+
+        public void Attack(ISpaceShip target)
+        {
+            foreach (var weapon in Data.Weapons)
+                if (weapon.CanShoot)
+                    weapon.Attack(target);
         }
 
         public void RemoveWeapon(IWeapon weapon)
         {
-            _weapons.Remove(weapon);
+            Data.Weapons.Remove(weapon);
+        }
+
+        public void TakeDamage(float damageAmount)
+        {
+            Data.HealthPoints -= damageAmount;
+
+            if (Data.HealthPoints <= 0)
+                OnDeath?.Invoke(this);
         }
     }
 }

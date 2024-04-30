@@ -24,7 +24,7 @@ namespace Assets.Scripts.Entities.Projectiles.ProjectileBehaviours
 
             transform.position = Vector3.MoveTowards(
                 transform.position, 
-                _projectileBehaviour.Data.Target.Position, 
+                _projectileBehaviour.Data.Target.Data.Position, 
                 _projectileBehaviour.Config.Speed * Time.deltaTime);
         }
 

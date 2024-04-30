@@ -48,7 +48,7 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
 
             if (playerSpaceShip != null)
             {
-                foreach (var weapon in playerSpaceShip.Weapons.ToArray())
+                foreach (var weapon in playerSpaceShip.Data.Weapons.ToArray())
                 {
                     playerSpaceShip.RemoveWeapon(weapon);
                     _weaponDestroyer.Destroy(weapon);
@@ -59,7 +59,7 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
 
             if(enemySpaceShip != null)
             {
-                foreach (var weapon in enemySpaceShip.Weapons.ToArray())
+                foreach (var weapon in enemySpaceShip.Data.Weapons.ToArray())
                 {
                     enemySpaceShip.RemoveWeapon(weapon);
                     _weaponDestroyer.Destroy(weapon);

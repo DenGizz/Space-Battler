@@ -6,18 +6,18 @@ using Zenject;
 
 namespace Assets.Scripts.AI.UnitsAI
 {
-    [AddComponentMenu("AI/CombatUnit/AutoAttackBehaviour")]
+    [AddComponentMenu("AI/Combat Unit/AutoAttack Behaviour")]
     [RequireComponent(typeof(IAttackable))]
     public class AutoAttackBehaviour : MonoBehaviour, ICombatAi, ITickable
     {
         private ISpaceShip _target;
         private bool _isInCombatState;
 
-        private IAttackable _controledAttackable;
+        private IAttackable _attackable;
 
         private void Awake()
         {
-            _controledAttackable = GetComponent<IAttackable>();
+            _attackable = GetComponent<IAttackable>();
         }
 
         public void SetTarget(ISpaceShip target)
@@ -43,9 +43,10 @@ namespace Assets.Scripts.AI.UnitsAI
             if (_target == null)
                 return;
 
-            if (_target.IsDead)
+            if (!_target.Data.IsAlive)
                 return;
-            _controledAttackable.Attack(_target);
+
+            _attackable.Attack(_target);
         }
     }
 }

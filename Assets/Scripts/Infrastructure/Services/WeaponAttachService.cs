@@ -26,7 +26,7 @@ namespace Assets.Scripts.Infrastructure.Services
             WeaponAttachPoints attachPoints = spaceShipGameObject.GetComponent<WeaponAttachPoints>();
 
 
-            Transform attachmentPoint = attachPoints.AttachmentPoints.ToArray()[spaceShip.Weapons.Count()];
+            Transform attachmentPoint = attachPoints.AttachmentPoints.ToArray()[spaceShip.Data.Weapons.Count()];
             weaponGameOBject.transform.SetParent(attachmentPoint);
             weaponGameOBject.transform.localPosition = Vector3.zero;
             weaponGameOBject.transform.rotation = spaceShipGameObject.transform.rotation;
@@ -36,7 +36,7 @@ namespace Assets.Scripts.Infrastructure.Services
 
         public bool CanAttachWeaponToSpaceShip(ISpaceShip spaceShip, IWeapon weapon)
         {
-            if (spaceShip.Weapons.Count() <= spaceShip.Config.WeaponSlots)
+            if (spaceShip.Data.Weapons.Count() <= spaceShip.Config.WeaponSlots)
                 return false;
 
             GameObject weaponGameObject = _gameObjectRegistry.GetWeaponGameObject(weapon);
@@ -48,7 +48,7 @@ namespace Assets.Scripts.Infrastructure.Services
             if(!spaceShipGameObject.TryGetComponent(out WeaponAttachPoints attachPoints))
                 return false;
 
-            if(attachPoints.AttachmentPoints.Count() <= spaceShip.Weapons.Count())
+            if(attachPoints.AttachmentPoints.Count() <= spaceShip.Data.Weapons.Count())
                 return false;
 
             return true;

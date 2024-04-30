@@ -20,7 +20,7 @@ namespace Assets.Scripts.UI.BattleUI
             if (_spaceShip == null)
                 return;
 
-            _healthGreenRow.transform.localScale = new Vector3(_spaceShip.HealthAttribute.HP / _spaceShip.HealthAttribute.BaseHP, 1, 1);
+            _healthGreenRow.transform.localScale = new Vector3(_spaceShip.Data.HealthPoints/ _spaceShip.Config.MaxHP, 1, 1);
         }
     }
 }

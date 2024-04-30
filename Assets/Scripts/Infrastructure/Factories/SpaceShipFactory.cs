@@ -34,6 +34,8 @@ namespace Assets.Scripts.Infrastructure.Factories
             GameObject prefab = _assetsProvider.GetSpaceShipPrefab(type);
             GameObject gameObject = Object.Instantiate(prefab, _rootTransformsProvider.SpaceShipsRoot);
             var spaceShipComponent = gameObject.GetComponent<SpaceShipBehaviour>();
+            SpaceShipData spaceShipData = new SpaceShipData(position);
+            spaceShipComponent.Construct(spaceShipData);
 
             _battleTickService.RegisterGameObjectTickables(gameObject);
 

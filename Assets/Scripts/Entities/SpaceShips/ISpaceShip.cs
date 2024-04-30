@@ -9,13 +9,11 @@ namespace Assets.Scripts.Entities.SpaceShips
 {
     public interface ISpaceShip : IDamagable, IAttackable
     {
-        IHealthAttribute HealthAttribute { get; }
-        event Action<ISpaceShip> OnDeath;
-        bool IsDead { get; }
-        Vector3 Position { get; }
+        SpaceShipData Data { get; }
         SpaceShipConfig Config { get; }
 
-        IEnumerable<IWeapon> Weapons { get; }
+        public event Action<ISpaceShip> OnDeath;
+
         void AddWeapon(IWeapon weapon);
         void RemoveWeapon(IWeapon weapon);
     }

@@ -47,11 +47,11 @@ namespace Assets.Scripts.Entities.Projectiles.ProjectileBehaviours
             if (Data.IsReachedTarget)
                 return;
 
-            if ( Vector3.Distance(Data.Target.Position, Data.Position) < 0.05)
-            {
-                Data.IsReachedTarget = true;
-                OnReachedTarget?.Invoke();
-            }
+            if (!(Vector3.Distance(Data.Target.Data.Position, Data.Position) < 0.05)) 
+                return;
+
+            Data.IsReachedTarget = true;
+            OnReachedTarget?.Invoke();
         }
     }
 }
