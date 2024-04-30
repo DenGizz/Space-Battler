@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.Entities.SpaceShips;
-
-namespace Assets.Scripts.Entities.Weapons
+﻿namespace Assets.Scripts.Entities.Weapons
 {
     public interface IWeapon : IAttackable
     {

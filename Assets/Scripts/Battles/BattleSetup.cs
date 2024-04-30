@@ -1,5 +1,4 @@
-﻿using System;
-using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
+﻿using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 
 namespace Assets.Scripts.Battles
 {

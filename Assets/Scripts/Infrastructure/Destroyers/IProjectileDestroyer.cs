@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using Assets.Scripts.Entities.Projectiles.ProjectileBehaviours;
-using Assets.Scripts.ScriptableObjects;
-using UnityEngine;
+﻿using Assets.Scripts.Entities.Projectiles.ProjectileBehaviours;
 
 namespace Assets.Scripts.Infrastructure.Destroyers
 {

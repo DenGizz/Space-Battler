@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using Assets.Scripts.Entities.SpaceShips;
+﻿using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using UnityEngine;
 

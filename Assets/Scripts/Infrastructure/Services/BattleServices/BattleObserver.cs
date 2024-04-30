@@ -1,7 +1,6 @@
 ﻿using System;
 using Assets.Scripts.Battles;
 using Assets.Scripts.Entities.SpaceShips;
-using Zenject;
 
 namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {

@@ -1,6 +1,4 @@
 ﻿using Assets.Scripts.Infrastructure.Services.Registries;
-using System;
-using System.Collections;
 using System.Linq;
 using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Entities.Weapons;

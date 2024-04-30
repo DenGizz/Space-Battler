@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using Assets.Scripts.UI;
-using Assets.Scripts.UI.BaseUI;
+﻿using Assets.Scripts.UI.BaseUI;
 using Assets.Scripts.UI.BattleUI;
 using Assets.Scripts.UI.MainMenuUI;
 using Assets.Scripts.UI.Pause_Menu_UI;

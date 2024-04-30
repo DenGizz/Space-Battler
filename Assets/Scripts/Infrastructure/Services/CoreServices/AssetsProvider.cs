@@ -6,8 +6,6 @@ using System.Linq;
 using Assets.Scripts.Entities.Projectiles;
 using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Entities.Weapons.WeaponConfigs;
-using Unity.VisualScripting;
-using UnityEditor;
 using Assets.Scripts.Infrastructure.Config;
 
 namespace Assets.Scripts.Infrastructure.Services.CoreServices

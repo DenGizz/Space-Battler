@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using Assets.Scripts.Entities.Weapons;
+﻿using Assets.Scripts.Entities.Weapons;
 using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using UnityEngine;
 

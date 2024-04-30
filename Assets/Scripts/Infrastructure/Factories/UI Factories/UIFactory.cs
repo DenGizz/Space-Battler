@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using Assets.Scripts.Infrastructure.Services;
-using Assets.Scripts.Infrastructure.Services.CoreServices;
-using Assets.Scripts.UI;
+﻿using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.UI.BaseUI;
 using Assets.Scripts.UI.BattleUI;
 using Assets.Scripts.UI.MainMenuUI;

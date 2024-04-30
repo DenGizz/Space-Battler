@@ -1,13 +1,9 @@
-using System.Collections.Generic;
 using Assets.Scripts.Battles;
 using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Infrastructure.Factories;
-using Assets.Scripts.Infrastructure.Factories.UI_Factories;
-using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.StateMachines;
 using UnityEngine;
-using Zenject;
 
 namespace Assets.Scripts.Game.GameStates
 {

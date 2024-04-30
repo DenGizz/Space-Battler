@@ -1,10 +1,7 @@
 using System;
-using System.Collections.Generic;
-using Assets.Scripts.Entities.SpaceShips.SpaceShipAttributes;
 using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Entities.Weapons;
 using Assets.Scripts.ScriptableObjects;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using Zenject;
 

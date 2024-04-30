@@ -1,10 +1,4 @@
-﻿using Assets.Scripts.Battles;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace Assets.Scripts.Infrastructure.Services.CoreServices
 {

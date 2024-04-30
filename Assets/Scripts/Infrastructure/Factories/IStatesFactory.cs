@@ -1,6 +1,4 @@
 ﻿using Assets.Scripts.StateMachines;
-using System.Collections;
-using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Factories
 {

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using Assets.Scripts.Battles;
-using UnityEngine;
+﻿using Assets.Scripts.Battles;
 
 namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {

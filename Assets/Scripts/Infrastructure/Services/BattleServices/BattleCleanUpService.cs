@@ -1,9 +1,6 @@
 ﻿using Assets.Scripts.Battles;
 using Assets.Scripts.Infrastructure.Destroyers;
 using Assets.Scripts.Infrastructure.Services.Registries;
-using Assets.Scripts.ScriptableObjects;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using Assets.Scripts.Entities.SpaceShips;
 using Zenject;
