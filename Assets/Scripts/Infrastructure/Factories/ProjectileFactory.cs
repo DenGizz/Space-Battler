@@ -47,6 +47,7 @@ namespace Assets.Scripts.Infrastructure.Factories
                 _battleTickService.AddTickable(tickable);
 
             ProjectileBehaviour projectileBehaviour = projectile.GetComponent<ProjectileBehaviour>();
+            projectileBehaviour.Construct(position);
             _projectilesRegister.RegisterProjectile(projectileBehaviour);
             _gameObjectRegistry.RegisterProjectileGameObject(projectileBehaviour, projectile);
             return projectile.GetComponent<ProjectileBehaviour>();

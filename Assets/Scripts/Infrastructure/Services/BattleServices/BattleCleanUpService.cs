@@ -3,7 +3,9 @@ using Assets.Scripts.Infrastructure.Destroyers;
 using Assets.Scripts.Infrastructure.Services.Registries;
 using Assets.Scripts.ScriptableObjects;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using Assets.Scripts.SpaceShips;
 using Zenject;
 
 namespace Assets.Scripts.Infrastructure.Services.BattleServices
@@ -35,33 +37,39 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
 
             _projectilesPoolService.ClearAll();
 
-            DestroyAndUnregisterGameObjects(battleData);
+            DestroyAliveBattleUnits(battleData);
             _battleUIService.DestroyBattleUi();
         }
 
-        private void DestroyAndUnregisterGameObjects(BattleData battleData)
+        private void DestroyAliveBattleUnits(BattleData battleData)
         {
-            foreach (var weapon in battleData.PlayerSpaceShip.Weapons.ToArray())
+            ISpaceShip playerSpaceShip = battleData.PlayerSpaceShip;
+            ISpaceShip enemySpaceShip = battleData.EnemySpaceShip;
+
+            if (playerSpaceShip != null)
             {
-                battleData.PlayerSpaceShip.RemoveWeapon(weapon);
-                _weaponDestroyer.Destroy(weapon);
+                foreach (var weapon in playerSpaceShip.Weapons.ToArray())
+                {
+                    playerSpaceShip.RemoveWeapon(weapon);
+                    _weaponDestroyer.Destroy(weapon);
+                }
+
+                _spaceShipDestroyer.Destroy(playerSpaceShip);
             }
 
-            foreach (var weapon in battleData.EnemySpaceShip.Weapons.ToArray())
+            if(enemySpaceShip != null)
             {
-                battleData.EnemySpaceShip.RemoveWeapon(weapon);
-                _weaponDestroyer.Destroy(weapon);
+                foreach (var weapon in enemySpaceShip.Weapons.ToArray())
+                {
+                    enemySpaceShip.RemoveWeapon(weapon);
+                    _weaponDestroyer.Destroy(weapon);
+                }
+
+                _spaceShipDestroyer.Destroy(enemySpaceShip);
             }
 
-            _spaceShipDestroyer.Destroy(battleData.PlayerSpaceShip);
-            _spaceShipDestroyer.Destroy(battleData.EnemySpaceShip);
-
-            var sss = new List<ProjectileBehaviour>(_projectilesRegister.Projectiles);
-
-            foreach (var projectile in sss)
-            {
+            foreach (var projectile in _projectilesRegister.Projectiles.ToArray())
                 _projectileDestroyer.Destroy(projectile);
-            }
         }
     }
 }

@@ -47,7 +47,7 @@ namespace Assets.Scripts.Infrastructure.Services
 
         public void ReleaseProjectile(ProjectileBehaviour projectile)
         {
-            _projectilesPools[projectile.Type].Release(projectile);
+            _projectilesPools[projectile.Config.Type].Release(projectile);
         }
 
         public void ClearAll()

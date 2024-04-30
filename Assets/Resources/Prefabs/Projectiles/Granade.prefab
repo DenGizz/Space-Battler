@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5200446919257192861}
   - component: {fileID: 796035576389422694}
-  - component: {fileID: 750565737403993806}
-  - component: {fileID: 6151330167951998465}
-  - component: {fileID: -8809416813795284080}
-  - component: {fileID: -8717062465809014317}
-  - component: {fileID: -458960618692521964}
+  - component: {fileID: 2224617663281784546}
+  - component: {fileID: -2028664807598383005}
+  - component: {fileID: 5937308594363963541}
+  - component: {fileID: 3568310190202311646}
+  - component: {fileID: -4992215769489844143}
   m_Layer: 0
   m_Name: Granade
   m_TagString: Untagged
@@ -89,7 +89,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &750565737403993806
+--- !u!114 &2224617663281784546
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,12 +98,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 860154323450606118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7136ec791f64c64eb76bceee383e449, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ba18aca1f05e284281850babed05f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 0
-  _projectileDescriptor: {fileID: 11400000, guid: 381198c70e9e8cc42a0266353c574600, type: 2}
---- !u!114 &6151330167951998465
+  _descriptor: {fileID: 11400000, guid: 381198c70e9e8cc42a0266353c574600, type: 2}
+--- !u!114 &-2028664807598383005
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,10 +111,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 860154323450606118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9f32ebe29940f7409a29f68472a8c2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d0a5a92ae042eb4fa978d638b7281e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-8809416813795284080
+--- !u!114 &5937308594363963541
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,35 +123,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 860154323450606118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5175d7f067e5d846b38bf8df1c705f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 53520b92eac74f84c962bd1c5b8035cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startColor: {r: 1, g: 1, b: 1, a: 1}
-  _endColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &3568310190202311646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860154323450606118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9bf4275f07fe9c40834df0423ea5f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4992215769489844143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860154323450606118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a259b7c4539c5e4fb7adf1617a4193a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startColor: {r: 1, g: 0, b: 0, a: 1}
+  _endColor: {r: 1, g: 1, b: 1, a: 1}
   _period: 0.3
---- !u!114 &-8717062465809014317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 860154323450606118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e1a4e17d715f7b44bc11101b2590ca8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-458960618692521964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 860154323450606118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: facee7d1ba09d5c4891883aa1dd57e4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Damage: 0
-  _projectileDescriptor: {fileID: 0}

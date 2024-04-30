@@ -51,7 +51,7 @@ namespace Assets.Scripts.Weapons
             ProjectileBehaviour projectile = _projectilesPoolService.GetProjectile(_descriptor.ProjectileType);
             projectile.transform.position = transform.position;
             projectile.transform.rotation = transform.rotation;
-            projectile.Lunch(target, Damage);
+            projectile.Launch(target, Damage);
             _isOnColdDown = true;
             StartColdDown(ColdDownTime);
         }

@@ -11,7 +11,7 @@ using Zenject;
 namespace Assets.Scripts.Projectiles
 {
     [RequireComponent(typeof(ProjectileBehaviour))]
-    public class ProjectilePoolAutoReleaseBehaviour : MonoBehaviour,ITickable
+    public class ProjectileDestroyBehaviour : MonoBehaviour
     {
         private IProjectilesPoolService _projectilesPoolService;
         private ProjectileBehaviour _projectileBehaviour;
@@ -25,13 +25,12 @@ namespace Assets.Scripts.Projectiles
         private void Awake()
         {
             _projectileBehaviour = GetComponent<ProjectileBehaviour>();
+            _projectileBehaviour.OnReachedTarget += OnProjectileReachedTargetEventHandler;
         }
 
-        public void Tick()
+        private void OnProjectileReachedTargetEventHandler()
         {
-            if (_projectileBehaviour.IsReachedTarget)
-                _projectilesPoolService.ReleaseProjectile(_projectileBehaviour);
+            _projectilesPoolService.ReleaseProjectile(_projectileBehaviour);
         }
-
     }
 }
