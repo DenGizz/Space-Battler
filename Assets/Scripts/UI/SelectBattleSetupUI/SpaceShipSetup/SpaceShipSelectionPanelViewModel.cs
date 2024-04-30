@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
+using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.ScriptableObjects;
-using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.UI.BaseUI;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.UI.WeaponSelectionUI
+namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetup
 {
     public class SpaceShipSelectionPanelViewModel : MonoBehaviour
     {

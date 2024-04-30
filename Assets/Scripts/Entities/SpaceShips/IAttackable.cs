@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Assets.Scripts.Weapons;
-
-namespace Assets.Scripts.SpaceShips
+﻿namespace Assets.Scripts.Entities.SpaceShips
 {
     public interface IAttackable
     {

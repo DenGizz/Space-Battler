@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Assets.Scripts.Entities.Projectiles.ProjectileBehaviours;
 using Assets.Scripts.ScriptableObjects;
 using UnityEngine;
 

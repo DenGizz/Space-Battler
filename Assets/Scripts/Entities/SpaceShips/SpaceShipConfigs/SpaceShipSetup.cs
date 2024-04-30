@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Assets.Scripts.Weapons.WeaponConfigs;
+﻿using System.Collections.Generic;
+using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 
-namespace Assets.Scripts.SpaceShips.SpaceShipConfigs
+namespace Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs
 {
     public class SpaceShipSetup
     {

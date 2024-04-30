@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using Assets.Scripts.SpaceShips;
-using Assets.Scripts.SpaceShips.SpaceShipConfigs;
+using Assets.Scripts.Entities.SpaceShips;
+using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Factories

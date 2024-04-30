@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Assets.Scripts.Battles;
-using Assets.Scripts.UI;
+﻿using Assets.Scripts.Battles;
+using Assets.Scripts.UI.BattleUI;
 
-namespace Assets.Scripts.Infrastructure.Services
+namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
     public interface IBattleUiService
     {

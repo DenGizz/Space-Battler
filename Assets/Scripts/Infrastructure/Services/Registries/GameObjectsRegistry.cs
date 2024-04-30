@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using Assets.Scripts.Entities.Projectiles.ProjectileBehaviours;
+using Assets.Scripts.Entities.SpaceShips;
+using Assets.Scripts.Entities.Weapons;
 using Assets.Scripts.ScriptableObjects;
-using Assets.Scripts.SpaceShips;
-using Assets.Scripts.Weapons;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Services.Registries

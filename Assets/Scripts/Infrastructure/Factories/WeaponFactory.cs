@@ -1,12 +1,12 @@
 ﻿using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.Infrastructure.Services.Registries;
-using Assets.Scripts.Weapons.WeaponConfigs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Scripts.Weapons;
+using Assets.Scripts.Entities.Weapons;
+using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using UnityEngine;
 using Zenject;
 

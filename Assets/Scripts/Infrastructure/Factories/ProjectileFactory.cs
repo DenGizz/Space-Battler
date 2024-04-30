@@ -1,13 +1,14 @@
 ﻿using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.Infrastructure.Services.Registries;
-using Assets.Scripts.Projectiles;
 using Assets.Scripts.ScriptableObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Entities.Projectiles;
+using Assets.Scripts.Entities.Projectiles.ProjectileBehaviours;
 using UnityEngine;
 using Zenject;
 

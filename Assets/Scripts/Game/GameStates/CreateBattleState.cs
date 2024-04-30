@@ -1,14 +1,11 @@
 using System.Collections.Generic;
 using Assets.Scripts.Battles;
+using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Infrastructure.Factories;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
-using Assets.Scripts.SpaceShips;
-using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.StateMachines;
-using Assets.Scripts.Weapons;
-using Assets.Scripts.Weapons.WeaponConfigs;
 using UnityEngine;
 using Zenject;
 

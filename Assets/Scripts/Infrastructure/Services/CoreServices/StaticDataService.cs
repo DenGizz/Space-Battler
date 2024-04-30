@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Scripts.Projectiles;
+using Assets.Scripts.Entities.Projectiles;
+using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
+using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using Assets.Scripts.ScriptableObjects;
-using Assets.Scripts.SpaceShips.SpaceShipConfigs;
-using Assets.Scripts.Weapons.WeaponConfigs;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Services.CoreServices

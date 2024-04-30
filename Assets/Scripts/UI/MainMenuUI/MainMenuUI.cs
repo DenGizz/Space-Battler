@@ -1,10 +1,11 @@
 using System;
 using Assets.Scripts.Battles;
-using Assets.Scripts.SpaceShips.SpaceShipConfigs;
+using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
+using Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetup;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.UI
+namespace Assets.Scripts.UI.MainMenuUI
 {
     public class MainMenuUI : MonoBehaviour
     {

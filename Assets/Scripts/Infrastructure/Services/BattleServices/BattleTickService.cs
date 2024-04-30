@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Assets.Scripts.Infrastructure.Services.CoreServices;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Infrastructure.Services.CoreServices
+namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
     public class BattleTickService : IBattleTickService
     {

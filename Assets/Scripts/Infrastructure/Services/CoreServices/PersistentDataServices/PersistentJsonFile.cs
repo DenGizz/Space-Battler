@@ -1,12 +1,7 @@
-﻿using Assets.Scripts.Infrastructure.Services.CoreServices;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Assets.Scripts.Infrastructure.Services.PersistentDataServices
+namespace Assets.Scripts.Infrastructure.Services.CoreServices.PersistentDataServices
 {
     public class PersistentJsonFile
     {

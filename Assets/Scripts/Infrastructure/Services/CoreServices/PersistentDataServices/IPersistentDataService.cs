@@ -1,12 +1,7 @@
 ﻿using Assets.Scripts.Battles;
 using Assets.Scripts.Progress;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Assets.Scripts.Infrastructure.Services.CoreServices
+namespace Assets.Scripts.Infrastructure.Services.CoreServices.PersistentDataServices
 {
     public interface IPersistentDataService
     {

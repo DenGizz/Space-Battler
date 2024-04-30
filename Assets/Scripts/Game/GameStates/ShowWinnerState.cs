@@ -3,6 +3,7 @@ using Assets.Scripts.Battles;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.StateMachines;
+using Assets.Scripts.UI.BattleUI;
 using UnityEngine;
 
 namespace Assets.Scripts.Game.GameStates

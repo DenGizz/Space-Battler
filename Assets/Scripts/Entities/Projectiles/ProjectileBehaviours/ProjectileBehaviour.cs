@@ -1,16 +1,10 @@
-﻿using Assets.Scripts.SpaceShips;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Assets.Scripts.Projectiles;
-using Unity.VisualScripting.Antlr3.Runtime;
+﻿using System;
+using Assets.Scripts.Entities.SpaceShips;
+using Assets.Scripts.ScriptableObjects;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 using Zenject;
 
-namespace Assets.Scripts.ScriptableObjects
+namespace Assets.Scripts.Entities.Projectiles.ProjectileBehaviours
 {
     public class ProjectileBehaviour : MonoBehaviour, IProjectile, ITickable
     {

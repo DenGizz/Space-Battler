@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.AI.UnitsAI;
 using Assets.Scripts.Battles;
-using Assets.Scripts.SpaceShips;
+using Assets.Scripts.Entities.SpaceShips;
 
 namespace Assets.Scripts.Infrastructure.Factories
 {

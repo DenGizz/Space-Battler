@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Scripts.SpaceShips.SpaceShipConfigs;
+using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using UnityEngine;
 
 namespace Assets.Scripts.ScriptableObjects

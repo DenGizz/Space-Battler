@@ -1,8 +1,8 @@
-﻿using Assets.Scripts.Infrastructure.Services;
-using Assets.Scripts.SpaceShips;
-using Assets.Scripts.SpaceShips.SpaceShipConfigs;
-using Assets.Scripts.Weapons;
-using Assets.Scripts.Weapons.WeaponConfigs;
+﻿using Assets.Scripts.Entities.SpaceShips;
+using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
+using Assets.Scripts.Entities.Weapons;
+using Assets.Scripts.Entities.Weapons.WeaponConfigs;
+using Assets.Scripts.Infrastructure.Services;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Factories

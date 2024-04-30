@@ -3,13 +3,15 @@ using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.Infrastructure.Services.PersistentProgressServices;
 using Assets.Scripts.Progress;
-using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.StateMachines;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
+using Assets.Scripts.Infrastructure.Services.BattleServices;
+using Assets.Scripts.Infrastructure.Services.CoreServices.PersistentDataServices;
 
 namespace Assets.Scripts.Game.GameStates
 {

@@ -1,67 +1,63 @@
-﻿using Assets.Scripts.Infrastructure.Factories.UI_Factories;
+﻿using Assets.Scripts.Entities.Weapons.WeaponConfigs;
+using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.UI.BaseUI;
-using Assets.Scripts.UI.WeaponSelectionUI;
-using Assets.Scripts.Weapons.WeaponConfigs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
-
-public class WeaponSelectionSlot : MonoBehaviour
+namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetup
 {
-    [SerializeField] private WeaponTypeView _weaponTypeView;
-    [SerializeField] private ClickableView _weaponTypeClickableView;
-
-    private WeaponSelectionPanelViewModel _selectionPanel;
-
-
-    public WeaponType SelectedWeaponType
+    public class WeaponSelectionSlot : MonoBehaviour
     {
-        get => _weaponTypeView.WeaponType;
-        set => _weaponTypeView.WeaponType = value;
-    }
+        [SerializeField] private WeaponTypeView _weaponTypeView;
+        [SerializeField] private ClickableView _weaponTypeClickableView;
 
-    private IUiFactory _uiFactory;
+        private WeaponSelectionPanelViewModel _selectionPanel;
 
-    [Inject]
-    public void Construct(IUiFactory uiFactory)
-    {
-        _uiFactory = uiFactory;
-    }
 
-    private void Awake()
-    {
-        _weaponTypeClickableView.OnClicked += OnWeaponTypeClick;
-    }
+        public WeaponType SelectedWeaponType
+        {
+            get => _weaponTypeView.WeaponType;
+            set => _weaponTypeView.WeaponType = value;
+        }
 
-    private void OnWeaponTypeClick(ClickableView view)
-    {
-        _selectionPanel = _uiFactory.CreateWeaponSelectionPanel();
-        _selectionPanel.OnWeaponSelected += OnWeaponSelectedEventHandler;
-        _selectionPanel.OnCloseButtonClicked += OnSelectionPanelCloseButtonClickedEventHandler;
-    }
+        private IUiFactory _uiFactory;
 
-    private void OnWeaponSelectedEventHandler(WeaponType type)
-    {
-        SelectedWeaponType = type;
-        CloseSelectionPanel();
+        [Inject]
+        public void Construct(IUiFactory uiFactory)
+        {
+            _uiFactory = uiFactory;
+        }
 
-    }
+        private void Awake()
+        {
+            _weaponTypeClickableView.OnClicked += OnWeaponTypeClick;
+        }
 
-    private void OnSelectionPanelCloseButtonClickedEventHandler()
-    {
-        CloseSelectionPanel();
-    }
+        private void OnWeaponTypeClick(ClickableView view)
+        {
+            _selectionPanel = _uiFactory.CreateWeaponSelectionPanel();
+            _selectionPanel.OnWeaponSelected += OnWeaponSelectedEventHandler;
+            _selectionPanel.OnCloseButtonClicked += OnSelectionPanelCloseButtonClickedEventHandler;
+        }
 
-    private void CloseSelectionPanel()
-    {
-        _selectionPanel.OnCloseButtonClicked -= OnSelectionPanelCloseButtonClickedEventHandler;
-        Destroy(_selectionPanel.gameObject);
-        _selectionPanel = null;
+        private void OnWeaponSelectedEventHandler(WeaponType type)
+        {
+            SelectedWeaponType = type;
+            CloseSelectionPanel();
+
+        }
+
+        private void OnSelectionPanelCloseButtonClickedEventHandler()
+        {
+            CloseSelectionPanel();
+        }
+
+        private void CloseSelectionPanel()
+        {
+            _selectionPanel.OnCloseButtonClicked -= OnSelectionPanelCloseButtonClickedEventHandler;
+            Destroy(_selectionPanel.gameObject);
+            _selectionPanel = null;
+        }
     }
 }
 

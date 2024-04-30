@@ -1,13 +1,11 @@
-using System.Collections;
-using Assets.Scripts.Infrastructure.Factories;
+using Assets.Scripts.Entities.Projectiles.ProjectileBehaviours;
+using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Infrastructure.Services;
-using Assets.Scripts.Projectiles;
 using Assets.Scripts.ScriptableObjects;
-using Assets.Scripts.SpaceShips;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Weapons
+namespace Assets.Scripts.Entities.Weapons
 {
     [AddComponentMenu("Weapon")]
     public class WeaponBehaviour : MonoBehaviour, IWeapon, ITickable

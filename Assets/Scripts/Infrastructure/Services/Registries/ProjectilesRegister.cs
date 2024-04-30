@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.ScriptableObjects;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Entities.Projectiles.ProjectileBehaviours;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Services.Registries

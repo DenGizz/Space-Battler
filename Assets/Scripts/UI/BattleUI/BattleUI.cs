@@ -1,10 +1,7 @@
-using System;
 using Assets.Scripts.Battles;
-using Assets.Scripts.SpaceShips;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace Assets.Scripts.UI
+namespace Assets.Scripts.UI.BattleUI
 {
     [AddComponentMenu("UI/BattleUI")]
     public class BattleUI : MonoBehaviour

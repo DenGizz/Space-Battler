@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.ScriptableObjects;
-using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using System.Linq;
+using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Zenject;
 
 namespace Assets.Scripts.Infrastructure.Services

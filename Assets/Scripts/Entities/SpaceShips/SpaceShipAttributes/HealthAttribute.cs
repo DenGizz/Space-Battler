@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.SpaceShips.SpaceShipAttributes
+namespace Assets.Scripts.Entities.SpaceShips.SpaceShipAttributes
 {
     public class HealthAttribute : IHealthAttribute
     {

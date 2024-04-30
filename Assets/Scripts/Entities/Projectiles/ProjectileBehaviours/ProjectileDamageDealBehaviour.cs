@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using Assets.Scripts.ScriptableObjects;
-using UnityEngine;
-using Zenject;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.Projectiles
+namespace Assets.Scripts.Entities.Projectiles.ProjectileBehaviours
 {
     [RequireComponent(typeof(ProjectileBehaviour))]
     public class ProjectileDamageDealBehaviour : MonoBehaviour

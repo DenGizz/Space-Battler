@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
-
-namespace Assets.Scripts.Weapons.WeaponConfigs
+﻿namespace Assets.Scripts.Entities.Weapons.WeaponConfigs
 {
     public enum WeaponType
     {

@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services;
+using Assets.Scripts.Infrastructure.Services.BattleServices;
 using UnityEngine;
 using Zenject;
 

@@ -1,6 +1,7 @@
-﻿using Assets.Scripts.Projectiles;
-using Assets.Scripts.ScriptableObjects;
+﻿using Assets.Scripts.ScriptableObjects;
 using System.Collections;
+using Assets.Scripts.Entities.Projectiles;
+using Assets.Scripts.Entities.Projectiles.ProjectileBehaviours;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Factories

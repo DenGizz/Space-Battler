@@ -1,4 +1,4 @@
-using Assets.Scripts.SpaceShips;
+using Assets.Scripts.Entities.SpaceShips;
 
 namespace Assets.Scripts.AI.UnitsAI
 {

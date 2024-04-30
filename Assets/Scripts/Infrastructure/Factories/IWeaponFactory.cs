@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.Weapons.WeaponConfigs;
-using System.Collections;
-using Assets.Scripts.Weapons;
+﻿using System.Collections;
+using Assets.Scripts.Entities.Weapons;
+using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Factories

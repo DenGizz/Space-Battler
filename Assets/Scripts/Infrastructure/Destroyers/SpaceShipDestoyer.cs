@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.Infrastructure.Services.CoreServices;
+﻿using Assets.Scripts.Entities.SpaceShips;
+using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.Infrastructure.Services.Registries;
-using Assets.Scripts.SpaceShips;
 using UnityEngine;
 using Zenject;
 

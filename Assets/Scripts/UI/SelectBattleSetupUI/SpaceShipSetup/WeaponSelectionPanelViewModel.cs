@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
+using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.ScriptableObjects;
 using Assets.Scripts.UI.BaseUI;
-using Assets.Scripts.Weapons.WeaponConfigs;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.UI.WeaponSelectionUI
+namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetup
 {
     public class WeaponSelectionPanelViewModel : MonoBehaviour
     {

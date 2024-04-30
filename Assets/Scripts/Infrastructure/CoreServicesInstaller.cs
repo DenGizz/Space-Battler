@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Assets.Scripts.Infrastructure.Factories;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
+using Assets.Scripts.Infrastructure.Services.CoreServices.PersistentDataServices;
 using Assets.Scripts.Infrastructure.Services.PersistentProgressServices;
 using UnityEngine;
 using Zenject;

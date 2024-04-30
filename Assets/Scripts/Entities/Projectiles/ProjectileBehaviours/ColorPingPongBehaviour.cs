@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Projectiles
+namespace Assets.Scripts.Entities.Projectiles.ProjectileBehaviours
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public class ColorPingPongBehaviour : MonoBehaviour, ITickable

@@ -1,14 +1,8 @@
 ﻿using Assets.Scripts.Infrastructure.Services;
-using Assets.Scripts.ScriptableObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Projectiles
+namespace Assets.Scripts.Entities.Projectiles.ProjectileBehaviours
 {
     [RequireComponent(typeof(ProjectileBehaviour))]
     public class ProjectileDestroyBehaviour : MonoBehaviour

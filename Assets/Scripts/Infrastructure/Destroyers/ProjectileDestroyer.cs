@@ -2,6 +2,7 @@
 using Assets.Scripts.Infrastructure.Services.Registries;
 using Assets.Scripts.ScriptableObjects;
 using System.Collections;
+using Assets.Scripts.Entities.Projectiles.ProjectileBehaviours;
 using UnityEngine;
 using Zenject;
 

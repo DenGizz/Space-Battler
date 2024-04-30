@@ -1,20 +1,7 @@
 ﻿using Assets.Scripts.Battles;
-using Assets.Scripts.Infrastructure.Services.PersistentDataServices;
-using Assets.Scripts.SpaceShips.SpaceShipConfigs;
-using Assets.Scripts.Weapons.WeaponConfigs;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.Serialization.Json;
-using System.Text;
-using System.Threading.Tasks;
 using Assets.Scripts.Progress;
-using Unity.VisualScripting;
-using UnityEngine;
 
-namespace Assets.Scripts.Infrastructure.Services.CoreServices
+namespace Assets.Scripts.Infrastructure.Services.CoreServices.PersistentDataServices
 {
     public class PersistentDataService : IPersistentDataService
     {

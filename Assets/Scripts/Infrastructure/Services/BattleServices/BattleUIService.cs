@@ -1,11 +1,11 @@
-﻿using Assets.Scripts.Infrastructure.Factories.UI_Factories;
-using Assets.Scripts.Battles;
-using Assets.Scripts.UI;
+﻿using Assets.Scripts.Battles;
+using Assets.Scripts.Infrastructure.Factories.UI_Factories;
+using Assets.Scripts.UI.BattleUI;
 using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
 
-namespace Assets.Scripts.Infrastructure.Services
+namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
     public class BattleUIService : IBattleUiService
     {

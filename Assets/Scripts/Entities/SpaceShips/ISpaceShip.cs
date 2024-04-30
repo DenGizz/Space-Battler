@@ -1,11 +1,11 @@
-using Assets.Scripts.SpaceShips.SpaceShipAttributes;
-using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using System;
 using System.Collections.Generic;
-using Assets.Scripts.Weapons;
+using Assets.Scripts.Entities.SpaceShips.SpaceShipAttributes;
+using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
+using Assets.Scripts.Entities.Weapons;
 using UnityEngine;
 
-namespace Assets.Scripts.SpaceShips
+namespace Assets.Scripts.Entities.SpaceShips
 {
     public interface ISpaceShip : IDamagable, IAttackable
     {

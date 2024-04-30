@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Assets.Scripts.SpaceShips;
+using Assets.Scripts.Entities.SpaceShips;
 using UnityEngine;
 using Zenject;
 

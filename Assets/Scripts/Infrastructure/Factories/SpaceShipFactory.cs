@@ -1,10 +1,10 @@
 ﻿using Assets.Scripts.AI.UnitsAI;
 using Assets.Scripts.Infrastructure.Services;
 using System.Collections;
+using Assets.Scripts.Entities.SpaceShips;
+using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.Infrastructure.Services.Registries;
-using Assets.Scripts.SpaceShips;
-using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using UnityEngine;
 using Zenject;
 

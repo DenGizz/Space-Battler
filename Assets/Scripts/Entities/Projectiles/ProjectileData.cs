@@ -1,8 +1,7 @@
-﻿using Assets.Scripts.SpaceShips;
-using System.Collections;
+﻿using Assets.Scripts.Entities.SpaceShips;
 using UnityEngine;
 
-namespace Assets.Scripts.Projectiles
+namespace Assets.Scripts.Entities.Projectiles
 {
     public class ProjectileData
     {

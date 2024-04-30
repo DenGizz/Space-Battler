@@ -5,7 +5,7 @@ using Assets.Scripts.ScriptableObjects;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Assets.Scripts.SpaceShips;
+using Assets.Scripts.Entities.SpaceShips;
 using Zenject;
 
 namespace Assets.Scripts.Infrastructure.Services.BattleServices

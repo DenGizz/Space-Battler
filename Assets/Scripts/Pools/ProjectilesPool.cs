@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections;
+using Assets.Scripts.Entities.Projectiles;
+using Assets.Scripts.Entities.Projectiles.ProjectileBehaviours;
 using Assets.Scripts.Infrastructure.Destroyers;
 using Assets.Scripts.Infrastructure.Factories;
-using Assets.Scripts.Projectiles;
 using Assets.Scripts.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Pool;

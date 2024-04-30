@@ -1,12 +1,6 @@
-﻿using Assets.Scripts.SpaceShips;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static UnityEngine.GraphicsBuffer;
+﻿using Assets.Scripts.Entities.SpaceShips;
 
-namespace Assets.Scripts.Projectiles
+namespace Assets.Scripts.Entities.Projectiles
 {
     public interface IProjectile
     {
