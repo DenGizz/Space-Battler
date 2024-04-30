@@ -31,6 +31,9 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
 
         private void OnSpaceShipDeathEventHandler(ISpaceShip spaceShip)
         {
+            if (!_isObserving)
+                return;
+
             Winner = spaceShip == _currentBattle.BattleData.EnemySpaceShip ? 
                 _currentBattle.BattleData.PlayerSpaceShip : 
                 _currentBattle.BattleData.EnemySpaceShip;
