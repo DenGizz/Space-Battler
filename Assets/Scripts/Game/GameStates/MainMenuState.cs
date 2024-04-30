@@ -16,7 +16,8 @@ namespace Assets.Scripts.Game.GameStates
 
         private MainMenuUI _mainMenuUi;
 
-        public MainMenuState(StateMachine stateMachine, IUiFactory uiFactory, IBattleSetupProvider battleSetupProvider, IPersistentDataService persistentDataService)
+        public MainMenuState(StateMachine stateMachine, IUiFactory uiFactory, IBattleSetupProvider battleSetupProvider, 
+            IPersistentDataService persistentDataService)
         {
             _stateMachine = stateMachine;
             _uiFactory = uiFactory;
