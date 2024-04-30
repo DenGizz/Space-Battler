@@ -24,12 +24,12 @@ namespace Assets.Scripts.AI.UnitsAI
             _target = target;
         }
 
-        public void StartCombat()
+        public void EnterCombatMode()
         {
             _isInCombatState = true;
         }
 
-        public void StopCombat()
+        public void ExitCombatMode()
         {
             _isInCombatState = false;
         }

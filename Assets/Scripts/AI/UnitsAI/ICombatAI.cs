@@ -6,7 +6,7 @@ namespace Assets.Scripts.AI.UnitsAI
     {
         void SetTarget(ISpaceShip target);
 
-        void StartCombat();
-        void StopCombat();
+        void EnterCombatMode();
+        void ExitCombatMode();
     }
 }
