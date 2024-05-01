@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5975215213550024107}
   - component: {fileID: 8773138918809372113}
   m_Layer: 5
-  m_Name: Start Battle Button
+  m_Name: Play SandBox Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e113665637bdc1145bf2f58353800a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startBattleButton: {fileID: 8773138918809372113}
+  _playSandBoxModeButton: {fileID: 8773138918809372113}
   _playerShipSetup: {fileID: 3837602212042825434}
   _enemyShipSetup: {fileID: 7079980234563731679}
 --- !u!1 &7440559315299490280
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 1308106997311878871}
   - component: {fileID: 7994781775908368271}
   m_Layer: 5
-  m_Name: Start Battle Button Text
+  m_Name: Play SandBox Button Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start Battle
+  m_text: Play sandbox mode
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -3,13 +3,14 @@ using Assets.Scripts.Battles;
 using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.UI.MainMenuUI
 {
     public class MainMenuUI : MonoBehaviour
     {
-        [SerializeField] private Button _startBattleButton;
+        [SerializeField] private Button _playSandBoxModeButton;
         [SerializeField] private SpaceShipSetupPresenter _playerShipSetup;
         [SerializeField] private SpaceShipSetupPresenter _enemyShipSetup;
 
@@ -25,7 +26,7 @@ namespace Assets.Scripts.UI.MainMenuUI
 
         private void Awake()
         {
-            _startBattleButton.onClick.AddListener(OnStartBattleButtonClick);
+            _playSandBoxModeButton.onClick.AddListener(OnStartBattleButtonClick);
         }
 
         private void OnStartBattleButtonClick()
