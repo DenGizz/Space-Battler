@@ -1,7 +1,7 @@
-using Assets.Scripts.SpaceShips;
+using Assets.Scripts.Entities.SpaceShips;
 using UnityEngine;
 
-namespace Assets.Scripts.UI
+namespace Assets.Scripts.UI.BattleUI
 {
     [AddComponentMenu("UI/HealthView")]
     public class HealthView : MonoBehaviour
@@ -20,7 +20,7 @@ namespace Assets.Scripts.UI
             if (_spaceShip == null)
                 return;
 
-            _healthGreenRow.transform.localScale = new Vector3(_spaceShip.HealthAttribute.HP / _spaceShip.HealthAttribute.BaseHP, 1, 1);
+            _healthGreenRow.transform.localScale = new Vector3(_spaceShip.Data.HealthPoints/ _spaceShip.Config.MaxHP, 1, 1);
         }
     }
 }

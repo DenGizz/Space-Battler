@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.AI.UnitsAI;
-using Assets.Scripts.SpaceShips;
+using Assets.Scripts.Entities.SpaceShips;
 
 namespace Assets.Scripts.Battles
 {

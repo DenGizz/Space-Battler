@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using Assets.Scripts.Weapons.WeaponConfigs;
 using System.Linq;
-using Assets.Scripts.SpaceShips.SpaceShipConfigs;
-using Unity.VisualScripting;
-using UnityEditor;
+using Assets.Scripts.Entities.Projectiles;
+using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
+using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using Assets.Scripts.Infrastructure.Config;
-using Assets.Scripts.Projectiles;
 
 namespace Assets.Scripts.Infrastructure.Services.CoreServices
 {

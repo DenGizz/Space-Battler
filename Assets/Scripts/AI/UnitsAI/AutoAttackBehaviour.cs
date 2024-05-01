@@ -1,22 +1,22 @@
-﻿using System.Linq;
-using Assets.Scripts.SpaceShips;
+﻿using Assets.Scripts.Entities;
+using Assets.Scripts.Entities.SpaceShips;
 using UnityEngine;
 using Zenject;
 
 namespace Assets.Scripts.AI.UnitsAI
 {
-    [AddComponentMenu("AI/CombatUnit/AutoAttackBehaviour")]
+    [AddComponentMenu("AI/Combat Unit/AutoAttack Behaviour")]
     [RequireComponent(typeof(IAttackable))]
     public class AutoAttackBehaviour : MonoBehaviour, ICombatAi, ITickable
     {
         private ISpaceShip _target;
         private bool _isInCombatState;
 
-        private IAttackable _controledAttackable;
+        private IAttackable _attackable;
 
         private void Awake()
         {
-            _controledAttackable = GetComponent<IAttackable>();
+            _attackable = GetComponent<IAttackable>();
         }
 
         public void SetTarget(ISpaceShip target)
@@ -24,12 +24,12 @@ namespace Assets.Scripts.AI.UnitsAI
             _target = target;
         }
 
-        public void StartCombat()
+        public void EnterCombatMode()
         {
             _isInCombatState = true;
         }
 
-        public void StopCombat()
+        public void ExitCombatMode()
         {
             _isInCombatState = false;
         }
@@ -42,9 +42,10 @@ namespace Assets.Scripts.AI.UnitsAI
             if (_target == null)
                 return;
 
-            if (_target.IsDead)
+            if (!_target.Data.IsAlive)
                 return;
-            _controledAttackable.Attack(_target);
+
+            _attackable.Attack(_target);
         }
     }
 }

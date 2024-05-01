@@ -1,9 +1,9 @@
 ﻿using Assets.Scripts.Battles;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
-using Assets.Scripts.Infrastructure.Services;
-using Assets.Scripts.Infrastructure.Services.CoreServices;
+using Assets.Scripts.Infrastructure.Services.BattleServices;
+using Assets.Scripts.Infrastructure.Services.CoreServices.PersistentDataServices;
 using Assets.Scripts.StateMachines;
-using Assets.Scripts.UI;
+using Assets.Scripts.UI.MainMenuUI;
 
 namespace Assets.Scripts.Game.GameStates
 {
@@ -16,7 +16,8 @@ namespace Assets.Scripts.Game.GameStates
 
         private MainMenuUI _mainMenuUi;
 
-        public MainMenuState(StateMachine stateMachine, IUiFactory uiFactory, IBattleSetupProvider battleSetupProvider, IPersistentDataService persistentDataService)
+        public MainMenuState(StateMachine stateMachine, IUiFactory uiFactory, IBattleSetupProvider battleSetupProvider, 
+            IPersistentDataService persistentDataService)
         {
             _stateMachine = stateMachine;
             _uiFactory = uiFactory;
@@ -28,18 +29,7 @@ namespace Assets.Scripts.Game.GameStates
         public void Enter()
         {
             _mainMenuUi = _uiFactory.CreateMainMenuUi();
-
-            BattleSetup sessionBattleSetup = _battleSetupProvider.BattleSetup;
-
-            if (sessionBattleSetup == null)
-            {
-                sessionBattleSetup = _persistentDataService.LoadBattleSetup();
-                _battleSetupProvider.BattleSetup = sessionBattleSetup;
-            }
-
-            if (sessionBattleSetup != null)
-                _mainMenuUi.LoadBattleSetupInUi(sessionBattleSetup);
-
+            _mainMenuUi.SetBattleSetup(_battleSetupProvider.BattleSetup);
             _mainMenuUi.OnStartBattleButtonClicked += OnStartBattleButtonClicked;
         }
 
@@ -50,14 +40,11 @@ namespace Assets.Scripts.Game.GameStates
 
         private void OnStartBattleButtonClicked()
         {
-            BattleSetup battleSetup = _mainMenuUi.CreateSetupFromUi();
-
-            if (!BattleSetupValidator.IsBattleSetupValidForStartBattle(battleSetup))
+            if (!BattleSetupValidator.IsBattleSetupValidForStartBattle(_battleSetupProvider.BattleSetup))
                 return;
 
-
-            _persistentDataService.SaveBattleSetup(battleSetup);
-            _battleSetupProvider.BattleSetup = battleSetup;
+            _persistentDataService.SaveBattleSetup(_battleSetupProvider.BattleSetup);
+            _battleSetupProvider.BattleSetup = _battleSetupProvider.BattleSetup;
             _stateMachine.EnterState<LoadBattleFieldSceneState>();
         }
     }

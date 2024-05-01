@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using Assets.Scripts.Battles;
+﻿using Assets.Scripts.Battles;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.StateMachines;
-using UnityEngine;
+using Assets.Scripts.UI.BattleUI;
 
 namespace Assets.Scripts.Game.GameStates
 {

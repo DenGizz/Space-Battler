@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.AI.UnitsAI;
-using Assets.Scripts.SpaceShips;
+using Assets.Scripts.Entities.SpaceShips;
 
 namespace Assets.Scripts.Battles
 {
@@ -19,24 +19,24 @@ namespace Assets.Scripts.Battles
             BattleData.PlayerCombatAi.SetTarget(BattleData.EnemySpaceShip);
             BattleData.EnemyCombatAi.SetTarget(BattleData.PlayerSpaceShip);
 
-            BattleData.PlayerCombatAi.StartCombat();
-            BattleData.EnemyCombatAi.StartCombat();
+            BattleData.PlayerCombatAi.EnterCombatMode();
+            BattleData.EnemyCombatAi.EnterCombatMode();
 
             IsBattleActive = true;
         }
 
         public void StopBattle()
         {
-            BattleData.PlayerCombatAi.StopCombat();
-            BattleData.EnemyCombatAi.StopCombat();
+            BattleData.PlayerCombatAi.ExitCombatMode();
+            BattleData.EnemyCombatAi.ExitCombatMode();
 
             IsBattleActive = false;
         }
 
         public void ResumeBattle()
         {
-            BattleData.PlayerCombatAi.StartCombat();
-            BattleData.EnemyCombatAi.StartCombat();
+            BattleData.PlayerCombatAi.EnterCombatMode();
+            BattleData.EnemyCombatAi.EnterCombatMode();
 
             IsBattleActive = true;
         }

@@ -1,4 +1,4 @@
-using Assets.Scripts.SpaceShips;
+using Assets.Scripts.Entities.SpaceShips;
 
 namespace Assets.Scripts.AI.UnitsAI
 {
@@ -6,7 +6,7 @@ namespace Assets.Scripts.AI.UnitsAI
     {
         void SetTarget(ISpaceShip target);
 
-        void StartCombat();
-        void StopCombat();
+        void EnterCombatMode();
+        void ExitCombatMode();
     }
 }

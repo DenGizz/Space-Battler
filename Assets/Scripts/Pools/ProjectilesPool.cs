@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections;
+using Assets.Scripts.Entities.Projectiles;
+using Assets.Scripts.Entities.Projectiles.ProjectileBehaviours;
 using Assets.Scripts.Infrastructure.Destroyers;
 using Assets.Scripts.Infrastructure.Factories;
-using Assets.Scripts.Projectiles;
-using Assets.Scripts.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -44,7 +43,6 @@ namespace Assets.Scripts.Pools
                 );
         }
 
-
         public ProjectileBehaviour Get()
         {
             return _objectPool.Get();
@@ -55,15 +53,22 @@ namespace Assets.Scripts.Pools
             _objectPool.Release(element);
         }
 
+        public void Clear()
+        {
+            _objectPool.Clear();
+        }
+  
+
         private ProjectileBehaviour createFunc()
         {
             ProjectileBehaviour projectile = _projectileFactory.CreateProjectile(_projectileType, Vector3.zero, 0);
+            projectile.gameObject.name += " " + _objectPool.CountAll;
             return projectile;
         }
 
         private void actionOnRelease(ProjectileBehaviour projectile)
         {
-            projectile.ResetBehaviour();
+            projectile.Reset();
             projectile.gameObject.SetActive(false);
         }
 
@@ -77,9 +82,6 @@ namespace Assets.Scripts.Pools
             _projectileDestroyer.Destroy(projectile);
         }
 
-        public void Clear()
-        {
-            _objectPool.Clear();
-        }
+
     }
 }

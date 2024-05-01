@@ -1,15 +1,9 @@
 ﻿using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.Pools;
-using Assets.Scripts.Projectiles;
 using Assets.Scripts.ScriptableObjects;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
-using UnityEngine;
-using UnityEngine.Pool;
+using Assets.Scripts.Entities.Projectiles;
+using Assets.Scripts.Entities.Projectiles.ProjectileBehaviours;
 using Zenject;
 
 namespace Assets.Scripts.Infrastructure.Services
@@ -47,7 +41,7 @@ namespace Assets.Scripts.Infrastructure.Services
 
         public void ReleaseProjectile(ProjectileBehaviour projectile)
         {
-            _projectilesPools[projectile.Type].Release(projectile);
+            _projectilesPools[projectile.Config.Type].Release(projectile);
         }
 
         public void ClearAll()

@@ -1,12 +1,7 @@
 ﻿using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.Infrastructure.Services.Registries;
-using Assets.Scripts.Weapons.WeaponConfigs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Assets.Scripts.Weapons;
+using Assets.Scripts.Entities.Weapons;
+using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using UnityEngine;
 using Zenject;
 
@@ -32,7 +27,7 @@ namespace Assets.Scripts.Infrastructure.Factories
             GameObject weaponPrefab = _assetsProvider.GetWeaponPrefab(weaponType);
             GameObject weaponGameObject = _instantiator.InstantiatePrefab(weaponPrefab, position, Quaternion.Euler(0, 0, zRotation), null);
             WeaponBehaviour weaponBehaviour = weaponGameObject.GetComponentInChildren<WeaponBehaviour>();
-            _battleTickService.AddTickable(weaponBehaviour);
+            _battleTickService.RegisterGameObjectTickables(weaponGameObject);
             IWeapon weapon = weaponBehaviour;
             _gameObjectRegistry.RegisterWeaponGameObject(weapon, weaponGameObject);
             return weapon;

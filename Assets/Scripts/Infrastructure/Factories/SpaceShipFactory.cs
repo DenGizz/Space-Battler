@@ -1,10 +1,10 @@
 ﻿using Assets.Scripts.AI.UnitsAI;
 using Assets.Scripts.Infrastructure.Services;
 using System.Collections;
+using Assets.Scripts.Entities.SpaceShips;
+using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.Infrastructure.Services.Registries;
-using Assets.Scripts.SpaceShips;
-using Assets.Scripts.SpaceShips.SpaceShipConfigs;
 using UnityEngine;
 using Zenject;
 
@@ -34,13 +34,10 @@ namespace Assets.Scripts.Infrastructure.Factories
             GameObject prefab = _assetsProvider.GetSpaceShipPrefab(type);
             GameObject gameObject = Object.Instantiate(prefab, _rootTransformsProvider.SpaceShipsRoot);
             var spaceShipComponent = gameObject.GetComponent<SpaceShipBehaviour>();
+            SpaceShipData spaceShipData = new SpaceShipData(position);
+            spaceShipComponent.Construct(spaceShipData);
 
-            ITickable[] tickableBehaviours = gameObject.GetComponentsInChildren<ITickable>();
-
-            foreach (var tickable in tickableBehaviours)
-            {
-                _battleTickService.AddTickable(tickable);
-            }
+            _battleTickService.RegisterGameObjectTickables(gameObject);
 
             PlaceSpaceShip(gameObject, position, zRotation);
 

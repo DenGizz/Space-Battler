@@ -1,68 +1,32 @@
 using System;
 using Assets.Scripts.Battles;
-using Assets.Scripts.SpaceShips.SpaceShipConfigs;
+using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
+using Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.UI
+namespace Assets.Scripts.UI.MainMenuUI
 {
     public class MainMenuUI : MonoBehaviour
     {
-        [SerializeField] private Button _startBattleButton;
+        [SerializeField] private Button _playSandBoxModeButton;
         [SerializeField] private SpaceShipSetupPresenter _playerShipSetup;
         [SerializeField] private SpaceShipSetupPresenter _enemyShipSetup;
 
-        private SpaceShipSetup PlayerSetup
-        {
-            get => new SpaceShipSetup(_playerShipSetup.SpaceShipType, _playerShipSetup.WeaponTypes);
-            set
-            {
-                if(value == null)
-                {
-                    _playerShipSetup.SpaceShipType = SpaceShipType.None;
-                    _playerShipSetup.WeaponTypes = null;
-                    return;
-                }
-
-                _playerShipSetup.SpaceShipType = value.SpaceShipType;
-                _playerShipSetup.WeaponTypes = value.WeaponTypes;
-            }
-        }
-
-        private SpaceShipSetup EnemySetup
-        {
-            get => new SpaceShipSetup(_enemyShipSetup.SpaceShipType, _enemyShipSetup.WeaponTypes);
-            set
-            {
-                if (value == null)
-                {
-                    _enemyShipSetup.SpaceShipType = SpaceShipType.None;
-                    _enemyShipSetup.WeaponTypes = null;
-                    return;
-                }
-                _enemyShipSetup.SpaceShipType = value.SpaceShipType;
-                _enemyShipSetup.WeaponTypes = value.WeaponTypes;
-             }
-        }
-
+        public BattleSetup _battleSetup;
 
         public event Action OnStartBattleButtonClicked;
 
-        public BattleSetup CreateSetupFromUi()
+        public void SetBattleSetup(BattleSetup battleSetup)
         {
-            return new BattleSetup(PlayerSetup, EnemySetup);
+            _playerShipSetup.SetSpaceShipSetup(battleSetup.PlayerSetup);
+            _enemyShipSetup.SetSpaceShipSetup(battleSetup.EnemySetup);
         }
-
-        public void LoadBattleSetupInUi(BattleSetup battleSetup)
-        {
-            PlayerSetup = battleSetup.PlayerSetup;
-            EnemySetup = battleSetup.EnemySetup;
-        }
-
 
         private void Awake()
         {
-            _startBattleButton.onClick.AddListener(OnStartBattleButtonClick);
+            _playSandBoxModeButton.onClick.AddListener(OnStartBattleButtonClick);
         }
 
         private void OnStartBattleButtonClick()

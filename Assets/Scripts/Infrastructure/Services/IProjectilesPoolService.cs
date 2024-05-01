@@ -1,11 +1,5 @@
-﻿using Assets.Scripts.ScriptableObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Assets.Scripts.Projectiles;
-using UnityEngine;
+﻿using Assets.Scripts.Entities.Projectiles;
+using Assets.Scripts.Entities.Projectiles.ProjectileBehaviours;
 
 namespace Assets.Scripts.Infrastructure.Services
 {

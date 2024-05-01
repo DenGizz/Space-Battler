@@ -1,7 +1,6 @@
 ﻿using System;
 using Assets.Scripts.Battles;
-using Assets.Scripts.SpaceShips;
-using Zenject;
+using Assets.Scripts.Entities.SpaceShips;
 
 namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
@@ -31,6 +30,9 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
 
         private void OnSpaceShipDeathEventHandler(ISpaceShip spaceShip)
         {
+            if (!_isObserving)
+                return;
+
             Winner = spaceShip == _currentBattle.BattleData.EnemySpaceShip ? 
                 _currentBattle.BattleData.PlayerSpaceShip : 
                 _currentBattle.BattleData.EnemySpaceShip;
@@ -38,7 +40,7 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
             _currentBattle.BattleData.PlayerSpaceShip.OnDeath -= OnSpaceShipDeathEventHandler;
             _currentBattle.BattleData.EnemySpaceShip.OnDeath -= OnSpaceShipDeathEventHandler;
 
-            OnWinnerDetermined?.Invoke(spaceShip);
+            OnWinnerDetermined?.Invoke(Winner);
         }
     }
 }

@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using Assets.Scripts.SpaceShips;
-using Assets.Scripts.Weapons;
-using UnityEngine;
+﻿using Assets.Scripts.Entities.SpaceShips;
+using Assets.Scripts.Entities.Weapons;
 
 namespace Assets.Scripts.Infrastructure.Services
 {

@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2436263118006130171}
   - component: {fileID: 6684250909970762045}
-  - component: {fileID: 7869165018078492788}
-  - component: {fileID: 7543488007830998057}
-  - component: {fileID: 4840340903301153712}
-  - component: {fileID: 3486218794654122722}
+  - component: {fileID: 1536797349121301200}
+  - component: {fileID: 3401714956903815308}
+  - component: {fileID: 8850180466985748526}
+  - component: {fileID: 1257739650839556054}
   m_Layer: 0
   m_Name: BlasterBeam
   m_TagString: Untagged
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7869165018078492788
+--- !u!114 &1536797349121301200
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,12 +97,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6061028018398827022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7136ec791f64c64eb76bceee383e449, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ba18aca1f05e284281850babed05f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 0
-  _projectileDescriptor: {fileID: 11400000, guid: 091cd73a8ef7b2643aba33c6b7a3b0cc, type: 2}
---- !u!114 &7543488007830998057
+  _descriptor: {fileID: 11400000, guid: 091cd73a8ef7b2643aba33c6b7a3b0cc, type: 2}
+--- !u!114 &3401714956903815308
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,10 +110,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6061028018398827022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9f32ebe29940f7409a29f68472a8c2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d0a5a92ae042eb4fa978d638b7281e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4840340903301153712
+--- !u!114 &8850180466985748526
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,10 +122,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6061028018398827022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e1a4e17d715f7b44bc11101b2590ca8, type: 3}
+  m_Script: {fileID: 11500000, guid: 53520b92eac74f84c962bd1c5b8035cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3486218794654122722
+--- !u!114 &1257739650839556054
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,8 +134,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6061028018398827022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: facee7d1ba09d5c4891883aa1dd57e4d, type: 3}
+  m_Script: {fileID: 11500000, guid: a9bf4275f07fe9c40834df0423ea5f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 0
-  _projectileDescriptor: {fileID: 0}

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Services.CoreServices
@@ -36,6 +31,14 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         {
             string path = GetFullFilePath(relativeFilePath);
             return File.Exists(path);
+        }
+
+        public bool IsFileEmpty(string relativeFilePath)
+        {
+            string path = GetFullFilePath(relativeFilePath);
+            FileInfo fileInfo = new FileInfo(path);
+
+            return fileInfo.Length == 0;
         }
 
         public void OverwriteTextFile(string relativeFilePath, string content)

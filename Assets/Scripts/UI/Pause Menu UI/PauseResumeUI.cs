@@ -1,32 +1,33 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PauseResumeUI : MonoBehaviour
+namespace Assets.Scripts.UI.Pause_Menu_UI
 {
-    public Action OnPauseContinueButtonClicked;
+    public class PauseResumeUI : MonoBehaviour
+    {
+        public Action OnPauseContinueButtonClicked;
 
-    [SerializeField] private Button _pauseContinueButton;
+        [SerializeField] private Button _pauseContinueButton;
     
-    private void Awake()
-    {
-        _pauseContinueButton.onClick.AddListener(OnPauseContinueButtonClickedEventHandler);
-    }
+        private void Awake()
+        {
+            _pauseContinueButton.onClick.AddListener(OnPauseContinueButtonClickedEventHandler);
+        }
 
-    public void Show()
-    {
-        gameObject.SetActive(true);
-    }
+        public void Show()
+        {
+            gameObject.SetActive(true);
+        }
 
-    public void Hide()
-    {
-        gameObject.SetActive(false);
-    }
+        public void Hide()
+        {
+            gameObject.SetActive(false);
+        }
 
-    private void OnPauseContinueButtonClickedEventHandler()
-    {
-        OnPauseContinueButtonClicked?.Invoke();
+        private void OnPauseContinueButtonClickedEventHandler()
+        {
+            OnPauseContinueButtonClicked?.Invoke();
+        }
     }
 }

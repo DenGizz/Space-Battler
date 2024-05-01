@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4296647455839697869}
   - component: {fileID: 557024939177043752}
-  - component: {fileID: 2568132501649171981}
-  - component: {fileID: 620411532301734940}
-  - component: {fileID: -3651339424850256543}
-  - component: {fileID: 3559002451987487827}
+  - component: {fileID: -2022529145129033244}
+  - component: {fileID: 7161898219512789834}
+  - component: {fileID: 2396192347626421361}
+  - component: {fileID: -3694333605947655340}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2568132501649171981
+--- !u!114 &-2022529145129033244
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,12 +97,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2657722479438619117}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7136ec791f64c64eb76bceee383e449, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ba18aca1f05e284281850babed05f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 0
-  _projectileDescriptor: {fileID: 11400000, guid: 6ab6497c76d1da04481f385411d4a58b, type: 2}
---- !u!114 &620411532301734940
+  _descriptor: {fileID: 11400000, guid: 6ab6497c76d1da04481f385411d4a58b, type: 2}
+--- !u!114 &7161898219512789834
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,10 +110,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2657722479438619117}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9f32ebe29940f7409a29f68472a8c2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d0a5a92ae042eb4fa978d638b7281e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-3651339424850256543
+--- !u!114 &2396192347626421361
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,10 +122,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2657722479438619117}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e1a4e17d715f7b44bc11101b2590ca8, type: 3}
+  m_Script: {fileID: 11500000, guid: 53520b92eac74f84c962bd1c5b8035cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3559002451987487827
+--- !u!114 &-3694333605947655340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,8 +134,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2657722479438619117}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: facee7d1ba09d5c4891883aa1dd57e4d, type: 3}
+  m_Script: {fileID: 11500000, guid: a9bf4275f07fe9c40834df0423ea5f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 0
-  _projectileDescriptor: {fileID: 0}

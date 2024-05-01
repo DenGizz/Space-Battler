@@ -1,11 +1,12 @@
-using System.Diagnostics;
 using Assets.Scripts.Battles;
+using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
-using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
-using Assets.Scripts.SpaceShips;
+using Assets.Scripts.Infrastructure.Services.CoreServices.PersistentDataServices;
+using Assets.Scripts.Infrastructure.Services.PersistentProgressServices;
 using Assets.Scripts.StateMachines;
+using Assets.Scripts.UI.Pause_Menu_UI;
 
 namespace Assets.Scripts.Game.GameStates
 {
@@ -16,6 +17,8 @@ namespace Assets.Scripts.Game.GameStates
         private readonly IBattleTickService _battleTickService;
         private readonly IBattleUiService _battleUiService;
         private readonly IBattleProvider _battleProvider;
+        private readonly IProgressProvider _progressProvider;
+        private readonly IPersistentDataService _persistentDataService;
 
         private readonly StateMachine _gameStateMachine;
         private Battle _battle;
@@ -23,7 +26,7 @@ namespace Assets.Scripts.Game.GameStates
 
         public BattleState(StateMachine gameStateMachine, IBattleObserver battleObserver, 
             IUiFactory uiFactory, IBattleTickService battleTickService, IBattleUiService battleUIService,
-            IBattleProvider battleProvider)
+            IBattleProvider battleProvider, IProgressProvider progressProvider, IPersistentDataService persistentDataService)
         {
             _gameStateMachine = gameStateMachine;
             _battleObserver = battleObserver;
@@ -31,6 +34,8 @@ namespace Assets.Scripts.Game.GameStates
             _battleTickService = battleTickService;
             _battleUiService = battleUIService;
             _battleProvider = battleProvider;
+            _progressProvider = progressProvider;
+            _persistentDataService = persistentDataService;
         }
 
         public void Enter()
@@ -56,10 +61,10 @@ namespace Assets.Scripts.Game.GameStates
 
         private void OnWinnerDeterminedEventHandler(ISpaceShip winner)
         {
-            _battle.StopBattle();
-            _battleObserver.StopObserve();
-            _battleUiService.BattleUi.HideBattleView();
-            _battleTickService.IsPaused = true;
+            StopBattle();
+            _battle.Winner = winner;
+            UpdateAndSaveProgress(winner);
+
 
             _gameStateMachine.EnterState<ShowWinnerState>();
         }
@@ -76,6 +81,31 @@ namespace Assets.Scripts.Game.GameStates
                 _battleTickService.IsPaused = false;
                 _battle.ResumeBattle();
             }
+        }
+
+        private void StopBattle()
+        {
+            _battle.StopBattle();
+            _battleObserver.StopObserve();
+            _battleUiService.BattleUi.HideBattleView();
+            _battleTickService.IsPaused = true;
+        }
+
+        private void UpdateAndSaveProgress(ISpaceShip winner)
+        {
+            bool isPlayerWon = winner == _battle.BattleData.PlayerSpaceShip;
+
+            //TODO: Add logic for updating player progress data
+            if (isPlayerWon)
+            {
+                _progressProvider.PlayerProgressData.BattlesWon++;
+            }
+            else
+            {
+                _progressProvider.PlayerProgressData.BattlesLost++;
+            }
+
+            _persistentDataService.SavePlayerProgressData(_progressProvider.PlayerProgressData);
         }
     }
 }
