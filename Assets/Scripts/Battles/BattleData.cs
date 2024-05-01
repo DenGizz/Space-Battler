@@ -1,12 +1,21 @@
 ﻿using Assets.Scripts.AI.UnitsAI;
 using Assets.Scripts.SpaceShips;
-using System.Collections.Generic;
 
 namespace Assets.Scripts.Battles
 {
     public class BattleData
     {
-        public List<ISpaceShip> AllyTeamMembers { get; }
-        public List<ISpaceShip> EnemyTeamMembers { get; }
+        public ISpaceShip PlayerSpaceShip { get; }
+        public ISpaceShip EnemySpaceShip { get;}
+        public ICombatAi PlayerCombatAi { get; }
+        public ICombatAi EnemyCombatAi { get; }
+
+        public BattleData( ISpaceShip playerSpaceShip, ISpaceShip enemySpaceShip, ICombatAi playerCombatAi, ICombatAi enemyCombatAi)
+        {
+            PlayerSpaceShip = playerSpaceShip;
+            EnemySpaceShip = enemySpaceShip;
+            PlayerCombatAi = playerCombatAi;
+            EnemyCombatAi = enemyCombatAi;
+        }
     }
 }
