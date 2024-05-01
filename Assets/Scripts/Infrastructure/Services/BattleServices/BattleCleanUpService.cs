@@ -1,6 +1,13 @@
 ﻿using Assets.Scripts.Battles;
+using Assets.Scripts.Battles.BattleRun;
 using Assets.Scripts.Infrastructure.Destroyers;
 using Assets.Scripts.Infrastructure.Services.Registries;
+<<<<<<< HEAD
+=======
+using Assets.Scripts.ScriptableObjects;
+using Assets.Scripts.SpaceShips;
+using System.Collections.Generic;
+>>>>>>> parent of 015454a (Revert "Refactor Battle to BattleRunner. Change BattleData implementation")
 using System.Linq;
 using Assets.Scripts.Entities.SpaceShips;
 using Zenject;
@@ -28,12 +35,11 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
             _projectilesPoolService = projectilesPoolService;
         }
 
-        public void CleanUpBattle(Battle battle)
+        public void CleanUpBattle(BattleRunner battleRunner)
         {
-            BattleData battleData = battle.BattleData;
-
             _projectilesPoolService.ClearAll();
 
+<<<<<<< HEAD
             DestroyAliveBattleUnits(battleData);
             _battleUIService.DestroyBattleUi();
         }
@@ -67,6 +73,39 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
 
             foreach (var projectile in _projectilesRegister.Projectiles.ToArray())
                 _projectileDestroyer.Destroy(projectile);
+=======
+            DestroyAndUnregisterGameObjects(battleRunner);
+            _battleUIService.DestroyBattleUi();
+        }
+
+        private void DestroyAndUnregisterGameObjects(BattleRunner battleRunner)
+        {
+            foreach(var spaceShip in battleRunner.BattleData.AllyTeamMembers.ToArray())
+            {
+                RemoveAndDestroySpaceShipWeapons(spaceShip);
+                battleRunner.RemoveSpaceShipFromAllyTeam(spaceShip);
+                _spaceShipDestroyer.Destroy(spaceShip);
+            }
+
+            foreach (var spaceShip in battleRunner.BattleData.EnemyTeamMembers.ToArray())
+            {
+                RemoveAndDestroySpaceShipWeapons(spaceShip);
+                battleRunner.RemoveSpaceShipFromEnemyTeam(spaceShip);
+                _spaceShipDestroyer.Destroy(spaceShip);
+            }
+
+            foreach (var projectile in (_projectilesRegister.Projectiles.ToArray()))
+                _projectileDestroyer.Destroy(projectile);
+        }
+
+        private void RemoveAndDestroySpaceShipWeapons(ISpaceShip spaceShip)
+        {
+            foreach (var weapon in spaceShip.Weapons.ToArray())
+            {
+                spaceShip.RemoveWeapon(weapon);
+                _weaponDestroyer.Destroy(weapon);
+            }
+>>>>>>> parent of 015454a (Revert "Refactor Battle to BattleRunner. Change BattleData implementation")
         }
     }
 }
