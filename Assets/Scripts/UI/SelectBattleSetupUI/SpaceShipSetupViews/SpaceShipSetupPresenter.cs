@@ -14,20 +14,24 @@ namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews
     {
         [SerializeField] private SpaceShipSelectionSlot _spaceShipSelectionSlot;
         [SerializeField] private List<WeaponSelectionSlot> _weaponSelectionSlots;
+        [SerializeField] private Button _randomizeButton;
 
         private SpaceShipSetup _spaceShipSetup;
         private  IStaticDataService _staticDataService;
+        private IRandomSetupService _randomSetupService;
 
         [Inject]
-        public void Construct(IStaticDataService staticDataService)
+        public void Construct(IStaticDataService staticDataService, IRandomSetupService randomSetupService)
         {
             _staticDataService = staticDataService;
+            _randomSetupService = randomSetupService;
         }
 
         private void Awake()
         {
             _spaceShipSelectionSlot.OnSpaceShipTypeSelected += OnSpaceShipTypeSelected;
             _weaponSelectionSlots.ForEach(slot => slot.OnWeaponTypeSelected += OnWeaponTypeSelected);
+            _randomizeButton.onClick.AddListener(RandomizeSpaceShipSetup);
         }
 
         private void OnDestroy()
@@ -72,6 +76,12 @@ namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews
             _spaceShipSetup.WeaponTypes.Clear();
 
             UpdateSlots();
+        }
+
+        public void RandomizeSpaceShipSetup()
+        {
+            _randomSetupService.RandomizeSpaceShipSetup(_spaceShipSetup);
+            LoadDataInUI();
         }
     }
 }

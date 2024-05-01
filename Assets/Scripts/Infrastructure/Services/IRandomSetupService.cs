@@ -4,6 +4,6 @@ namespace Assets.Scripts.Infrastructure.Services
 {
     public interface IRandomSetupService
     {
-        SpaceShipSetup GetRandomSpaceShipSetup();
+        void RandomizeSpaceShipSetup(SpaceShipSetup spaceShipSetup);
     }
 }

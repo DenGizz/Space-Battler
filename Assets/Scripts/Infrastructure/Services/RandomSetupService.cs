@@ -16,7 +16,7 @@ namespace Assets.Scripts.Infrastructure.Services
             _staticDataService = staticDataService;
         }
 
-        public SpaceShipSetup GetRandomSpaceShipSetup()
+        public void RandomizeSpaceShipSetup(SpaceShipSetup spaceShipSetup)
         {
             SpaceShipDescriptor[] spaceShipDescriptors = _staticDataService.GetSpaceShipDescriptors().ToArray();
             WeaponDescriptor[] weaponDescriptors = _staticDataService.GetWeaponDescriptors().ToArray();
@@ -25,7 +25,11 @@ namespace Assets.Scripts.Infrastructure.Services
             SpaceShipDescriptor randomSpaceShipDescriptor = spaceShipDescriptors[randomSpaceShipDescriptorIndex];
             WeaponDescriptor[] randomWeaponDescriptors = weaponDescriptors
                 .OrderBy(weaponDescriptor => UnityEngine.Random.value).Take(UnityEngine.Random.Range(1, 4)).ToArray();
-            return new SpaceShipSetup(randomSpaceShipDescriptor.SpaceShipType, randomWeaponDescriptors.Select(weaponDescriptor => weaponDescriptor.WeaponType));
+
+            spaceShipSetup.SpaceShipType = randomSpaceShipDescriptor.SpaceShipType;
+            spaceShipSetup.WeaponTypes.Clear();
+            spaceShipSetup.WeaponTypes.AddRange(randomWeaponDescriptors.Select(weaponDescriptor => weaponDescriptor.WeaponType));
+
         }
     }
 }
