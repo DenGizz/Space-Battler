@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.UI.BaseUI;
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -13,6 +14,7 @@ namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews
 
         private WeaponSelectionPanelViewModel _selectionPanel;
 
+        public event Action OnWeaponTypeSelected;
 
         public WeaponType SelectedWeaponType
         {
@@ -43,6 +45,7 @@ namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews
         private void OnWeaponSelectedEventHandler(WeaponType type)
         {
             SelectedWeaponType = type;
+            OnWeaponTypeSelected?.Invoke();
             CloseSelectionPanel();
 
         }

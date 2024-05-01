@@ -29,7 +29,7 @@ namespace Assets.Scripts.Game.GameStates
         public void Enter()
         {
             _mainMenuUi = _uiFactory.CreateMainMenuUi();
-            _mainMenuUi.LoadBattleSetupInUi(_battleSetupProvider.BattleSetup);
+            _mainMenuUi.SetBattleSetup(_battleSetupProvider.BattleSetup);
             _mainMenuUi.OnStartBattleButtonClicked += OnStartBattleButtonClicked;
         }
 
@@ -40,13 +40,11 @@ namespace Assets.Scripts.Game.GameStates
 
         private void OnStartBattleButtonClicked()
         {
-            BattleSetup battleSetup = _mainMenuUi.CreateSetupFromUi();
-
-            if (!BattleSetupValidator.IsBattleSetupValidForStartBattle(battleSetup))
+            if (!BattleSetupValidator.IsBattleSetupValidForStartBattle(_battleSetupProvider.BattleSetup))
                 return;
 
-            _persistentDataService.SaveBattleSetup(battleSetup);
-            _battleSetupProvider.BattleSetup = battleSetup;
+            _persistentDataService.SaveBattleSetup(_battleSetupProvider.BattleSetup);
+            _battleSetupProvider.BattleSetup = _battleSetupProvider.BattleSetup;
             _stateMachine.EnterState<LoadBattleFieldSceneState>();
         }
     }

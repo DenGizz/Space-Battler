@@ -21,11 +21,10 @@ namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews
             set
             {
                 _spaceShipTypeView.SpaceShipType = value;
-                OnSelectedSpaceShipTypeChanged?.Invoke();
             }     
         }
 
-        public Action OnSelectedSpaceShipTypeChanged;
+        public Action OnSpaceShipTypeSelected;
 
         private IUiFactory _uiFactory;
 
@@ -52,7 +51,7 @@ namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews
         {
             SelectedSpaceShipType = type;
             CloseSelectionPanel();
-
+            OnSpaceShipTypeSelected?.Invoke();
         }
 
         private void OnSelectionPanelCloseButtonClickedEventHandler()

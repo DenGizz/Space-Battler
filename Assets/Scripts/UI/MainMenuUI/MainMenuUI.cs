@@ -13,53 +13,15 @@ namespace Assets.Scripts.UI.MainMenuUI
         [SerializeField] private SpaceShipSetupPresenter _playerShipSetup;
         [SerializeField] private SpaceShipSetupPresenter _enemyShipSetup;
 
-        private SpaceShipSetup PlayerSetup
-        {
-            get => new SpaceShipSetup(_playerShipSetup.SpaceShipType, _playerShipSetup.WeaponTypes);
-            set
-            {
-                if(value == null)
-                {
-                    _playerShipSetup.SpaceShipType = SpaceShipType.None;
-                    _playerShipSetup.WeaponTypes = null;
-                    return;
-                }
-
-                _playerShipSetup.SpaceShipType = value.SpaceShipType;
-                _playerShipSetup.WeaponTypes = value.WeaponTypes;
-            }
-        }
-
-        private SpaceShipSetup EnemySetup
-        {
-            get => new SpaceShipSetup(_enemyShipSetup.SpaceShipType, _enemyShipSetup.WeaponTypes);
-            set
-            {
-                if (value == null)
-                {
-                    _enemyShipSetup.SpaceShipType = SpaceShipType.None;
-                    _enemyShipSetup.WeaponTypes = null;
-                    return;
-                }
-                _enemyShipSetup.SpaceShipType = value.SpaceShipType;
-                _enemyShipSetup.WeaponTypes = value.WeaponTypes;
-             }
-        }
-
+        public BattleSetup _battleSetup;
 
         public event Action OnStartBattleButtonClicked;
 
-        public BattleSetup CreateSetupFromUi()
+        public void SetBattleSetup(BattleSetup battleSetup)
         {
-            return new BattleSetup(PlayerSetup, EnemySetup);
+            _playerShipSetup.SetSpaceShipSetup(battleSetup.PlayerSetup);
+            _enemyShipSetup.SetSpaceShipSetup(battleSetup.EnemySetup);
         }
-
-        public void LoadBattleSetupInUi(BattleSetup battleSetup)
-        {
-            PlayerSetup = battleSetup.PlayerSetup;
-            EnemySetup = battleSetup.EnemySetup;
-        }
-
 
         private void Awake()
         {
