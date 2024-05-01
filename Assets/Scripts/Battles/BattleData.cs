@@ -1,21 +1,16 @@
 ﻿using Assets.Scripts.AI.UnitsAI;
+<<<<<<< HEAD
 using Assets.Scripts.Entities.SpaceShips;
+=======
+using Assets.Scripts.SpaceShips;
+using System.Collections.Generic;
+>>>>>>> parent of 015454a (Revert "Refactor Battle to BattleRunner. Change BattleData implementation")
 
 namespace Assets.Scripts.Battles
 {
     public class BattleData
     {
-        public ISpaceShip PlayerSpaceShip { get; }
-        public ISpaceShip EnemySpaceShip { get;}
-        public ICombatAi PlayerCombatAi { get; }
-        public ICombatAi EnemyCombatAi { get; }
-
-        public BattleData( ISpaceShip playerSpaceShip, ISpaceShip enemySpaceShip, ICombatAi playerCombatAi, ICombatAi enemyCombatAi)
-        {
-            PlayerSpaceShip = playerSpaceShip;
-            EnemySpaceShip = enemySpaceShip;
-            PlayerCombatAi = playerCombatAi;
-            EnemyCombatAi = enemyCombatAi;
-        }
+        public List<ISpaceShip> AllyTeamMembers { get; }
+        public List<ISpaceShip> EnemyTeamMembers { get; }
     }
 }
