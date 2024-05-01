@@ -2,7 +2,7 @@
 using Assets.Scripts.UI.BattleUI;
 using Assets.Scripts.UI.MainMenuUI;
 using Assets.Scripts.UI.Pause_Menu_UI;
-using Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetup;
+using Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Factories.UI_Factories

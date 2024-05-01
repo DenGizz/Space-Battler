@@ -5,7 +5,7 @@ using Assets.Scripts.UI.BaseUI;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetup
+namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews
 {
     public class WeaponTypeView : MonoBehaviour
     {

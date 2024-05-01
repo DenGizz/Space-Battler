@@ -4,7 +4,7 @@ using Assets.Scripts.UI.BaseUI;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetup
+namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews
 {
     public class ClickableViewsPanel : MonoBehaviour
     {

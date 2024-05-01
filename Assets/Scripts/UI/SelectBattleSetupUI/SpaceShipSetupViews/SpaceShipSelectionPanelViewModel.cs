@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Assets.Scripts.Entities.Weapons.WeaponConfigs;
+using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.ScriptableObjects;
@@ -8,16 +8,16 @@ using Assets.Scripts.UI.BaseUI;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetup
+namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews
 {
-    public class WeaponSelectionPanelViewModel : MonoBehaviour
+    public class SpaceShipSelectionPanelViewModel : MonoBehaviour
     {
         [SerializeField] private ClickableViewsPanel _clickableViewsPanel;
 
         public event Action OnCloseButtonClicked;
-        public event Action<WeaponType> OnWeaponSelected;
+        public event Action<SpaceShipType> OnSpaceShipSelected;
 
-        private Dictionary<GameObject, WeaponType> _viewToType;
+        private Dictionary<GameObject, SpaceShipType> _viewToType;
         private List<ClickableView> _clickableViews;
 
         private IUiFactory _uiFactory;
@@ -34,18 +34,18 @@ namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetup
         {
             _clickableViewsPanel.OnCloseButtonClicked += OnCloseButtonClickedEventHandler;
             _clickableViews = new List<ClickableView>();
-            _viewToType = new Dictionary<GameObject, WeaponType>();
+            _viewToType = new Dictionary<GameObject, SpaceShipType>();
 
-            IEnumerable<WeaponDescriptor> configs = _staticDataService.GetWeaponDescriptors();
+            IEnumerable<SpaceShipDescriptor> configs = _staticDataService.GetSpaceShipDescriptors();
 
             foreach (var config in configs)
             {
-                DescriptionRowView descriptionRow = _uiFactory.CreateWeaponDescriptionRow();
-                descriptionRow.TitleText = config.WeaponType.ToString();
-                descriptionRow.DescriptionText = $"Damage: {config.Damage}.\nCold down: {config.ColdDownTime} sec.";
+                DescriptionRowView descriptionRow = _uiFactory.CreateSpaceShipDescriptionRow();
+                descriptionRow.TitleText = config.SpaceShipType.ToString();
+                descriptionRow.DescriptionText = $"HP: {config.MaxHealth}\nWeapon slots: {config.WeaponSlotsCount}";
                 descriptionRow.Sprite = config.Sprite;
                 _clickableViewsPanel.AddContent(descriptionRow.gameObject);
-                _viewToType.Add(descriptionRow.gameObject, config.WeaponType);
+                _viewToType.Add(descriptionRow.gameObject, config.SpaceShipType);
 
                 if(descriptionRow.TryGetComponent(out ClickableView clickable))
                 {
@@ -63,7 +63,7 @@ namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetup
 
         private void OnRowClickedEventHandler(ClickableView row)
         {
-            OnWeaponSelected?.Invoke(_viewToType[row.gameObject]);
+            OnSpaceShipSelected?.Invoke(_viewToType[row.gameObject]);
         }
     }
 }

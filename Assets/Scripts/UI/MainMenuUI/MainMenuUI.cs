@@ -1,7 +1,7 @@
 using System;
 using Assets.Scripts.Battles;
 using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
-using Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetup;
+using Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews;
 using UnityEngine;
 using UnityEngine.UI;
 

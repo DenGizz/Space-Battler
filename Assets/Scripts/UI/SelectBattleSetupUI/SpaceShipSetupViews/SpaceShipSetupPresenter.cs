@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetup
+namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews
 {
     public class SpaceShipSetupPresenter : MonoBehaviour
     {
