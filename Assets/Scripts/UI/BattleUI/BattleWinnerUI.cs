@@ -1,4 +1,5 @@
 using System;
+using Assets.Scripts.Battles;
 using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Infrastructure.Services.PersistentProgressServices;
 using TMPro;
@@ -27,9 +28,9 @@ namespace Assets.Scripts.UI.BattleUI
             _progressProvider = progressProvider;
         }
 
-        public void SetWinner(ISpaceShip winnerSpaceShip, bool isPlayerWin)
+        public void SetWinner(BattleResult battleResult)
         {
-            _winnerNameText.text = isPlayerWin ? winText : loseText;
+            _winnerNameText.text = battleResult == BattleResult.AllyTeamWin ? winText : loseText;
             _winLoseStatisticText.text = $"Wins: {_progressProvider.PlayerProgressData.BattlesWon}. Loses: {_progressProvider.PlayerProgressData.BattlesLost}";
         }
 

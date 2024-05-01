@@ -7,7 +7,7 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
     {
         BattleUI BattleUi { get; }
         void CreateBattleUi();
-        void SetBattle(Battle battle);
+        void SetBattle(BattleData battleData);
         void DestroyBattleUi();
     }
 }

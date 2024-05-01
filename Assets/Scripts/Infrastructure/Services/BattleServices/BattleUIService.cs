@@ -23,12 +23,11 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
         public void CreateBattleUi()
         {
             (BattleUi, _battleUiGameObject) = _uiFactory.CreateBattleUi();
-
         }
 
-        public void SetBattle(Battle battle)
+        public void SetBattle(BattleData battleData)
         {
-            BattleUi.ShowBattleView(battle);
+            BattleUi.ShowBattleView(battleData);
         }
 
         public void DestroyBattleUi()

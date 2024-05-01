@@ -6,13 +6,13 @@ namespace Assets.Scripts.UI.BattleUI
     [AddComponentMenu("UI/BattleUI")]
     public class BattleUI : MonoBehaviour
     {
-        private Battle _battle;
+        private BattleData _battleData;
         [SerializeField] private BattleView _battleView;
 
-        public void ShowBattleView(Battle battle)
+        public void ShowBattleView(BattleData battleData)
         {
-            _battle = battle;
-            _battleView.Setup(battle.BattleData);
+            _battleData = battleData;
+            _battleView.Setup(battleData);
             _battleView.gameObject.SetActive(true);
         }
 

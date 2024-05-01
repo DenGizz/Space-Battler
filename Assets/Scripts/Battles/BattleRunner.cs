@@ -1,28 +1,27 @@
 ﻿using Assets.Scripts.AI.UnitsAI;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.Infrastructure.Services.Registries;
-using Assets.Scripts.SpaceShips;
 using System;
 using System.Collections.Generic;
+using Assets.Scripts.Entities.SpaceShips;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Zenject;
 
 namespace Assets.Scripts.Battles.BattleRun
 {
     public class BattleRunner : IBattleRunner
     {
-        public BattleData BattleData { get; private set; }
+        public BattleData BattleData { get;  }
 
         public event EventHandler<BattleEndEventArgs> BattleEnded;
 
+        public BattleResult? ThisBattleResult { get; private set; }
+
         private readonly ICombatAiRegistry _combatAiRegistry;
 
-        public BattleRunner(ICombatAiRegistry combatAiRegistry)
+        public BattleRunner(BattleData battleData,ICombatAiRegistry combatAiRegistry)
         {
             _combatAiRegistry = combatAiRegistry;
-            BattleData = new BattleData();
+            BattleData = battleData;
         }
 
         public void AddSpaceShipToAllyTeam(ISpaceShip spaceShip)
@@ -55,8 +54,8 @@ namespace Assets.Scripts.Battles.BattleRun
             BattleData.AllyTeamMembers.ForEach(spaceShip => FindAndSetTargetForSpaceShip(spaceShip, BattleData.EnemyTeamMembers));
             BattleData.EnemyTeamMembers.ForEach(spaceShip => FindAndSetTargetForSpaceShip(spaceShip, BattleData.AllyTeamMembers));
 
-            BattleData.AllyTeamMembers.ForEach(spaceShip => _combatAiRegistry.GetAi(spaceShip).StartCombat());
-            BattleData.EnemyTeamMembers.ForEach(spaceShip => _combatAiRegistry.GetAi(spaceShip).StartCombat());
+            BattleData.AllyTeamMembers.ForEach(spaceShip => _combatAiRegistry.GetAi(spaceShip).EnterCombatMode());
+            BattleData.EnemyTeamMembers.ForEach(spaceShip => _combatAiRegistry.GetAi(spaceShip).EnterCombatMode());
         }
 
         private void FindAndSetTargetForSpaceShip(ISpaceShip spaceShip, List<ISpaceShip> opponentTeamMembers)
@@ -74,12 +73,6 @@ namespace Assets.Scripts.Battles.BattleRun
 
         private void OnSpaceShipDeathEventHandler(ISpaceShip spaceShip)
         {
-            if(BattleData.AllyTeamMembers.Contains(spaceShip))
-                RemoveSpaceShipFromAllyTeam(spaceShip);
-
-            if(BattleData.EnemyTeamMembers.Contains(spaceShip))
-                RemoveSpaceShipFromEnemyTeam(spaceShip);
-
             CheckTeamDefeatAndEndBattle();
         }
 
@@ -87,12 +80,14 @@ namespace Assets.Scripts.Battles.BattleRun
         {
             if (IsTeamDefeated(BattleData.AllyTeamMembers))
             {
+                ThisBattleResult = BattleResult.EnemyTeamWin;
                 BattleEnded?.Invoke(this, new BattleEndEventArgs(BattleResult.EnemyTeamWin));
                 return;
             }
 
             if (IsTeamDefeated(BattleData.EnemyTeamMembers))
             {
+                ThisBattleResult = BattleResult.AllyTeamWin;
                 BattleEnded?.Invoke(this, new BattleEndEventArgs(BattleResult.AllyTeamWin));
                 return;
             }
@@ -100,7 +95,7 @@ namespace Assets.Scripts.Battles.BattleRun
 
         private bool IsTeamDefeated(List<ISpaceShip> teamMembers)
         {
-            return teamMembers.Count == 0;
+            return teamMembers.All(spaceShip => !spaceShip.Data.IsAlive);
         }
     }
 }

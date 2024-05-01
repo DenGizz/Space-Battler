@@ -22,12 +22,10 @@ namespace Assets.Scripts.Infrastructure
         {
             Container.Bind<IRandomSetupService>().To<RandomSetupService>().AsSingle();
             Container.Bind<IBattleSetupProvider>().To<BattleSetupProvider>().AsSingle();
-            Container.Bind<IBattleObserver>().To<BattleObserver>().AsSingle();
             Container.Bind<BattleTickService>().AsSingle();
             Container.Bind<IBattleTickService>().To<BattleTickService>().FromResolve();
             Container.Bind<ITickable>().To<BattleTickService>().FromResolve();
-            Container.Bind<IBattleProvider>().To<BattleProvider>().AsSingle();
-            Container.Bind<IBattleFactory>().To<BattleFactory>().AsSingle();
+            Container.Bind<IBattleRunnerProvider>().To<BattleRunnerRunnerProvider>().AsSingle();
             Container.Bind<IBattleCleanUpService>().To<BattleCleanUpService>().AsSingle();
         }
 

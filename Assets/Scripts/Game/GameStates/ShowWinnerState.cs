@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Battles;
+using Assets.Scripts.Battles.BattleRun;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.StateMachines;
@@ -9,23 +10,23 @@ namespace Assets.Scripts.Game.GameStates
     public class ShowWinnerState : IState
     {
         private readonly StateMachine _stateMachine;
-        private readonly IBattleProvider _battleProvider;
+        private readonly IBattleRunnerProvider _battleRunnerProvider;
         private readonly IUiFactory _uiFactory;
 
         private BattleWinnerUI _winnerUi;
 
-        public ShowWinnerState(StateMachine stateMachine, IBattleProvider battleProvider, IUiFactory uiFactory)
+        public ShowWinnerState(StateMachine stateMachine, IBattleRunnerProvider battleRunnerProvider, IUiFactory uiFactory)
         {
             _stateMachine = stateMachine;
-            _battleProvider = battleProvider;
+            _battleRunnerProvider = battleRunnerProvider;
             _uiFactory = uiFactory;
         }
 
         public void Enter()
         {
-            Battle battle = _battleProvider.CurrentBattle;
+            BattleRunner battleRunner = _battleRunnerProvider.CurrentBattleRunner;
             _winnerUi = _uiFactory.CreateWinnerUi();
-            _winnerUi.SetWinner(battle.Winner, battle.Winner == battle.BattleData.PlayerSpaceShip);
+            _winnerUi.SetWinner(battleRunner.ThisBattleResult.Value);
             _winnerUi.OnReturnMainMenuButtonPressed += OnReturnMainMenuButtonPressedEventHandler;
         }
 
