@@ -27,8 +27,11 @@ namespace Assets.Scripts.UI.BattleUI
             _battleData = battleData;
             _healthViews.ForEach(view => Destroy(view.gameObject));
 
-            battleData.AllyTeamMembers.ForEach(CreateViewForSpaceShip);
-            battleData.EnemyTeamMembers.ForEach(CreateViewForSpaceShip);
+            foreach (ISpaceShip spaceShip in battleData.AllyTeam.Members)
+                CreateViewForSpaceShip(spaceShip);
+
+            foreach (ISpaceShip spaceShip in battleData.EnemyTeam.Members)
+                CreateViewForSpaceShip(spaceShip);
         }
 
         private void CreateViewForSpaceShip(ISpaceShip spaceShip)

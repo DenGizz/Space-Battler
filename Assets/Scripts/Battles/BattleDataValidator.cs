@@ -21,31 +21,31 @@ namespace Assets.Scripts.Battles
                 return false;
             }
 
-            if(battleData.AllyTeamMembers == null || battleData.AllyTeamMembers.Count == 0)
+            if(battleData.AllyTeam.Members == null || !battleData.AllyTeam.Members.Any())
             {
                 reason = "Ally team members are null or empty";
                 return false;
             }
 
-            if (battleData.EnemyTeamMembers == null || battleData.EnemyTeamMembers.Count == 0)
+            if (battleData.EnemyTeam.Members == null || !battleData.EnemyTeam.Members.Any())
             {
                 reason = "Enemy team members are null or empty";
                 return false;
             }
 
-            if (battleData.AllyTeamMembers.GroupBy(x => x).Any(g => g.Count() > 1))
+            if (battleData.AllyTeam.Members.GroupBy(x => x).Any(g => g.Count() > 1))
             {
                 reason = "Ally team members contain duplicates";
                 return false;
             }
 
-            if (battleData.EnemyTeamMembers.GroupBy(x => x).Any(g => g.Count() > 1))
+            if (battleData.EnemyTeam.Members.GroupBy(x => x).Any(g => g.Count() > 1))
             {
                 reason = "Enemy team members contain duplicates";
                 return false;
             }
 
-            if (battleData.AllyTeamMembers.Intersect(battleData.EnemyTeamMembers).Any())
+            if (battleData.AllyTeam.Members.Intersect(battleData.EnemyTeam.Members).Any())
             {
                 reason = "Ally and enemy team members intersect";
                 return false;

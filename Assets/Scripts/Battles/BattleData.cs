@@ -7,14 +7,14 @@ namespace Assets.Scripts.Battles
 {
     public class BattleData
     {
-        public List<ISpaceShip> AllyTeamMembers { get; }
-        public List<ISpaceShip> EnemyTeamMembers { get; }
+        public BattleTeam AllyTeam { get; }
+        public BattleTeam EnemyTeam { get; }
         public bool IsBattleActive { get; set; }
 
         public BattleData()
         {
-            AllyTeamMembers = new List<ISpaceShip>();
-            EnemyTeamMembers = new List<ISpaceShip>();
+            AllyTeam = new BattleTeam();
+            EnemyTeam = new BattleTeam();
         }
     }
 }

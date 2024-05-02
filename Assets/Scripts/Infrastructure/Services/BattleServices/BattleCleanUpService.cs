@@ -44,14 +44,14 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
 
         private void DestroyAndUnregisterGameObjects(BattleRunner battleRunner)
         {
-            foreach(var spaceShip in battleRunner.BattleData.AllyTeamMembers.ToArray())
+            foreach(var spaceShip in battleRunner.BattleData.AllyTeam.Members.ToArray())
             {
                 RemoveAndDestroySpaceShipWeapons(spaceShip);
                 battleRunner.RemoveSpaceShipFromAllyTeam(spaceShip);
                 _spaceShipDestroyer.Destroy(spaceShip);
             }
 
-            foreach (var spaceShip in battleRunner.BattleData.EnemyTeamMembers.ToArray())
+            foreach (var spaceShip in battleRunner.BattleData.EnemyTeam.Members.ToArray())
             {
                 RemoveAndDestroySpaceShipWeapons(spaceShip);
                 battleRunner.RemoveSpaceShipFromEnemyTeam(spaceShip);

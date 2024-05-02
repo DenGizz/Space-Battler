@@ -27,24 +27,24 @@ namespace Assets.Scripts.Battles.BattleRun
 
         public void AddSpaceShipToAllyTeam(ISpaceShip spaceShip)
         {
-            BattleData.AllyTeamMembers.Add(spaceShip);
+            BattleData.AllyTeam.AddMember(spaceShip);
             spaceShip.OnDeath += OnSpaceShipDeathEventHandler;
         }
 
         public void AddSpaceShipToEnemyTeam(ISpaceShip spaceShip)
         {
-            BattleData.EnemyTeamMembers.Add(spaceShip);
+            BattleData.EnemyTeam.AddMember(spaceShip);
             spaceShip.OnDeath += OnSpaceShipDeathEventHandler;
         }
 
         public void RemoveSpaceShipFromAllyTeam(ISpaceShip spaceShip)
         {
-            BattleData.AllyTeamMembers.Remove(spaceShip);
+            BattleData.AllyTeam.AddMember(spaceShip);
         }
 
         public void RemoveSpaceShipFromEnemyTeam(ISpaceShip spaceShip)
         {
-            BattleData.EnemyTeamMembers.Remove(spaceShip);
+            BattleData.AllyTeam.AddMember(spaceShip);
         }
 
         public void RunBattle()
@@ -52,14 +52,22 @@ namespace Assets.Scripts.Battles.BattleRun
             if (!BattleDataValidator.IsBattleDataValid(BattleData, out string reason))
                 throw new InvalidOperationException($"Battle data is invalid. Cannot run battle. {reason}");
 
-            BattleData.AllyTeamMembers.ForEach(spaceShip => FindAndSetTargetForSpaceShip(spaceShip, BattleData.EnemyTeamMembers));
-            BattleData.EnemyTeamMembers.ForEach(spaceShip => FindAndSetTargetForSpaceShip(spaceShip, BattleData.AllyTeamMembers));
 
-            BattleData.AllyTeamMembers.ForEach(spaceShip => _combatAiRegistry.GetAi(spaceShip).EnterCombatMode());
-            BattleData.EnemyTeamMembers.ForEach(spaceShip => _combatAiRegistry.GetAi(spaceShip).EnterCombatMode());
+            foreach (ISpaceShip spaceShip in BattleData.AllyTeam.Members)
+            {
+                FindAndSetTargetForSpaceShip(spaceShip, BattleData.EnemyTeam.Members);
+                _combatAiRegistry.GetAi(spaceShip).EnterCombatMode();
+
+            }
+
+            foreach (ISpaceShip spaceShip in BattleData.EnemyTeam.Members)
+            {
+                FindAndSetTargetForSpaceShip(spaceShip, BattleData.AllyTeam.Members);
+                _combatAiRegistry.GetAi(spaceShip).EnterCombatMode();
+            }
         }
 
-        private void FindAndSetTargetForSpaceShip(ISpaceShip spaceShip, List<ISpaceShip> opponentTeamMembers)
+        private void FindAndSetTargetForSpaceShip(ISpaceShip spaceShip, IEnumerable<ISpaceShip> opponentTeamMembers)
         {
             ICombatAi combatAi = _combatAiRegistry.GetAi(spaceShip);
             ISpaceShip target = GetRandomTeamMember(opponentTeamMembers);
@@ -67,9 +75,9 @@ namespace Assets.Scripts.Battles.BattleRun
             combatAi.SetTarget(target);
         }
 
-        private ISpaceShip GetRandomTeamMember(List<ISpaceShip> teamMembers)
+        private ISpaceShip GetRandomTeamMember(IEnumerable<ISpaceShip> teamMembers)
         {
-            return teamMembers[UnityEngine.Random.Range(0, teamMembers.Count)];
+            return teamMembers.ElementAt(UnityEngine.Random.Range(0, teamMembers.Count()));
         }
 
         private void OnSpaceShipDeathEventHandler(ISpaceShip spaceShip)
@@ -79,14 +87,14 @@ namespace Assets.Scripts.Battles.BattleRun
 
         private void CheckTeamDefeatAndEndBattle()
         {
-            if (IsTeamDefeated(BattleData.AllyTeamMembers))
+            if (IsTeamDefeated(BattleData.AllyTeam.Members))
             {
                 ThisBattleResult = BattleResult.EnemyTeamWin;
                 BattleEnded?.Invoke(this, new BattleEndEventArgs(BattleResult.EnemyTeamWin));
                 return;
             }
 
-            if (IsTeamDefeated(BattleData.EnemyTeamMembers))
+            if (IsTeamDefeated(BattleData.EnemyTeam.Members))
             {
                 ThisBattleResult = BattleResult.AllyTeamWin;
                 BattleEnded?.Invoke(this, new BattleEndEventArgs(BattleResult.AllyTeamWin));
@@ -94,7 +102,7 @@ namespace Assets.Scripts.Battles.BattleRun
             }
         }
 
-        private bool IsTeamDefeated(List<ISpaceShip> teamMembers)
+        private bool IsTeamDefeated(IEnumerable<ISpaceShip> teamMembers)
         {
             return teamMembers.All(spaceShip => !spaceShip.Data.IsAlive);
         }
