@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Factories
 {
-    public interface ISpaceShipFromSetupFactory
+    public interface IShrinkService
     {
-        ISpaceShip CreateSpaceShipFromSetup(SpaceShipSetup setup, Vector3 position, float zRotation);
+        ISpaceShip UnShrinkSpaceShip(SpaceShipSetup setup, Vector3 position, float zRotation);
     }
 }

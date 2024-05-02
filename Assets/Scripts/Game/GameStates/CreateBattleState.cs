@@ -13,20 +13,20 @@ namespace Assets.Scripts.Game.GameStates
     {
         private readonly IBattleUiService _battleUIService;
         private readonly IBattleSetupProvider _battleSetupProvider;
-        private readonly ISpaceShipFromSetupFactory _spaceShipFromSetupFactory;
+        private readonly IShrinkService _shrinkService;
         private readonly IBattleRunnerProvider _battleRunnerProvider;
         private readonly IInstantiator _instantiator;
 
         private readonly StateMachine _stateMachine;
 
         public CreateBattleState(StateMachine stateMachine,IBattleUiService battleUIService,
-            IBattleSetupProvider battleSetupProvider, ISpaceShipFromSetupFactory spaceShipFromSetupFactory, 
+            IBattleSetupProvider battleSetupProvider, IShrinkService shrinkService, 
             IBattleRunnerProvider battleRunnerProvider, IInstantiator instantiator)
         {
             _stateMachine = stateMachine;
             _battleUIService = battleUIService;
             _battleSetupProvider = battleSetupProvider;
-            _spaceShipFromSetupFactory = spaceShipFromSetupFactory;
+            _shrinkService = shrinkService;
             _battleRunnerProvider = battleRunnerProvider;
             _instantiator = instantiator;
         }
@@ -66,8 +66,8 @@ namespace Assets.Scripts.Game.GameStates
             float playerSpaceShipZRotation = -90;
             float enemySpaceShipZRotation = 90;
 
-            ISpaceShip player = _spaceShipFromSetupFactory.CreateSpaceShipFromSetup(setup.PlayerSetup, playerSpaceShipPosition, playerSpaceShipZRotation);
-            ISpaceShip enemy = _spaceShipFromSetupFactory.CreateSpaceShipFromSetup(setup.EnemySetup, enemySpaceShipPosition, enemySpaceShipZRotation);
+            ISpaceShip player = _shrinkService.UnShrinkSpaceShip(setup.PlayerSetup, playerSpaceShipPosition, playerSpaceShipZRotation);
+            ISpaceShip enemy = _shrinkService.UnShrinkSpaceShip(setup.EnemySetup, enemySpaceShipPosition, enemySpaceShipZRotation);
 
 
             return (player, enemy);
