@@ -1,20 +1,41 @@
 using Assets.Scripts.Battles;
+using Assets.Scripts.Entities.SpaceShips;
+using Assets.Scripts.Infrastructure.Factories.UI_Factories;
+using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts.UI.BattleUI
 {
     public class BattleView : MonoBehaviour
     {
         private BattleData _battleData;
+        [SerializeField] private Vector2 _viewSpawnOffset;
 
-        [SerializeField] private HealthView _playerHealthView;
-        [SerializeField] private HealthView _enemyHealthView;
+        private List<HealthView> _healthViews = new List<HealthView>();
 
-        public void Setup(BattleData battleData)
+        private IUiFactory _uiFactory;
+
+        [Inject]
+        public void Construct(IUiFactory uiFactory)
+        {
+            _uiFactory = uiFactory;
+        }
+
+        public void SetBattleData(BattleData battleData)
         {
             _battleData = battleData;
-            _playerHealthView.Setup(battleData.AllyTeamMembers[0]); //TODO: Fix
-            _enemyHealthView.Setup(battleData.EnemyTeamMembers[0]);
+            _healthViews.ForEach(view => Destroy(view.gameObject));
+
+            battleData.AllyTeamMembers.ForEach(CreateViewForSpaceShip);
+            battleData.EnemyTeamMembers.ForEach(CreateViewForSpaceShip);
+        }
+
+        private void CreateViewForSpaceShip(ISpaceShip spaceShip)
+        {
+            Vector2 screenPosition = Camera.main.WorldToScreenPoint(spaceShip.Data.Position); //TODO: refactor this to use a camera provider
+            HealthView healthView = _uiFactory.CreateHealthView(spaceShip, screenPosition + _viewSpawnOffset, transform);
+            _healthViews.Add(healthView);
         }
     }
 }

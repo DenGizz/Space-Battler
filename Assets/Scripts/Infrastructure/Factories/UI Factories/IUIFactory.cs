@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.UI.BaseUI;
+﻿using Assets.Scripts.Entities.SpaceShips;
+using Assets.Scripts.UI.BaseUI;
 using Assets.Scripts.UI.BattleUI;
 using Assets.Scripts.UI.MainMenuUI;
 using Assets.Scripts.UI.Pause_Menu_UI;
@@ -19,5 +20,7 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
         WeaponSelectionPanelViewModel CreateWeaponSelectionPanel();
         SpaceShipSelectionPanelViewModel CreateSpaceShipSelectionPanel();
         BattleWinnerUI CreateWinnerUi();
+
+        HealthView CreateHealthView(ISpaceShip spaceShip, Vector2 screenPosition, Transform parent);
     }
 }

@@ -7,6 +7,7 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
     public interface IBattleRunner
     {
         BattleData BattleData { get; }
+        bool IsRunning { get; set; }
 
         event EventHandler<BattleEndEventArgs> BattleEnded;
 

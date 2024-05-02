@@ -10,7 +10,7 @@ namespace Assets.Scripts.UI.BattleUI
         [SerializeField] private GameObject _healthGreenRow;
 
 
-        public void Setup(ISpaceShip spaceShip)
+        public void SetSpaceShip(ISpaceShip spaceShip)
         {
             _spaceShip = spaceShip;
         }

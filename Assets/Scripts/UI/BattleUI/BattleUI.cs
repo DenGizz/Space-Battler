@@ -12,7 +12,7 @@ namespace Assets.Scripts.UI.BattleUI
         public void ShowBattleView(BattleData battleData)
         {
             _battleData = battleData;
-            _battleView.Setup(battleData);
+            _battleView.SetBattleData(battleData);
             _battleView.gameObject.SetActive(true);
         }
 

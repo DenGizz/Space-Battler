@@ -11,6 +11,7 @@ namespace Assets.Scripts.Battles.BattleRun
     public class BattleRunner : IBattleRunner
     {
         public BattleData BattleData { get;  }
+        public bool IsRunning { get; set; }
 
         public event EventHandler<BattleEndEventArgs> BattleEnded;
 
@@ -18,7 +19,7 @@ namespace Assets.Scripts.Battles.BattleRun
 
         private readonly ICombatAiRegistry _combatAiRegistry;
 
-        public BattleRunner(BattleData battleData,ICombatAiRegistry combatAiRegistry)
+        public BattleRunner(BattleData battleData, ICombatAiRegistry combatAiRegistry)
         {
             _combatAiRegistry = combatAiRegistry;
             BattleData = battleData;

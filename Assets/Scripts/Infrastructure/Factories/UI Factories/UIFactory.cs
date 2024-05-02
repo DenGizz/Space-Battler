@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Infrastructure.Services.CoreServices;
+﻿using Assets.Scripts.Entities.SpaceShips;
+using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.UI.BaseUI;
 using Assets.Scripts.UI.BattleUI;
 using Assets.Scripts.UI.MainMenuUI;
@@ -74,8 +75,6 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
             return spaceShipSelectionPanel.GetComponent<SpaceShipSelectionPanelViewModel>();
         }
 
-
-
         public DescriptionRowView CreateSpaceShipDescriptionRow()
         {
             GameObject descriptionRow = Object.Instantiate(_assetsProvider.GetSpaceShipDescriptionRowViewPrefab(), _rootTransformsProvider.UIRoot);
@@ -83,6 +82,15 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
             return descriptionRow.GetComponentInChildren<DescriptionRowView>();
         }
 
-
+        public HealthView CreateHealthView(ISpaceShip spaceShip, Vector2 screenPosition, Transform parent)
+        {
+            //TODO: Use IAssetsProvider
+            GameObject prefab = Resources.Load<GameObject>("Prefabs/UI/Battle UI/Space Ship Health View");
+            GameObject healthView = _instantiator.InstantiatePrefab(prefab, parent);
+            healthView.GetComponent<RectTransform>().position = screenPosition;
+            HealthView view = healthView.GetComponent<HealthView>();
+            view.SetSpaceShip(spaceShip);
+            return view;
+        }
     }
 }
