@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using Assets.Scripts.Entities.SpaceShips;
 using System.Linq;
+using Assets.Scripts.Infrastructure.Services;
 
 namespace Assets.Scripts.Battles.BattleRun
 {
@@ -18,22 +19,26 @@ namespace Assets.Scripts.Battles.BattleRun
         public BattleResult? ThisBattleResult { get; private set; }
 
         private readonly ICombatAiRegistry _combatAiRegistry;
+        private readonly IFitSpaceShipsOnScreenService _fitSpaceShipsOnScreenService;
 
-        public BattleRunner(BattleData battleData, ICombatAiRegistry combatAiRegistry)
+        public BattleRunner(BattleData battleData, ICombatAiRegistry combatAiRegistry, IFitSpaceShipsOnScreenService fitSpaceShipsOnScreenService)
         {
             _combatAiRegistry = combatAiRegistry;
+            _fitSpaceShipsOnScreenService = fitSpaceShipsOnScreenService;
             BattleData = battleData;
         }
 
         public void AddSpaceShipToAllyTeam(ISpaceShip spaceShip)
         {
             BattleData.AllyTeam.AddMember(spaceShip);
+            _fitSpaceShipsOnScreenService.FitSpaceShipsOnScreen(BattleData.AllyTeam.Members, IFitSpaceShipsOnScreenService.ScreenSide.Left);
             spaceShip.OnDeath += OnSpaceShipDeathEventHandler;
         }
 
         public void AddSpaceShipToEnemyTeam(ISpaceShip spaceShip)
         {
             BattleData.EnemyTeam.AddMember(spaceShip);
+            _fitSpaceShipsOnScreenService.FitSpaceShipsOnScreen(BattleData.EnemyTeam.Members, IFitSpaceShipsOnScreenService.ScreenSide.Right);
             spaceShip.OnDeath += OnSpaceShipDeathEventHandler;
         }
 

@@ -59,15 +59,8 @@ namespace Assets.Scripts.Game.GameStates
 
         private (ISpaceShip player, ISpaceShip enemy) CreateSpaceShipsAndWeapons(BattleSetup setup)
         {
-            //Instantiate units
-            Vector3 playerSpaceShipPosition = Vector3.zero - Vector3.right * 7;
-            Vector3 enemySpaceShipPosition = Vector3.zero + Vector3.right * 7;
-
-            float playerSpaceShipZRotation = -90;
-            float enemySpaceShipZRotation = 90;
-
-            ISpaceShip player = _shrinkService.UnShrinkSpaceShip(setup.PlayerSetup, playerSpaceShipPosition, playerSpaceShipZRotation);
-            ISpaceShip enemy = _shrinkService.UnShrinkSpaceShip(setup.EnemySetup, enemySpaceShipPosition, enemySpaceShipZRotation);
+            ISpaceShip player = _shrinkService.UnShrinkSpaceShip(setup.PlayerSetup, Vector3.zero, 0);
+            ISpaceShip enemy = _shrinkService.UnShrinkSpaceShip(setup.EnemySetup, Vector3.zero, 0);
 
 
             return (player, enemy);

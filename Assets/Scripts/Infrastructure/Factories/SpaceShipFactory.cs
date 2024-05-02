@@ -29,7 +29,7 @@ namespace Assets.Scripts.Infrastructure.Factories
             _battleTickService = battleTickService;
         }
 
-        public ISpaceShip CreateSpaceShip(SpaceShipType type, Vector3 position, float zRotation)
+        public ISpaceShip CreateSpaceShip(SpaceShipType type, Vector3 position, float zRotation)//TODO: Pass SpaceShipData. No parameters
         {
             GameObject prefab = _assetsProvider.GetSpaceShipPrefab(type);
             GameObject gameObject = Object.Instantiate(prefab, _rootTransformsProvider.SpaceShipsRoot);

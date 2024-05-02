@@ -27,6 +27,18 @@ namespace Assets.Scripts.Entities.SpaceShips
             transform.position = Data.Position;
         }
 
+        public void SetPosition(Vector3 position)
+        {
+            Data.Position = position;
+            transform.position = position;;
+        }
+
+        public void SetRotation(float zRotation)
+        {
+            Data.ZRotation = zRotation;
+            transform.rotation = Quaternion.Euler(0, 0, zRotation);
+        }
+
         public void AddWeapon(IWeapon weapon)
         {
             if (Data.Weapons.Count >= Config.WeaponSlots)
