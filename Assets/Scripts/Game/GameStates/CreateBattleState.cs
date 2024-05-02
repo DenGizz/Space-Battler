@@ -35,8 +35,7 @@ namespace Assets.Scripts.Game.GameStates
         {
             BattleSetup battleSetup = _battleSetupProvider.BattleSetup;
 
-            (ISpaceShip player, ISpaceShip enemy) = CreateSpaceShipsAndWeapons(battleSetup);
-
+            (ISpaceShip player, ISpaceShip enemy) = CreateSpaceShipsAndWeapons(battleSetup);;
             BattleData battleData = new BattleData();
             BattleRunner battleRunner = _instantiator.Instantiate<BattleRunner>(new[]{ battleData}); //TODO: This should do factory
 
