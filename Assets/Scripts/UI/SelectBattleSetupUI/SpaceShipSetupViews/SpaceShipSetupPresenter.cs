@@ -61,8 +61,6 @@ namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews
                _weaponSelectionSlots[i].SelectedWeaponType = i < _spaceShipSetup.WeaponTypes.Count ? _spaceShipSetup.WeaponTypes[i] : WeaponType.None;
                _weaponSelectionSlots[i].gameObject.SetActive(i < visibleSlots);
             }
-
-            Debug.Log(_spaceShipSetup.WeaponTypes.Count);
         }
 
         private void OnWeaponTypeSelected()
