@@ -61,6 +61,8 @@ namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews
                _weaponSelectionSlots[i].SelectedWeaponType = i < _spaceShipSetup.WeaponTypes.Count ? _spaceShipSetup.WeaponTypes[i] : WeaponType.None;
                _weaponSelectionSlots[i].gameObject.SetActive(i < visibleSlots);
             }
+
+            Debug.Log(_spaceShipSetup.WeaponTypes.Count);
         }
 
         private void OnWeaponTypeSelected()
@@ -72,13 +74,16 @@ namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews
         private void OnSpaceShipTypeSelected()
         {
             _spaceShipSetup.SpaceShipType = _spaceShipSelectionSlot.SelectedSpaceShipType;
+            int maxWeaponSlots = _staticDataService.GetSpaceShipDescriptor(_spaceShipSetup.SpaceShipType).WeaponSlotsCount;
+
+            IEnumerable<WeaponType> weapons = _spaceShipSetup.WeaponTypes.Where((t, i) => i < maxWeaponSlots).ToList();
 
             _spaceShipSetup.WeaponTypes.Clear();
-
+            _spaceShipSetup.WeaponTypes.AddRange(weapons);
             UpdateSlots();
         }
 
-        public void RandomizeSpaceShipSetup()
+        private void RandomizeSpaceShipSetup()
         {
             _randomSetupService.RandomizeSpaceShipSetup(_spaceShipSetup);
             LoadDataInUI();
