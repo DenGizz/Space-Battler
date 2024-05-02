@@ -9,6 +9,9 @@ namespace Assets.Scripts.Infrastructure.Services
 {
     public class FitSpaceShipsOnScreenService : IFitSpaceShipsOnScreenService
     {
+        private const float SideOffset = 100;
+        private const float VerticalOffset = 300;
+
         public void FitSpaceShipsOnScreen(IEnumerable<ISpaceShip> spaceShips, ScreenSide screenSide)
         {
             float zRotation = screenSide switch
@@ -17,18 +20,18 @@ namespace Assets.Scripts.Infrastructure.Services
                 ScreenSide.Right => 90,
                 _ => throw new ArgumentOutOfRangeException(nameof(screenSide), screenSide, null)
             };
-            float sideOffset = 100;
+
             Vector2 sideCentre = screenSide switch
             {
-                ScreenSide.Left => new Vector2(Screen.width / 4 - sideOffset, Screen.height / 2),
-                ScreenSide.Right => new Vector2(Screen.width / 4 * 3 + sideOffset, Screen.height / 2),
+                ScreenSide.Left => new Vector2(Screen.width / 4 - SideOffset, Screen.height / 2),
+                ScreenSide.Right => new Vector2(Screen.width / 4 * 3 + SideOffset, Screen.height / 2),
                 _ => throw new ArgumentOutOfRangeException(nameof(screenSide), screenSide, null)
             };
 
             Vector2[] verticalPositions = new Vector2[spaceShips.Count()];
 
             for (int i = 0; i < spaceShips.Count(); i++)
-                verticalPositions[i] = new Vector2(sideCentre.x, sideCentre.y + (i - spaceShips.Count() / 2) * 100);
+                verticalPositions[i] = new Vector2(sideCentre.x, sideCentre.y + (i - spaceShips.Count() / 2) * VerticalOffset);
 
             for (int i = 0; i < spaceShips.Count(); i++)
             {
