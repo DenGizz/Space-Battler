@@ -4,6 +4,6 @@ namespace Assets.Scripts.Infrastructure.Factories
 {
     public interface IStatesFactory 
     {
-        T CreateState<T>(StateMachine stateMachine) where T : IState;
+        T CreateState<T>(IStateMachine stateMachine) where T : IState;
     }
 }
