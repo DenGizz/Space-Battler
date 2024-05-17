@@ -20,6 +20,7 @@ namespace Assets.Scripts.Infrastructure
 
         private void BindBattleServices()
         {
+            Container.Bind<IBattleRunnerFactory>().To<BattleRunnerFactory>().AsSingle();
             Container.Bind<IFitSpaceShipsOnScreenService>().To<FitSpaceShipsOnScreenService>().AsSingle();
             Container.Bind<IRandomSetupService>().To<RandomSetupService>().AsSingle();
             Container.Bind<IBattleSetupProvider>().To<BattleSetupProvider>().AsSingle();

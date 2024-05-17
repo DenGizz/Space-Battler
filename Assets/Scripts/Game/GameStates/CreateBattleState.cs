@@ -15,20 +15,20 @@ namespace Assets.Scripts.Game.GameStates
         private readonly IBattleSetupProvider _battleSetupProvider;
         private readonly IShrinkService _shrinkService;
         private readonly IBattleRunnerProvider _battleRunnerProvider;
-        private readonly IInstantiator _instantiator;
+        private readonly IBattleRunnerFactory _battleRunnerFactory;
 
         private readonly StateMachine _stateMachine;
 
         public CreateBattleState(StateMachine stateMachine,IBattleUiService battleUIService,
             IBattleSetupProvider battleSetupProvider, IShrinkService shrinkService, 
-            IBattleRunnerProvider battleRunnerProvider, IInstantiator instantiator)
+            IBattleRunnerProvider battleRunnerProvider, IBattleRunnerFactory battleRunnerFactory)
         {
             _stateMachine = stateMachine;
             _battleUIService = battleUIService;
             _battleSetupProvider = battleSetupProvider;
             _shrinkService = shrinkService;
             _battleRunnerProvider = battleRunnerProvider;
-            _instantiator = instantiator;
+            _battleRunnerFactory = battleRunnerFactory;
         }
 
         public void Enter()
@@ -37,7 +37,7 @@ namespace Assets.Scripts.Game.GameStates
 
             (ISpaceShip player, ISpaceShip enemy) = CreateSpaceShipsAndWeapons(battleSetup);;
             BattleData battleData = new BattleData();
-            BattleRunner battleRunner = _instantiator.Instantiate<BattleRunner>(new[]{ battleData}); //TODO: This should do factory
+            BattleRunner battleRunner = _battleRunnerFactory.CreateBattleRunner(battleData);
 
             battleRunner.AddSpaceShipToAllyTeam(player);
             battleRunner.AddSpaceShipToEnemyTeam(enemy);
