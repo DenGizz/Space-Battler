@@ -16,11 +16,7 @@ namespace Assets.Scripts.Game
             _gameStateMachine.AddState<InitializeAndLoadGame>(statesFactory.CreateState<InitializeAndLoadGame>(_gameStateMachine));
             _gameStateMachine.AddState<LoadMainMenuSceneState>(statesFactory.CreateState<LoadMainMenuSceneState>(_gameStateMachine));
             _gameStateMachine.AddState<MainMenuState>(statesFactory.CreateState<MainMenuState>(_gameStateMachine));
-            _gameStateMachine.AddState<LoadBattleFieldSceneState>(statesFactory.CreateState<LoadBattleFieldSceneState>(_gameStateMachine));
-            _gameStateMachine.AddState<CreateBattleState>(statesFactory.CreateState<CreateBattleState>(_gameStateMachine));
-            _gameStateMachine.AddState<BattleState>(statesFactory.CreateState<BattleState>(_gameStateMachine));
-            _gameStateMachine.AddState<CleanUpBattleState>(statesFactory.CreateState<CleanUpBattleState>(_gameStateMachine));
-            _gameStateMachine.AddState<ShowWinnerState>(statesFactory.CreateState<ShowWinnerState>(_gameStateMachine));
+            _gameStateMachine.AddState<SandboxModeLoopState>(statesFactory.CreateState<SandboxModeLoopState>(_gameStateMachine));
         }
 
         public void Start()

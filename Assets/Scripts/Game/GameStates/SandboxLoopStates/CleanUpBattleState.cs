@@ -1,5 +1,6 @@
 using Assets.Scripts.Battles;
 using Assets.Scripts.Battles.BattleRun;
+using Assets.Scripts.Game.GameStates.SandboxLoopStates;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.StateMachines;
 
@@ -22,7 +23,7 @@ namespace Assets.Scripts.Game.GameStates
         {
             BattleRunner battleRunner = _battleRunnerProvider.CurrentBattleRunner;
             _battleCleanUpService.CleanUpBattle(battleRunner);
-            _stateMachine.EnterState<LoadMainMenuSceneState>();
+            _stateMachine.EnterState<ExitSandboxModeState>();
         }
 
         public void Exit()

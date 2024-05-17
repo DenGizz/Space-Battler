@@ -8,8 +8,8 @@ namespace Assets.Scripts.StateMachines
 {
     public class SubState : IState
     {
-        private readonly IStateMachine _parentStateMachine;
-        private readonly IStateMachine _substateMachine;
+        protected readonly IStateMachine _parentStateMachine;
+        protected readonly IStateMachine _substateMachine;
 
         public SubState(IStateMachine parentStateMachine, IStateMachine substateMachine)
         {

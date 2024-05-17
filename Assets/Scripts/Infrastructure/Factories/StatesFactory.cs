@@ -17,9 +17,9 @@ namespace Assets.Scripts.Infrastructure.Factories
             return _instantiator.Instantiate<T>(new object[] { stateMachine });
         }
 
-        public T CreateSubState<T>(IStateMachine parentStateMachine, IStateMachine substateMachine) where T : SubState
+        public T CreateSubState<T>(IStateMachine substateMachine, IStateMachine parentStateMachine) where T : SubState
         {
-            return _instantiator.Instantiate<T>(new object[] { parentStateMachine, substateMachine });
+            return _instantiator.Instantiate<T>(new object[] {substateMachine, parentStateMachine });
         }
     }
 }

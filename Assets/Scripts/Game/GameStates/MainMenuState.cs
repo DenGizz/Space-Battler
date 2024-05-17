@@ -45,7 +45,7 @@ namespace Assets.Scripts.Game.GameStates
 
             _persistentDataService.SaveBattleSetup(_battleSetupProvider.BattleSetup);
             _battleSetupProvider.BattleSetup = _battleSetupProvider.BattleSetup;
-            _stateMachine.EnterState<LoadBattleFieldSceneState>();
+            _stateMachine.EnterState<SandboxModeLoopState>();
         }
     }
 }
