@@ -10,6 +10,9 @@ namespace Assets.Scripts.UI.MainMenuUI
 {
     public class MainMenuUI : MonoBehaviour
     {
+        [SerializeField] private GameObject _sandboxBattleSetupUi;
+        [SerializeField] private Button _playSandboxModeButton;
+        [SerializeField] private GameObject _mainMenuButtons;
         [SerializeField] private Button _playSandBoxModeButton;
         [SerializeField] private SpaceShipSetupPresenter _playerShipSetup;
         [SerializeField] private SpaceShipSetupPresenter _enemyShipSetup;
@@ -27,11 +30,18 @@ namespace Assets.Scripts.UI.MainMenuUI
         private void Awake()
         {
             _playSandBoxModeButton.onClick.AddListener(OnStartBattleButtonClick);
+            _playSandboxModeButton.onClick.AddListener(OnPlaySandboxModeButtonClick);
         }
 
         private void OnStartBattleButtonClick()
-        {
+        {      
             OnStartBattleButtonClicked?.Invoke();
+        }
+
+        private void OnPlaySandboxModeButtonClick()
+        {
+            _mainMenuButtons.SetActive(false);
+            _sandboxBattleSetupUi.SetActive(true);
         }
     }
 }
