@@ -14,10 +14,10 @@ namespace Assets.Scripts.UI.BattleUI
 
         private List<HealthView> _healthViews = new List<HealthView>();
 
-        private IUiFactory _uiFactory;
+        private IUiElementsFactory _uiFactory;
 
         [Inject]
-        public void Construct(IUiFactory uiFactory)
+        public void Construct(IUiElementsFactory uiFactory)
         {
             _uiFactory = uiFactory;
         }

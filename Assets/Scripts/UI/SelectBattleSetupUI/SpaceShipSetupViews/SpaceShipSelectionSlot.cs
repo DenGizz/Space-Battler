@@ -26,10 +26,10 @@ namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews
 
         public Action OnSpaceShipTypeSelected;
 
-        private IUiFactory _uiFactory;
+        private IUiElementsFactory _uiFactory;
 
         [Inject]
-        public void Construct(IUiFactory uiFactory)
+        public void Construct(IUiElementsFactory uiFactory)
         {
             _uiFactory = uiFactory;
         }

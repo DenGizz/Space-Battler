@@ -14,11 +14,11 @@ namespace Assets.Scripts.UI.NewUi.ItemSelectionViewModels
 {
     public class SelectSpaceShipPanelViewModel : SelectItemPanelViewModel<SpaceShipTypeRowViewModel>
     {
-        private IUiFactory _uiFactory;
+        private IUiElementsFactory _uiFactory;
         private IStaticDataService _staticDataService;
 
         [Inject]
-        public void Construct(IUiFactory uiFactory, IStaticDataService staticDataService)
+        public void Construct(IUiElementsFactory uiFactory, IStaticDataService staticDataService)
         {
             _uiFactory = uiFactory;
             _staticDataService = staticDataService;

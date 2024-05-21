@@ -11,11 +11,11 @@ namespace Assets.Scripts.Game.GameStates
     {
         private readonly StateMachine _stateMachine;
         private readonly IBattleRunnerProvider _battleRunnerProvider;
-        private readonly IUiFactory _uiFactory;
+        private readonly IUiElementsFactory _uiFactory;
 
         private BattleWinnerUI _winnerUi;
 
-        public ShowWinnerState(StateMachine stateMachine, IBattleRunnerProvider battleRunnerProvider, IUiFactory uiFactory)
+        public ShowWinnerState(StateMachine stateMachine, IBattleRunnerProvider battleRunnerProvider, IUiElementsFactory uiFactory)
         {
             _stateMachine = stateMachine;
             _battleRunnerProvider = battleRunnerProvider;

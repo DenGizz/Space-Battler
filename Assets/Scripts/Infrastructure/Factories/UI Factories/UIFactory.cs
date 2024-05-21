@@ -12,7 +12,7 @@ using Zenject;
 
 namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
 {
-    public class UIFactory : IUiFactory
+    public class UIFactory : IUiElementsFactory
     {
         private readonly IAssetsProvider _assetsProvider;
         private readonly IInstantiator _instantiator;

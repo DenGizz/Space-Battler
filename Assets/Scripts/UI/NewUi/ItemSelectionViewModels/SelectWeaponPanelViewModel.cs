@@ -17,11 +17,11 @@ namespace Assets.Scripts.UI.SelectionPanels
 {
     public class SelectWeaponPanelViewModel : SelectItemPanelViewModel<WeaponTypeRowViewModel>
     {
-        private IUiFactory _uiFactory;
+        private IUiElementsFactory _uiFactory;
         private IStaticDataService _staticDataService;
 
         [Inject]
-        public void Construct(IUiFactory uiFactory, IStaticDataService staticDataService)
+        public void Construct(IUiElementsFactory uiFactory, IStaticDataService staticDataService)
         {
             _uiFactory = uiFactory;
             _staticDataService = staticDataService;

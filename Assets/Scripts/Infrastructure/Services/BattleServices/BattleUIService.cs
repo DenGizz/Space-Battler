@@ -9,13 +9,13 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
     public class BattleUIService : IBattleUiService
     {
-        private readonly IUiFactory _uiFactory;
+        private readonly IUiElementsFactory _uiFactory;
 
         public BattleUI BattleUi { get; private set; }
         private GameObject _battleUiGameObject;
 
         [Inject]
-        public BattleUIService(IUiFactory uiFactory)
+        public BattleUIService(IUiElementsFactory uiFactory)
         {
             _uiFactory = uiFactory;
         }

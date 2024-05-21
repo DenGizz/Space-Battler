@@ -22,10 +22,10 @@ namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews
             set => _weaponTypeView.WeaponType = value;
         }
 
-        private IUiFactory _uiFactory;
+        private IUiElementsFactory _uiFactory;
 
         [Inject]
-        public void Construct(IUiFactory uiFactory)
+        public void Construct(IUiElementsFactory uiFactory)
         {
             _uiFactory = uiFactory;
         }

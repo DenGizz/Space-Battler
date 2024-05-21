@@ -14,7 +14,7 @@ namespace Assets.Scripts.Game.GameStates
 {
     public class BattleState : IState
     {
-        private readonly IUiFactory _uiFactory;
+        private readonly IUiElementsFactory _uiFactory;
         private readonly IBattleTickService _battleTickService;
         private readonly IBattleUiService _battleUiService;
         private readonly IBattleRunnerProvider _battleRunnerProvider;
@@ -26,7 +26,7 @@ namespace Assets.Scripts.Game.GameStates
         private PauseResumeUI _pauseResumeUi;
 
         public BattleState(StateMachine gameStateMachine, 
-            IUiFactory uiFactory, IBattleTickService battleTickService, IBattleUiService battleUIService,
+            IUiElementsFactory uiFactory, IBattleTickService battleTickService, IBattleUiService battleUIService,
             IBattleRunnerProvider battleRunnerProvider, IProgressProvider progressProvider, IPersistentDataService persistentDataService)
         {
             _gameStateMachine = gameStateMachine;

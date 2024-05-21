@@ -10,13 +10,13 @@ namespace Assets.Scripts.Game.GameStates
     public class MainMenuState : IState
     {
         private readonly StateMachine _stateMachine;
-        private readonly IUiFactory _uiFactory;
+        private readonly IUiElementsFactory _uiFactory;
         private readonly IBattleSetupProvider _battleSetupProvider;
         private readonly IPersistentDataService _persistentDataService;
 
         private MainMenuUI _mainMenuUi;
 
-        public MainMenuState(StateMachine stateMachine, IUiFactory uiFactory, IBattleSetupProvider battleSetupProvider, 
+        public MainMenuState(StateMachine stateMachine, IUiElementsFactory uiFactory, IBattleSetupProvider battleSetupProvider, 
             IPersistentDataService persistentDataService)
         {
             _stateMachine = stateMachine;

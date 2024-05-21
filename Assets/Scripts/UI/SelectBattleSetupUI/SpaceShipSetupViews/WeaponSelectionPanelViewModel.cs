@@ -20,11 +20,11 @@ namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews
         private Dictionary<GameObject, WeaponType> _viewToType;
         private List<ClickableView> _clickableViews;
 
-        private IUiFactory _uiFactory;
+        private IUiElementsFactory _uiFactory;
         private IStaticDataService _staticDataService;
 
         [Inject]
-        public void Construct(IUiFactory uiFactory, IStaticDataService staticDataService)
+        public void Construct(IUiElementsFactory uiFactory, IStaticDataService staticDataService)
         {
             _uiFactory = uiFactory;
             _staticDataService = staticDataService;

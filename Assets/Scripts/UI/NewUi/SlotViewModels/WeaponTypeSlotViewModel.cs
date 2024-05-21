@@ -37,10 +37,10 @@ namespace Assets.Scripts.UI.NewUi
 
         public event Action<WeaponType> OnWeaponTypeSelected;
 
-        private IUiFactory _uiFactory;
+        private IUiElementsFactory _uiFactory;
 
         [Inject]
-        public void Construct(IUiFactory uiFactory)
+        public void Construct(IUiElementsFactory uiFactory)
         {
             _uiFactory = uiFactory;
         }
