@@ -18,31 +18,28 @@ namespace Assets.Scripts.UI.NewUi.SpaceShipSetupEditPanel
         [SerializeField] private SpaceShipTypeSlotViewModel _spaceShipTypeSlotViewModel;
         [SerializeField] private Transform _weaponSlotViewModelsContainer;
 
-        [SerializeField] private GameObject _weaponTypeSlotViewModelPrefab; //TODO: Use factory instead of prefab
-
         private List<WeaponTypeSlotViewModel> _weaponTypeSlotViewModels = new List<WeaponTypeSlotViewModel>();
 
         private SpaceShipSetup _spaceShipSetup;
 
         private IUiFactory _uiFactory;
         private IStaticDataService _staticDataService;
-        private IInstantiator _instantiator;
 
         [Inject]
-        public void Construct(IUiFactory uiFactory, IStaticDataService staticDataService, IInstantiator instantiator)
+        public void Construct(IUiFactory uiFactory, IStaticDataService staticDataService)
         {
             _uiFactory = uiFactory;
             _staticDataService = staticDataService;
-            _instantiator = instantiator;
         }
 
-        public void Inialize(SpaceShipSetup spaceShipSetup)
+        public void Initialize(SpaceShipSetup spaceShipSetup)
         {
+            /*
             if(SpaceShipSetupValidator.IsSpaceShipSetupValid(spaceShipSetup, out string reason))
-                throw new ArgumentException($"Space ship setup is invalid.{reason}");
+                throw new ArgumentException($"Space ship setup is invalid.{reason}")*/
 
             _spaceShipSetup = spaceShipSetup;
-            _spaceShipTypeSlotViewModel.SelectedWeaponType = _spaceShipSetup.SpaceShipType;
+            _spaceShipTypeSlotViewModel.SelectedSpaceShipType = _spaceShipSetup.SpaceShipType;
             _spaceShipTypeSlotViewModel.OnSpaceShipTypeSelected += OnSpaceShipSelected;
 
             if (_spaceShipSetup.SpaceShipType == SpaceShipType.None)
@@ -60,17 +57,12 @@ namespace Assets.Scripts.UI.NewUi.SpaceShipSetupEditPanel
         {
             for (int i = 0; i < count; i++)
             {
-                var slot = CreateWeaponSlot();
+                var slot = _uiFactory.CreateWeaponTypeSlot(_weaponSlotViewModelsContainer);
                 _weaponTypeSlotViewModels.Add(slot);
                 slot.OnWeaponTypeSelected += OnWeaponTypeSelected;
             }
         }
 
-        private WeaponTypeSlotViewModel CreateWeaponSlot()
-        {
-            GameObject gameObject = _instantiator.InstantiatePrefab(_weaponTypeSlotViewModelPrefab.gameObject, _weaponSlotViewModelsContainer);
-            return gameObject.GetComponent<WeaponTypeSlotViewModel>();
-        }
 
         private void DestroyAllWeaponSlots() 
         {

@@ -3,6 +3,7 @@ using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.UI.BaseUI;
 using Assets.Scripts.UI.BattleUI;
 using Assets.Scripts.UI.MainMenuUI;
+using Assets.Scripts.UI.NewUi;
 using Assets.Scripts.UI.NewUi.UiElements;
 using Assets.Scripts.UI.Pause_Menu_UI;
 using Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews;
@@ -95,6 +96,11 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
         }
 
         public WindowPanel CreateWeaponSelectionWindowPanel(out SelectionGrid selectionGrid)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public WeaponTypeSlotViewModel CreateWeaponTypeSlot(Transform weaponSlotViewModelsContainer)
         {
             throw new System.NotImplementedException();
         }

@@ -39,6 +39,7 @@ namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews
                 return;
             }
 
+            int asdf;
             SpaceShipDescriptor descriptor = _staticDataService.GetSpaceShipDescriptor(_weaponType);
             _spriteView.Sprite = descriptor.Sprite;
         }

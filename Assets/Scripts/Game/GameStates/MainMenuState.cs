@@ -28,6 +28,7 @@ namespace Assets.Scripts.Game.GameStates
 
         public void Enter()
         {
+            
             _mainMenuUi = _uiFactory.CreateMainMenuUi();
             _mainMenuUi.SetBattleSetup(_battleSetupProvider.BattleSetup);
             _mainMenuUi.OnStartBattleButtonClicked += OnStartBattleButtonClicked;

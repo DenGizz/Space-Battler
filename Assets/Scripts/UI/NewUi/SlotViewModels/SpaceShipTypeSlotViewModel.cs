@@ -19,7 +19,7 @@ namespace Assets.Scripts.UI.NewUi.SlotViewModels
 
         private SelectSpaceShipPanelViewModel _selectionViewModel;
 
-        public SpaceShipType SelectedWeaponType
+        public SpaceShipType SelectedSpaceShipType
         {
             get => _spaceShipTypeViewModel.SpaceShipType;
             set
@@ -53,7 +53,7 @@ namespace Assets.Scripts.UI.NewUi.SlotViewModels
 
         private void OnSelectionPaneSpaceShipTypeSelected(SpaceShipTypeViewModel selectedWeaponView)
         {
-            SelectedWeaponType = selectedWeaponView.SpaceShipType;
+            SelectedSpaceShipType = selectedWeaponView.SpaceShipType;
         }
     }
 }
