@@ -9,7 +9,7 @@ namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews
 {
     public class SpaceShipSelectionSlot : MonoBehaviour
     {
-        [SerializeField] private SpaceShipTypeView _spaceShipTypeView;
+        [SerializeField] private SpaceShipTypeViewModel _spaceShipTypeView;
         [SerializeField] private ClickableView _spaceShipTypeClickableView;
     
         private SpaceShipSelectionPanelViewModel _selectionPanel;

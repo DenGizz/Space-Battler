@@ -25,6 +25,9 @@ namespace Assets.Scripts.UI.BaseUI
             if (Application.isPlaying)
                 return;
 
+            if (_image == null)
+                return;
+
             Sprite = _defaultSprite;
         }
 #endif
