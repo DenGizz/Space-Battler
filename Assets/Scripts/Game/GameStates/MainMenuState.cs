@@ -4,19 +4,21 @@ using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.Infrastructure.Services.CoreServices.PersistentDataServices;
 using Assets.Scripts.StateMachines;
 using Assets.Scripts.UI.MainMenuUI;
+using Assets.Scripts.UI.NewUi.Uis;
+using System;
 
 namespace Assets.Scripts.Game.GameStates
 {
     public class MainMenuState : IState
     {
         private readonly StateMachine _stateMachine;
-        private readonly IUiElementsFactory _uiFactory;
+        private readonly IUiFactory _uiFactory;
         private readonly IBattleSetupProvider _battleSetupProvider;
         private readonly IPersistentDataService _persistentDataService;
 
-        private MainMenuUI _mainMenuUi;
+        private Ui _mainMenuUi;
 
-        public MainMenuState(StateMachine stateMachine, IUiElementsFactory uiFactory, IBattleSetupProvider battleSetupProvider, 
+        public MainMenuState(StateMachine stateMachine, IUiFactory uiFactory, IBattleSetupProvider battleSetupProvider, 
             IPersistentDataService persistentDataService)
         {
             _stateMachine = stateMachine;
@@ -28,19 +30,20 @@ namespace Assets.Scripts.Game.GameStates
 
         public void Enter()
         {
-            
             _mainMenuUi = _uiFactory.CreateMainMenuUi();
-            _mainMenuUi.SetBattleSetup(_battleSetupProvider.BattleSetup);
-            _mainMenuUi.OnStartBattleButtonClicked += OnStartBattleButtonClicked;
+            _mainMenuUi.OnGameStateChangeEvent += OnGameStateChangeUiEventHandler;
         }
 
         public void Exit()
         {
-            _mainMenuUi.OnStartBattleButtonClicked -= OnStartBattleButtonClicked;
+            _mainMenuUi.OnGameStateChangeEvent -= OnGameStateChangeUiEventHandler;
         }
 
-        private void OnStartBattleButtonClicked()
+        private void OnGameStateChangeUiEventHandler(IGameStateChangeEvent @event)
         {
+            if (@event != IGameStateChangeEvent.EnterSandboxMode)
+                return;
+
             if (!BattleSetupValidator.IsBattleSetupValidForStartBattle(_battleSetupProvider.BattleSetup))
                 return;
 
