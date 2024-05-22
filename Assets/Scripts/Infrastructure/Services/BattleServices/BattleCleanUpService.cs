@@ -10,7 +10,6 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
 {
     public class BattleCleanUpService : IBattleCleanUpService
     {
-        private readonly IBattleUiService _battleUIService;
         private readonly IProjectilesRegister _projectilesRegister;
         private readonly IProjectileDestroyer _projectileDestroyer;
         private readonly IWeaponDestroyer _weaponDestroyer;
@@ -18,10 +17,8 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
         private readonly IProjectilesPoolService _projectilesPoolService;
 
         [Inject]
-        public BattleCleanUpService(IBattleUiService battleUIService, 
-            IProjectilesRegister projectilesRegister, IProjectileDestroyer projectileDestroyer, IWeaponDestroyer weaponDestroyer, ISpaceShipDestroyer spaceShipDestroyer, IProjectilesPoolService projectilesPoolService)
+        public BattleCleanUpService(IProjectilesRegister projectilesRegister, IProjectileDestroyer projectileDestroyer, IWeaponDestroyer weaponDestroyer, ISpaceShipDestroyer spaceShipDestroyer, IProjectilesPoolService projectilesPoolService)
         {
-            _battleUIService = battleUIService;
             _projectilesRegister = projectilesRegister;
             _projectileDestroyer = projectileDestroyer;
             _weaponDestroyer = weaponDestroyer;
@@ -33,13 +30,11 @@ namespace Assets.Scripts.Infrastructure.Services.BattleServices
         {
             _projectilesPoolService.ClearAll();
             DestroyAliveBattleUnits(battleRunner);
-            _battleUIService.DestroyBattleUi();
         }
 
         private void DestroyAliveBattleUnits(BattleRunner battleRunner)
         {
             DestroyAndUnregisterGameObjects(battleRunner);
-            _battleUIService.DestroyBattleUi();
         }
 
         private void DestroyAndUnregisterGameObjects(BattleRunner battleRunner)

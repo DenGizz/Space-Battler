@@ -11,7 +11,6 @@ namespace Assets.Scripts.Game.GameStates
 {
     public class CreateBattleState : IState
     {
-        private readonly IBattleUiService _battleUIService;
         private readonly IBattleSetupProvider _battleSetupProvider;
         private readonly IShrinkService _shrinkService;
         private readonly IBattleRunnerProvider _battleRunnerProvider;
@@ -19,12 +18,11 @@ namespace Assets.Scripts.Game.GameStates
 
         private readonly StateMachine _stateMachine;
 
-        public CreateBattleState(StateMachine stateMachine,IBattleUiService battleUIService,
+        public CreateBattleState(StateMachine stateMachine,
             IBattleSetupProvider battleSetupProvider, IShrinkService shrinkService, 
             IBattleRunnerProvider battleRunnerProvider, IBattleRunnerFactory battleRunnerFactory)
         {
             _stateMachine = stateMachine;
-            _battleUIService = battleUIService;
             _battleSetupProvider = battleSetupProvider;
             _shrinkService = shrinkService;
             _battleRunnerProvider = battleRunnerProvider;
@@ -43,9 +41,6 @@ namespace Assets.Scripts.Game.GameStates
             battleRunner.AddSpaceShipToEnemyTeam(enemy);
 
             _battleRunnerProvider.CurrentBattleRunner = battleRunner;
-
-            _battleUIService.CreateBattleUi();
-            _battleUIService.SetBattle(battleRunner.BattleData);
 
             _stateMachine.EnterState<BattleState>();
         }

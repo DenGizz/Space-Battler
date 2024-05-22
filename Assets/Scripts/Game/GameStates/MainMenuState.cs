@@ -3,7 +3,6 @@ using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.Infrastructure.Services.CoreServices.PersistentDataServices;
 using Assets.Scripts.StateMachines;
-using Assets.Scripts.UI.MainMenuUI;
 using Assets.Scripts.UI.NewUi.Uis;
 using System;
 

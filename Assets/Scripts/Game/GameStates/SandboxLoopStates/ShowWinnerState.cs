@@ -25,14 +25,12 @@ namespace Assets.Scripts.Game.GameStates
         public void Enter()
         {
             BattleRunner battleRunner = _battleRunnerProvider.CurrentBattleRunner;
-            _winnerViewModel = _uiFactory.CreateWinnerUi();
-            _winnerViewModel.SetWinner(battleRunner.ThisBattleResult.Value);
-            _winnerViewModel.OnReturnMainMenuButtonPressed += OnReturnMainMenuButtonPressedEventHandler;
+
         }
 
         public void Exit()
         {
-            _winnerViewModel.OnReturnMainMenuButtonPressed -= OnReturnMainMenuButtonPressedEventHandler;
+         
         }
 
         private void OnReturnMainMenuButtonPressedEventHandler()

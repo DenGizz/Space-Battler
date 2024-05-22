@@ -16,23 +16,20 @@ namespace Assets.Scripts.Game.GameStates
     {
         private readonly IUiElementsFactory _uiFactory;
         private readonly IBattleTickService _battleTickService;
-        private readonly IBattleUiService _battleUiService;
         private readonly IBattleRunnerProvider _battleRunnerProvider;
         private readonly IProgressProvider _progressProvider;
         private readonly IPersistentDataService _persistentDataService;
 
         private readonly StateMachine _gameStateMachine;
         private BattleRunner _battleRunner;
-        private PauseResumeUI _pauseResumeUi;
 
         public BattleState(StateMachine gameStateMachine, 
-            IUiElementsFactory uiFactory, IBattleTickService battleTickService, IBattleUiService battleUIService,
+            IUiElementsFactory uiFactory, IBattleTickService battleTickService,
             IBattleRunnerProvider battleRunnerProvider, IProgressProvider progressProvider, IPersistentDataService persistentDataService)
         {
             _gameStateMachine = gameStateMachine;
             _uiFactory = uiFactory;
             _battleTickService = battleTickService;
-            _battleUiService = battleUIService;
             _battleRunnerProvider = battleRunnerProvider;
             _progressProvider = progressProvider;
             _persistentDataService = persistentDataService;
@@ -43,19 +40,12 @@ namespace Assets.Scripts.Game.GameStates
             _battleRunner = _battleRunnerProvider.CurrentBattleRunner;
             _battleRunner.RunBattle();
             _battleTickService.IsPaused = false;
-            _pauseResumeUi = _uiFactory.CreatePauseResumeUi();
-            _pauseResumeUi.Show();
-            _pauseResumeUi.OnPauseContinueButtonClicked += OnPauseContinueButtonClicked;
-
-
             _battleRunner.BattleEnded += OnBattleEndedEventHandler;
         }
 
         public void Exit()
         {
-            _pauseResumeUi.OnPauseContinueButtonClicked -= OnPauseContinueButtonClicked;
             _battleRunner.BattleEnded -= OnBattleEndedEventHandler;
-            _pauseResumeUi.Hide();
 
         }
 
@@ -76,7 +66,6 @@ namespace Assets.Scripts.Game.GameStates
         private void StopBattle()
         {
             _battleTickService.IsPaused = true;
-            _battleUiService.BattleUi.HideBattleView();
             _battleTickService.IsPaused = true;
         }
 

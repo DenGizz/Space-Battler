@@ -10,7 +10,6 @@ namespace Assets.Scripts.Infrastructure
     {
         public override void InstallBindings()
         {
-            Container.Bind<IBattleUiService>().To<BattleUIService>().AsSingle();
             Container.Bind<IUiElementsFactory>().To<UIElementsFactory>().AsSingle();
         }
     }
