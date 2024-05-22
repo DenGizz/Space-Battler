@@ -10,7 +10,7 @@ namespace Assets.Scripts.ScriptableObjects.ResourceBundles
     [CreateAssetMenu(fileName = "UiResourcesBundle", menuName = "ScriptableObjects/ResourceBundles/UiResourcesBundle")]
     public class UiResourcesBundle : ScriptableObject
     {
-        public GameObject MainMenuPrefab => _mainMenuPrefab;
+        public GameObject MainMenuUiPrefab => _mainMenuPrefab;
         public GameObject SandboxModeUiPrefab => _sandboxModeUiPrefab;
 
         [SerializeField] private GameObject _mainMenuPrefab;
