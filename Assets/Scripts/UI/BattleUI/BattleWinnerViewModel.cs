@@ -9,7 +9,7 @@ using Zenject;
 
 namespace Assets.Scripts.UI.BattleUI
 {
-    public class BattleWinnerUI : MonoBehaviour
+    public class BattleWinnerViewModel : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _winnerNameText;
         [SerializeField] private TextMeshProUGUI _winLoseStatisticText;

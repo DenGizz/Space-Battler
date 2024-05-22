@@ -21,7 +21,7 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
 
         WeaponSelectionPanelViewModel CreateWeaponSelectionPanel();
         SpaceShipSelectionPanelViewModel CreateSpaceShipSelectionPanel();
-        BattleWinnerUI CreateWinnerUi();
+        BattleWinnerViewModel CreateWinnerUi();
 
         HealthView CreateHealthView(ISpaceShip spaceShip, Vector2 screenPosition, Transform parent);
 

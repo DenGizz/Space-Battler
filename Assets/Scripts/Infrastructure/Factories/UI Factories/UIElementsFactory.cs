@@ -41,10 +41,10 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
             return mainMenuUi.GetComponentInChildren<MainMenuUI>();
         }
 
-        public BattleWinnerUI CreateWinnerUi()
+        public BattleWinnerViewModel CreateWinnerUi()
         {
             GameObject winnerUi = _instantiator.InstantiatePrefab(_assetsProvider.GetWinnerUIPrefab(), _rootTransformsProvider.UIRoot);
-            return winnerUi.GetComponentInChildren<BattleWinnerUI>();
+            return winnerUi.GetComponentInChildren<BattleWinnerViewModel>();
         }
 
         public PauseResumeUI CreatePauseResumeUi()

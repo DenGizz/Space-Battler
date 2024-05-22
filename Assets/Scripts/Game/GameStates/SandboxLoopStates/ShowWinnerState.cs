@@ -13,7 +13,7 @@ namespace Assets.Scripts.Game.GameStates
         private readonly IBattleRunnerProvider _battleRunnerProvider;
         private readonly IUiElementsFactory _uiFactory;
 
-        private BattleWinnerUI _winnerUi;
+        private BattleWinnerViewModel _winnerViewModel;
 
         public ShowWinnerState(StateMachine stateMachine, IBattleRunnerProvider battleRunnerProvider, IUiElementsFactory uiFactory)
         {
@@ -25,14 +25,14 @@ namespace Assets.Scripts.Game.GameStates
         public void Enter()
         {
             BattleRunner battleRunner = _battleRunnerProvider.CurrentBattleRunner;
-            _winnerUi = _uiFactory.CreateWinnerUi();
-            _winnerUi.SetWinner(battleRunner.ThisBattleResult.Value);
-            _winnerUi.OnReturnMainMenuButtonPressed += OnReturnMainMenuButtonPressedEventHandler;
+            _winnerViewModel = _uiFactory.CreateWinnerUi();
+            _winnerViewModel.SetWinner(battleRunner.ThisBattleResult.Value);
+            _winnerViewModel.OnReturnMainMenuButtonPressed += OnReturnMainMenuButtonPressedEventHandler;
         }
 
         public void Exit()
         {
-            _winnerUi.OnReturnMainMenuButtonPressed -= OnReturnMainMenuButtonPressedEventHandler;
+            _winnerViewModel.OnReturnMainMenuButtonPressed -= OnReturnMainMenuButtonPressedEventHandler;
         }
 
         private void OnReturnMainMenuButtonPressedEventHandler()
