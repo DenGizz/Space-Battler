@@ -12,7 +12,6 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
 {
     public class AssetsProvider : IAssetsProvider
     {
-        private const string BandlesPath = "Bandles";
         private const string UiPrefabsBanldeAssetName = "UiPrefabsBanle";
         private const string StaticDataPath = "StaticData";
         private const string SpaceShipsStaticDataPath = "SpaceShipDescriptors";
@@ -22,8 +21,6 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         private readonly Dictionary<SpaceShipType, SpaceShipDescriptor> _loadedSpaceShipDescriptorsCache;
         private readonly Dictionary<WeaponType, WeaponDescriptor> _loadedWeaponDescriptorsCache;
         private readonly Dictionary<ProjectileType, ProjectileDescriptor> _loadedProjectileDescriptorsCache;
-
-        private  UiPrefabsBanlde _uiPrefabsBandleCache;
 
         public AssetsProvider()
         {
@@ -40,46 +37,6 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         public GameObject GetWeaponPrefab(WeaponType weaponType)
         {
             return GetWeaponDescriptor(weaponType).Prefab;
-        }
-
-        public GameObject GetBattleUIPrefab()
-        {
-            return GetOrLoadAndCacheUiPrefabsBanlde().BattleUIPrefab;
-        }
-
-        public GameObject GetMainMenuUIPrefab()
-        {
-            return GetOrLoadAndCacheUiPrefabsBanlde().MainMenuUIPrefab;
-        }
-
-        public GameObject GetPauseResumeUIPrefab()
-        {
-            return GetOrLoadAndCacheUiPrefabsBanlde().PauseResumeUIPrefab;
-        }
-
-        public GameObject GetWeaponDescriptionRowViewPrefab()
-        {
-            return GetOrLoadAndCacheUiPrefabsBanlde().WeaponDescriptionRowViewPrefab;
-        }
-
-        public GameObject GetWeaponSelectionPanelPrefab()
-        {
-            return GetOrLoadAndCacheUiPrefabsBanlde().WeaponSelectionPanelPrefab;
-        }
-
-        public Object GetWinnerUIPrefab()
-        {
-            return GetOrLoadAndCacheUiPrefabsBanlde().WinnerUi;
-        }
-
-        public GameObject GetSpaceShipSelectionPanelPrefab()
-        {
-            return GetOrLoadAndCacheUiPrefabsBanlde().SpaceShipSelectionPanelPrefab;
-        }
-
-        public GameObject GetSpaceShipDescriptionRowViewPrefab()
-        {
-            return GetOrLoadAndCacheUiPrefabsBanlde().SpaceShipDescriptionRowViewPrefab;
         }
 
         public IEnumerable<SpaceShipDescriptor> GetSpaceShipsDescriptors()
@@ -124,15 +81,6 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
                 return _loadedWeaponDescriptorsCache[weaponType];
 
             return GetWeaponDescriptors().FirstOrDefault(d => d.WeaponType == weaponType);
-        }
-
-        private UiPrefabsBanlde GetOrLoadAndCacheUiPrefabsBanlde()
-        {
-            if(_uiPrefabsBandleCache != null)
-                return _uiPrefabsBandleCache;
-
-            _uiPrefabsBandleCache = Resources.Load<UiPrefabsBanlde>(Path.Combine(BandlesPath,UiPrefabsBanldeAssetName));
-            return _uiPrefabsBandleCache;
         }
 
         public IEnumerable<ProjectileDescriptor> GetProjectileDescriptors()

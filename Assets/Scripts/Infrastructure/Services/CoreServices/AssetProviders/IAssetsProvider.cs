@@ -12,20 +12,12 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices
         GameObject GetSpaceShipPrefab(SpaceShipType spaceShipType);
         GameObject GetWeaponPrefab(WeaponType weaponType);
 
-        GameObject GetBattleUIPrefab();
-        GameObject GetMainMenuUIPrefab();
-        GameObject GetPauseResumeUIPrefab();
-        GameObject GetWeaponDescriptionRowViewPrefab();
-        GameObject GetWeaponSelectionPanelPrefab();
-        GameObject GetSpaceShipSelectionPanelPrefab();
-        GameObject GetSpaceShipDescriptionRowViewPrefab();
-
         IEnumerable<WeaponDescriptor> GetWeaponDescriptors();
         IEnumerable<SpaceShipDescriptor> GetSpaceShipsDescriptors();
         IEnumerable<ProjectileDescriptor> GetProjectileDescriptors();
+
         SpaceShipDescriptor GetSpaceShipDescriptor(SpaceShipType spaceShipType);
         WeaponDescriptor GetWeaponDescriptor(WeaponType weaponType);
         ProjectileDescriptor GetProjectileDescriptor(ProjectileType projectileType);
-        Object GetWinnerUIPrefab();
     }
 }

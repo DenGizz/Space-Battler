@@ -60,7 +60,7 @@ namespace Assets.Scripts.UI.NewUi
 
         private void CreateWindow()
         {
-            _weaponSelectionWindow = _uiFactory.CreateWeaponSelectionWindowPanel(out _selectionGrid);
+            _weaponSelectionWindow = _uiFactory.CreateWeaponTypeSelectionWindowPanel(out _selectionGrid);
             _weaponSelectionWindow.OnCloseButtonClicked += OnCloseButtonClicked;
             _selectionGrid.OnSelected += OnSelected;
         }

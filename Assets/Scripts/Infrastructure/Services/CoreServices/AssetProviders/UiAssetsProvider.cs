@@ -25,6 +25,11 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices.AssetProviders
             return GetOrLoadAndGetUiResourcesBundle().SandboxModeUiPrefab;
         }
 
+        public GameObject GetSpaceShipHealthViewPrefab()
+        {
+            return GetOrLoadAndGetUiElementPrefabsBundle().SpaceShipHealthViewPrefab;
+        }
+
         private UiResourcesBundle GetOrLoadAndGetUiResourcesBundle()
         {
             if (_uiResourcesBundle == null)
