@@ -9,7 +9,7 @@ public class Ui : MonoBehaviour, IInitializable, IGameStateChangeEventSource
 {
     private Dictionary<Type, UiScreen> _screens;
     private UiScreen _currentScreen;
-    public event Action<IGameStateChangeEvent> OnGameStateChangeEvent;
+    public event Action<GameStateChangeEvent> OnGameStateChangeEvent;
 
     public T GoToScreen<T>() where T : UiScreen
     {
@@ -42,7 +42,7 @@ public class Ui : MonoBehaviour, IInitializable, IGameStateChangeEventSource
         foreach (var screen in screens)
         {
             _screens.Add(screen.GetType(), screen);
-            screen.Initialize();
+            screen.Setup(this);
         }
     }
 }

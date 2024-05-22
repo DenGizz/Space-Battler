@@ -8,6 +8,6 @@ namespace Assets.Scripts.UI.NewUi.Uis
 {
     public interface IGameStateChangeEventSource
     {
-        public event Action<IGameStateChangeEvent> OnGameStateChangeEvent;
+        public event Action<GameStateChangeEvent> OnGameStateChangeEvent;
     }
 }

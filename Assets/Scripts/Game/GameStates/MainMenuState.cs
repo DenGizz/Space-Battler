@@ -39,9 +39,9 @@ namespace Assets.Scripts.Game.GameStates
             _mainMenuUi.OnGameStateChangeEvent -= OnGameStateChangeUiEventHandler;
         }
 
-        private void OnGameStateChangeUiEventHandler(IGameStateChangeEvent @event)
+        private void OnGameStateChangeUiEventHandler(GameStateChangeEvent @event)
         {
-            if (@event != IGameStateChangeEvent.EnterSandboxMode)
+            if (@event != GameStateChangeEvent.EnterSandboxMode)
                 return;
 
             if (!BattleSetupValidator.IsBattleSetupValidForStartBattle(_battleSetupProvider.BattleSetup))

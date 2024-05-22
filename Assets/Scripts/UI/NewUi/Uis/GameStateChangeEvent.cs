@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.UI.NewUi.Uis
 {
-    public enum IGameStateChangeEvent
+    public enum GameStateChangeEvent
     {
         EnterSandboxMode = 0,
         EnterStoryMode = 1
