@@ -30,7 +30,7 @@ namespace Assets.Scripts.UI.NewUi.UiScreens.MainMenuUiScreens
 
         private void OnEnterSandboxBattleButtonClicked()
         {
-            OnGameStateChangeEvent?.Invoke(GameStateChangeEvent.EnterSandboxMode);
+            OnGameStateChangeEvent?.Invoke(GameStateChangeEvent.StartSandboxBattle);
         }
 
         private void OnBackButtonClicked()

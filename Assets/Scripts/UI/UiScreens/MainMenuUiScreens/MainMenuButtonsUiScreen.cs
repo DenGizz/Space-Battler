@@ -22,11 +22,17 @@ namespace Assets.Scripts.UI.NewUi.UiScreens
             base.Setup(ui);
 
             _playStoryModeButton.onClick.AddListener(OnPlayStoryModeButtonClicked);
+            _playSandBoxModeButton.onClick.AddListener(OnPlaySandBoxModeButtonClicked);
         }
 
         private void OnPlayStoryModeButtonClicked()
         {
             OnGameStateChangeEvent?.Invoke(GameStateChangeEvent.EnterStoryMode);
+        }
+
+        private void OnPlaySandBoxModeButtonClicked()
+        {
+            OnGameStateChangeEvent?.Invoke(GameStateChangeEvent.EnterSandboxMode);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Infrastructure.Config;
+﻿using Assets.Scripts.Game.GameStates.SandboxLoopStates;
+using Assets.Scripts.Infrastructure.Config;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.StateMachines;
 
@@ -21,7 +22,7 @@ namespace Assets.Scripts.Game.GameStates
         {
             _sceneLoader.LoadSceneAsync
                 (_scenesConfig.BattleFieldSceneName, 
-                () => _stateMachine.EnterState<CreateBattleState>());
+                () => _stateMachine.EnterState<EditBattleSetupState>());
         }
 
         public void Exit()

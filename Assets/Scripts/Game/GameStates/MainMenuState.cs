@@ -4,6 +4,7 @@ using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.Infrastructure.Services.CoreServices.PersistentDataServices;
 using Assets.Scripts.StateMachines;
 using Assets.Scripts.UI.NewUi.Uis;
+using Assets.Scripts.UI.NewUi.UiScreens;
 using System;
 
 namespace Assets.Scripts.Game.GameStates
@@ -30,6 +31,7 @@ namespace Assets.Scripts.Game.GameStates
         public void Enter()
         {
             _mainMenuUi = _uiFactory.CreateMainMenuUi();
+            _mainMenuUi.GoToScreen<MainMenuButtonsUiScreen>();
             _mainMenuUi.OnGameStateChangeEvent += OnGameStateChangeUiEventHandler;
         }
 
