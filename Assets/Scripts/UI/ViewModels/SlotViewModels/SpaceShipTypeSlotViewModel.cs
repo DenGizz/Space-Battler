@@ -2,6 +2,8 @@
 using Assets.Scripts.UI.BaseUI;
 using Assets.Scripts.UI.NewUi.ItemSelectionViewModels;
 using Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews;
+using Assets.Scripts.UI.ViewModels.SlotViewModels;
+using Assets.Scripts.UI.ViewModels.SpaceShipViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,49 +13,20 @@ using UnityEngine;
 
 namespace Assets.Scripts.UI.NewUi.SlotViewModels
 {
-    [RequireComponent(typeof(SpaceShipTypeViewModel), typeof(ClickableView))]
-    public class SpaceShipTypeSlotViewModel : MonoBehaviour
+    [RequireComponent(typeof(SpaceShipTypeViewModel))]
+    public class SpaceShipTypeSlotViewModel : ItemSlotViewModel<SpaceShipType, SpaceShipTypeViewModel>
     {
-        private SpaceShipTypeViewModel _spaceShipTypeViewModel;
-        private ClickableView _clickableView;
-
-        private SelectSpaceShipPanelViewModel _selectionViewModel;
-
-        public SpaceShipType SelectedSpaceShipType
+        protected override SpaceShipType SetSelectedItem(MonoBehaviour selectedView)
         {
-            get => _spaceShipTypeViewModel.SpaceShipType;
-            set
-            {
-                _spaceShipTypeViewModel.SpaceShipType = value;
-                OnSpaceShipTypeSelected?.Invoke(value);
-            }
+            if (selectedView is ISpaceShipViewModel spaceShipViewModel)
+                return spaceShipViewModel.SpaceShipType;
+
+            throw new ArgumentException("Selected view is not a space ship view model");
         }
 
-        public event Action<SpaceShipType> OnSpaceShipTypeSelected;
-
-        private void Awake()
+        protected override void UpdateView()
         {
-            _spaceShipTypeViewModel = GetComponent<SpaceShipTypeViewModel>();
-            _clickableView = GetComponent<ClickableView>();
-
-            _clickableView.OnClicked += OnClick;
-            _selectionViewModel.OnCloseButtonClicked += OnSelectionCloseButtonClicked;
-            _selectionViewModel.OnItemSelected += OnSelectionPaneSpaceShipTypeSelected;
-        }
-
-        private void OnClick(ClickableView clickSource)
-        {
-            _selectionViewModel = null; // create viea factory
-        }
-
-        private void OnSelectionCloseButtonClicked()
-        {
-            _selectionViewModel = null; // destrpy viea destroyer
-        }
-
-        private void OnSelectionPaneSpaceShipTypeSelected(SpaceShipTypeViewModel selectedWeaponView)
-        {
-            SelectedSpaceShipType = selectedWeaponView.SpaceShipType;
+            _view.SpaceShipType = SelectedItem;
         }
     }
 }

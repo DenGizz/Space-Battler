@@ -13,77 +13,25 @@ using Assets.Scripts.UI.NewUi.WeaponViewModels;
 using Assets.Scripts.UI.NewUi.UiElements;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Zenject;
+using Assets.Scripts.UI.ViewModels.SlotViewModels;
+using Assets.Scripts.UI.ViewModels.SpaceShipViewModels;
 
 namespace Assets.Scripts.UI.NewUi
 {
-    [RequireComponent(typeof(WeaponTypeViewModel), typeof(ClickableView))]
-    public class WeaponTypeSlotViewModel : MonoBehaviour
+    [RequireComponent(typeof(WeaponTypeViewModel))]
+    public class WeaponTypeSlotViewModel : ItemSlotViewModel<WeaponType, WeaponTypeViewModel>
     {
-        private WeaponTypeViewModel _weaponTypeViewModel;
-        private ClickableView _clickableView;
-
-        private SelectionGrid _selectionGrid;
-        private WindowPanel _weaponSelectionWindow;
-
-        public WeaponType SelectedWeaponType
+        protected override WeaponType SetSelectedItem(MonoBehaviour selectedView)
         {
-            get => _weaponTypeViewModel.WeaponType;
-            set
-            {
-                _weaponTypeViewModel.WeaponType = value;
-                OnWeaponTypeSelected?.Invoke(value);
-            }
+            if (selectedView is IWeaponTypeViewModel weaponViewModel)
+                return weaponViewModel.WeaponType;
+
+            throw new ArgumentException("Selected view is not weapon view model");
         }
 
-        public event Action<WeaponType> OnWeaponTypeSelected;
-
-        private IUiElementsFactory _uiFactory;
-
-        [Inject]
-        public void Construct(IUiElementsFactory uiFactory)
+        protected override void UpdateView()
         {
-            _uiFactory = uiFactory;
-        }
-
-        private void Awake()
-        {
-            _weaponTypeViewModel = GetComponent<WeaponTypeViewModel>();
-            _clickableView = GetComponent<ClickableView>();
-
-            _clickableView.OnClicked += OnClick;
-        }
-
-        private void OnClick(ClickableView clickSource)
-        {
-            CreateWindow();
-        }
-
-        private void CreateWindow()
-        {
-            _weaponSelectionWindow = _uiFactory.CreateWeaponTypeSelectionWindowPanel(out _selectionGrid);
-            _weaponSelectionWindow.OnCloseButtonClicked += OnCloseButtonClicked;
-            _selectionGrid.OnSelected += OnSelected;
-        }
-
-        private void CloseWindow()
-        {
-            _selectionGrid.OnSelected -= OnSelected;
-            _weaponSelectionWindow.OnCloseButtonClicked -= OnCloseButtonClicked;
-
-            Destroy(_weaponSelectionWindow);
-            _weaponSelectionWindow = null;
-            _selectionGrid = null;
-        }
-
-        private void OnCloseButtonClicked()
-        {
-            CloseWindow();
-        }
-
-        private void OnSelected(MonoBehaviour view)
-        {
-            SelectedWeaponType = (view as IWeaponTypeViewModel).WeaponType;
-            CloseWindow();
+            _view.WeaponType = SelectedItem;
         }
     }
 }
