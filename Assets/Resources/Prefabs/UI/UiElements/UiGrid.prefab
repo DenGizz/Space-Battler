@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 3303298294377488428}
   - component: {fileID: 6502589348711973990}
   m_Layer: 5
-  m_Name: SelectionGrid
+  m_Name: UiGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,5 +185,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c74803a30c3a0804e83a6358ddf265cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _contentGrid: {fileID: 552460487288824657}
+  _contentContainer: {fileID: 0}
   _contentGridLayoutGroup: {fileID: 3421718989105228946}

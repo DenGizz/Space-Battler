@@ -33,6 +33,11 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices.AssetProviders
             return GetOrLoadAndGetUiElementPrefabsBundle().SpaceShipHealthViewPrefab;
         }
 
+        public GameObject GetWindowPrefab()
+        {
+            return GetOrLoadAndGetUiElementPrefabsBundle().WindowPrefab;
+        }
+
         private UiResourcesBundle GetOrLoadAndGetUiResourcesBundle()
         {
             if (_uiResourcesBundle == null)
@@ -55,5 +60,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices.AssetProviders
             return Resources.Load<T>(bundlePath) ??
                 throw new NullReferenceException($"Bundle not found at {bundlePath}");
         }
+
+
     }
 }

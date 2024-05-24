@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.Infrastructure.Factories.UI_Factories;
-using Assets.Scripts.Infrastructure.Ui;
+using Assets.Scripts.Infrastructure.UiInfrastructure;
 using Assets.Scripts.UI.BaseUI;
 using Assets.Scripts.UI.NewUi.UiElements;
 using Assets.Scripts.UI.ViewModels.SlotViewModels;
