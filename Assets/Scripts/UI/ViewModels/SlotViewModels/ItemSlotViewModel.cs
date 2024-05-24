@@ -10,71 +10,19 @@ using UnityEngine;
 
 namespace Assets.Scripts.UI.ViewModels.SlotViewModels
 {
-    [RequireComponent(typeof(ClickableView))]
-    public abstract class ItemSlotViewModel<TItem, TView> : MonoBehaviour where TView : MonoBehaviour
+    public abstract class ItemSlotViewModel<TOption> : MonoBehaviour
     {
-        private ClickableView _clickableView;
+        public IEnumerable<TOption> Options { get; set; }
+        public TOption SelectedOption { get; set; }
+        public TOption DefaultOption { get; set; }
 
-        public event Action<TItem> OnItemSelected;
+        public event Action<TOption> OnOptionSelected;
 
-        protected TView _view;
-
-        private WindowPanel _windowPanel;
-        private SelectionGrid _selectionGrid;
-
-        public TItem SelectedItem
+        public void SetOptions(IEnumerable<TOption> options, TOption defaultOption)
         {
-            get => _selectedItem;
-            set
-            {
-                _selectedItem = value;
-                UpdateView();
-                OnItemSelected?.Invoke(value);
-            }
+            Options = options;
+            DefaultOption = defaultOption;
+            SelectedOption = defaultOption;
         }
-
-        private TItem _selectedItem;
-
-        private void Awake()
-        {
-            _clickableView = GetComponent<ClickableView>();
-            _view = GetComponent<TView>();
-
-            _clickableView.OnClicked += OnClick;
-        }
-
-        private void OnClick(ClickableView clickSource)
-        {
-            OpenPanelWindow();
-        }
-
-        private void OpenPanelWindow()
-        {
-            //Open window via UiWindowsManager
-            _windowPanel.OnCloseButtonClicked += OnWindowCloseButtonClickedEventHandler;
-            _selectionGrid.OnSelected += OnSelectionGridItemSelectedEventHandler;
-
-        }
-
-        private void ClosePanelWindow()
-        {
-            //Close Window via UiWindowsManager
-        }
-
-        private void OnWindowCloseButtonClickedEventHandler()
-        {
-            _windowPanel.OnCloseButtonClicked -= OnWindowCloseButtonClickedEventHandler;
-            _selectionGrid.OnSelected -= OnSelectionGridItemSelectedEventHandler;
-        }
-
-        protected void OnSelectionGridItemSelectedEventHandler(MonoBehaviour selectedView)
-        {
-            ClosePanelWindow();
-            SelectedItem = SetSelectedItem(selectedView);
-        }
-
-        protected  abstract TItem SetSelectedItem(MonoBehaviour selectedView);
-        protected abstract void UpdateView();
-
     }
 }

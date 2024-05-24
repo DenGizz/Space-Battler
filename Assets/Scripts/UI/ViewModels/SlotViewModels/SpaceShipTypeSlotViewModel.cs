@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
+using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using Assets.Scripts.UI.BaseUI;
 using Assets.Scripts.UI.NewUi.ItemSelectionViewModels;
 using Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews;
@@ -13,20 +14,8 @@ using UnityEngine;
 
 namespace Assets.Scripts.UI.NewUi.SlotViewModels
 {
-    [RequireComponent(typeof(SpaceShipTypeViewModel))]
-    public class SpaceShipTypeSlotViewModel : ItemSlotViewModel<SpaceShipType, SpaceShipTypeViewModel>
+    public class SpaceShipTypeSlotViewModel : ItemSlotViewModel<SpaceShipType>
     {
-        protected override SpaceShipType SetSelectedItem(MonoBehaviour selectedView)
-        {
-            if (selectedView is ISpaceShipViewModel spaceShipViewModel)
-                return spaceShipViewModel.SpaceShipType;
 
-            throw new ArgumentException("Selected view is not a space ship view model");
-        }
-
-        protected override void UpdateView()
-        {
-            _view.SpaceShipType = SelectedItem;
-        }
     }
 }

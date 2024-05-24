@@ -18,20 +18,8 @@ using Assets.Scripts.UI.ViewModels.SpaceShipViewModels;
 
 namespace Assets.Scripts.UI.NewUi
 {
-    [RequireComponent(typeof(WeaponTypeViewModel))]
-    public class WeaponTypeSlotViewModel : ItemSlotViewModel<WeaponType, WeaponTypeViewModel>
+    public class WeaponTypeSlotViewModel : ItemSlotViewModel<WeaponType>
     {
-        protected override WeaponType SetSelectedItem(MonoBehaviour selectedView)
-        {
-            if (selectedView is IWeaponTypeViewModel weaponViewModel)
-                return weaponViewModel.WeaponType;
 
-            throw new ArgumentException("Selected view is not weapon view model");
-        }
-
-        protected override void UpdateView()
-        {
-            _view.WeaponType = SelectedItem;
-        }
     }
 }

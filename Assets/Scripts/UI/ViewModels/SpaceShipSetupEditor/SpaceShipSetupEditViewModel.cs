@@ -39,8 +39,8 @@ namespace Assets.Scripts.UI.NewUi.SpaceShipSetupEditPanel
                 throw new ArgumentException($"Space ship setup is invalid.{reason}")*/
 
             _spaceShipSetup = spaceShipSetup;
-            _spaceShipTypeSlotViewModel.SelectedSpaceShipType = _spaceShipSetup.SpaceShipType;
-            _spaceShipTypeSlotViewModel.OnSpaceShipTypeSelected += OnSpaceShipSelected;
+            _spaceShipTypeSlotViewModel.SelectedOption = _spaceShipSetup.SpaceShipType;
+            _spaceShipTypeSlotViewModel.OnOptionSelected += OnSpaceShipSelected;
 
             if (_spaceShipSetup.SpaceShipType == SpaceShipType.None)
                 return;
@@ -49,7 +49,7 @@ namespace Assets.Scripts.UI.NewUi.SpaceShipSetupEditPanel
             CreateWeaponSlots(avaliableSlots);
 
             for (int i = 0; i < avaliableSlots; i++)
-                _weaponTypeSlotViewModels[i].SelectedWeaponType = _spaceShipSetup.WeaponTypes.ElementAt(i);
+                _weaponTypeSlotViewModels[i].SelectedOption = _spaceShipSetup.WeaponTypes.ElementAt(i);
         }
 
 
@@ -59,21 +59,21 @@ namespace Assets.Scripts.UI.NewUi.SpaceShipSetupEditPanel
             {
                 var slot = _uiFactory.CreateWeaponTypeSlot(_weaponSlotViewModelsContainer);
                 _weaponTypeSlotViewModels.Add(slot);
-                slot.OnWeaponTypeSelected += OnWeaponTypeSelected;
+                slot.OnOptionSelected += OnWeaponTypeSelected;
             }
         }
 
 
         private void DestroyAllWeaponSlots() 
         {
-            _weaponTypeSlotViewModels.ForEach(slot => slot.OnWeaponTypeSelected -= OnWeaponTypeSelected);
+            _weaponTypeSlotViewModels.ForEach(slot => slot.OnOptionSelected -= OnWeaponTypeSelected);
             _weaponTypeSlotViewModels.Clear();
         }
 
         private void OnWeaponTypeSelected(WeaponType type)
         {
             _spaceShipSetup.WeaponTypes.Clear();
-            _spaceShipSetup.WeaponTypes.AddRange(_weaponTypeSlotViewModels.Select(x => x.SelectedWeaponType));
+            _spaceShipSetup.WeaponTypes.AddRange(_weaponTypeSlotViewModels.Select(x => x.SelectedOption));
         }
 
         private void OnSpaceShipSelected(SpaceShipType type)
