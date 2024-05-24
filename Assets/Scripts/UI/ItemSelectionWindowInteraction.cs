@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Infrastructure.Factories.UI_Factories;
+using Assets.Scripts.Infrastructure.Ui;
 using Assets.Scripts.UI.BaseUI;
 using Assets.Scripts.UI.NewUi.UiElements;
 using Assets.Scripts.UI.ViewModels.SlotViewModels;
@@ -22,7 +23,7 @@ namespace Assets.Scripts.UI.ViewModels.ItemSelectionViewModels
 
         private List<ClickableView> _optionsClickableViews;
 
-        private IUiWondowsService _uiWindowsService;
+        private IUiWindowsService _uiWindowsService;
         private IUiElementsFactory _uiElementsFactory;
 
 
@@ -88,13 +89,5 @@ namespace Assets.Scripts.UI.ViewModels.ItemSelectionViewModels
 
         protected abstract IEnumerable<MonoBehaviour> CreateViewsForSlotOptions(IEnumerable<TOption> options);
         protected abstract TOption GetOptionFromView(MonoBehaviour view);
-    }
-
-
-
-    interface IUiWondowsService
-    {
-        WindowPanel OpenWindow();
-        void CloseWindow(WindowPanel windowPanel);
     }
 }
