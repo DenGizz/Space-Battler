@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.UI.BaseUI;
+﻿using Assets.Scripts.Infrastructure.Factories.UI_Factories;
+using Assets.Scripts.UI.BaseUI;
 using Assets.Scripts.UI.NewUi.UiElements;
 using Assets.Scripts.UI.ViewModels.SlotViewModels;
 using System;
@@ -17,10 +18,12 @@ namespace Assets.Scripts.UI.ViewModels.ItemSelectionViewModels
         private ClickableView _clickableView;
 
         private WindowPanel _windowPanel;
-        private SelectionGrid _selectionGrid;
+        private UiGrid _optionViewsGrid;
+
+        private List<ClickableView> _optionsClickableViews;
 
         private IUiWondowsService _uiWindowsService;
-        private ILeFabric _leFabric;
+        private IUiElementsFactory _uiElementsFactory;
 
 
         private void Awake()
@@ -46,7 +49,6 @@ namespace Assets.Scripts.UI.ViewModels.ItemSelectionViewModels
         {
             _windowPanel = _uiWindowsService.OpenWindow();
             CreateAndSetWindowContent();
-            _selectionGrid.OnSelected += OnGridElementSelected;
             _windowPanel.OnCloseButtonClicked += OnWindowClosed;
         }
 
@@ -58,16 +60,30 @@ namespace Assets.Scripts.UI.ViewModels.ItemSelectionViewModels
         private void OnWindowClosed()
         {
             _windowPanel = null;
-            _selectionGrid.OnSelected -= OnGridElementSelected;
             _windowPanel.OnCloseButtonClicked -= OnWindowClosed;
+
+            _optionsClickableViews.ForEach(clickableView => clickableView.OnClicked -= OnGridElementSelected);
         }
 
         private void CreateAndSetWindowContent()
         {
-            _selectionGrid = _leFabric.CreateSelectionGrid();
+            _optionViewsGrid = _uiElementsFactory.CreateUiGrid();
             var gridContent = CreateViewsForSlotOptions(_itemSlotViewModel.Options);
-            _selectionGrid.SetContentViews(gridContent);
-            _windowPanel.AddContent(_selectionGrid.gameObject);
+
+            foreach (var view in gridContent)
+                GetOrAddClickableViewComponent(view);
+
+            _optionViewsGrid.SetContent(gridContent);
+            _windowPanel.AddContent(_optionViewsGrid.gameObject);
+        }
+
+        private void GetOrAddClickableViewComponent(MonoBehaviour view)
+        {
+            ClickableView clickableView = view.gameObject.GetComponent<ClickableView>() ??
+                                          view.gameObject.AddComponent<ClickableView>();
+
+            clickableView.OnClicked += OnGridElementSelected;
+            _optionsClickableViews.Add(clickableView);
         }
 
         protected abstract IEnumerable<MonoBehaviour> CreateViewsForSlotOptions(IEnumerable<TOption> options);
@@ -75,14 +91,10 @@ namespace Assets.Scripts.UI.ViewModels.ItemSelectionViewModels
     }
 
 
+
     interface IUiWondowsService
     {
         WindowPanel OpenWindow();
         void CloseWindow(WindowPanel windowPanel);
-    }
-
-    interface ILeFabric
-    {
-        SelectionGrid CreateSelectionGrid();
     }
 }

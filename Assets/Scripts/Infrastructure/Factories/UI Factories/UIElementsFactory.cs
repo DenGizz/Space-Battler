@@ -34,17 +34,12 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
             return view;
         }
 
-        public WindowPanel CreateSpaceShipTypeSelectionWindowPanel(out SelectionGrid selectionGrid)
+        public WindowPanel CreateSpaceShipTypeSelectionWindowPanel(out UiGrid selectionGrid)
         {
             throw new System.NotImplementedException();
         }
 
-        public WindowPanel CreateWeaponTypeSelectionWindowPanel(out SelectionGrid selectionGrid)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public WeaponTypeSlotViewModel CreateWeaponTypeSlot(Transform weaponSlotViewModelsContainer)
+        public UiGrid CreateUiGrid()
         {
             throw new System.NotImplementedException();
         }
