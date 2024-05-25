@@ -1,12 +1,13 @@
 ﻿using Assets.Scripts.ScriptableObjects;
 using Assets.Scripts.UI.BaseUI;
+using Assets.Scripts.UI.NewUi.WeaponViewModels;
 using Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews;
 using UnityEngine;
 
 namespace Assets.Scripts.UI.WeaponViews
 {
     [RequireComponent(typeof(DescriptionRowView))]
-    public class WeaponTypeRowViewModel : WeaponTypeViewModel
+    public class WeaponTypeRowViewModel : WeaponTypeViewModel, IWeaponTypeViewModel
     {
         private DescriptionRowView _descriptionRowView;
 

@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: UiElementPrefabsBundle
   m_EditorClassIdentifier: 
   _spaceShipHealthViewPrefab: {fileID: 3599146309067349897, guid: 919b33106e552fb46a9513c53945a665, type: 3}
+  _windowPrefab: {fileID: 8574606154137267856, guid: 44f44ae4355e58c4bbe7501ccaf30d5e, type: 3}
+  _weaponTypeSlotPrefab: {fileID: 1646753220554417511, guid: 72799edd07879784ba41c7425d841176, type: 3}
+  _uiGridPrefab: {fileID: 8621096171872607005, guid: 3ea58c60a42b2074fbf070a9f9e0511c, type: 3}

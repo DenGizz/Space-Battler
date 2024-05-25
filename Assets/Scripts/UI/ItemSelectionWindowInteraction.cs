@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts.UI.ViewModels.ItemSelectionViewModels
 {
@@ -26,6 +27,13 @@ namespace Assets.Scripts.UI.ViewModels.ItemSelectionViewModels
         private IUiWindowsService _uiWindowsService;
         private IUiElementsFactory _uiElementsFactory;
 
+
+        [Inject]
+        public void Construct(IUiWindowsService uiWindowsService, IUiElementsFactory uiElementsFactory)
+        {
+            _uiWindowsService = uiWindowsService;
+            _uiElementsFactory = uiElementsFactory;
+        }
 
         private void Awake()
         {

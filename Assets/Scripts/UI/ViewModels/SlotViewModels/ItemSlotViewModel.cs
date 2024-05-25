@@ -13,7 +13,7 @@ namespace Assets.Scripts.UI.ViewModels.SlotViewModels
     public abstract class ItemSlotViewModel<TOption> : MonoBehaviour
     {
         public IEnumerable<TOption> Options { get; set; }
-        public TOption SelectedOption { get; set; }
+        public virtual TOption SelectedOption { get; set; }
         public TOption DefaultOption { get; set; }
 
         public event Action<TOption> OnOptionSelected;

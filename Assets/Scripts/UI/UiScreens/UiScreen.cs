@@ -15,6 +15,8 @@ public abstract class UiScreen : MonoBehaviour
         if(IsInitialized)
             throw new System.Exception("UiScreen is already initialized");
 
+        _ui = ui ?? throw new System.ArgumentNullException($"{nameof(ui)} in {nameof(Setup)} is null");
+
         IsInitialized = true;
     }
 

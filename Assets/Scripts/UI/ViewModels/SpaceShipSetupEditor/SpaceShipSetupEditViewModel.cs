@@ -39,6 +39,7 @@ namespace Assets.Scripts.UI.NewUi.SpaceShipSetupEditPanel
                 throw new ArgumentException($"Space ship setup is invalid.{reason}")*/
 
             _spaceShipSetup = spaceShipSetup;
+            _spaceShipTypeSlotViewModel.Options = CreateSpaceShipTypeSlotOptions();
             _spaceShipTypeSlotViewModel.SelectedOption = _spaceShipSetup.SpaceShipType;
             _spaceShipTypeSlotViewModel.OnOptionSelected += OnSpaceShipSelected;
 
@@ -55,14 +56,24 @@ namespace Assets.Scripts.UI.NewUi.SpaceShipSetupEditPanel
 
         private void CreateWeaponSlots(int count)
         {
+            var slotOptions = CreateWeaponTypeSlotOptions();
             for (int i = 0; i < count; i++)
             {
-                var slot = _uiFactory.CreateWeaponTypeSlot(_weaponSlotViewModelsContainer);
+                var slot = _uiFactory.CreateWeaponTypeSlot(_weaponSlotViewModelsContainer, slotOptions);
                 _weaponTypeSlotViewModels.Add(slot);
                 slot.OnOptionSelected += OnWeaponTypeSelected;
             }
         }
 
+        private IEnumerable<WeaponType> CreateWeaponTypeSlotOptions()
+        {
+            return _staticDataService.GetWeaponDescriptors().Select(x => x.WeaponType);
+        }
+
+        private IEnumerable<SpaceShipType> CreateSpaceShipTypeSlotOptions()
+        {
+            return _staticDataService.GetSpaceShipDescriptors().Select(x => x.SpaceShipType);
+        }
 
         private void DestroyAllWeaponSlots() 
         {

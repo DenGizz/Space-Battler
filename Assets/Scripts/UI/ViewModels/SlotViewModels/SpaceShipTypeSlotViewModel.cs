@@ -16,6 +16,21 @@ namespace Assets.Scripts.UI.NewUi.SlotViewModels
 {
     public class SpaceShipTypeSlotViewModel : ItemSlotViewModel<SpaceShipType>
     {
+        private ISpaceShipViewModel _spaceShipViewModel;
 
+        override public SpaceShipType SelectedOption
+        {
+            get => base.SelectedOption;
+            set
+            {
+                base.SelectedOption = value;
+                _spaceShipViewModel.SpaceShipType=value;
+            }
+        }
+
+        private void Awake()
+        {
+            _spaceShipViewModel = GetComponentInParent<ISpaceShipViewModel>() ?? throw new NullReferenceException("SpaceShipViewModel not found");
+        }
     }
 }

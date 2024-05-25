@@ -38,6 +38,16 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices.AssetProviders
             return GetOrLoadAndGetUiElementPrefabsBundle().WindowPrefab;
         }
 
+        public GameObject GetWeaponTypeSlotPrefab()
+        {
+            return GetOrLoadAndGetUiElementPrefabsBundle().WeaponTypeSlotPrefab;
+        }
+
+        public GameObject GetUiGridPrefab()
+        {
+            return GetOrLoadAndGetUiElementPrefabsBundle().UiGridPrefab;
+        }
+
         private UiResourcesBundle GetOrLoadAndGetUiResourcesBundle()
         {
             if (_uiResourcesBundle == null)
@@ -61,6 +71,9 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices.AssetProviders
                 throw new NullReferenceException($"Bundle not found at {bundlePath}");
         }
 
-
+        public GameObject GetWeaponTypeRowPrefab()
+        {
+            return GetOrLoadAndGetUiElementPrefabsBundle().WeaponTypeRowPrefab;
+        }
     }
 }

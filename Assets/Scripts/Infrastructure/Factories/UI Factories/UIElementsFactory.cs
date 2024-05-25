@@ -1,10 +1,13 @@
 ﻿using Assets.Scripts.Entities.SpaceShips;
+using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.Infrastructure.Services.CoreServices.AssetProviders;
 using Assets.Scripts.UI.BaseUI;
 using Assets.Scripts.UI.BattleUI;
 using Assets.Scripts.UI.NewUi;
 using Assets.Scripts.UI.NewUi.UiElements;
+using Assets.Scripts.UI.WeaponViews;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -36,12 +39,25 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
 
         public UiGrid CreateUiGrid()
         {
-            throw new System.NotImplementedException();
+            GameObject prefab = _uiAssetsProvider.GetUiGridPrefab();
+            GameObject uiGrid = _instantiator.InstantiatePrefab(prefab, _rootTransformsProvider.UIRoot);
+            return uiGrid.GetComponent<UiGrid>();
         }
 
-        public WeaponTypeSlotViewModel CreateWeaponTypeSlot(Transform weaponSlotViewModelsContainer)
+        public WeaponTypeRowViewModel CreateWeaponTypeRowView()
         {
-            throw new System.NotImplementedException();
+            GameObject prefab = _uiAssetsProvider.GetWeaponTypeRowPrefab();
+            GameObject weaponTypeRow = _instantiator.InstantiatePrefab(prefab, _rootTransformsProvider.UIRoot);
+            return weaponTypeRow.GetComponent<WeaponTypeRowViewModel>();
+        }
+
+        public WeaponTypeSlotViewModel CreateWeaponTypeSlot(Transform weaponSlotViewModelsContainer, IEnumerable<WeaponType> options)
+        {
+            GameObject prefab = _uiAssetsProvider.GetWeaponTypeSlotPrefab();
+            GameObject weaponTypeSlot = _instantiator.InstantiatePrefab(prefab, weaponSlotViewModelsContainer);
+            WeaponTypeSlotViewModel view = weaponTypeSlot.GetComponent<WeaponTypeSlotViewModel>();
+            view.Options = options;
+            return view;
         }
     }
 }

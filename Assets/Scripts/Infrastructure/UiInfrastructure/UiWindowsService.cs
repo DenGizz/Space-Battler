@@ -17,9 +17,11 @@ namespace Assets.Scripts.Infrastructure.UiInfrastructure
         private readonly IInstantiator _instantiator;
         private readonly IRootTransformsProvider _rootTransformsProvider;
 
-        public UiWindowsService(IUiAssetsProvider uiAssetsProvider)
+        public UiWindowsService(IUiAssetsProvider uiAssetsProvider, IInstantiator instantiator, IRootTransformsProvider rootTransformsProvider)
         {
             _uiAssetsProvider = uiAssetsProvider;
+            _instantiator = instantiator;
+            _rootTransformsProvider = rootTransformsProvider;
         }
 
         public void CloseWindow(WindowPanel window)

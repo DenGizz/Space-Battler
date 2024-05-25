@@ -7,9 +7,14 @@ using UnityEngine;
 public class UiElementPrefabsBundle : ScriptableObject
 {
     public GameObject SpaceShipHealthViewPrefab => _spaceShipHealthViewPrefab;
-
     public GameObject WindowPrefab => _windowPrefab;
+    public GameObject WeaponTypeSlotPrefab => _weaponTypeSlotPrefab;
+    public GameObject UiGridPrefab => _uiGridPrefab;
+    public GameObject WeaponTypeRowPrefab => _weaponTypeRowPrefab;
 
     [SerializeField] private GameObject _spaceShipHealthViewPrefab;
     [SerializeField] private GameObject _windowPrefab;
+    [SerializeField] private GameObject _weaponTypeSlotPrefab;
+    [SerializeField] private GameObject _uiGridPrefab;
+    [SerializeField] private GameObject _weaponTypeRowPrefab;
 }

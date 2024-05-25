@@ -20,6 +20,21 @@ namespace Assets.Scripts.UI.NewUi
 {
     public class WeaponTypeSlotViewModel : ItemSlotViewModel<WeaponType>
     {
+        private IWeaponTypeViewModel _weaponTypeViewModel;
 
+        override public WeaponType SelectedOption
+        {
+            get => base.SelectedOption;
+            set
+            {
+                base.SelectedOption = value;
+                _weaponTypeViewModel.WeaponType = value;
+            }
+        }
+
+        private void Awake()
+        {
+            _weaponTypeViewModel = GetComponentInParent<IWeaponTypeViewModel>() ?? throw new NullReferenceException("WeaponTypeViewModel not found");
+        }
     }
 }

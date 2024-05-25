@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.ScriptableObjects;
 using Assets.Scripts.UI.BaseUI;
 using Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews;
+using Assets.Scripts.UI.ViewModels.SpaceShipViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ using UnityEngine;
 namespace Assets.Scripts.UI.NewUi
 {
     [RequireComponent(typeof(DescriptionRowView))]
-    public class SpaceShipTypeRowViewModel : SpaceShipTypeViewModel
+    public class SpaceShipTypeRowViewModel : SpaceShipTypeViewModel, ISpaceShipViewModel
     {
         private DescriptionRowView _descriptionRowView;
 
