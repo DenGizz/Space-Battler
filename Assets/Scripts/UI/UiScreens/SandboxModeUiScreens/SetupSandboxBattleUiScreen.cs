@@ -25,7 +25,7 @@ namespace Assets.Scripts.UI.NewUi.UiScreens.MainMenuUiScreens
             base.Setup(ui);
 
             _enterSandboxBattleButton.onClick.AddListener(OnEnterSandboxBattleButtonClicked);
-            _backButton.onClick.AddListener(OnBackButtonClicked);
+           // _backButton.onClick.AddListener(OnBackButtonClicked);
         }
 
         private void OnEnterSandboxBattleButtonClicked()
