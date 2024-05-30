@@ -37,6 +37,13 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
             return view;
         }
 
+        public SpaceShipTypeRowViewModel CreateSpaceShipTypeRowView()
+        {
+            GameObject prefab = _uiAssetsProvider.GetSpaceShipTypeRowPrefab();
+            GameObject spaceShipTypeRow = _instantiator.InstantiatePrefab(prefab, _rootTransformsProvider.UIRoot);
+            return spaceShipTypeRow.GetComponent<SpaceShipTypeRowViewModel>();
+        }
+
         public UiGrid CreateUiGrid()
         {
             GameObject prefab = _uiAssetsProvider.GetUiGridPrefab();

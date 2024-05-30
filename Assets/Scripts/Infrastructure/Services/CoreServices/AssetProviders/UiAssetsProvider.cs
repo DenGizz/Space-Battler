@@ -75,5 +75,10 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices.AssetProviders
         {
             return GetOrLoadAndGetUiElementPrefabsBundle().WeaponTypeRowPrefab;
         }
+
+        public GameObject GetSpaceShipTypeRowPrefab()
+        {
+            return GetOrLoadAndGetUiElementPrefabsBundle().SpaceShipTypeRowPrefab;
+        }
     }
 }

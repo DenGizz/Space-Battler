@@ -12,6 +12,7 @@ namespace Assets.Scripts.Infrastructure.Services.CoreServices.AssetProviders
         GameObject GetMainMenuUiPrefab();
         GameObject GetSandboxModeUiPrefab();
         GameObject GetSpaceShipHealthViewPrefab();
+        GameObject GetSpaceShipTypeRowPrefab();
         GameObject GetUiGridPrefab();
         GameObject GetWeaponTypeRowPrefab();
         GameObject GetWeaponTypeSlotPrefab();

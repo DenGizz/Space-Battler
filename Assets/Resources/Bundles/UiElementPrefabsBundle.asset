@@ -17,3 +17,4 @@ MonoBehaviour:
   _weaponTypeSlotPrefab: {fileID: 1646753220554417511, guid: 72799edd07879784ba41c7425d841176, type: 3}
   _uiGridPrefab: {fileID: 8621096171872607005, guid: 3ea58c60a42b2074fbf070a9f9e0511c, type: 3}
   _weaponTypeRowPrefab: {fileID: 7535424062106044468, guid: 78a0dfb00e6648a4dac8acfb6a3a10f1, type: 3}
+  _spaceShipTypeRowPrefab: {fileID: 8838903670917225623, guid: f23a988ba79c95841976e61a3c7adc0e, type: 3}

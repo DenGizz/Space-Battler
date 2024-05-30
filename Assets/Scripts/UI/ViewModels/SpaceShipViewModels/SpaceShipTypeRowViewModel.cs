@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.ScriptableObjects;
+﻿using Assets.Scripts.Infrastructure.Services.CoreServices;
+using Assets.Scripts.ScriptableObjects;
 using Assets.Scripts.UI.BaseUI;
 using Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews;
 using Assets.Scripts.UI.ViewModels.SpaceShipViewModels;
@@ -9,32 +10,52 @@ using System.Text;
 using System.Threading.Tasks;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts.UI.NewUi
 {
     [RequireComponent(typeof(DescriptionRowView))]
-    public class SpaceShipTypeRowViewModel : SpaceShipTypeViewModel, ISpaceShipViewModel
+    public class SpaceShipTypeRowViewModel : MonoBehaviour, ISpaceShipViewModel
     {
+        [SerializeField] private SpaceShipTypeViewModel _spaceShipTypeViewModel;
         private DescriptionRowView _descriptionRowView;
+        public Entities.SpaceShips.SpaceShipConfigs.SpaceShipType SpaceShipType
+        {
+            get => _spaceShipTypeViewModel.SpaceShipType;
+            set
+            {
+                _spaceShipTypeViewModel.SpaceShipType = value;
+                UpdateDescription();
+            }
+        }
+
+        private IStaticDataService _staticDataService;
+
+        [Inject]
+        public void Construct(IStaticDataService staticDataService)
+        {
+            _staticDataService = staticDataService;
+        }
 
         private void Awake()
         {
             _descriptionRowView = GetComponent<DescriptionRowView>();
         }
 
-        override protected void UpdateView()
+        private void UpdateDescription()
         {
-            base.UpdateView();
-            if (SpaceShipType == Entities.SpaceShips.SpaceShipConfigs.SpaceShipType.None)
-            {
-                _descriptionRowView.TitleText = "";
-                _descriptionRowView.DescriptionText = "";
-                return;
-            }
+            _descriptionRowView.TitleText = GetTitle(SpaceShipType);
+            _descriptionRowView.DescriptionText = GetDescription(SpaceShipType);
+        }   
 
-            SpaceShipDescriptor descriptor = _staticDataService.GetSpaceShipDescriptor(SpaceShipType);
-            _descriptionRowView.TitleText = descriptor.SpaceShipType.ToString();
-            _descriptionRowView.DescriptionText = $"HP: {descriptor.MaxHealth}\nWeapon slots: {descriptor.WeaponSlotsCount}";
+        private string GetTitle(Entities.SpaceShips.SpaceShipConfigs.SpaceShipType type)
+        {
+            return type == Entities.SpaceShips.SpaceShipConfigs.SpaceShipType.None ? "" : _staticDataService.GetSpaceShipDescriptor(type).SpaceShipType.ToString();
+        }
+
+        private string GetDescription(Entities.SpaceShips.SpaceShipConfigs.SpaceShipType type)
+        {
+            return type == Entities.SpaceShips.SpaceShipConfigs.SpaceShipType.None ? "" : $"HP: {_staticDataService.GetSpaceShipDescriptor(type).MaxHealth}.\nWeapon slots: {_staticDataService.GetSpaceShipDescriptor(type).WeaponSlotsCount}";
         }
     }
 }

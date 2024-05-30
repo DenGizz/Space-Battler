@@ -17,5 +17,6 @@ namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
 
         UiGrid CreateUiGrid();
         WeaponTypeRowViewModel CreateWeaponTypeRowView();
+        SpaceShipTypeRowViewModel CreateSpaceShipTypeRowView();
     }
 }
