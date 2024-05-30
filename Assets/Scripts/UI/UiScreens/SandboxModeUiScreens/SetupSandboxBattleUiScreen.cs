@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Infrastructure.Services.BattleServices;
+﻿using Assets.Scripts.Battles;
+using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.UI.NewUi.SpaceShipSetupEditPanel;
 using Assets.Scripts.UI.NewUi.Uis;
 using System;
@@ -36,8 +37,12 @@ namespace Assets.Scripts.UI.NewUi.UiScreens.MainMenuUiScreens
 
             _enterSandboxBattleButton.onClick.AddListener(OnEnterSandboxBattleButtonClicked);
            // _backButton.onClick.AddListener(OnBackButtonClicked);
-           _playerSpaceShipEditor.Initialize(_battleSetupProvider.BattleSetup.PlayerSetup);
-           _enemySpaceShipEditor.Initialize(_battleSetupProvider.BattleSetup.EnemySetup);
+        }
+
+        public void SetBattleSetupForEditing(BattleSetup battleSetup)
+        {
+            _playerSpaceShipEditor.Initialize(battleSetup.PlayerSetup);
+            _enemySpaceShipEditor.Initialize(battleSetup.EnemySetup);
         }
 
         private void OnEnterSandboxBattleButtonClicked()

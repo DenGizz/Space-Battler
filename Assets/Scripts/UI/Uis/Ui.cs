@@ -13,6 +13,14 @@ public class Ui : MonoBehaviour, IInitializable, IGameStateChangeEventSource
 
     private bool _isInitialized;
 
+    public T GetScreen<T>() where T : UiScreen
+    {
+        if (!_isInitialized)
+            throw new Exception("Ui is not initialized");
+
+        return (T)_screens[typeof(T)] ?? throw new Exception($"Screen of type {typeof(T)} not found");
+    }
+
     public T GoToScreen<T>() where T : UiScreen
     {
         if (!_isInitialized)
