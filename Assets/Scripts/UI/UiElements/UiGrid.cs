@@ -14,6 +14,14 @@ namespace Assets.Scripts.UI.NewUi.UiElements
         [SerializeField] private Transform _contentContainer;
         [SerializeField] private GridLayoutGroup _contentGridLayoutGroup;
 
+        private void Awake()
+        {
+            if (_contentContainer == null)
+                throw new MissingComponentException();
+            if (_contentGridLayoutGroup == null)
+                throw new MissingComponentException();
+        }
+
         public void SetContent(IEnumerable<MonoBehaviour> content)
         {
             foreach (var item in content)

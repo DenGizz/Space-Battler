@@ -8,12 +8,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts.UI
 {
     public class WeaponTypeSelectionInteraction : ItemSelectionWindowInteraction<WeaponType>
     {
         private IUiElementsFactory _uiElementsFactory;
+
+        [Inject]
+        public void Construct(IUiElementsFactory uiElementsFactory)
+        {
+            _uiElementsFactory = uiElementsFactory;
+        }
 
         protected override IEnumerable<MonoBehaviour> CreateViewsForSlotOptions(IEnumerable<WeaponType> options)
         {

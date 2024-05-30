@@ -33,6 +33,7 @@ namespace Assets.Scripts.UI.ViewModels.ItemSelectionViewModels
         {
             _uiWindowsService = uiWindowsService;
             _uiElementsFactory = uiElementsFactory;
+            _optionsClickableViews = new List<ClickableView>();
         }
 
         private void Awake()
@@ -83,6 +84,7 @@ namespace Assets.Scripts.UI.ViewModels.ItemSelectionViewModels
                 GetOrAddClickableViewComponent(view);
 
             _optionViewsGrid.SetContent(gridContent);
+            _optionViewsGrid.SetCellSize(gridContent.First().GetComponent<RectTransform>().sizeDelta);
             _windowPanel.AddContent(_optionViewsGrid.gameObject);
         }
 
