@@ -20,6 +20,7 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
         private readonly IPersistentDataService _persistentDataService;
 
         private Ui _sandboxUi;
+        private SetupSandboxBattleUiScreen _sandboxScreen;
 
         public EditBattleSetupState(StateMachine stateMachine, IUiFactory uiFactory, IBattleSetupProvider battleSetupProvider, IPersistentDataService persistentDataService)
         {
@@ -32,8 +33,8 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
         public void Enter()
         {
             _sandboxUi = _uiFactory.CreateSandboxBattleUi();
-            _sandboxUi.GoToScreen<SetupSandboxBattleUiScreen>();
-            _sandboxUi.GetScreen<SetupSandboxBattleUiScreen>().SetBattleSetupForEditing(_battleSetupProvider.BattleSetup);
+            _sandboxScreen = _sandboxUi.GoToScreen<SetupSandboxBattleUiScreen>();
+            _sandboxScreen.SetBattleSetupForEditing(_battleSetupProvider.BattleSetup);
             _sandboxUi.OnGameStateChangeEvent += OnGameStateChangeUiEventHandler;// TODO: Use Task and async/await
         }
 
