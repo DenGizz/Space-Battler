@@ -12,6 +12,7 @@ namespace Assets.Scripts.Infrastructure
     {
         public override void InstallBindings()
         {
+            Container.Bind<IUisProvider>().To<UisProvider>().AsSingle();
             Container.Bind<IUiWindowsService>().To<UiWindowsService>().AsSingle();
             Container.Bind<IUiAssetsProvider>().To<UiAssetsProvider>().AsSingle();
             Container.Bind<IUiFactory>().To<UiFactory>().AsSingle();

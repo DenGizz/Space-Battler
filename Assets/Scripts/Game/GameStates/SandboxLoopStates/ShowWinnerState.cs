@@ -2,8 +2,10 @@
 using Assets.Scripts.Battles.BattleRun;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
+using Assets.Scripts.Infrastructure.UiInfrastructure;
 using Assets.Scripts.StateMachines;
 using Assets.Scripts.UI.BattleUI;
+using Assets.Scripts.UI.NewUi.Uis;
 
 namespace Assets.Scripts.Game.GameStates
 {
@@ -11,21 +13,22 @@ namespace Assets.Scripts.Game.GameStates
     {
         private readonly StateMachine _stateMachine;
         private readonly IBattleRunnerProvider _battleRunnerProvider;
-        private readonly IUiElementsFactory _uiFactory;
+        private readonly IUisProvider _uisProvider;
 
-        private BattleWinnerViewModel _winnerViewModel;
 
-        public ShowWinnerState(StateMachine stateMachine, IBattleRunnerProvider battleRunnerProvider, IUiElementsFactory uiFactory)
+        public ShowWinnerState(StateMachine stateMachine, IBattleRunnerProvider battleRunnerProvider, IUiElementsFactory uiFactory, IUisProvider uisProvider)
         {
             _stateMachine = stateMachine;
             _battleRunnerProvider = battleRunnerProvider;
-            _uiFactory = uiFactory;
+            _uisProvider = uisProvider;
         }
 
         public void Enter()
         {
             BattleRunner battleRunner = _battleRunnerProvider.CurrentBattleRunner;
 
+            _uisProvider.SandboxModeUi.GoToScreen<SandboxBattleEndStatsUiScreen>();
+            _uisProvider.SandboxModeUi.OnGameStateChangeEvent += OnReturnMainMenuButtonPressedEventHandler;
         }
 
         public void Exit()
@@ -33,8 +36,11 @@ namespace Assets.Scripts.Game.GameStates
          
         }
 
-        private void OnReturnMainMenuButtonPressedEventHandler()
+        private void OnReturnMainMenuButtonPressedEventHandler(GameStateChangeEvent @event)
         {
+            if (@event != GameStateChangeEvent.CloseBattleEndScreen)
+                return;
+
             _stateMachine.EnterState<CleanUpBattleState>();
         }
     }

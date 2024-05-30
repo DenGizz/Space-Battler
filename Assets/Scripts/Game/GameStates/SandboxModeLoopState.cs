@@ -14,6 +14,7 @@ namespace Assets.Scripts.Game.GameStates
         private readonly IStateMachine _gameStateMachine;
         private readonly IStateMachine _sandboxModeLoopStateMachine;
 
+        //TODO: Create factory fot this state machine and create it on enter this state
         public SandboxModeLoopState(IStateMachine gameStateMachine, IStatesFactory statesFactory)
         {
             _gameStateMachine = gameStateMachine;

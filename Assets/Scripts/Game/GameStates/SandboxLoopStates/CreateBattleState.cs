@@ -3,6 +3,7 @@ using Assets.Scripts.Battles.BattleRun;
 using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Infrastructure.Factories;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
+using Assets.Scripts.Infrastructure.UiInfrastructure;
 using Assets.Scripts.StateMachines;
 using UnityEngine;
 using Zenject;
@@ -15,18 +16,20 @@ namespace Assets.Scripts.Game.GameStates
         private readonly IShrinkService _shrinkService;
         private readonly IBattleRunnerProvider _battleRunnerProvider;
         private readonly IBattleRunnerFactory _battleRunnerFactory;
+        private readonly IUisProvider _uisProvider;
 
         private readonly StateMachine _stateMachine;
 
         public CreateBattleState(StateMachine stateMachine,
             IBattleSetupProvider battleSetupProvider, IShrinkService shrinkService, 
-            IBattleRunnerProvider battleRunnerProvider, IBattleRunnerFactory battleRunnerFactory)
+            IBattleRunnerProvider battleRunnerProvider, IBattleRunnerFactory battleRunnerFactory, IUisProvider uisProvider)
         {
             _stateMachine = stateMachine;
             _battleSetupProvider = battleSetupProvider;
             _shrinkService = shrinkService;
             _battleRunnerProvider = battleRunnerProvider;
             _battleRunnerFactory = battleRunnerFactory;
+            _uisProvider = uisProvider;
         }
 
         public void Enter()
@@ -41,6 +44,9 @@ namespace Assets.Scripts.Game.GameStates
             battleRunner.AddSpaceShipToEnemyTeam(enemy);
 
             _battleRunnerProvider.CurrentBattleRunner = battleRunner;
+
+            var battleScreen = _uisProvider.SandboxModeUi.GoToScreen<SandboxBattleViewUiScreen>();
+            battleScreen.SetBattleData(battleData);
 
             _stateMachine.EnterState<BattleState>();
         }

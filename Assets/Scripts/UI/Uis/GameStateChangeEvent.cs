@@ -11,5 +11,6 @@ namespace Assets.Scripts.UI.NewUi.Uis
         EnterSandboxMode = 0,
         EnterStoryMode = 1,
         StartSandboxBattle = 2, //TODO: Separate this into another anum
+        CloseBattleEndScreen = 3,
     }
 }

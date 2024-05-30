@@ -23,7 +23,7 @@ namespace Assets.Scripts.Game.GameStates
         {
             BattleRunner battleRunner = _battleRunnerProvider.CurrentBattleRunner;
             _battleCleanUpService.CleanUpBattle(battleRunner);
-            _stateMachine.EnterState<ExitSandboxModeState>();
+            _stateMachine.EnterState<EditBattleSetupState>();
         }
 
         public void Exit()
