@@ -17,8 +17,8 @@ namespace Assets.Scripts.UI.NewUi.UiElements
 
         public void AddContent(GameObject content)
         {
-            content.transform.parent = _contentContainer;
-            //content.transform.SetParent(_contentContainer);
+            content.transform.SetParent(_contentContainer);
+            content.GetComponent<RectTransform>().sizeDelta = _contentContainer.GetComponent<RectTransform>().sizeDelta;
         }
     }
 }
