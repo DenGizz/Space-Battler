@@ -16,7 +16,7 @@ namespace Assets.Scripts.UI
             throw new NotImplementedException();
         }
 
-        protected override SpaceShipType GetOptionFromView(MonoBehaviour view)
+        protected override SpaceShipType GetOptionFromView(GameObject viewGameObject)
         {
             throw new NotImplementedException();
         }

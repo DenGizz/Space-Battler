@@ -26,7 +26,7 @@ namespace Assets.Scripts.Infrastructure.UiInfrastructure
 
         public void CloseWindow(WindowPanel window)
         {
-            throw new NotImplementedException();
+            GameObject.Destroy(window.gameObject);
         }
 
         public bool IsWindowOpen(WindowPanel window)

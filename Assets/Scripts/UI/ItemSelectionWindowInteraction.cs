@@ -51,7 +51,7 @@ namespace Assets.Scripts.UI.ViewModels.ItemSelectionViewModels
         private void OnGridElementSelected(MonoBehaviour selectedView)
         {
             CloseWindow();
-            _itemSlotViewModel.SelectedOption = GetOptionFromView(selectedView);
+            _itemSlotViewModel.SelectedOption = GetOptionFromView(selectedView.gameObject);
         }
 
 
@@ -69,10 +69,9 @@ namespace Assets.Scripts.UI.ViewModels.ItemSelectionViewModels
 
         private void OnWindowClosed()
         {
-            _windowPanel = null;
             _windowPanel.OnCloseButtonClicked -= OnWindowClosed;
-
             _optionsClickableViews.ForEach(clickableView => clickableView.OnClicked -= OnGridElementSelected);
+            _windowPanel = null;
         }
 
         private void CreateAndSetWindowContent()
@@ -98,6 +97,6 @@ namespace Assets.Scripts.UI.ViewModels.ItemSelectionViewModels
         }
 
         protected abstract IEnumerable<MonoBehaviour> CreateViewsForSlotOptions(IEnumerable<TOption> options);
-        protected abstract TOption GetOptionFromView(MonoBehaviour view);
+        protected abstract TOption GetOptionFromView(GameObject viewGameObject);
     }
 }

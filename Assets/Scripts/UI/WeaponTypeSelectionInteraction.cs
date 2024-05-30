@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
+using Assets.Scripts.UI.NewUi.WeaponViewModels;
 using Assets.Scripts.UI.ViewModels.ItemSelectionViewModels;
 using Assets.Scripts.UI.WeaponViews;
 using System;
@@ -36,9 +37,9 @@ namespace Assets.Scripts.UI
             return views;
         }
 
-        protected override WeaponType GetOptionFromView(MonoBehaviour view)
+        protected override WeaponType GetOptionFromView(GameObject viewGameObject)
         {
-            return (view as WeaponTypeRowViewModel).WeaponType;
+            return viewGameObject.GetComponent<IWeaponTypeViewModel>().WeaponType;
         }
     }
 }
