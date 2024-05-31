@@ -62,13 +62,13 @@ namespace Assets.Scripts.UI.NewUi.SpaceShipSetupEditPanel
         private void CreateWeaponSlots(int count, IEnumerable<WeaponType> selectedOptions = null)
         {
             var slotOptions = CreateWeaponTypeSlotOptions();
-            var selectedOptionsArray = selectedOptions.ToArray();
+            var selectedOptionsArray = selectedOptions?.ToArray();
 
             for (int i = 0; i < count; i++)
             {
                 var slot = _uiFactory.CreateWeaponTypeSlot(_weaponSlotViewModelsContainer, slotOptions);
 
-                if(selectedOptions != null &&  i < selectedOptionsArray.Length)
+                if(selectedOptionsArray != null &&  i < selectedOptionsArray.Length)
                     slot.SelectedOption = selectedOptionsArray[i];
 
                 _weaponTypeSlotViewModels.Add(slot);

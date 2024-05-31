@@ -45,9 +45,6 @@ namespace Assets.Scripts.Game.GameStates
             if (@event != GameStateChangeEvent.EnterSandboxMode)
                 return;
 
-            if (!BattleSetupValidator.IsBattleSetupValidForStartBattle(_battleSetupProvider.BattleSetup))
-                return;
-
             _persistentDataService.SaveBattleSetup(_battleSetupProvider.BattleSetup);
             _battleSetupProvider.BattleSetup = _battleSetupProvider.BattleSetup;
             _stateMachine.EnterState<SandboxModeLoopState>();

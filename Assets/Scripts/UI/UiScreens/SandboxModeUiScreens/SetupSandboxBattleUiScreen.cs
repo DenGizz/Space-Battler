@@ -2,6 +2,7 @@
 using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.UI.NewUi.SpaceShipSetupEditPanel;
 using Assets.Scripts.UI.NewUi.Uis;
+using Assets.Scripts.UI.Validations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,8 @@ namespace Assets.Scripts.UI.NewUi.UiScreens.MainMenuUiScreens
         [SerializeField] private Button _enterSandboxBattleButton;
         [SerializeField] private Button _backButton;
 
+        private BattleSetup _battleSetup;
+
         public override void Setup(Ui ui)
         {
             base.Setup(ui);
@@ -33,15 +36,21 @@ namespace Assets.Scripts.UI.NewUi.UiScreens.MainMenuUiScreens
 
         public void SetBattleSetupForEditing(BattleSetup battleSetup)
         {
+            _battleSetup = battleSetup;
             _playerSpaceShipEditor.SetSpaceShipSetupForEdit(battleSetup.PlayerSetup);
             _enemySpaceShipEditor.SetSpaceShipSetupForEdit(battleSetup.EnemySetup);
         }
 
         private void OnEnterSandboxBattleButtonClicked()
         {
+            if(!SandboxBattleEditorValidator.IsBattleSetupValidForBattle(_battleSetup, out string message))
+            {
+                Debug.Log(message);
+                return;
+            }
+
             OnGameStateChangeEvent?.Invoke(GameStateChangeEvent.StartSandboxBattle);
             _ui.GoToScreen<SandboxBattleViewUiScreen>();
-
         }
 
         private void OnBackButtonClicked()
