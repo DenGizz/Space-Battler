@@ -43,6 +43,8 @@ namespace Assets.Scripts.UI.NewUi.SpaceShipSetupEditPanel
             _spaceShipTypeSlotViewModel.SelectedOption = _spaceShipSetup.SpaceShipType;
             _spaceShipTypeSlotViewModel.OnOptionSelected += OnSpaceShipSelected;
 
+            DestroyAllWeaponSlots();
+
             if (_spaceShipSetup.SpaceShipType == SpaceShipType.None)
                 return;
 
@@ -52,7 +54,6 @@ namespace Assets.Scripts.UI.NewUi.SpaceShipSetupEditPanel
             for (int i = 0; i < avaliableSlots; i++)
                 _weaponTypeSlotViewModels[i].SelectedOption = _spaceShipSetup.WeaponTypes.ElementAt(i);
         }
-
 
         private void CreateWeaponSlots(int count)
         {
@@ -78,7 +79,8 @@ namespace Assets.Scripts.UI.NewUi.SpaceShipSetupEditPanel
         private void DestroyAllWeaponSlots() 
         {
             _weaponTypeSlotViewModels.ForEach(slot => slot.OnOptionSelected -= OnWeaponTypeSelected);
-            _weaponTypeSlotViewModels.Clear();
+            _weaponTypeSlotViewModels.ForEach(slot => Destroy(slot.gameObject));
+           _weaponTypeSlotViewModels.Clear();
         }
 
         private void OnWeaponTypeSelected(WeaponType type)
