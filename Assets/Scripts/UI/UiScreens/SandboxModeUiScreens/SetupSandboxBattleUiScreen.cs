@@ -33,8 +33,8 @@ namespace Assets.Scripts.UI.NewUi.UiScreens.MainMenuUiScreens
 
         public void SetBattleSetupForEditing(BattleSetup battleSetup)
         {
-            _playerSpaceShipEditor.Initialize(battleSetup.PlayerSetup);
-            _enemySpaceShipEditor.Initialize(battleSetup.EnemySetup);
+            _playerSpaceShipEditor.SetSpaceShipSetupForEdit(battleSetup.PlayerSetup);
+            _enemySpaceShipEditor.SetSpaceShipSetupForEdit(battleSetup.EnemySetup);
         }
 
         private void OnEnterSandboxBattleButtonClicked()

@@ -32,7 +32,7 @@ namespace Assets.Scripts.UI.NewUi.SpaceShipSetupEditPanel
             _staticDataService = staticDataService;
         }
 
-        public void Initialize(SpaceShipSetup spaceShipSetup)
+        public void SetSpaceShipSetupForEdit(SpaceShipSetup spaceShipSetup)
         {
             /*
             if(SpaceShipSetupValidator.IsSpaceShipSetupValid(spaceShipSetup, out string reason))
