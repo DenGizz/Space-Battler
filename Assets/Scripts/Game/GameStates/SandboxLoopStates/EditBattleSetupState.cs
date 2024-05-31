@@ -16,19 +16,19 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
     public class EditBattleSetupState : IState
     {
         private readonly StateMachine _stateMachine;
-        private readonly IUiFactory _uiFactory;
         private readonly IBattleSetupProvider _battleSetupProvider;
         private readonly IPersistentDataService _persistentDataService;
         private readonly IUisProvider _uisProvider;
 
         private Ui _sandboxUi;
+
+
         private SetupSandboxBattleUiScreen _sandboxScreen;
 
-        public EditBattleSetupState(StateMachine stateMachine, IUiFactory uiFactory, IBattleSetupProvider battleSetupProvider,
+        public EditBattleSetupState(StateMachine stateMachine, IBattleSetupProvider battleSetupProvider,
             IPersistentDataService persistentDataService, IUisProvider uisProvider)
         {
             _stateMachine = stateMachine;
-            _uiFactory = uiFactory;
             _battleSetupProvider = battleSetupProvider;
             _persistentDataService = persistentDataService;
             _uisProvider = uisProvider;
@@ -37,11 +37,7 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
 
         public void Enter()
         {
-            if(_sandboxUi == null)//TODO: Create separete sandbox initialization state
-                _sandboxUi = _uiFactory.CreateSandboxBattleUi();
-
-            _uisProvider.SandboxModeUi = _sandboxUi;
-
+            _sandboxUi = _uisProvider.SandboxModeUi;
             _sandboxScreen = _sandboxUi.GoToScreen<SetupSandboxBattleUiScreen>();
             _sandboxScreen.SetBattleSetupForEditing(_battleSetupProvider.BattleSetup);
             _sandboxUi.OnGameStateChangeEvent += OnGameStateChangeUiEventHandler;// TODO: Use Task and async/await
@@ -58,7 +54,6 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
                 return;
 
             //_persistentDataService.SaveBattleSetup(_battleSetupProvider.BattleSetup);
-
             _stateMachine.EnterState<CreateBattleState>();
         }
     }

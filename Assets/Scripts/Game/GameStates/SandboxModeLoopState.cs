@@ -21,6 +21,7 @@ namespace Assets.Scripts.Game.GameStates
             _gameStateMachine = gameStateMachine;
             _sandboxModeLoopStateMachine = new StateMachine();
             _sandboxModeLoopStateMachine.AddState<LoadBattleFieldSceneState>(statesFactory.CreateState<LoadBattleFieldSceneState>(_sandboxModeLoopStateMachine));
+            _sandboxModeLoopStateMachine.AddState<InitializeSandboxModeState>(statesFactory.CreateState<InitializeSandboxModeState>(_sandboxModeLoopStateMachine));
             _sandboxModeLoopStateMachine.AddState<EditBattleSetupState>(statesFactory.CreateState<EditBattleSetupState>(_sandboxModeLoopStateMachine));
             _sandboxModeLoopStateMachine.AddState<CreateBattleState>(statesFactory.CreateState<CreateBattleState>(_sandboxModeLoopStateMachine));
             _sandboxModeLoopStateMachine.AddState<BattleState>(statesFactory.CreateState<BattleState>(_sandboxModeLoopStateMachine));

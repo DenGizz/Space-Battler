@@ -22,7 +22,7 @@ namespace Assets.Scripts.Game.GameStates
         {
             _sceneLoader.LoadSceneAsync
                 (_scenesConfig.BattleFieldSceneName, 
-                () => _stateMachine.EnterState<EditBattleSetupState>());
+                () => _stateMachine.EnterState<InitializeSandboxModeState>());
         }
 
         public void Exit()
