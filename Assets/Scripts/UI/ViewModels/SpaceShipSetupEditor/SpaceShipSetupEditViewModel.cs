@@ -38,6 +38,11 @@ namespace Assets.Scripts.UI.NewUi.SpaceShipSetupEditPanel
             if(SpaceShipSetupValidator.IsSpaceShipSetupValid(spaceShipSetup, out string reason))
                 throw new ArgumentException($"Space ship setup is invalid.{reason}")*/
 
+            if(_spaceShipSetup != null)
+            {
+                _spaceShipTypeSlotViewModel.OnOptionSelected -= OnSpaceShipSelected;
+            }
+
             _spaceShipSetup = spaceShipSetup;
             _spaceShipTypeSlotViewModel.Options = CreateSpaceShipTypeSlotOptions();
             _spaceShipTypeSlotViewModel.SelectedOption = _spaceShipSetup.SpaceShipType;
