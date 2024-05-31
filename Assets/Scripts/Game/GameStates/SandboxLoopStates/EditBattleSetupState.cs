@@ -53,7 +53,7 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
             if (@event != GameStateChangeEvent.StartSandboxBattle)
                 return;
 
-            //_persistentDataService.SaveBattleSetup(_battleSetupProvider.BattleSetup);
+            _persistentDataService.SaveBattleSetup(_battleSetupProvider.BattleSetup);
             _stateMachine.EnterState<CreateBattleState>();
         }
     }

@@ -1,8 +1,10 @@
 ﻿using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
+using Assets.Scripts.Entities.Weapons;
 using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.UI.NewUi.SlotViewModels;
+using Assets.Scripts.UI.NewUi.WeaponViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,18 +56,21 @@ namespace Assets.Scripts.UI.NewUi.SpaceShipSetupEditPanel
                 return;
 
             int avaliableSlots = _staticDataService.GetSpaceShipDescriptor(_spaceShipSetup.SpaceShipType).WeaponSlotsCount;
-            CreateWeaponSlots(avaliableSlots);
-
-            for (int i = 0; i < avaliableSlots; i++)
-                _weaponTypeSlotViewModels[i].SelectedOption = _spaceShipSetup.WeaponTypes.ElementAt(i);
+            CreateWeaponSlots(avaliableSlots, _spaceShipSetup.WeaponTypes);
         }
 
-        private void CreateWeaponSlots(int count)
+        private void CreateWeaponSlots(int count, IEnumerable<WeaponType> selectedOptions = null)
         {
             var slotOptions = CreateWeaponTypeSlotOptions();
+            var selectedOptionsArray = selectedOptions.ToArray();
+
             for (int i = 0; i < count; i++)
             {
                 var slot = _uiFactory.CreateWeaponTypeSlot(_weaponSlotViewModelsContainer, slotOptions);
+
+                if(selectedOptions != null &&  i < selectedOptionsArray.Length)
+                    slot.SelectedOption = selectedOptionsArray[i];
+
                 _weaponTypeSlotViewModels.Add(slot);
                 slot.OnOptionSelected += OnWeaponTypeSelected;
             }
