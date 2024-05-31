@@ -10,6 +10,7 @@ public class SandboxBattleViewUiScreen : UiScreen
 
     public void SetBattleData(BattleData battleData)
     {
+        _battleView.Clear();
         _battleView.SetBattleData(battleData);
     }
 }
