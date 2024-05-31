@@ -25,8 +25,6 @@ namespace Assets.Scripts.UI.BattleUI
         public void SetBattleData(BattleData battleData)
         {
             _battleData = battleData;
-            _healthViews.ForEach(view => Destroy(view.gameObject));
-            _healthViews.Clear();
 
             foreach (ISpaceShip spaceShip in battleData.AllyTeam.Members)
                 CreateViewForSpaceShip(spaceShip);
@@ -40,6 +38,12 @@ namespace Assets.Scripts.UI.BattleUI
             Vector2 screenPosition = Camera.main.WorldToScreenPoint(spaceShip.Data.Position); //TODO: refactor this to use a camera provider
             HealthView healthView = _uiFactory.CreateHealthView(spaceShip, screenPosition + _viewSpawnOffset, transform);
             _healthViews.Add(healthView);
+        }
+
+        public void Clear()
+        {
+            _healthViews.ForEach(view => Destroy(view.gameObject));
+            _healthViews.Clear();
         }
     }
 }
