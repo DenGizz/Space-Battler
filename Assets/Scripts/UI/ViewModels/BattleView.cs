@@ -26,6 +26,7 @@ namespace Assets.Scripts.UI.BattleUI
         {
             _battleData = battleData;
             _healthViews.ForEach(view => Destroy(view.gameObject));
+            _healthViews.Clear();
 
             foreach (ISpaceShip spaceShip in battleData.AllyTeam.Members)
                 CreateViewForSpaceShip(spaceShip);
