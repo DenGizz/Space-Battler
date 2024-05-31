@@ -33,7 +33,7 @@ namespace Assets.Scripts.Game.GameStates
 
         public void Exit()
         {
-         
+            _uisProvider.SandboxModeUi.OnGameStateChangeEvent -= OnReturnMainMenuButtonPressedEventHandler;
         }
 
         private void OnReturnMainMenuButtonPressedEventHandler(GameStateChangeEvent @event)
