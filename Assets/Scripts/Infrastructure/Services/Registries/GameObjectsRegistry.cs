@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.Entities.Projectiles.ProjectileBehaviours;
 using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Entities.Weapons;
@@ -51,18 +52,25 @@ namespace Assets.Scripts.Infrastructure.Services.Registries
 
         public void UnRegisterAllProjectiles()
         {
-            _spaceShipsGameObjects.Clear();
+            _projectileGameObjects.Clear();
         }
 
         public void UnRegisterGameObject(GameObject gameObject)
         {      
-            foreach (var pair in _spaceShipsGameObjects)
+            if (_spaceShipsGameObjects.ContainsValue(gameObject))
             {
-                if (pair.Value == gameObject)
-                {
-                    _spaceShipsGameObjects.Remove(pair.Key);
-                    break;
-                }
+                var spaceShip = _spaceShipsGameObjects.FirstOrDefault(x => x.Value == gameObject).Key;
+                _spaceShipsGameObjects.Remove(spaceShip);
+            }
+            else if (_weaponGameObjects.ContainsValue(gameObject))
+            {
+                var weapon = _weaponGameObjects.FirstOrDefault(x => x.Value == gameObject).Key;
+                _weaponGameObjects.Remove(weapon);
+            }
+            else if (_projectileGameObjects.ContainsValue(gameObject))
+            {
+                var projectile = _projectileGameObjects.FirstOrDefault(x => x.Value == gameObject).Key;
+                _projectileGameObjects.Remove(projectile);
             }
         }
     }
