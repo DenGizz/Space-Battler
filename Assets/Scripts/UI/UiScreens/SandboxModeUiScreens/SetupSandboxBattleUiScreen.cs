@@ -23,15 +23,7 @@ namespace Assets.Scripts.UI.NewUi.UiScreens.MainMenuUiScreens
         [SerializeField] private Button _enterSandboxBattleButton;
         [SerializeField] private Button _backButton;
 
-        private IBattleSetupProvider _battleSetupProvider;
-
-        [Inject]
-        public void Construct(IBattleSetupProvider battleSetupProvider)
-        {
-            _battleSetupProvider = battleSetupProvider;
-        }
-
-        override public void Setup(Ui ui)
+        public override void Setup(Ui ui)
         {
             base.Setup(ui);
 
