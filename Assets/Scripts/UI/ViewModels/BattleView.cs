@@ -1,7 +1,7 @@
 using Assets.Scripts.Battles;
 using Assets.Scripts.Entities.SpaceShips;
-using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using System.Collections.Generic;
+using Assets.Scripts.Infrastructure.Ui.Factories;
 using UnityEngine;
 using Zenject;
 

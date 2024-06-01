@@ -1,6 +1,6 @@
 ﻿using Assets.Scripts.StateMachines;
 
-namespace Assets.Scripts.Infrastructure.Factories
+namespace Assets.Scripts.Infrastructure.Core.Factories
 {
     public interface IStatesFactory 
     {

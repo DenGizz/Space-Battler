@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Infrastructure.Config;
-using Assets.Scripts.Infrastructure.Services.CoreServices;
+﻿using Assets.Scripts.Infrastructure.Core.Services;
+using Assets.Scripts.Infrastructure.Gameplay.Configs;
 using Assets.Scripts.StateMachines;
 
 namespace Assets.Scripts.Game.GameStates

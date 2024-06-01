@@ -2,10 +2,10 @@
 using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Entities.Weapons;
 using Assets.Scripts.Entities.Weapons.WeaponConfigs;
-using Assets.Scripts.Infrastructure.Services;
+using Assets.Scripts.Infrastructure.Gameplay.Services;
 using UnityEngine;
 
-namespace Assets.Scripts.Infrastructure.Factories
+namespace Assets.Scripts.Infrastructure.Gameplay.Factories
 {
     public class ShrinkService : IShrinkService
     {

@@ -1,6 +1,6 @@
 ﻿using Assets.Scripts.Progress;
 
-namespace Assets.Scripts.Infrastructure.Services.PersistentProgressServices
+namespace Assets.Scripts.Infrastructure.Core.Services.PersistentProgressServices
 {
     public interface IProgressProvider
     {

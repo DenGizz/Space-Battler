@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Infrastructure.Services.CoreServices
+namespace Assets.Scripts.Infrastructure.Core.Services
 {
     public interface IRootTransformsProvider
     {

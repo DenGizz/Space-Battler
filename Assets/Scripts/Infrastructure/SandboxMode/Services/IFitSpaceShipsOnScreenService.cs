@@ -1,9 +1,7 @@
-﻿using Assets.Scripts.Entities.SpaceShips;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
+using Assets.Scripts.Entities.SpaceShips;
 
-namespace Assets.Scripts.Infrastructure.Services
+namespace Assets.Scripts.Infrastructure.SandboxMode.Services
 {
     public interface IFitSpaceShipsOnScreenService
     {

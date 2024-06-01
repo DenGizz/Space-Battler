@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Infrastructure.Services;
+﻿using Assets.Scripts.Infrastructure.Gameplay.Services;
+using Assets.Scripts.Infrastructure.Services;
 using UnityEngine;
 using Zenject;
 

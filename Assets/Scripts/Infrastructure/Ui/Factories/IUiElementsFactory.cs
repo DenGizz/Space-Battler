@@ -1,14 +1,13 @@
-﻿using Assets.Scripts.Entities.SpaceShips;
+﻿using System.Collections.Generic;
+using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Entities.Weapons.WeaponConfigs;
-using Assets.Scripts.UI.BaseUI;
 using Assets.Scripts.UI.BattleUI;
 using Assets.Scripts.UI.NewUi;
 using Assets.Scripts.UI.NewUi.UiElements;
 using Assets.Scripts.UI.WeaponViews;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
+namespace Assets.Scripts.Infrastructure.Ui.Factories
 {
     public interface IUiElementsFactory
     {

@@ -1,15 +1,10 @@
-﻿using Assets.Scripts.Infrastructure.Services.CoreServices;
-using Assets.Scripts.Infrastructure.Services.CoreServices.AssetProviders;
+﻿using System;
+using Assets.Scripts.Infrastructure.Core.Services;
 using Assets.Scripts.UI.NewUi.UiElements;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Infrastructure.UiInfrastructure
+namespace Assets.Scripts.Infrastructure.Ui.Services
 {
     public class UiWindowsService : IUiWindowsService
     {

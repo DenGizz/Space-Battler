@@ -11,7 +11,6 @@ using Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews;
 using UnityEngine;
 using Assets.Scripts.UI.NewUi.WeaponViewModels;
 using Assets.Scripts.UI.NewUi.UiElements;
-using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Zenject;
 using Assets.Scripts.UI.ViewModels.SlotViewModels;
 using Assets.Scripts.UI.ViewModels.SpaceShipViewModels;

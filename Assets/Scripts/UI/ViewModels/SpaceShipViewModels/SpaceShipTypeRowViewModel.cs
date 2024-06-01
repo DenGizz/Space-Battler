@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Infrastructure.Services.CoreServices;
-using Assets.Scripts.ScriptableObjects;
+﻿using Assets.Scripts.ScriptableObjects;
 using Assets.Scripts.UI.BaseUI;
 using Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews;
 using Assets.Scripts.UI.ViewModels.SpaceShipViewModels;
@@ -8,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Infrastructure.Core.Services;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using Zenject;

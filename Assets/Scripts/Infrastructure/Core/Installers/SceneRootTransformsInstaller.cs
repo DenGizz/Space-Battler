@@ -1,8 +1,8 @@
-﻿using Assets.Scripts.Infrastructure.Services.CoreServices;
+﻿using Assets.Scripts.Infrastructure.Core.Services;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Infrastructure
+namespace Assets.Scripts.Infrastructure.Core.Installers
 {
     [AddComponentMenu("Infrastructure/SceneRootTransformsInstaller")]
     public class SceneRootTransformsInstaller : MonoInstaller

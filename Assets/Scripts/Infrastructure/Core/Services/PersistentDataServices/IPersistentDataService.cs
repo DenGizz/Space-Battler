@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.Battles;
 using Assets.Scripts.Progress;
 
-namespace Assets.Scripts.Infrastructure.Services.CoreServices.PersistentDataServices
+namespace Assets.Scripts.Infrastructure.Core.Services.PersistentDataServices
 {
     public interface IPersistentDataService
     {

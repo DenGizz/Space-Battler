@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
-using Assets.Scripts.Infrastructure.Factories.UI_Factories;
 using Assets.Scripts.UI.NewUi;
 using Assets.Scripts.UI.NewUi.WeaponViewModels;
 using Assets.Scripts.UI.ViewModels.ItemSelectionViewModels;
@@ -10,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Infrastructure.Ui.Factories;
 using UnityEngine;
 using Zenject;
 

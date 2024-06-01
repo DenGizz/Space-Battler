@@ -1,13 +1,8 @@
 ﻿using Assets.Scripts.Battles;
 using Assets.Scripts.Battles.BattleRun;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Zenject;
 
-namespace Assets.Scripts.Infrastructure.Factories
+namespace Assets.Scripts.Infrastructure.SandboxMode.Factories
 {
     public class BattleRunnerFactory : IBattleRunnerFactory
     {

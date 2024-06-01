@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Infrastructure.Services.CoreServices;
+using Assets.Scripts.Infrastructure.Core.Services;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Infrastructure.Services.BattleServices
+namespace Assets.Scripts.Infrastructure.SandboxMode.Services
 {
     public class BattleTickService : IBattleTickService
     {

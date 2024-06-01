@@ -1,6 +1,6 @@
 ﻿using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 
-namespace Assets.Scripts.Infrastructure.Services
+namespace Assets.Scripts.Infrastructure.SandboxMode.Services
 {
     public interface IRandomSetupService
     {

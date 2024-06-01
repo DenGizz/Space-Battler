@@ -1,14 +1,13 @@
-﻿using Assets.Scripts.ScriptableObjects;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Assets.Scripts.Entities.Projectiles;
 using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Entities.Weapons.WeaponConfigs;
-using Assets.Scripts.Infrastructure.Config;
+using Assets.Scripts.ScriptableObjects;
+using UnityEngine;
 
-namespace Assets.Scripts.Infrastructure.Services.CoreServices
+namespace Assets.Scripts.Infrastructure.Core.Services.AssetProviders
 {
     public class AssetsProvider : IAssetsProvider
     {

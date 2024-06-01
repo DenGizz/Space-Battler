@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Assets.Scripts.Infrastructure.Services.CoreServices.PersistentDataServices
+namespace Assets.Scripts.Infrastructure.Core.Services.PersistentDataServices
 {
     public class PersistentJsonFile
     {

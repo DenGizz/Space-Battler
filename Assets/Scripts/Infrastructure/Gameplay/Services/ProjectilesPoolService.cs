@@ -1,12 +1,12 @@
-﻿using Assets.Scripts.Infrastructure.Services.CoreServices;
-using Assets.Scripts.Pools;
-using Assets.Scripts.ScriptableObjects;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Assets.Scripts.Entities.Projectiles;
 using Assets.Scripts.Entities.Projectiles.ProjectileBehaviours;
+using Assets.Scripts.Infrastructure.Core.Services;
+using Assets.Scripts.Pools;
+using Assets.Scripts.ScriptableObjects;
 using Zenject;
 
-namespace Assets.Scripts.Infrastructure.Services
+namespace Assets.Scripts.Infrastructure.Gameplay.Services
 {
     public class ProjectilesPoolService : IProjectilesPoolService
     {

@@ -1,8 +1,9 @@
 ﻿using Assets.Scripts.Battles;
 using Assets.Scripts.Battles.BattleRun;
-using Assets.Scripts.Infrastructure.Factories.UI_Factories;
+using Assets.Scripts.Infrastructure.SandboxMode.Services;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
-using Assets.Scripts.Infrastructure.UiInfrastructure;
+using Assets.Scripts.Infrastructure.Ui.Factories;
+using Assets.Scripts.Infrastructure.Ui.Providers;
 using Assets.Scripts.StateMachines;
 using Assets.Scripts.UI.BattleUI;
 using Assets.Scripts.UI.NewUi.Uis;

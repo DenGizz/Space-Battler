@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Assets.Scripts.Entities.Projectiles.ProjectileBehaviours;
 
-namespace Assets.Scripts.Infrastructure.Services.Registries
+namespace Assets.Scripts.Infrastructure.Gameplay.Registries
 {
     public class ProjectilesRegister : IProjectilesRegister
     {

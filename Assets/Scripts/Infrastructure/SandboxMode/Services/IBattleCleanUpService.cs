@@ -1,7 +1,6 @@
-﻿using Assets.Scripts.Battles;
-using Assets.Scripts.Battles.BattleRun;
+﻿using Assets.Scripts.Battles.BattleRun;
 
-namespace Assets.Scripts.Infrastructure.Services.BattleServices
+namespace Assets.Scripts.Infrastructure.SandboxMode.Services
 {
     public interface IBattleCleanUpService
     {

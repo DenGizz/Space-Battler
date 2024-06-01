@@ -1,6 +1,6 @@
 ﻿using Assets.Scripts.Battles;
 
-namespace Assets.Scripts.Infrastructure.Services.BattleServices
+namespace Assets.Scripts.Infrastructure.SandboxMode.Services
 {
     public interface IBattleSetupProvider 
     {

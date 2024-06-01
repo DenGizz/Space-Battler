@@ -1,8 +1,8 @@
-﻿using Assets.Scripts.Infrastructure.Config;
+﻿using Assets.Scripts.Infrastructure.Gameplay.Configs;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Infrastructure
+namespace Assets.Scripts.Infrastructure.Core.Installers
 {
     [AddComponentMenu("Infrastructure/ConfigsInstaller")]
     public class ConfigsInstaller : MonoInstaller

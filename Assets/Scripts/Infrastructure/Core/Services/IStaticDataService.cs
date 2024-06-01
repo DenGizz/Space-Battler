@@ -2,10 +2,10 @@
 using Assets.Scripts.Entities.Projectiles;
 using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Entities.Weapons.WeaponConfigs;
-using UnityEngine;
 using Assets.Scripts.ScriptableObjects;
+using UnityEngine;
 
-namespace Assets.Scripts.Infrastructure.Services.CoreServices
+namespace Assets.Scripts.Infrastructure.Core.Services
 {
     public interface IStaticDataService
     {

@@ -1,10 +1,10 @@
 ﻿using Assets.Scripts.Entities.SpaceShips;
-using Assets.Scripts.Infrastructure.Services.CoreServices;
-using Assets.Scripts.Infrastructure.Services.Registries;
+using Assets.Scripts.Infrastructure.Core.Services;
+using Assets.Scripts.Infrastructure.Gameplay.Registries;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Infrastructure.Destroyers
+namespace Assets.Scripts.Infrastructure.Gameplay.GameObjectDestroyers
 {
     public class SpaceShipDestoyer : ISpaceShipDestroyer
     {

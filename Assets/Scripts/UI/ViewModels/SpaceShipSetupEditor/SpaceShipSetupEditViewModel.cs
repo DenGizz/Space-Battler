@@ -1,8 +1,6 @@
 ﻿using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Entities.Weapons;
 using Assets.Scripts.Entities.Weapons.WeaponConfigs;
-using Assets.Scripts.Infrastructure.Factories.UI_Factories;
-using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.UI.NewUi.SlotViewModels;
 using Assets.Scripts.UI.NewUi.WeaponViewModels;
 using System;
@@ -10,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Infrastructure.Core.Services;
+using Assets.Scripts.Infrastructure.Ui.Factories;
 using UnityEngine;
 using Zenject;
 

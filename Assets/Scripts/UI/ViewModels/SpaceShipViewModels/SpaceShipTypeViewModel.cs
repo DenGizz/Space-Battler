@@ -1,5 +1,5 @@
 using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
-using Assets.Scripts.Infrastructure.Services.CoreServices;
+using Assets.Scripts.Infrastructure.Core.Services;
 using Assets.Scripts.ScriptableObjects;
 using Assets.Scripts.UI.BaseUI;
 using Assets.Scripts.UI.ViewModels.SpaceShipViewModels;

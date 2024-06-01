@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Scripts.Infrastructure.Config
+namespace Assets.Scripts.Infrastructure.Gameplay.Configs
 {
     [CreateAssetMenu(fileName = "ScenesConfig", menuName = "Config/ScenesConfig")]
     public class ScenesConfig : ScriptableObject

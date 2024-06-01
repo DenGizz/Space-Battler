@@ -1,14 +1,13 @@
 ﻿using Assets.Scripts.AI.UnitsAI;
-using Assets.Scripts.Infrastructure.Services;
-using System.Collections;
 using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
-using Assets.Scripts.Infrastructure.Services.CoreServices;
-using Assets.Scripts.Infrastructure.Services.Registries;
+using Assets.Scripts.Infrastructure.Core.Services;
+using Assets.Scripts.Infrastructure.Core.Services.AssetProviders;
+using Assets.Scripts.Infrastructure.Gameplay.Registries;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Infrastructure.Factories
+namespace Assets.Scripts.Infrastructure.Gameplay.Factories
 {
     public class SpaceShipFactory : ISpaceShipFactory
     {

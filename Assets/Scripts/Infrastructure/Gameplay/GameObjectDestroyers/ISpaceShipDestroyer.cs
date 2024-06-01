@@ -1,6 +1,6 @@
 ﻿using Assets.Scripts.Entities.SpaceShips;
 
-namespace Assets.Scripts.Infrastructure.Destroyers
+namespace Assets.Scripts.Infrastructure.Gameplay.GameObjectDestroyers
 {
     public interface ISpaceShipDestroyer
     {

@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.Infrastructure.Factories.UI_Factories;
-using Assets.Scripts.Infrastructure.UiInfrastructure;
-using Assets.Scripts.UI.BaseUI;
+﻿using Assets.Scripts.UI.BaseUI;
 using Assets.Scripts.UI.NewUi.UiElements;
 using Assets.Scripts.UI.ViewModels.SlotViewModels;
 using System;
@@ -8,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Infrastructure.Ui.Factories;
+using Assets.Scripts.Infrastructure.Ui.Services;
 using UnityEngine;
 using Zenject;
 

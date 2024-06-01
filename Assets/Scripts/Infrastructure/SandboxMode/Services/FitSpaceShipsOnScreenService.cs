@@ -1,30 +1,29 @@
-﻿using Assets.Scripts.Entities.SpaceShips;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Entities.SpaceShips;
 using UnityEngine;
-using static Assets.Scripts.Infrastructure.Services.IFitSpaceShipsOnScreenService;
 
-namespace Assets.Scripts.Infrastructure.Services
+namespace Assets.Scripts.Infrastructure.SandboxMode.Services
 {
     public class FitSpaceShipsOnScreenService : IFitSpaceShipsOnScreenService
     {
         private const float SideOffset = 100;
         private const float VerticalOffset = 300;
 
-        public void FitSpaceShipsOnScreen(IEnumerable<ISpaceShip> spaceShips, ScreenSide screenSide)
+        public void FitSpaceShipsOnScreen(IEnumerable<ISpaceShip> spaceShips, IFitSpaceShipsOnScreenService.ScreenSide screenSide)
         {
             float zRotation = screenSide switch
             {
-                ScreenSide.Left => -90,
-                ScreenSide.Right => 90,
+                IFitSpaceShipsOnScreenService.ScreenSide.Left => -90,
+                IFitSpaceShipsOnScreenService.ScreenSide.Right => 90,
                 _ => throw new ArgumentOutOfRangeException(nameof(screenSide), screenSide, null)
             };
 
             Vector2 sideCentre = screenSide switch
             {
-                ScreenSide.Left => new Vector2(Screen.width / 4 - SideOffset, Screen.height / 2),
-                ScreenSide.Right => new Vector2(Screen.width / 4 * 3 + SideOffset, Screen.height / 2),
+                IFitSpaceShipsOnScreenService.ScreenSide.Left => new Vector2(Screen.width / 4 - SideOffset, Screen.height / 2),
+                IFitSpaceShipsOnScreenService.ScreenSide.Right => new Vector2(Screen.width / 4 * 3 + SideOffset, Screen.height / 2),
                 _ => throw new ArgumentOutOfRangeException(nameof(screenSide), screenSide, null)
             };
 

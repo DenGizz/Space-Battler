@@ -1,10 +1,10 @@
-﻿using Assets.Scripts.Infrastructure.Services.Registries;
-using System.Linq;
+﻿using System.Linq;
 using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Entities.Weapons;
+using Assets.Scripts.Infrastructure.Gameplay.Registries;
 using UnityEngine;
 
-namespace Assets.Scripts.Infrastructure.Services
+namespace Assets.Scripts.Infrastructure.Gameplay.Services
 {
     public class WeaponAttachService : IWeaponAttachService
     {

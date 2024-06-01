@@ -1,11 +1,12 @@
-﻿using Assets.Scripts.Infrastructure.Factories;
-using Assets.Scripts.Infrastructure.Services.CoreServices;
-using Assets.Scripts.Infrastructure.Services.CoreServices.PersistentDataServices;
-using Assets.Scripts.Infrastructure.Services.PersistentProgressServices;
+﻿using Assets.Scripts.Infrastructure.Core.Factories;
+using Assets.Scripts.Infrastructure.Core.Services;
+using Assets.Scripts.Infrastructure.Core.Services.AssetProviders;
+using Assets.Scripts.Infrastructure.Core.Services.PersistentDataServices;
+using Assets.Scripts.Infrastructure.Core.Services.PersistentProgressServices;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Infrastructure
+namespace Assets.Scripts.Infrastructure.Core.Installers
 {
     [AddComponentMenu("Infrastructure/Core Services Installer")]
     public class CoreServicesInstaller : MonoInstaller

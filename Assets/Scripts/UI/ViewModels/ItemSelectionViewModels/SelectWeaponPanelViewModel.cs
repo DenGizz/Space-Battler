@@ -1,6 +1,4 @@
 ﻿using Assets.Scripts.Entities.Weapons.WeaponConfigs;
-using Assets.Scripts.Infrastructure.Factories.UI_Factories;
-using Assets.Scripts.Infrastructure.Services.CoreServices;
 using Assets.Scripts.ScriptableObjects;
 using Assets.Scripts.UI.BaseUI;
 using Assets.Scripts.UI.WeaponViews;
@@ -9,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Infrastructure.Core.Services;
+using Assets.Scripts.Infrastructure.Ui.Factories;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using Zenject;

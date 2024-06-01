@@ -1,13 +1,12 @@
-﻿using Assets.Scripts.Infrastructure.Factories.UI_Factories;
-using Assets.Scripts.Infrastructure.Services.BattleServices;
-using Assets.Scripts.Infrastructure.Services.CoreServices.PersistentDataServices;
-using Assets.Scripts.Infrastructure.UiInfrastructure;
+﻿using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.StateMachines;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Infrastructure.Ui.Factories;
+using Assets.Scripts.Infrastructure.Ui.Providers;
 
 namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
 {

@@ -1,11 +1,11 @@
 ﻿using Assets.Scripts.Game.GameStates.SandboxLoopStates;
-using Assets.Scripts.Infrastructure.Factories;
 using Assets.Scripts.StateMachines;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Infrastructure.Core.Factories;
 
 namespace Assets.Scripts.Game.GameStates
 {

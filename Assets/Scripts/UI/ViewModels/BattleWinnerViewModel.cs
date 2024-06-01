@@ -1,7 +1,7 @@
 using System;
 using Assets.Scripts.Battles;
 using Assets.Scripts.Entities.SpaceShips;
-using Assets.Scripts.Infrastructure.Services.PersistentProgressServices;
+using Assets.Scripts.Infrastructure.Core.Services.PersistentProgressServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

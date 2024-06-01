@@ -1,12 +1,11 @@
-﻿using Assets.Scripts.Infrastructure.Services.CoreServices;
-using Assets.Scripts.ScriptableObjects;
-using System.Linq;
+﻿using System.Linq;
 using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
-using Zenject;
 using Assets.Scripts.Entities.Weapons.WeaponConfigs;
-using Unity.VisualScripting;
+using Assets.Scripts.Infrastructure.Core.Services;
+using Assets.Scripts.ScriptableObjects;
+using Zenject;
 
-namespace Assets.Scripts.Infrastructure.Services
+namespace Assets.Scripts.Infrastructure.SandboxMode.Services
 {
     public class RandomSetupService : IRandomSetupService
     {

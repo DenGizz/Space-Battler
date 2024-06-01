@@ -1,17 +1,16 @@
-﻿using Assets.Scripts.Entities.SpaceShips;
+﻿using System.Collections.Generic;
+using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Entities.Weapons.WeaponConfigs;
-using Assets.Scripts.Infrastructure.Services.CoreServices;
-using Assets.Scripts.Infrastructure.Services.CoreServices.AssetProviders;
-using Assets.Scripts.UI.BaseUI;
+using Assets.Scripts.Infrastructure.Core.Services;
+using Assets.Scripts.Infrastructure.Ui.Services;
 using Assets.Scripts.UI.BattleUI;
 using Assets.Scripts.UI.NewUi;
 using Assets.Scripts.UI.NewUi.UiElements;
 using Assets.Scripts.UI.WeaponViews;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
+namespace Assets.Scripts.Infrastructure.Ui.Factories
 {
     public class UIElementsFactory : IUiElementsFactory
     {

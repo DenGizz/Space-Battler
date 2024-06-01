@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.Game.GameStates;
-using Assets.Scripts.Infrastructure.Factories;
+using Assets.Scripts.Infrastructure.Core.Factories;
 using Assets.Scripts.StateMachines;
 using Zenject;
 

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Assets.Scripts.Infrastructure.Factories.UI_Factories
+﻿namespace Assets.Scripts.Infrastructure.Ui.Factories
 {
     public interface IUiFactory
     {
-        Ui CreateMainMenuUi();
-        Ui CreateSandboxBattleUi();
+        global::Ui CreateMainMenuUi();
+        global::Ui CreateSandboxBattleUi();
     }
 }

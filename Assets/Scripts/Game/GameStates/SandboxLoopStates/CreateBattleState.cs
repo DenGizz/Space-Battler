@@ -1,9 +1,11 @@
 using Assets.Scripts.Battles;
 using Assets.Scripts.Battles.BattleRun;
 using Assets.Scripts.Entities.SpaceShips;
-using Assets.Scripts.Infrastructure.Factories;
+using Assets.Scripts.Infrastructure.Gameplay.Factories;
+using Assets.Scripts.Infrastructure.SandboxMode.Factories;
+using Assets.Scripts.Infrastructure.SandboxMode.Services;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
-using Assets.Scripts.Infrastructure.UiInfrastructure;
+using Assets.Scripts.Infrastructure.Ui.Providers;
 using Assets.Scripts.StateMachines;
 using UnityEngine;
 using Zenject;

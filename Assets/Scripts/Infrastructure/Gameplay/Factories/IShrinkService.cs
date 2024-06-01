@@ -2,7 +2,7 @@
 using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using UnityEngine;
 
-namespace Assets.Scripts.Infrastructure.Factories
+namespace Assets.Scripts.Infrastructure.Gameplay.Factories
 {
     public interface IShrinkService
     {

@@ -1,12 +1,12 @@
-﻿using Assets.Scripts.Battles;
+﻿using System.Linq;
 using Assets.Scripts.Battles.BattleRun;
-using Assets.Scripts.Infrastructure.Destroyers;
-using Assets.Scripts.Infrastructure.Services.Registries;
-using System.Linq;
 using Assets.Scripts.Entities.SpaceShips;
+using Assets.Scripts.Infrastructure.Gameplay.GameObjectDestroyers;
+using Assets.Scripts.Infrastructure.Gameplay.Registries;
+using Assets.Scripts.Infrastructure.Gameplay.Services;
 using Zenject;
 
-namespace Assets.Scripts.Infrastructure.Services.BattleServices
+namespace Assets.Scripts.Infrastructure.SandboxMode.Services
 {
     public class BattleCleanUpService : IBattleCleanUpService
     {

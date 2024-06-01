@@ -1,11 +1,10 @@
-﻿using Assets.Scripts.Infrastructure.Factories.UI_Factories;
-using Assets.Scripts.Infrastructure.Services.BattleServices;
-using Assets.Scripts.Infrastructure.Services.CoreServices.AssetProviders;
-using Assets.Scripts.Infrastructure.UiInfrastructure;
+﻿using Assets.Scripts.Infrastructure.Ui.Factories;
+using Assets.Scripts.Infrastructure.Ui.Providers;
+using Assets.Scripts.Infrastructure.Ui.Services;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Infrastructure
+namespace Assets.Scripts.Infrastructure.Ui.Installers
 {
     [AddComponentMenu("Infrastructure/UI Services Installer")]
     public class UIServicesInstaller : MonoInstaller

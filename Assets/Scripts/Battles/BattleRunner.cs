@@ -1,10 +1,11 @@
 ﻿using Assets.Scripts.AI.UnitsAI;
 using Assets.Scripts.Infrastructure.Services.BattleServices;
-using Assets.Scripts.Infrastructure.Services.Registries;
 using System;
 using System.Collections.Generic;
 using Assets.Scripts.Entities.SpaceShips;
 using System.Linq;
+using Assets.Scripts.Infrastructure.Gameplay.Registries;
+using Assets.Scripts.Infrastructure.SandboxMode.Services;
 using Assets.Scripts.Infrastructure.Services;
 
 namespace Assets.Scripts.Battles.BattleRun

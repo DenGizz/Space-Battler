@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.StateMachines;
 using Zenject;
 
-namespace Assets.Scripts.Infrastructure.Factories
+namespace Assets.Scripts.Infrastructure.Core.Factories
 {
     public class StatesFactory : IStatesFactory
     {

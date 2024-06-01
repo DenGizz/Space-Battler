@@ -1,13 +1,9 @@
-﻿using Assets.Scripts.ScriptableObjects.ResourceBundles;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Assets.Scripts.ScriptableObjects.ResourceBundles;
 using UnityEngine;
 
-namespace Assets.Scripts.Infrastructure.Services.CoreServices.AssetProviders
+namespace Assets.Scripts.Infrastructure.Ui.Services
 {
     public class UiAssetsProvider : IUiAssetsProvider
     {

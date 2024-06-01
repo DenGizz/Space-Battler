@@ -1,11 +1,11 @@
-﻿using Assets.Scripts.Infrastructure.Services.CoreServices;
-using Assets.Scripts.Infrastructure.Services.Registries;
-using Assets.Scripts.Entities.Projectiles;
+﻿using Assets.Scripts.Entities.Projectiles;
 using Assets.Scripts.Entities.Projectiles.ProjectileBehaviours;
+using Assets.Scripts.Infrastructure.Core.Services;
+using Assets.Scripts.Infrastructure.Gameplay.Registries;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Infrastructure.Factories
+namespace Assets.Scripts.Infrastructure.Gameplay.Factories
 {
     public class ProjectileFactory : IProjectileFactory
     {

@@ -2,7 +2,7 @@
 using Assets.Scripts.AI.UnitsAI;
 using Assets.Scripts.Entities.SpaceShips;
 
-namespace Assets.Scripts.Infrastructure.Services.Registries
+namespace Assets.Scripts.Infrastructure.Gameplay.Registries
 {
     public class CombatAIRegistry : ICombatAiRegistry
     {
