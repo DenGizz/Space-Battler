@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cceacdcba655ba441a1dffc84082ca53, type: 3}
+  m_Name: HUDPrefabsBundle
+  m_EditorClassIdentifier: 
+  _pauseBattleHUDPrefab: {fileID: 7646495184946254497, guid: 867831c30fb6d56439c302e54af3d409, type: 3}

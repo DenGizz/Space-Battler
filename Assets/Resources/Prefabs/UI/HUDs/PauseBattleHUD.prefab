@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 3292179115481782098}
   - component: {fileID: 8501138798383710341}
   - component: {fileID: 722524133446700097}
-  - component: {fileID: 5773526084913419263}
   m_Layer: 5
   m_Name: Pause Resume Button
   m_TagString: Untagged
@@ -197,18 +196,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5773526084913419263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4567187330712565196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a8d6dcb37183e14ab299d18a133eb85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4590297501911941265
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +342,7 @@ GameObject:
   - component: {fileID: 4397021325913259017}
   - component: {fileID: 6539846346641823185}
   - component: {fileID: 5747943003965025595}
-  - component: {fileID: 3688210399180404159}
+  - component: {fileID: 4725659168003554839}
   m_Layer: 5
   m_Name: PauseBattleHUD
   m_TagString: Untagged
@@ -447,7 +434,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3688210399180404159
+--- !u!114 &4725659168003554839
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -456,7 +443,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7646495184946254497}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c948397008b156447be89f310bdc538e, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a8d6dcb37183e14ab299d18a133eb85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pauseContinueButton: {fileID: 722524133446700097}
+  _pauseButton: {fileID: 722524133446700097}

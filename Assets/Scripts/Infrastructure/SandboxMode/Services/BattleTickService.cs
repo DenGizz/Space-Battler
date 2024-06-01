@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Infrastructure.Core.Services;
 using UnityEngine;
@@ -13,7 +14,19 @@ namespace Assets.Scripts.Infrastructure.SandboxMode.Services
         private List<ITickable> tickablesToAdd = new List<ITickable>();
         private List<ITickable> tickablesToRemove = new List<ITickable>();
 
-        public bool IsPaused { get; set; }
+        public event Action OnPauseOrResume;
+
+        private bool _isPaused;
+
+        public bool IsPaused
+        {
+            get => _isPaused;
+            set
+            {
+                _isPaused = value;
+                OnPauseOrResume?.Invoke();
+            }
+        }
 
         public void RegisterGameObjectTickables(GameObject gameObject)
         {

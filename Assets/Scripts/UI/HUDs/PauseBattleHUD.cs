@@ -1,32 +1,45 @@
+using Assets.Scripts.Infrastructure.Core.Services;
+using Assets.Scripts.Infrastructure.SandboxMode.Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Assets.Scripts.UI.HUDs
 {
-    [RequireComponent(typeof(Button))]
     public class PauseBattleHUD : MonoBehaviour
     {
         private const string PauseButtonText = "II";
         private const string ResumeButtonText = ">";
 
-        private Button button;
+        [SerializeField] private Button _pauseButton;
+
+        private IBattleTickService _battleTickService;
         private TextMeshProUGUI buttonText;
 
-        private bool isPaused;
+        [Inject]
+        public void Construct(IBattleTickService battleTickService)
+        {
+            _battleTickService = battleTickService;
+        }
 
         private void Awake()
         {
-            button = GetComponent<Button>();
-            buttonText = GetComponentInChildren<TextMeshProUGUI>();
-            buttonText.text = isPaused ? ResumeButtonText : PauseButtonText;
-            button.onClick.AddListener(OnButtonClicked);
+            _battleTickService.OnPauseOrResume += OnPausedOrResumed;
+
+            buttonText = _pauseButton.GetComponentInChildren<TextMeshProUGUI>();
+            buttonText.text = _battleTickService.IsPaused ? ResumeButtonText : PauseButtonText;
+            _pauseButton.onClick.AddListener(OnButtonClicked);
         }
 
         private void OnButtonClicked()
         {
-            isPaused = !isPaused;
-            buttonText.text = isPaused ? ResumeButtonText : PauseButtonText;
+            _battleTickService.IsPaused = !_battleTickService.IsPaused;
+        }
+
+        private void OnPausedOrResumed()
+        {
+            buttonText.text = _battleTickService.IsPaused ? ResumeButtonText : PauseButtonText;
         }
     }
 }

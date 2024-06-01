@@ -10,9 +10,11 @@ namespace Assets.Scripts.Infrastructure.Ui.Services
         private const string BundlesFolderPath = "Bundles";
         private const string UiResourcesBundleName = "UiResourcesBundle";
         private const string UiElementPrefabsBundleName = "UiElementPrefabsBundle";
+        private const string HUDPrefabsBundleName = "HUDPrefabsBundle";
 
         private UiResourcesBundle _uiResourcesBundle;
         private UiElementPrefabsBundle _uiElementPrefabsBundle;
+        private HUDPrefabsBundle _hudPrefabsBundle;
 
         public GameObject GetMainMenuUiPrefab()
         {
@@ -60,6 +62,14 @@ namespace Assets.Scripts.Infrastructure.Ui.Services
             return _uiElementPrefabsBundle;
         }
 
+        private HUDPrefabsBundle GetOrLoadAndGetHudPrefabsBundle()
+        {
+            if (_hudPrefabsBundle == null)
+                _hudPrefabsBundle = LoadBundle<HUDPrefabsBundle>(HUDPrefabsBundleName);
+
+            return _hudPrefabsBundle;
+        }
+
         private T LoadBundle<T>(string bundleName) where T : UnityEngine.Object
         {
             string bundlePath = Path.Combine(BundlesFolderPath, bundleName);
@@ -75,6 +85,11 @@ namespace Assets.Scripts.Infrastructure.Ui.Services
         public GameObject GetSpaceShipTypeRowPrefab()
         {
             return GetOrLoadAndGetUiElementPrefabsBundle().SpaceShipTypeRowPrefab;
+        }
+
+        public GameObject GetPauseBattleHUDPrefab()
+        {
+            return GetOrLoadAndGetHudPrefabsBundle().PauseBattleHUDPrefab;
         }
     }
 }
