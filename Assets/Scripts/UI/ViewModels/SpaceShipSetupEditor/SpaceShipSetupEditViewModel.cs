@@ -1,19 +1,14 @@
-﻿using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
-using Assets.Scripts.Entities.Weapons;
-using Assets.Scripts.Entities.Weapons.WeaponConfigs;
-using Assets.Scripts.UI.NewUi.SlotViewModels;
-using Assets.Scripts.UI.NewUi.WeaponViewModels;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
+using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using Assets.Scripts.Infrastructure.Core.Services;
 using Assets.Scripts.Infrastructure.Ui.Factories;
+using Assets.Scripts.UI.ViewModels.SlotViewModels;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.UI.NewUi.SpaceShipSetupEditPanel
+namespace Assets.Scripts.UI.ViewModels.SpaceShipSetupEditor
 {
     public class SpaceShipSetupEditViewModel : MonoBehaviour
     {

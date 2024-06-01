@@ -1,16 +1,17 @@
 using Assets.Scripts.Battles;
-using Assets.Scripts.UI.BattleUI;
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Scripts.UI.ViewModels;
 using UnityEngine;
 
-public class SandboxBattleViewUiScreen : UiScreen
+namespace Assets.Scripts.UI.UiScreens.SandboxModeUiScreens
 {
-    [SerializeField] private BattleView _battleView;
-
-    public void SetBattleData(BattleData battleData)
+    public class SandboxBattleViewUiScreen : UiScreen
     {
-        _battleView.Clear();
-        _battleView.SetBattleData(battleData);
+        [SerializeField] private BattleView _battleView;
+
+        public void SetBattleData(BattleData battleData)
+        {
+            _battleView.Clear();
+            _battleView.SetBattleData(battleData);
+        }
     }
 }

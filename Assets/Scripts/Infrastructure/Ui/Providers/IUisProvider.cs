@@ -2,6 +2,6 @@
 {
     public interface IUisProvider
     {
-        global::Ui SandboxModeUi { get; set; }
+        global::Assets.Scripts.UI.Uis.Ui SandboxModeUi { get; set; }
     }
 }

@@ -1,17 +1,14 @@
-﻿using Assets.Scripts.UI.BaseUI;
-using Assets.Scripts.UI.NewUi.UiElements;
-using Assets.Scripts.UI.ViewModels.SlotViewModels;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Assets.Scripts.Infrastructure.Ui.Factories;
 using Assets.Scripts.Infrastructure.Ui.Services;
+using Assets.Scripts.UI.UiElements;
+using Assets.Scripts.UI.ViewModels.BaseViewModels;
+using Assets.Scripts.UI.ViewModels.SlotViewModels;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.UI.ViewModels.ItemSelectionViewModels
+namespace Assets.Scripts.UI
 {
     [RequireComponent(typeof(ClickableView))]
     public abstract class ItemSelectionWindowInteraction<TOption> : MonoBehaviour

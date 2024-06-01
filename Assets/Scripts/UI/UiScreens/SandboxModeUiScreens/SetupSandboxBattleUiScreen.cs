@@ -1,18 +1,13 @@
-﻿using Assets.Scripts.Battles;
-using Assets.Scripts.Infrastructure.Services.BattleServices;
-using Assets.Scripts.UI.NewUi.SpaceShipSetupEditPanel;
-using Assets.Scripts.UI.NewUi.Uis;
+﻿using System;
+using Assets.Scripts.Battles;
+using Assets.Scripts.UI.Uis;
+using Assets.Scripts.UI.UiScreens.MainMenuUiScreens;
 using Assets.Scripts.UI.Validations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Assets.Scripts.UI.ViewModels.SpaceShipSetupEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
-namespace Assets.Scripts.UI.NewUi.UiScreens.MainMenuUiScreens
+namespace Assets.Scripts.UI.UiScreens.SandboxModeUiScreens
 {
     public class SetupSandboxBattleUiScreen : UiScreen, IGameStateChangeEventSource
     {

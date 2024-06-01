@@ -2,6 +2,6 @@
 {
     public class UisProvider : IUisProvider
     {
-        public global::Ui SandboxModeUi { get; set; }
+        public global::Assets.Scripts.UI.Uis.Ui SandboxModeUi { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 using Assets.Scripts.Entities.SpaceShips;
 using UnityEngine;
 
-namespace Assets.Scripts.UI.BattleUI
+namespace Assets.Scripts.UI.ViewModels
 {
     [AddComponentMenu("UI/HealthView")]
     public class HealthView : MonoBehaviour

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.UI.BaseUI
+namespace Assets.Scripts.UI.ViewModels.BaseViewModels
 {
     public class SpriteView : MonoBehaviour
     {

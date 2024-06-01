@@ -1,16 +1,11 @@
-﻿using Assets.Scripts.ScriptableObjects;
-using Assets.Scripts.UI.SelectionPanels;
-using Assets.Scripts.UI.WeaponViews;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Assets.Scripts.Infrastructure.Core.Services;
 using Assets.Scripts.Infrastructure.Ui.Factories;
+using Assets.Scripts.ScriptableObjects;
+using Assets.Scripts.UI.ViewModels.SpaceShipViewModels;
 using Zenject;
 
-namespace Assets.Scripts.UI.NewUi.ItemSelectionViewModels
+namespace Assets.Scripts.UI.ViewModels.ItemSelectionViewModels
 {
     public class SelectSpaceShipPanelViewModel : SelectItemPanelViewModel<SpaceShipTypeRowViewModel>
     {

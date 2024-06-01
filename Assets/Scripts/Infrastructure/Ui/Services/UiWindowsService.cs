@@ -1,6 +1,6 @@
 ﻿using System;
 using Assets.Scripts.Infrastructure.Core.Services;
-using Assets.Scripts.UI.NewUi.UiElements;
+using Assets.Scripts.UI.UiElements;
 using UnityEngine;
 using Zenject;
 

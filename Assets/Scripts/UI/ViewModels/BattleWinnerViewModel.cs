@@ -1,13 +1,12 @@
 using System;
 using Assets.Scripts.Battles;
-using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Infrastructure.Core.Services.PersistentProgressServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Assets.Scripts.UI.BattleUI
+namespace Assets.Scripts.UI.ViewModels
 {
     public class BattleWinnerViewModel : MonoBehaviour
     {

@@ -1,17 +1,13 @@
 using System;
 using Assets.Scripts.Battles;
-using Assets.Scripts.Battles.BattleRun;
-using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Infrastructure.Core.Services;
 using Assets.Scripts.Infrastructure.Core.Services.PersistentDataServices;
 using Assets.Scripts.Infrastructure.Core.Services.PersistentProgressServices;
 using Assets.Scripts.Infrastructure.SandboxMode.Services;
-using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.Infrastructure.Ui.Factories;
 using Assets.Scripts.StateMachines;
-using Assets.Scripts.UI.Pause_Menu_UI;
 
-namespace Assets.Scripts.Game.GameStates
+namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
 {
     public class BattleState : IState
     {

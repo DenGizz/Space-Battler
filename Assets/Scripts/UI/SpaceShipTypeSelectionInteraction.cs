@@ -1,9 +1,5 @@
 ﻿using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
-using Assets.Scripts.UI.NewUi;
-using Assets.Scripts.UI.NewUi.WeaponViewModels;
-using Assets.Scripts.UI.ViewModels.ItemSelectionViewModels;
 using Assets.Scripts.UI.ViewModels.SpaceShipViewModels;
-using Assets.Scripts.UI.WeaponViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;

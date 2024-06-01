@@ -1,13 +1,10 @@
-﻿using Assets.Scripts.UI.BaseUI;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Assets.Scripts.UI.ViewModels.BaseViewModels;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.UI.SelectionPanels
+namespace Assets.Scripts.UI.ViewModels.ItemSelectionViewModels
 {
     public abstract class SelectItemPanelViewModel<TViewModel> : MonoBehaviour where TViewModel : MonoBehaviour
     {

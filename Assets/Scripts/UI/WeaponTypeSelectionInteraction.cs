@@ -1,13 +1,11 @@
 ﻿using Assets.Scripts.Entities.Weapons.WeaponConfigs;
-using Assets.Scripts.UI.NewUi.WeaponViewModels;
-using Assets.Scripts.UI.ViewModels.ItemSelectionViewModels;
-using Assets.Scripts.UI.WeaponViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Infrastructure.Ui.Factories;
+using Assets.Scripts.UI.ViewModels.WeaponViewModels;
 using UnityEngine;
 using Zenject;
 

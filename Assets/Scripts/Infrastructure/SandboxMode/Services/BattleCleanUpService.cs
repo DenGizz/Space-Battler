@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Assets.Scripts.Battles.BattleRun;
+using Assets.Scripts.Battles;
 using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Infrastructure.Gameplay.GameObjectDestroyers;
 using Assets.Scripts.Infrastructure.Gameplay.Registries;

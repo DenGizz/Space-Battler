@@ -1,14 +1,12 @@
 ﻿using Assets.Scripts.Battles;
-using Assets.Scripts.Battles.BattleRun;
 using Assets.Scripts.Infrastructure.SandboxMode.Services;
-using Assets.Scripts.Infrastructure.Services.BattleServices;
 using Assets.Scripts.Infrastructure.Ui.Factories;
 using Assets.Scripts.Infrastructure.Ui.Providers;
 using Assets.Scripts.StateMachines;
-using Assets.Scripts.UI.BattleUI;
-using Assets.Scripts.UI.NewUi.Uis;
+using Assets.Scripts.UI.Uis;
+using Assets.Scripts.UI.UiScreens.SandboxModeUiScreens;
 
-namespace Assets.Scripts.Game.GameStates
+namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
 {
     public class ShowWinnerState : IState
     {

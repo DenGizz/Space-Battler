@@ -1,34 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Scripts.UI.Uis;
 using UnityEngine;
-using Zenject;
 
-public abstract class UiScreen : MonoBehaviour
+namespace Assets.Scripts.UI.UiScreens
 {
-    public bool IsInitialized { get; private set; }
-    public bool IsVisible { get; private set; }
-
-    protected Ui _ui;
-
-    public virtual void Setup(Ui ui)
+    public abstract class UiScreen : MonoBehaviour
     {
-        if(IsInitialized)
-            throw new System.Exception("UiScreen is already initialized");
+        public bool IsInitialized { get; private set; }
+        public bool IsVisible { get; private set; }
 
-        _ui = ui ?? throw new System.ArgumentNullException($"{nameof(ui)} in {nameof(Setup)} is null");
+        protected Ui _ui;
 
-        IsInitialized = true;
-    }
+        public virtual void Setup(Ui ui)
+        {
+            if(IsInitialized)
+                throw new System.Exception("UiScreen is already initialized");
 
-    public void Show()
-    {
-        IsVisible = true;
-        gameObject.SetActive(true);
-    }
+            _ui = ui ?? throw new System.ArgumentNullException($"{nameof(ui)} in {nameof(Setup)} is null");
 
-    public void Hide()
-    {
-        IsVisible = false;
-        gameObject.SetActive(false);
+            IsInitialized = true;
+        }
+
+        public void Show()
+        {
+            IsVisible = true;
+            gameObject.SetActive(true);
+        }
+
+        public void Hide()
+        {
+            IsVisible = false;
+            gameObject.SetActive(false);
+        }
     }
 }

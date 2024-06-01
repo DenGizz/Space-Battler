@@ -1,19 +1,11 @@
-﻿using Assets.Scripts.Entities.Weapons.WeaponConfigs;
-using Assets.Scripts.ScriptableObjects;
-using Assets.Scripts.UI.BaseUI;
-using Assets.Scripts.UI.WeaponViews;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Assets.Scripts.Infrastructure.Core.Services;
 using Assets.Scripts.Infrastructure.Ui.Factories;
-using Unity.VisualScripting.FullSerializer;
-using UnityEngine;
+using Assets.Scripts.ScriptableObjects;
+using Assets.Scripts.UI.ViewModels.WeaponViewModels;
 using Zenject;
 
-namespace Assets.Scripts.UI.SelectionPanels
+namespace Assets.Scripts.UI.ViewModels.ItemSelectionViewModels
 {
     public class SelectWeaponPanelViewModel : SelectItemPanelViewModel<WeaponTypeRowViewModel>
     {

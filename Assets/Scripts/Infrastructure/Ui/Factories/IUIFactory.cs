@@ -2,7 +2,7 @@
 {
     public interface IUiFactory
     {
-        global::Ui CreateMainMenuUi();
-        global::Ui CreateSandboxBattleUi();
+        global::Assets.Scripts.UI.Uis.Ui CreateMainMenuUi();
+        global::Assets.Scripts.UI.Uis.Ui CreateSandboxBattleUi();
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Assets.Scripts.UI.BaseUI
+namespace Assets.Scripts.UI.ViewModels.BaseViewModels
 {
     public class DescriptionRowView : MonoBehaviour
     {

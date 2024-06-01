@@ -1,12 +1,11 @@
 using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Infrastructure.Core.Services;
 using Assets.Scripts.ScriptableObjects;
-using Assets.Scripts.UI.BaseUI;
-using Assets.Scripts.UI.ViewModels.SpaceShipViewModels;
+using Assets.Scripts.UI.ViewModels.BaseViewModels;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews
+namespace Assets.Scripts.UI.ViewModels.SpaceShipViewModels
 {
     [RequireComponent(typeof(SpriteView))]
     public class SpaceShipTypeViewModel : MonoBehaviour, ISpaceShipViewModel

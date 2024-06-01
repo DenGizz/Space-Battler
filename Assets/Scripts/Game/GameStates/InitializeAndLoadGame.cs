@@ -5,7 +5,6 @@ using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Infrastructure.Core.Services.PersistentDataServices;
 using Assets.Scripts.Infrastructure.Core.Services.PersistentProgressServices;
 using Assets.Scripts.Infrastructure.SandboxMode.Services;
-using Assets.Scripts.Infrastructure.Services.BattleServices;
 
 namespace Assets.Scripts.Game.GameStates
 {

@@ -1,14 +1,9 @@
-﻿using Assets.Scripts.UI.NewUi.Uis;
-using Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using Assets.Scripts.UI.Uis;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.UI.NewUi.UiScreens
+namespace Assets.Scripts.UI.UiScreens.MainMenuUiScreens
 {
     public class MainMenuButtonsUiScreen : UiScreen, IGameStateChangeEventSource
     {

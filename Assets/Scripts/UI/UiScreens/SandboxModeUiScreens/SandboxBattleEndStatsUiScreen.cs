@@ -1,24 +1,24 @@
-using Assets.Scripts.Entities.SpaceShips;
-using Assets.Scripts.UI.NewUi.Uis;
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Scripts.UI.Uis;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SandboxBattleEndStatsUiScreen : UiScreen, IGameStateChangeEventSource
+namespace Assets.Scripts.UI.UiScreens.SandboxModeUiScreens
 {
-    [SerializeField] private Button _returnToEditorButton;
-
-    public event Action<GameStateChangeEvent> OnGameStateChangeEvent;
-
-    private void Awake ()
+    public class SandboxBattleEndStatsUiScreen : UiScreen, IGameStateChangeEventSource
     {
-        _returnToEditorButton.onClick.AddListener(OnReturnToEditorButtonClicked);
-    }
+        [SerializeField] private Button _returnToEditorButton;
 
-    private void OnReturnToEditorButtonClicked()
-    {
-        OnGameStateChangeEvent?.Invoke(GameStateChangeEvent.CloseBattleEndScreen);
+        public event Action<GameStateChangeEvent> OnGameStateChangeEvent;
+
+        private void Awake ()
+        {
+            _returnToEditorButton.onClick.AddListener(OnReturnToEditorButtonClicked);
+        }
+
+        private void OnReturnToEditorButtonClicked()
+        {
+            OnGameStateChangeEvent?.Invoke(GameStateChangeEvent.CloseBattleEndScreen);
+        }
     }
 }

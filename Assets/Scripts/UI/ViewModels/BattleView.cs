@@ -1,11 +1,11 @@
+using System.Collections.Generic;
 using Assets.Scripts.Battles;
 using Assets.Scripts.Entities.SpaceShips;
-using System.Collections.Generic;
 using Assets.Scripts.Infrastructure.Ui.Factories;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.UI.BattleUI
+namespace Assets.Scripts.UI.ViewModels
 {
     public class BattleView : MonoBehaviour
     {

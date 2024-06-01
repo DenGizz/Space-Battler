@@ -1,7 +1,4 @@
-﻿using Assets.Scripts.Infrastructure.Services.BattleServices;
-using Assets.Scripts.StateMachines;
-using Assets.Scripts.UI.NewUi.Uis;
-using Assets.Scripts.UI.NewUi.UiScreens.MainMenuUiScreens;
+﻿using Assets.Scripts.StateMachines;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +7,8 @@ using System.Threading.Tasks;
 using Assets.Scripts.Infrastructure.Core.Services.PersistentDataServices;
 using Assets.Scripts.Infrastructure.SandboxMode.Services;
 using Assets.Scripts.Infrastructure.Ui.Providers;
+using Assets.Scripts.UI.Uis;
+using Assets.Scripts.UI.UiScreens.SandboxModeUiScreens;
 
 namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
 {

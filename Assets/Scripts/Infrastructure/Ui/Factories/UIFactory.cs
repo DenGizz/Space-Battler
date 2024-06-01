@@ -19,23 +19,23 @@ namespace Assets.Scripts.Infrastructure.Ui.Factories
             _rootTransformsProvider = rootTransformsProvider;
         }
 
-        public global::Ui CreateMainMenuUi()
+        public global::Assets.Scripts.UI.Uis.Ui CreateMainMenuUi()
         {
             GameObject prefab = _uiAssetsProvider.GetMainMenuUiPrefab();
             return InstantiateAndInitializeUiFromPrefab(prefab);
         }
 
-        public global::Ui CreateSandboxBattleUi()
+        public global::Assets.Scripts.UI.Uis.Ui CreateSandboxBattleUi()
         {
             GameObject prefab = _uiAssetsProvider.GetSandboxModeUiPrefab();
             return InstantiateAndInitializeUiFromPrefab(prefab);
         }
 
-        private global::Ui InstantiateAndInitializeUiFromPrefab(GameObject prefab)
+        private global::Assets.Scripts.UI.Uis.Ui InstantiateAndInitializeUiFromPrefab(GameObject prefab)
         {
             Transform patentTransform = _rootTransformsProvider.UIRoot;
             GameObject instance = _instantiator.InstantiatePrefab(prefab, patentTransform);
-            global::Ui ui = instance.GetComponent<global::Ui>() ?? throw new Exception("Ui prefab does not contain Ui component"); //TODO: Create custom exception
+            global::Assets.Scripts.UI.Uis.Ui ui = instance.GetComponent<global::Assets.Scripts.UI.Uis.Ui>() ?? throw new Exception("Ui prefab does not contain Ui component"); //TODO: Create custom exception
             ui.Initialize();
             return ui;
         }

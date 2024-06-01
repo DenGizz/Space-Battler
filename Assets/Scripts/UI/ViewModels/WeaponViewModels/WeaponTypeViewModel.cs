@@ -1,12 +1,11 @@
 using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using Assets.Scripts.Infrastructure.Core.Services;
 using Assets.Scripts.ScriptableObjects;
-using Assets.Scripts.UI.BaseUI;
-using Assets.Scripts.UI.NewUi.WeaponViewModels;
+using Assets.Scripts.UI.ViewModels.BaseViewModels;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews
+namespace Assets.Scripts.UI.ViewModels.WeaponViewModels
 {
     [RequireComponent(typeof(SpriteView))]
     public class WeaponTypeViewModel : MonoBehaviour, IWeaponTypeViewModel

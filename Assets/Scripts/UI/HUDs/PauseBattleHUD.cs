@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.UI.Pause_Menu_UI
+namespace Assets.Scripts.UI.HUDs
 {
     [RequireComponent(typeof(Button))]
     public class PauseBattleHUD : MonoBehaviour

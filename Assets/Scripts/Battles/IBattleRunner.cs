@@ -1,8 +1,7 @@
-﻿using Assets.Scripts.Battles;
-using System;
+﻿using System;
 using Assets.Scripts.Entities.SpaceShips;
 
-namespace Assets.Scripts.Infrastructure.Services.BattleServices
+namespace Assets.Scripts.Battles
 {
     public interface IBattleRunner
     {

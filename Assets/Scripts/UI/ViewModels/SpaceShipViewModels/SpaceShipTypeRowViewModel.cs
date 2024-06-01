@@ -1,18 +1,9 @@
-﻿using Assets.Scripts.ScriptableObjects;
-using Assets.Scripts.UI.BaseUI;
-using Assets.Scripts.UI.SelectBattleSetupUI.SpaceShipSetupViews;
-using Assets.Scripts.UI.ViewModels.SpaceShipViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Assets.Scripts.Infrastructure.Core.Services;
-using Unity.VisualScripting.FullSerializer;
+﻿using Assets.Scripts.Infrastructure.Core.Services;
+using Assets.Scripts.UI.ViewModels.BaseViewModels;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.UI.NewUi
+namespace Assets.Scripts.UI.ViewModels.SpaceShipViewModels
 {
     [RequireComponent(typeof(DescriptionRowView))]
     public class SpaceShipTypeRowViewModel : MonoBehaviour, ISpaceShipViewModel

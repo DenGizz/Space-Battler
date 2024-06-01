@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.UI.NewUi.UiElements;
+﻿using Assets.Scripts.UI.UiElements;
 
 namespace Assets.Scripts.Infrastructure.Ui.Services
 {

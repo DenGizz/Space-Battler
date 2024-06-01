@@ -3,10 +3,11 @@ using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using Assets.Scripts.Infrastructure.Core.Services;
 using Assets.Scripts.Infrastructure.Ui.Services;
-using Assets.Scripts.UI.BattleUI;
-using Assets.Scripts.UI.NewUi;
-using Assets.Scripts.UI.NewUi.UiElements;
-using Assets.Scripts.UI.WeaponViews;
+using Assets.Scripts.UI.UiElements;
+using Assets.Scripts.UI.ViewModels;
+using Assets.Scripts.UI.ViewModels.SlotViewModels;
+using Assets.Scripts.UI.ViewModels.SpaceShipViewModels;
+using Assets.Scripts.UI.ViewModels.WeaponViewModels;
 using UnityEngine;
 using Zenject;
 

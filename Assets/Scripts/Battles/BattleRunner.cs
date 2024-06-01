@@ -1,14 +1,12 @@
-﻿using Assets.Scripts.AI.UnitsAI;
-using Assets.Scripts.Infrastructure.Services.BattleServices;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using Assets.Scripts.Entities.SpaceShips;
 using System.Linq;
+using Assets.Scripts.AI.UnitsAI;
+using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Infrastructure.Gameplay.Registries;
 using Assets.Scripts.Infrastructure.SandboxMode.Services;
-using Assets.Scripts.Infrastructure.Services;
 
-namespace Assets.Scripts.Battles.BattleRun
+namespace Assets.Scripts.Battles
 {
     public class BattleRunner : IBattleRunner
     {
