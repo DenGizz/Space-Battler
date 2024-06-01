@@ -20,20 +20,17 @@ namespace Assets.Scripts.Game.GameStates
         {
             _gameStateMachine = gameStateMachine;
             _sandboxModeLoopStateMachine = new StateMachine();
-            _sandboxModeLoopStateMachine.AddState<LoadBattleFieldSceneState>(statesFactory.CreateState<LoadBattleFieldSceneState>(_sandboxModeLoopStateMachine));
-            _sandboxModeLoopStateMachine.AddState<InitializeSandboxModeState>(statesFactory.CreateState<InitializeSandboxModeState>(_sandboxModeLoopStateMachine));
             _sandboxModeLoopStateMachine.AddState<EditBattleSetupState>(statesFactory.CreateState<EditBattleSetupState>(_sandboxModeLoopStateMachine));
             _sandboxModeLoopStateMachine.AddState<CreateBattleState>(statesFactory.CreateState<CreateBattleState>(_sandboxModeLoopStateMachine));
             _sandboxModeLoopStateMachine.AddState<BattleState>(statesFactory.CreateState<BattleState>(_sandboxModeLoopStateMachine));
             _sandboxModeLoopStateMachine.AddState<CleanUpBattleState>(statesFactory.CreateState<CleanUpBattleState>(_sandboxModeLoopStateMachine));
             _sandboxModeLoopStateMachine.AddState<ShowWinnerState>(statesFactory.CreateState<ShowWinnerState>(_sandboxModeLoopStateMachine));
             _sandboxModeLoopStateMachine.AddState<ExitSandboxModeState>(statesFactory.CreateSubState<ExitSandboxModeState>(_sandboxModeLoopStateMachine, _gameStateMachine));
-
         }
 
         public void Enter()
         {
-            _sandboxModeLoopStateMachine.EnterState<LoadBattleFieldSceneState>();
+            _sandboxModeLoopStateMachine.EnterState<EditBattleSetupState>();
         }
 
         public void Exit()

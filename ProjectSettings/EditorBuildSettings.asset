@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Bootstrap Scene.unity
     guid: dd5784562b4e05e4a88670e3b9747300
   - enabled: 1
-    path: Assets/Scenes/Battle Field Scene.unity
+    path: Assets/Scenes/Sandbox Mode Scene.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   - enabled: 1
     path: Assets/Scenes/Main Menu Scene.unity

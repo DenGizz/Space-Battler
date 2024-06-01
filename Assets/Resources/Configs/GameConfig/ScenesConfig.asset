@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d05256d06be77e74baa329d05b3b4bc5, type: 3}
   m_Name: ScenesConfig
   m_EditorClassIdentifier: 
-  _battleFieldSceneName: Battle Field Scene
+  _sandboxModeSceneName: Sandbox Mode Scene
   _mainMenuSceneName: Main Menu Scene

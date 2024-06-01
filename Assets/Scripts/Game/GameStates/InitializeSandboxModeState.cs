@@ -26,7 +26,7 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
         {
             var _sandboxUi = _uiFactory.CreateSandboxBattleUi();
             _uisProvider.SandboxModeUi = _sandboxUi;
-            _stateMachine.EnterState<EditBattleSetupState>();
+            _stateMachine.EnterState<SandboxModeLoopState>();
         }
 
         public void Exit(){}

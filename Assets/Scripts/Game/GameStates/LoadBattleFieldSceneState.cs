@@ -21,7 +21,7 @@ namespace Assets.Scripts.Game.GameStates
         public void Enter()
         {
             _sceneLoader.LoadSceneAsync
-                (_scenesConfig.BattleFieldSceneName, 
+                (_scenesConfig.SandboxModeSceneName, 
                 () => _stateMachine.EnterState<InitializeSandboxModeState>());
         }
 
