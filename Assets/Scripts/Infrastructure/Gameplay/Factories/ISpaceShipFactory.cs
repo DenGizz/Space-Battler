@@ -6,6 +6,6 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
 {
     public interface ISpaceShipFactory
     {
-        ISpaceShip CreateSpaceShip(SpaceShipType type, Vector3 position, float zRotation);
+        ISpaceShip CreateSpaceShip(SpaceShipType type, Vector3 position = default, float zRotation = 0);
     }
 }

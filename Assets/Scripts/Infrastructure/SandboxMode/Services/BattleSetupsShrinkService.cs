@@ -7,29 +7,29 @@ using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Gameplay.Factories
 {
-    public class ShrinkService : IShrinkService
+    public class BattleSetupsShrinkService : IBattleSetupsShrinkService
     {
         private  readonly ISpaceShipFactory _spaceShipFactory;
         private readonly IWeaponFactory _weaponFactory;
         private readonly IWeaponAttachService _weaponAttachService;
 
-        public ShrinkService(ISpaceShipFactory spaceShipFactory, IWeaponFactory weaponFactory, IWeaponAttachService weaponAttachService)
+        public BattleSetupsShrinkService(ISpaceShipFactory spaceShipFactory, IWeaponFactory weaponFactory, IWeaponAttachService weaponAttachService)
         {
             _spaceShipFactory = spaceShipFactory;
             _weaponFactory = weaponFactory;
             _weaponAttachService = weaponAttachService;
         }
 
-        public ISpaceShip UnShrinkSpaceShip(SpaceShipSetup setup, Vector3 position, float zRotation)
+        public ISpaceShip UnShrinkSpaceShip(SpaceShipSetup setup)
         {
-            ISpaceShip player = _spaceShipFactory.CreateSpaceShip(setup.SpaceShipType, position, zRotation);
+            ISpaceShip player = _spaceShipFactory.CreateSpaceShip(setup.SpaceShipType);
 
             foreach (var weaponType in setup.WeaponTypes)
             {
                 if(weaponType == WeaponType.None)
                     continue;
 
-                IWeapon weapon = _weaponFactory.CreateWeapon(weaponType, position + Random.insideUnitSphere, zRotation);
+                IWeapon weapon = _weaponFactory.CreateWeapon(weaponType);
                 _weaponAttachService.AttachWeaponToSpaceShip(player, weapon);
             }
 

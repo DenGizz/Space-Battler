@@ -13,7 +13,7 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
     public class CreateBattleState : IState
     {
         private readonly IBattleSetupProvider _battleSetupProvider;
-        private readonly IShrinkService _shrinkService;
+        private readonly IBattleSetupsShrinkService _battleSetupsShrinkService;
         private readonly IBattleRunnerProvider _battleRunnerProvider;
         private readonly IBattleRunnerFactory _battleRunnerFactory;
         private readonly IUisProvider _uisProvider;
@@ -21,12 +21,12 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
         private readonly StateMachine _stateMachine;
 
         public CreateBattleState(StateMachine stateMachine,
-            IBattleSetupProvider battleSetupProvider, IShrinkService shrinkService, 
+            IBattleSetupProvider battleSetupProvider, IBattleSetupsShrinkService battleSetupsShrinkService, 
             IBattleRunnerProvider battleRunnerProvider, IBattleRunnerFactory battleRunnerFactory, IUisProvider uisProvider)
         {
             _stateMachine = stateMachine;
             _battleSetupProvider = battleSetupProvider;
-            _shrinkService = shrinkService;
+            _battleSetupsShrinkService = battleSetupsShrinkService;
             _battleRunnerProvider = battleRunnerProvider;
             _battleRunnerFactory = battleRunnerFactory;
             _uisProvider = uisProvider;
@@ -59,10 +59,8 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
 
         private (ISpaceShip player, ISpaceShip enemy) CreateSpaceShipsAndWeapons(BattleSetup setup)
         {
-            ISpaceShip player = _shrinkService.UnShrinkSpaceShip(setup.PlayerSetup, Vector3.zero, 0);
-            ISpaceShip enemy = _shrinkService.UnShrinkSpaceShip(setup.EnemySetup, Vector3.zero, 0);
-
-
+            ISpaceShip player = _battleSetupsShrinkService.UnShrinkSpaceShip(setup.PlayerSetup);
+            ISpaceShip enemy = _battleSetupsShrinkService.UnShrinkSpaceShip(setup.EnemySetup);
             return (player, enemy);
         }
     }

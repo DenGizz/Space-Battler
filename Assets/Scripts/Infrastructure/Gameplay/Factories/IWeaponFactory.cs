@@ -6,6 +6,6 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
 {
     public interface IWeaponFactory
     {
-        IWeapon CreateWeapon(WeaponType weaponType, Vector3 position, float zRotation);
+        IWeapon CreateWeapon(WeaponType weaponType, Vector3 position = default, float zRotation = 0);
     }
 }
