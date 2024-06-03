@@ -35,18 +35,11 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
         public void Enter()
         {
             BattleSetup battleSetup = _battleSetupProvider.BattleSetup;
-
-            (ISpaceShip player, ISpaceShip enemy) = CreateSpaceShipsAndWeapons(battleSetup);;
-            BattleData battleData = new BattleData();
-            BattleRunner battleRunner = _battleRunnerFactory.CreateBattleRunner(battleData);
-
-            battleRunner.AddSpaceShipToAllyTeam(player);
-            battleRunner.AddSpaceShipToEnemyTeam(enemy);
-
+            BattleRunner battleRunner = _battleSetupsShrinkService.UnShrinkBattleSetup(battleSetup);
             _battleRunnerProvider.CurrentBattleRunner = battleRunner;
-
-            var battleScreen = _uisProvider.SandboxModeUi.GoToScreen<SandboxBattleViewUiScreen>();
-            battleScreen.SetBattleData(battleData);
+            _uisProvider.SandboxModeUi
+                .GoToScreen<SandboxBattleViewUiScreen>()
+                .SetBattleData(battleRunner.BattleData);
 
             _stateMachine.EnterState<BattleState>();
         }
@@ -55,13 +48,6 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
         public void Exit()
         {
 
-        }
-
-        private (ISpaceShip player, ISpaceShip enemy) CreateSpaceShipsAndWeapons(BattleSetup setup)
-        {
-            ISpaceShip player = _battleSetupsShrinkService.UnShrinkSpaceShip(setup.PlayerSetup);
-            ISpaceShip enemy = _battleSetupsShrinkService.UnShrinkSpaceShip(setup.EnemySetup);
-            return (player, enemy);
         }
     }
 }
