@@ -327,8 +327,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8275324280215659523}
   m_HandleRect: {fileID: 9210246775388023995}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.73653847
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -406,8 +406,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000015258789}
-  m_SizeDelta: {x: 0, y: -0.0000076293945}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5316948144235628627
 Canvas:
@@ -974,7 +974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8658718018392169142, guid: 17391237be46a5845a910eae53566335, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 130
+      value: 136.69064
       objectReference: {fileID: 0}
     - target: {fileID: 8658718018392169142, guid: 17391237be46a5845a910eae53566335, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1076,7 +1076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8658718018392169142, guid: 17391237be46a5845a910eae53566335, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 130
+      value: 136.69064
       objectReference: {fileID: 0}
     - target: {fileID: 8658718018392169142, guid: 17391237be46a5845a910eae53566335, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1178,7 +1178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8658718018392169142, guid: 17391237be46a5845a910eae53566335, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 130
+      value: 136.69064
       objectReference: {fileID: 0}
     - target: {fileID: 8658718018392169142, guid: 17391237be46a5845a910eae53566335, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1288,7 +1288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8658718018392169142, guid: 17391237be46a5845a910eae53566335, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 130
+      value: 136.69064
       objectReference: {fileID: 0}
     - target: {fileID: 8658718018392169142, guid: 17391237be46a5845a910eae53566335, type: 3}
       propertyPath: m_LocalPosition.x
