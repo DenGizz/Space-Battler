@@ -50,5 +50,10 @@ namespace Assets.Scripts.UI.ViewModels.SpaceShipViewModels
                 }
             }
         }
+
+        private void Update()//TODO: remove this
+        {
+            UpdateView(); 
+        }
     }
 }

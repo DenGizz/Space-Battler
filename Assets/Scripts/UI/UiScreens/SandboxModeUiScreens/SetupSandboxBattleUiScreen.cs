@@ -13,8 +13,8 @@ namespace Assets.Scripts.UI.UiScreens.SandboxModeUiScreens
     {
         public event Action<GameStateChangeEvent> OnGameStateChangeEvent;
 
-        [SerializeField] private SpaceShipSetupEditViewModel _playerSpaceShipEditor;
-        [SerializeField] private SpaceShipSetupEditViewModel _enemySpaceShipEditor;
+        [SerializeField] private BattleTeamSetupEditor _allyBattleTeamSetupEditor;
+        [SerializeField] private BattleTeamSetupEditor _enemyBattleTeamSetupEditor;
 
         [SerializeField] private Button _enterSandboxBattleButton;
         [SerializeField] private Button _backButton;
@@ -32,8 +32,9 @@ namespace Assets.Scripts.UI.UiScreens.SandboxModeUiScreens
         public void SetBattleSetupForEditing(BattleSetup battleSetup)
         {
             _battleSetup = battleSetup;
-            _playerSpaceShipEditor.SetSpaceShipSetupForEdit(battleSetup.PlayerSetup);
-            _enemySpaceShipEditor.SetSpaceShipSetupForEdit(battleSetup.EnemySetup);
+
+            _allyBattleTeamSetupEditor.SetBattleTeamSetup(_battleSetup.PlayerTeamSetup);
+            _enemyBattleTeamSetupEditor.SetBattleTeamSetup(_battleSetup.EnemyTeamSetup);
         }
 
         private void OnEnterSandboxBattleButtonClicked()

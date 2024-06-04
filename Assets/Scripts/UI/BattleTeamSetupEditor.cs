@@ -74,6 +74,7 @@ public class BattleTeamSetupEditor : MonoBehaviour
     private void CreateSpaceShipSetupView(SpaceShipSetup spaceShipSetup)
     {
         SpaceShipSetupViewModel view = _uiElementsFactory.CreateSpaceShipSetupRowView();
+        view.transform.SetParent(_teamSpaceShipSetupViewModelsContainer, false);
         view.SpaceShipSetup = spaceShipSetup;
         ClickableView clickableComponent = GatOrAddClickableComponent(view);
         clickableComponent.OnClicked += OnSpaceShipSetupViewClicked;
@@ -92,6 +93,7 @@ public class BattleTeamSetupEditor : MonoBehaviour
     {
         WindowPanel window = _uiWindowsService.OpenWindow();
         SpaceShipSetupEditViewModel setupEditor = _uiElementsFactory.CreateSpaceShipSetupEditView();
+        setupEditor.SetSpaceShipSetupForEdit(setup);
         window.AddContent(setupEditor.gameObject);
     }
 

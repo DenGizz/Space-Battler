@@ -9,6 +9,6 @@ namespace Assets.Scripts.Game.SandboxMode.BattleSetups
 {
     public class BattleTeamSetup
     {
-        public List<SpaceShipSetup> SpaceShipSetups { get; set; }
+        public List<SpaceShipSetup> SpaceShipSetups { get; set; } = new List<SpaceShipSetup>();
     }
 }

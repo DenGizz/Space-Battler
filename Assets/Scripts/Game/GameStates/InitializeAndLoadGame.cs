@@ -46,10 +46,7 @@ namespace Assets.Scripts.Game.GameStates
             }
             else
             {
-                SpaceShipSetup playerSetup = new SpaceShipSetup();
-                SpaceShipSetup enemySetup = new SpaceShipSetup();
-
-                BattleSetup battleSetup = new BattleSetup(playerSetup, enemySetup);
+                BattleSetup battleSetup = new BattleSetup();
                 _persistentDataService.SaveBattleSetup(battleSetup);
                 _battleSetupProvider.BattleSetup = battleSetup;
             }

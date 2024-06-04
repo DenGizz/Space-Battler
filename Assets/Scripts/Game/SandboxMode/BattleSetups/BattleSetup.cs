@@ -5,16 +5,7 @@ namespace Assets.Scripts.Battles
 {
     public class BattleSetup
     {
-        public BattleTeamSetup PlayerTeamSetup { get; set; }
-        public BattleTeamSetup EnemyTeamSetup { get; set; }
-
-        public SpaceShipSetup PlayerSetup { get; set; }
-        public SpaceShipSetup EnemySetup { get; set; }
-
-        public BattleSetup(SpaceShipSetup playerSetup, SpaceShipSetup enemySetup)
-        {
-            PlayerSetup = playerSetup;
-            EnemySetup = enemySetup;
-        }
+        public BattleTeamSetup PlayerTeamSetup { get; set; } = new BattleTeamSetup();
+        public BattleTeamSetup EnemyTeamSetup { get; set; } = new BattleTeamSetup();
     }
 }

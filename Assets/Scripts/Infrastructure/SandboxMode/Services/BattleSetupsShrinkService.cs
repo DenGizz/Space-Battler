@@ -27,29 +27,16 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
 
         public BattleRunner UnShrinkBattleSetup(BattleSetup setup)
         {
-            ISpaceShip player = UnShrinkSpaceShip(setup.PlayerSetup);
-            ISpaceShip enemy = UnShrinkSpaceShip(setup.EnemySetup);
-
             BattleData battleData = new BattleData();
-            BattleRunner battleRunner = _instantiator.Instantiate<BattleRunner>(new[] { battleData }); //TODO: Implement factory
+            BattleRunner battleRunner = _instantiator.Instantiate<BattleRunner>(new[] { battleData });
 
-            battleRunner.AddSpaceShipToAllyTeam(player);
-            battleRunner.AddSpaceShipToEnemyTeam(enemy);
+            foreach( var spaceShipSetup in setup.EnemyTeamSetup.SpaceShipSetups)
+                battleRunner.AddSpaceShipToEnemyTeam(UnShrinkSpaceShip(spaceShipSetup));
+
+            foreach (var spaceShipSetup in setup.PlayerTeamSetup.SpaceShipSetups)
+                battleRunner.AddSpaceShipToAllyTeam(UnShrinkSpaceShip(spaceShipSetup));
 
             return battleRunner;
-        }
-
-        public BattleTeam UnShrinkBattleTeamSetup(BattleTeamSetup setup)
-        {
-            BattleTeam team = new BattleTeam();
-
-            foreach (var spaceShipSetup in setup.SpaceShipSetups)
-            {
-                ISpaceShip spaceShip = UnShrinkSpaceShip(spaceShipSetup);
-                team.AddMember(spaceShip);
-            }
-
-            return team;
         }
 
         public ISpaceShip UnShrinkSpaceShip(SpaceShipSetup setup)

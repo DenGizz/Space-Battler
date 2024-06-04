@@ -9,7 +9,6 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
     public interface IBattleSetupsShrinkService
     {
         ISpaceShip UnShrinkSpaceShip(SpaceShipSetup setup);
-        BattleTeam UnShrinkBattleTeamSetup(BattleTeamSetup setup);
         BattleRunner UnShrinkBattleSetup(BattleSetup setup);
     }
 }

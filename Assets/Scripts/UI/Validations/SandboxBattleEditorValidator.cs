@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Battles;
 using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Entities.Weapons.WeaponConfigs;
+using Assets.Scripts.Game.SandboxMode.BattleSetups;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,17 +36,52 @@ namespace Assets.Scripts.UI.Validations
             return true;
         }
 
-        public static bool IsBattleSetupValidForBattle(BattleSetup battleSetup, out string message)
+        public static bool IsBattleTeamSetupValid(BattleTeamSetup battleTeamSetup, out string message)
         {
-            if(!IsSpaceShipSetupValidForBattle(battleSetup.PlayerSetup, out message))
+            if(battleTeamSetup == null)
             {
-                message = $"Player setup is invalid. {message}";
+                message = "Battle team setup is null.";
                 return false;
             }
 
-            if (!IsSpaceShipSetupValidForBattle(battleSetup.EnemySetup, out message))
+            if(battleTeamSetup.SpaceShipSetups == null)
             {
-                message = $"Enemy setup is invalid. {message}";
+                message = "Space ship setups are null.";
+                return false;
+            }
+
+            if (battleTeamSetup.SpaceShipSetups.Count == 0)
+            {
+                message = "No space ships selected.";
+                return false;
+            }
+
+            foreach (var spaceShipSetup in battleTeamSetup.SpaceShipSetups)
+                if (!IsSpaceShipSetupValidForBattle(spaceShipSetup, out message))
+                    return false;
+
+            message = string.Empty;
+            return true;
+        }
+
+
+        public static bool IsBattleSetupValidForBattle(BattleSetup battleSetup, out string message)
+        {
+            if (battleSetup == null)
+            {
+                message = "Battle setup is null.";
+                return false;
+            }
+
+            if (!IsBattleTeamSetupValid(battleSetup.PlayerTeamSetup, out message))
+            {
+                message = "Player team setup is invalid. " + message;
+                return false;
+            }
+              
+            if (!IsBattleTeamSetupValid(battleSetup.EnemyTeamSetup, out message))
+            {
+                message = "Enemy team setup is invalid. " + message;
                 return false;
             }
 
