@@ -6,6 +6,7 @@ using Assets.Scripts.Infrastructure.Ui.Services;
 using Assets.Scripts.UI.UiElements;
 using Assets.Scripts.UI.ViewModels;
 using Assets.Scripts.UI.ViewModels.SlotViewModels;
+using Assets.Scripts.UI.ViewModels.SpaceShipSetupEditor;
 using Assets.Scripts.UI.ViewModels.SpaceShipViewModels;
 using Assets.Scripts.UI.ViewModels.WeaponViewModels;
 using UnityEngine;
@@ -35,6 +36,20 @@ namespace Assets.Scripts.Infrastructure.Ui.Factories
             HealthView view = healthView.GetComponent<HealthView>();
             view.SetSpaceShip(spaceShip);
             return view;
+        }
+
+        public SpaceShipSetupEditViewModel CreateSpaceShipSetupEditView()
+        {
+            GameObject prefab = _uiAssetsProvider.GetSpaceShipSetupEditPrefab();
+            GameObject spaceShipSetupEdit = _instantiator.InstantiatePrefab(prefab, _rootTransformsProvider.UIRoot);
+            return spaceShipSetupEdit.GetComponent<SpaceShipSetupEditViewModel>();
+        }
+
+        public SpaceShipSetupViewModel CreateSpaceShipSetupRowView()
+        {
+            GameObject prefab = _uiAssetsProvider.GetSpaceShipSetupRowPrefab();
+            GameObject spaceShipSetupRow = _instantiator.InstantiatePrefab(prefab, _rootTransformsProvider.UIRoot);
+            return spaceShipSetupRow.GetComponent<SpaceShipSetupViewModel>();
         }
 
         public SpaceShipTypeRowViewModel CreateSpaceShipTypeRowView()

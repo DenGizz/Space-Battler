@@ -91,5 +91,15 @@ namespace Assets.Scripts.Infrastructure.Ui.Services
         {
             return GetOrLoadAndGetHudPrefabsBundle().PauseBattleHUDPrefab;
         }
+
+        public GameObject GetSpaceShipSetupEditPrefab()
+        {
+            return GetOrLoadAndGetUiElementPrefabsBundle().SpaceShipSetupEditPrefab;
+        }
+
+        public GameObject GetSpaceShipSetupRowPrefab()
+        {
+            return GetOrLoadAndGetUiElementPrefabsBundle().SpaceShipSetupRowPrefab;
+        }
     }
 }

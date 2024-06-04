@@ -4,6 +4,7 @@ using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using Assets.Scripts.UI.UiElements;
 using Assets.Scripts.UI.ViewModels;
 using Assets.Scripts.UI.ViewModels.SlotViewModels;
+using Assets.Scripts.UI.ViewModels.SpaceShipSetupEditor;
 using Assets.Scripts.UI.ViewModels.SpaceShipViewModels;
 using Assets.Scripts.UI.ViewModels.WeaponViewModels;
 using UnityEngine;
@@ -18,5 +19,8 @@ namespace Assets.Scripts.Infrastructure.Ui.Factories
         UiGrid CreateUiGrid();
         WeaponTypeRowViewModel CreateWeaponTypeRowView();
         SpaceShipTypeRowViewModel CreateSpaceShipTypeRowView();
+
+        SpaceShipSetupEditViewModel CreateSpaceShipSetupEditView();
+        SpaceShipSetupViewModel CreateSpaceShipSetupRowView();
     }
 }

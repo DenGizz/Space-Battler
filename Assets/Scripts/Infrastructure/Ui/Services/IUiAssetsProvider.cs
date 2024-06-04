@@ -8,6 +8,8 @@ namespace Assets.Scripts.Infrastructure.Ui.Services
         GameObject GetPauseBattleHUDPrefab();
         GameObject GetSandboxModeUiPrefab();
         GameObject GetSpaceShipHealthViewPrefab();
+        GameObject GetSpaceShipSetupEditPrefab();
+        GameObject GetSpaceShipSetupRowPrefab();
         GameObject GetSpaceShipTypeRowPrefab();
         GameObject GetUiGridPrefab();
         GameObject GetWeaponTypeRowPrefab();
