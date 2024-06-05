@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 1190548750732393644}
   - component: {fileID: 8857156546167252510}
   - component: {fileID: 1403104691290107519}
+  - component: {fileID: 7195518609036949273}
   m_Layer: 0
   m_Name: HeavyDefender
   m_TagString: Untagged
@@ -191,3 +192,15 @@ MonoBehaviour:
   _attachmentPoints:
   - {fileID: 358477106093618161}
   - {fileID: 705690723480123722}
+--- !u!114 &7195518609036949273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8985553459634921049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71704a947411be14e90f18a6ddff63f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

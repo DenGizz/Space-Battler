@@ -4,9 +4,6 @@ namespace Assets.Scripts.AI.UnitsAI
 {
     public interface ICombatAi
     {
-        void SetTarget(ISpaceShip target);
-
-        void EnterCombatMode();
-        void ExitCombatMode();
+        ISpaceShip Target { get; set; }
     }
 }

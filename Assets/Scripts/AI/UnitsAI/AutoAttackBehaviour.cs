@@ -9,9 +9,7 @@ namespace Assets.Scripts.AI.UnitsAI
     [RequireComponent(typeof(IAttackable))]
     public class AutoAttackBehaviour : MonoBehaviour, ICombatAi, ITickable
     {
-        private ISpaceShip _target;
-        private bool _isInCombatState;
-
+        public ISpaceShip Target { get; set; }
         private IAttackable _attackable;
 
         private void Awake()
@@ -19,33 +17,18 @@ namespace Assets.Scripts.AI.UnitsAI
             _attackable = GetComponent<IAttackable>();
         }
 
-        public void SetTarget(ISpaceShip target)
-        {
-            _target = target;
-        }
-
-        public void EnterCombatMode()
-        {
-            _isInCombatState = true;
-        }
-
-        public void ExitCombatMode()
-        {
-            _isInCombatState = false;
-        }
-
         public void Tick()
         {
-            if (!_isInCombatState)
+            if(!_attackable.CanAttack)
                 return;
 
-            if (_target == null)
+            if (Target == null)
                 return;
 
-            if (!_target.Data.IsAlive)
+            if (!Target.Data.IsAlive)
                 return;
 
-            _attackable.Attack(_target);
+            _attackable.Attack(Target);
         }
     }
 }

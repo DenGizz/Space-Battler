@@ -8,6 +8,7 @@ namespace Assets.Scripts.Battles
         BattleData BattleData { get; }
         bool IsRunning { get; set; }
 
+        event Action BattleStarted;
         event EventHandler<BattleEndEventArgs> BattleEnded;
 
         void AddSpaceShipToAllyTeam(ISpaceShip spaceShip);

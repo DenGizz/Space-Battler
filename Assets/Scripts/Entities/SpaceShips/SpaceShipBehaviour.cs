@@ -16,10 +16,11 @@ namespace Assets.Scripts.Entities.SpaceShips
 
         public SpaceShipConfig Config { get; private set; }
 
+        public bool CanAttack => Data.IsAlive;
+
         public event Action<ISpaceShip> OnDeath;
 
-        [Inject]
-        public void Construct(SpaceShipData data)
+        public void SetData(SpaceShipData data)
         {
             Data = data;
             Config = _descriptor.GetSpaceShipConfig();
@@ -49,6 +50,9 @@ namespace Assets.Scripts.Entities.SpaceShips
 
         public void Attack(ISpaceShip target)
         {
+            if(!Data.IsAlive)
+                throw new Exception("Dead ships can't attack");
+
             foreach (var weapon in Data.Weapons)
                 if (weapon.CanShoot)
                     weapon.Attack(target);

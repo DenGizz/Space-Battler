@@ -12,7 +12,10 @@ namespace Assets.Scripts.Entities.Weapons
     {
         public float Damage { get; private set; }
         public float ColdDownTime { get; private set; }
-        public bool CanShoot => !_isOnColdDown;
+        public bool CanShoot => CanAttack;
+
+        public bool CanAttack => !_isOnColdDown;
+
         private bool _isOnColdDown;
 
         private float _coldDownTimeLeft;

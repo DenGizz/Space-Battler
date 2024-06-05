@@ -5,5 +5,6 @@ namespace Assets.Scripts.Entities
     public interface IAttackable
     {
         void Attack(ISpaceShip target);
+        bool CanAttack { get; }
     }
 }

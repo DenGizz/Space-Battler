@@ -14,6 +14,7 @@ namespace Assets.Scripts.Battles
         public bool IsRunning { get; set; }
 
         public event EventHandler<BattleEndEventArgs> BattleEnded;
+        public event Action BattleStarted;
 
         public BattleResult? ThisBattleResult { get; private set; }
 
@@ -56,32 +57,8 @@ namespace Assets.Scripts.Battles
             if (!BattleDataValidator.IsBattleDataValid(BattleData, out string reason))
                 throw new InvalidOperationException($"Battle data is invalid. Cannot run battle. {reason}");
 
-
-            foreach (ISpaceShip spaceShip in BattleData.AllyTeam.Members)
-            {
-                FindAndSetTargetForSpaceShip(spaceShip, BattleData.EnemyTeam.Members);
-                _combatAiRegistry.GetAi(spaceShip).EnterCombatMode();
-
-            }
-
-            foreach (ISpaceShip spaceShip in BattleData.EnemyTeam.Members)
-            {
-                FindAndSetTargetForSpaceShip(spaceShip, BattleData.AllyTeam.Members);
-                _combatAiRegistry.GetAi(spaceShip).EnterCombatMode();
-            }
-        }
-
-        private void FindAndSetTargetForSpaceShip(ISpaceShip spaceShip, IEnumerable<ISpaceShip> opponentTeamMembers)
-        {
-            ICombatAi combatAi = _combatAiRegistry.GetAi(spaceShip);
-            ISpaceShip target = GetRandomTeamMember(opponentTeamMembers);
-
-            combatAi.SetTarget(target);
-        }
-
-        private ISpaceShip GetRandomTeamMember(IEnumerable<ISpaceShip> teamMembers)
-        {
-            return teamMembers.ElementAt(UnityEngine.Random.Range(0, teamMembers.Count()));
+            IsRunning = true;
+            BattleStarted?.Invoke();
         }
 
         private void OnSpaceShipDeathEventHandler(ISpaceShip spaceShip)
