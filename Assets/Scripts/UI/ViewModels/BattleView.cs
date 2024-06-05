@@ -27,16 +27,17 @@ namespace Assets.Scripts.UI.ViewModels
             _battleData = battleData;
 
             foreach (ISpaceShip spaceShip in battleData.AllyTeam.Members)
-                CreateViewForSpaceShip(spaceShip);
+                CreateViewForSpaceShip(spaceShip, true);
 
             foreach (ISpaceShip spaceShip in battleData.EnemyTeam.Members)
-                CreateViewForSpaceShip(spaceShip);
+                CreateViewForSpaceShip(spaceShip, false);
         }
 
-        private void CreateViewForSpaceShip(ISpaceShip spaceShip)
+        private void CreateViewForSpaceShip(ISpaceShip spaceShip, bool isAllySide)
         {
             Vector2 screenPosition = Camera.main.WorldToScreenPoint(spaceShip.Data.Position); //TODO: refactor this to use a camera provider
-            HealthView healthView = _uiFactory.CreateHealthView(spaceShip, screenPosition + _viewSpawnOffset, transform);
+            Vector2 viewSpawnOffset = isAllySide ? _viewSpawnOffset : -_viewSpawnOffset;
+            HealthView healthView = _uiFactory.CreateHealthView(spaceShip, screenPosition + viewSpawnOffset, transform);
             _healthViews.Add(healthView);
         }
 

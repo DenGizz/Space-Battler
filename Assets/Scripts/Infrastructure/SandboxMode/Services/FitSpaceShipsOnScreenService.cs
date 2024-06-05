@@ -9,7 +9,7 @@ namespace Assets.Scripts.Infrastructure.SandboxMode.Services
     public class FitSpaceShipsOnScreenService : IFitSpaceShipsOnScreenService
     {
         private const float SideOffset = 100;
-        private const float VerticalOffset = 300;
+        private const float VerticalOffset = 250;
 
         public void FitSpaceShipsOnScreen(IEnumerable<ISpaceShip> spaceShips, IFitSpaceShipsOnScreenService.ScreenSide screenSide)
         {

@@ -48,4 +48,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b592c48bb88fab46b1f30b9ae76bc2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewSpawnOffset: {x: 0, y: -250}
+  _viewSpawnOffset: {x: -130, y: 0}
