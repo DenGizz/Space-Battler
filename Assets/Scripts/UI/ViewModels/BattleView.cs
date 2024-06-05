@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.Battles;
 using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Infrastructure.Ui.Factories;
@@ -12,7 +13,7 @@ namespace Assets.Scripts.UI.ViewModels
         private BattleData _battleData;
         [SerializeField] private Vector2 _viewSpawnOffset;
 
-        private List<HealthView> _healthViews = new List<HealthView>();
+        private Dictionary<ISpaceShip, HealthView> _spaceShipToHealthViewMap = new Dictionary<ISpaceShip, HealthView>();
 
         private IUiElementsFactory _uiFactory;
 
@@ -38,13 +39,22 @@ namespace Assets.Scripts.UI.ViewModels
             Vector2 screenPosition = Camera.main.WorldToScreenPoint(spaceShip.Data.Position); //TODO: refactor this to use a camera provider
             Vector2 viewSpawnOffset = isAllySide ? _viewSpawnOffset : -_viewSpawnOffset;
             HealthView healthView = _uiFactory.CreateHealthView(spaceShip, screenPosition + viewSpawnOffset, transform);
-            _healthViews.Add(healthView);
+            _spaceShipToHealthViewMap.Add(spaceShip, healthView);
+            spaceShip.OnDeath += OnSpaceShipDeathEventHandler;
         }
 
         public void Clear()
         {
-            _healthViews.ForEach(view => Destroy(view.gameObject));
-            _healthViews.Clear();
+            _spaceShipToHealthViewMap.Values.ToList().ForEach(view => Destroy(view.gameObject));
+            _spaceShipToHealthViewMap.Clear();
+        }
+
+        private void OnSpaceShipDeathEventHandler(ISpaceShip spaceShip)
+        {
+            var view = _spaceShipToHealthViewMap[spaceShip];
+            _spaceShipToHealthViewMap.Remove(spaceShip);
+            Destroy(view.gameObject);
+            spaceShip.OnDeath -= OnSpaceShipDeathEventHandler;
         }
     }
 }

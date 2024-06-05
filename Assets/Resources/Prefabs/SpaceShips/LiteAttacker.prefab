@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 8857156546167252510}
   - component: {fileID: 7582886274127649481}
   - component: {fileID: 4571170635542319868}
+  - component: {fileID: -23249780815168021}
   m_Layer: 0
   m_Name: LiteAttacker
   m_TagString: Untagged
@@ -235,5 +236,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71704a947411be14e90f18a6ddff63f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-23249780815168021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8985553459634921049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 388108058c8a357459aa2005f9dc1835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

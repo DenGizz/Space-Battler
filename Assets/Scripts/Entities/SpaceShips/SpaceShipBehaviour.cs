@@ -68,12 +68,11 @@ namespace Assets.Scripts.Entities.SpaceShips
             Data.HealthPoints -= damageAmount;
             Data.HealthPoints = Mathf.Clamp(Data.HealthPoints, 0, Config.MaxHP);
 
-            if (Data.HealthPoints <= 0)
+            if (Data.IsAlive && Data.HealthPoints <= 0)
             {
                 Data.IsAlive = false;
                 OnDeath?.Invoke(this);
-            }
-                
+            }  
         }
     }
 }

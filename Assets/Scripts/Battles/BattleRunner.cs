@@ -63,6 +63,11 @@ namespace Assets.Scripts.Battles
 
         private void OnSpaceShipDeathEventHandler(ISpaceShip spaceShip)
         {
+            if(BattleData.AllyTeam.Members.Contains(spaceShip))
+                BattleData.AllyTeam.RemoveMember(spaceShip);
+            else if(BattleData.EnemyTeam.Members.Contains(spaceShip))
+                BattleData.EnemyTeam.RemoveMember(spaceShip);
+
             CheckTeamDefeatAndEndBattle();
         }
 
