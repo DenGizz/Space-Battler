@@ -15,16 +15,18 @@ namespace Assets.Scripts.Game.GameStates
         private readonly IUiFactory _uiFactory;
         private readonly IBattleSetupProvider _battleSetupProvider;
         private readonly IPersistentDataService _persistentDataService;
+        private readonly IPopoutMessagesService _popoutMessagesService;
 
         private Ui _mainMenuUi;
 
         public MainMenuState(StateMachine stateMachine, IUiFactory uiFactory, IBattleSetupProvider battleSetupProvider, 
-            IPersistentDataService persistentDataService)
+            IPersistentDataService persistentDataService, IPopoutMessagesService popoutMessagesService)
         {
             _stateMachine = stateMachine;
             _uiFactory = uiFactory;
             _battleSetupProvider = battleSetupProvider;
             _persistentDataService = persistentDataService;
+            _popoutMessagesService = popoutMessagesService;
         }
 
 
@@ -42,6 +44,12 @@ namespace Assets.Scripts.Game.GameStates
 
         private void OnGameStateChangeUiEventHandler(GameStateChangeEvent @event)
         {
+            if(@event == GameStateChangeEvent.EnterStoryMode)
+            {
+                _popoutMessagesService.SendMessage("Story mode is not available yet");
+                return;
+            }
+
             if (@event != GameStateChangeEvent.EnterSandboxMode)
                 return;
 
