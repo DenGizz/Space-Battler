@@ -1,5 +1,6 @@
 using Assets.Scripts.Entities.Projectiles.ProjectileBehaviours;
 using Assets.Scripts.Entities.SpaceShips;
+using Assets.Scripts.ExtensionMethods;
 using Assets.Scripts.Infrastructure.Gameplay.Services;
 using Assets.Scripts.ScriptableObjects;
 using UnityEngine;
@@ -60,6 +61,11 @@ namespace Assets.Scripts.Entities.Weapons
         private void StartColdDown(float time)
         {
             _coldDownTimeLeft = time;
+        }
+
+        public void Aim(Vector3 position)
+        {
+            transform.LookAt2D(position);
         }
     }
 }

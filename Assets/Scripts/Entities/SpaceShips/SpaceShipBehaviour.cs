@@ -55,7 +55,10 @@ namespace Assets.Scripts.Entities.SpaceShips
 
             foreach (var weapon in Data.Weapons)
                 if (weapon.CanShoot)
+                {
+                    weapon.Aim(target.Data.Position);
                     weapon.Attack(target);
+                }
         }
 
         public void RemoveWeapon(IWeapon weapon)
