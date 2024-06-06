@@ -6,11 +6,14 @@ using Assets.Scripts.UI.Validations;
 using Assets.Scripts.UI.ViewModels.SpaceShipSetupEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Assets.Scripts.UI.UiScreens.SandboxModeUiScreens
 {
     public class SetupSandboxBattleUiScreen : UiScreen, IGameStateChangeEventSource
     {
+        private IPopoutMessagesService _popoutMessagesService;
+
         public event Action<GameStateChangeEvent> OnGameStateChangeEvent;
 
         [SerializeField] private BattleTeamSetupEditor _allyBattleTeamSetupEditor;
@@ -20,6 +23,12 @@ namespace Assets.Scripts.UI.UiScreens.SandboxModeUiScreens
         [SerializeField] private Button _backButton;
 
         private BattleSetup _battleSetup;
+
+        [Inject]
+        public void Construct(IPopoutMessagesService popoutMessagesService)
+        {
+            _popoutMessagesService = popoutMessagesService;
+        }
 
         public override void Setup(Ui ui)
         {
@@ -41,7 +50,7 @@ namespace Assets.Scripts.UI.UiScreens.SandboxModeUiScreens
         {
             if(!SandboxBattleEditorValidator.IsBattleSetupValidForBattle(_battleSetup, out string message))
             {
-                Debug.Log(message);
+                _popoutMessagesService.SendMessage(message);
                 return;
             }
 

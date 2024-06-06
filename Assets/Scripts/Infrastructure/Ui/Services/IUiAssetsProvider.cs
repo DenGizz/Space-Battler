@@ -6,6 +6,8 @@ namespace Assets.Scripts.Infrastructure.Ui.Services
     {
         GameObject GetMainMenuUiPrefab();
         GameObject GetPauseBattleHUDPrefab();
+        GameObject GetPopoutMessagePrefab();
+        GameObject GetPopoutMessagesOverlayPrefab();
         GameObject GetSandboxModeUiPrefab();
         GameObject GetSpaceShipHealthViewPrefab();
         GameObject GetSpaceShipSetupEditPrefab();

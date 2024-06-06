@@ -20,3 +20,4 @@ MonoBehaviour:
   _spaceShipTypeRowPrefab: {fileID: 8838903670917225623, guid: f23a988ba79c95841976e61a3c7adc0e, type: 3}
   _spaceShipSetupEditPrefab: {fileID: 6270324061718853438, guid: e7f0320762bc9d6438a7e0935d85bcb1, type: 3}
   _spaceShipSetupRowPrefab: {fileID: 982068873312117090, guid: 6fb233b4baf24be46b0b951ec7ee2a0d, type: 3}
+  _popoutMessagePrefab: {fileID: 8539310105152635375, guid: eb91fde21e0f9484498d65817164e11a, type: 3}

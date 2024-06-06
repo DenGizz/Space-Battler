@@ -11,6 +11,7 @@ namespace Assets.Scripts.Infrastructure.Ui.Installers
     {
         public override void InstallBindings()
         {
+            Container.Bind<IPopoutMessagesService>().To<PopoutMessagesService>().AsSingle();
             Container.Bind<IHUDFactory>().To<HUDFactory>().AsSingle();
             Container.Bind<IHUDsProvider>().To<HUDsProvider>().AsSingle();
             Container.Bind<IUisProvider>().To<UisProvider>().AsSingle();

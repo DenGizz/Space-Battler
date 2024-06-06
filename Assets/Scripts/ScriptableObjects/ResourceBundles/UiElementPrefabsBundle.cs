@@ -11,9 +11,10 @@ namespace Assets.Scripts.ScriptableObjects.ResourceBundles
         public GameObject UiGridPrefab => _uiGridPrefab;
         public GameObject WeaponTypeRowPrefab => _weaponTypeRowPrefab;
         public GameObject SpaceShipTypeRowPrefab => _spaceShipTypeRowPrefab;
-
         public GameObject SpaceShipSetupEditPrefab => _spaceShipSetupEditPrefab;
         public GameObject SpaceShipSetupRowPrefab => _spaceShipSetupRowPrefab;
+        public GameObject PopoutMessagePrefab => _popoutMessagePrefab;
+        public GameObject PopoutMessagesOverlayPrefab => _popoutMessagesOverlayPrefab;
 
         [SerializeField] private GameObject _spaceShipHealthViewPrefab;
         [SerializeField] private GameObject _windowPrefab;
@@ -23,5 +24,7 @@ namespace Assets.Scripts.ScriptableObjects.ResourceBundles
         [SerializeField] private GameObject _spaceShipTypeRowPrefab;
         [SerializeField] private GameObject _spaceShipSetupEditPrefab;
         [SerializeField] private GameObject _spaceShipSetupRowPrefab;
+        [SerializeField] private GameObject _popoutMessagePrefab;
+        [SerializeField] private GameObject _popoutMessagesOverlayPrefab;
     }
 }

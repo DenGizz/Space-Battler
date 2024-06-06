@@ -1,6 +1,7 @@
 ﻿using System;
 using Assets.Scripts.Infrastructure.Core.Services;
 using Assets.Scripts.Infrastructure.Ui.Services;
+using Assets.Scripts.UI.OverlayScreens;
 using UnityEngine;
 using Zenject;
 
@@ -19,10 +20,26 @@ namespace Assets.Scripts.Infrastructure.Ui.Factories
             _rootTransformsProvider = rootTransformsProvider;
         }
 
-        public global::Assets.Scripts.UI.Uis.Ui CreateMainMenuUi()
+        public UiScreenOverlay CreateLoadingOverlay()
+        {
+            throw new NotImplementedException();
+        }
+
+        public UI.Uis.Ui CreateMainMenuUi()
         {
             GameObject prefab = _uiAssetsProvider.GetMainMenuUiPrefab();
             return InstantiateAndInitializeUiFromPrefab(prefab);
+        }
+
+        public PopoutMessagesUiScreenOverlay CreatePopoutMessagesOverlay()
+        {
+            GameObject prefab = _uiAssetsProvider.GetPopoutMessagesOverlayPrefab();
+            Transform parentTransform = _rootTransformsProvider.UIRoot;
+            GameObject instance = _instantiator.InstantiatePrefab(prefab, parentTransform);
+            instance.transform.SetAsLastSibling();
+            GameObject.DontDestroyOnLoad(instance);
+            PopoutMessagesUiScreenOverlay popoutMessagesUiScreenOverlay = instance.GetComponent<PopoutMessagesUiScreenOverlay>();
+            return popoutMessagesUiScreenOverlay;
         }
 
         public global::Assets.Scripts.UI.Uis.Ui CreateSandboxBattleUi()

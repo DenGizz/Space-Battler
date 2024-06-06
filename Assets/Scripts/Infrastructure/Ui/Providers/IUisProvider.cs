@@ -1,7 +1,12 @@
-﻿namespace Assets.Scripts.Infrastructure.Ui.Providers
+﻿using Assets.Scripts.UI.OverlayScreens;
+
+namespace Assets.Scripts.Infrastructure.Ui.Providers
 {
     public interface IUisProvider
     {
-        global::Assets.Scripts.UI.Uis.Ui SandboxModeUi { get; set; }
+        UI.Uis.Ui SandboxModeUi { get; set; }
+
+        UiScreenOverlay LoadingOverlay { get; set; }
+        PopoutMessagesUiScreenOverlay PopoutMessagesOverlay { get; set; }
     }
 }

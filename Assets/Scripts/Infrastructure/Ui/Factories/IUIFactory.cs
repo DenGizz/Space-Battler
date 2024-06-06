@@ -1,8 +1,13 @@
-﻿namespace Assets.Scripts.Infrastructure.Ui.Factories
+﻿using Assets.Scripts.UI.OverlayScreens;
+
+namespace Assets.Scripts.Infrastructure.Ui.Factories
 {
     public interface IUiFactory
     {
-        global::Assets.Scripts.UI.Uis.Ui CreateMainMenuUi();
-        global::Assets.Scripts.UI.Uis.Ui CreateSandboxBattleUi();
+        UI.Uis.Ui CreateMainMenuUi();
+        UI.Uis.Ui CreateSandboxBattleUi();
+
+        UiScreenOverlay CreateLoadingOverlay();
+        PopoutMessagesUiScreenOverlay CreatePopoutMessagesOverlay();
     }
 }

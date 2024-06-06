@@ -30,7 +30,7 @@ namespace Assets.Scripts.Game.GameStates
 
             LoadOrCreateBattleSetup();
             LoadOrCreateProgress();
-            _stateMachine.EnterState<LoadMainMenuSceneState>();
+            _stateMachine.EnterState<CreateUiOverlaysState>();
         }
 
         public void Exit()

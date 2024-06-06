@@ -3,6 +3,7 @@ using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using Assets.Scripts.Infrastructure.Core.Services;
 using Assets.Scripts.Infrastructure.Ui.Services;
+using Assets.Scripts.UI.PopoutMessages;
 using Assets.Scripts.UI.UiElements;
 using Assets.Scripts.UI.ViewModels;
 using Assets.Scripts.UI.ViewModels.SlotViewModels;
@@ -36,6 +37,13 @@ namespace Assets.Scripts.Infrastructure.Ui.Factories
             HealthView view = healthView.GetComponent<HealthView>();
             view.SetSpaceShip(spaceShip);
             return view;
+        }
+
+        public PopoutMessageViewModel CreatePopoutMessage()
+        {
+            GameObject prefab = _uiAssetsProvider.GetPopoutMessagePrefab();
+            GameObject popoutMessage = _instantiator.InstantiatePrefab(prefab, _rootTransformsProvider.UIRoot);
+            return popoutMessage.GetComponent<PopoutMessageViewModel>();
         }
 
         public SpaceShipSetupEditViewModel CreateSpaceShipSetupEditView()

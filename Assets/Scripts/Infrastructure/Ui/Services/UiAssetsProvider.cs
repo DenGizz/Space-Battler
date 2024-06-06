@@ -101,5 +101,15 @@ namespace Assets.Scripts.Infrastructure.Ui.Services
         {
             return GetOrLoadAndGetUiElementPrefabsBundle().SpaceShipSetupRowPrefab;
         }
+
+        public GameObject GetPopoutMessagePrefab()
+        {
+            return GetOrLoadAndGetUiElementPrefabsBundle().PopoutMessagePrefab;
+        }
+
+        public GameObject GetPopoutMessagesOverlayPrefab()
+        {
+            return GetOrLoadAndGetUiElementPrefabsBundle().PopoutMessagesOverlayPrefab;
+        }
     }
 }
