@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1373038965973714221}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -2.26, z: 0}
+  m_LocalPosition: {x: -2.66, y: -2.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -62,7 +62,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6111062016989170146}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3154594320274275818
+--- !u!1 &1810426301055827142
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8414961247245143409}
+  - component: {fileID: 6190656207848394142}
   m_Layer: 0
   m_Name: Weapon Point (2)
   m_TagString: Untagged
@@ -78,16 +78,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8414961247245143409
+--- !u!4 &6190656207848394142
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3154594320274275818}
+  m_GameObject: {fileID: 1810426301055827142}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: -2.26, z: 0}
+  m_LocalPosition: {x: -2.66, y: 2.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -130,7 +130,7 @@ Transform:
   m_Children:
   - {fileID: 9216249188077533929}
   - {fileID: 9151502007397713709}
-  - {fileID: 8414961247245143409}
+  - {fileID: 6190656207848394142}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3970182284383701996
@@ -225,7 +225,7 @@ MonoBehaviour:
   _attachmentPoints:
   - {fileID: 9216249188077533929}
   - {fileID: 9151502007397713709}
-  - {fileID: 8414961247245143409}
+  - {fileID: 6190656207848394142}
 --- !u!114 &4571170635542319868
 MonoBehaviour:
   m_ObjectHideFlags: 0

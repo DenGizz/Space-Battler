@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets.Scripts.Entities.SpaceShips;
+using Assets.Scripts.ExtensionMethods;
 using Assets.Scripts.ScriptableObjects;
 using UnityEngine;
 using Zenject;
@@ -28,6 +29,7 @@ namespace Assets.Scripts.Entities.Projectiles.ProjectileBehaviours
             Data.Target = target;
             Data.IsLaunched = true;
             Data.Damage = damage;
+            transform.LookAt2D(Data.Target.Data.Position);
             OnLaunched?.Invoke();
         }
 

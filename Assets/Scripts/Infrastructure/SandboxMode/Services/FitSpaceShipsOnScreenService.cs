@@ -15,8 +15,8 @@ namespace Assets.Scripts.Infrastructure.SandboxMode.Services
         {
             float zRotation = screenSide switch
             {
-                IFitSpaceShipsOnScreenService.ScreenSide.Left => -90,
-                IFitSpaceShipsOnScreenService.ScreenSide.Right => 90,
+                IFitSpaceShipsOnScreenService.ScreenSide.Left => 0,
+                IFitSpaceShipsOnScreenService.ScreenSide.Right => -180,
                 _ => throw new ArgumentOutOfRangeException(nameof(screenSide), screenSide, null)
             };
 
