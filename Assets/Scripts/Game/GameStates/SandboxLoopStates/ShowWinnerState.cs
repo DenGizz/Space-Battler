@@ -31,7 +31,10 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
             _hudsProvider.PauseBattleHUD = null;
             BattleRunner battleRunner = _battleRunnerProvider.CurrentBattleRunner;
 
-            _uisProvider.SandboxModeUi.GoToScreen<SandboxBattleEndStatsUiScreen>();
+            _uisProvider.SandboxModeUi
+                .GoToScreen<SandboxBattleEndStatsUiScreen>()
+                .SetBattleResult(battleRunner.ThisBattleResult.Value);
+
             _uisProvider.SandboxModeUi.OnGameStateChangeEvent += OnReturnMainMenuButtonPressedEventHandler;
         }
 

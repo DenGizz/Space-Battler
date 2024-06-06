@@ -85,7 +85,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &2738822689655930891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _returnToEditorButton: {fileID: 2650598530933810044}
+  _battleWinnerViewModel: {fileID: 7410408978638040994}
 --- !u!1001 &6547875132754702314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -241,5 +242,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7410408978638040994 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4326189069074743368, guid: c97a03617d59da8459e27b8a3155b641, type: 3}
+  m_PrefabInstance: {fileID: 6547875132754702314}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b35dec1a05b40a747a8b61ed1f770ae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

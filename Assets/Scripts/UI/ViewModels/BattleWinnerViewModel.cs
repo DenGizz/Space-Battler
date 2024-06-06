@@ -11,26 +11,16 @@ namespace Assets.Scripts.UI.ViewModels
     public class BattleWinnerViewModel : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _winnerNameText;
-        [SerializeField] private TextMeshProUGUI _winLoseStatisticText;
         [SerializeField] private Button _returnToMainMenuButton;
 
-        [SerializeField] string winText = "You win!";
-        [SerializeField] string loseText = "You lose!";
+        [SerializeField] string winText = "Ally team won";
+        [SerializeField] string loseText = "Ally team lost";
 
         public event Action OnReturnMainMenuButtonPressed;
-
-        private IProgressProvider _progressProvider;
-
-        [Inject]
-        public void Construct(IProgressProvider progressProvider)
-        {
-            _progressProvider = progressProvider;
-        }
 
         public void SetWinner(BattleResult battleResult)
         {
             _winnerNameText.text = battleResult == BattleResult.AllyTeamWin ? winText : loseText;
-            _winLoseStatisticText.text = $"Wins: {_progressProvider.PlayerProgressData.BattlesWon}. Loses: {_progressProvider.PlayerProgressData.BattlesLost}";
         }
 
         private void Awake()
