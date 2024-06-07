@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Battles;
+﻿using Assets.Scripts.AI.AiStrategies;
+using Assets.Scripts.Battles;
 using Assets.Scripts.Entities;
 using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Infrastructure.SandboxMode.Services;
@@ -18,10 +19,15 @@ namespace Assets.Scripts.AI.UnitsAI
         private ISpaceShip _spaceShip;
         private BattleTeam _opponentTeam;
 
+        private ISelectTargetStrategy _selectTargetStrategy;
+        private IUpdateTargetStrategy _updateTargetStrategy;
+
         [Inject]
         public void Construct(IBattleRunnerProvider battleRunnerProvider)
         {
             _battleRunnerProvider = battleRunnerProvider;
+            _selectTargetStrategy = new SelectRandomTargetStrategy();
+            _updateTargetStrategy = new UpdateTargetWhenItsDeadOrNullStrategy();
         }
 
         public void Awake()
@@ -38,20 +44,8 @@ namespace Assets.Scripts.AI.UnitsAI
             if (_opponentTeam == null)
                 FindOpponentTeam();
 
-            _combatAi.Target = FindTarget();
-        }
-
-        private ISpaceShip FindTarget()
-        {
-            return SelectRandomSpaceShip(_opponentTeam.Members);
-        }
-
-        private ISpaceShip SelectRandomSpaceShip(IEnumerable<ISpaceShip> spaceShips)
-        {
-            if (spaceShips == null || spaceShips.Count() == 0)
-                return null;
-
-            return spaceShips.ElementAt(UnityEngine.Random.Range(0, spaceShips.Count()));
+            if (_updateTargetStrategy.IsNeedToFindNewTarget(_combatAi.Target))
+                _combatAi.Target = _selectTargetStrategy.SelectTarget(_opponentTeam.Members);
         }
 
         private void FindOpponentTeam()
