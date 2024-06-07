@@ -11,7 +11,7 @@ using Zenject;
 namespace Assets.Scripts.AI.UnitsAI
 {
     [RequireComponent(typeof(ICombatAi), typeof(ISpaceShip))]
-    public class InBattleEnemySearchAi : MonoBehaviour, ITickable
+    public class TeamBattleAi : MonoBehaviour, ITickable
     {
         private ICombatAi _combatAi;
         private IBattleRunnerProvider _battleRunnerProvider;

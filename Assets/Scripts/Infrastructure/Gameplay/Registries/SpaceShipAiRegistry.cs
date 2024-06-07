@@ -4,7 +4,7 @@ using Assets.Scripts.Entities.SpaceShips;
 
 namespace Assets.Scripts.Infrastructure.Gameplay.Registries
 {
-    public class CombatAIRegistry : ICombatAiRegistry
+    public class SpaceShipAiRegistry : ISpaceShipAiRegistry
     {
         public IEnumerable<ICombatAi> CombatAIs => _combatAis.Values;
 

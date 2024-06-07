@@ -18,12 +18,12 @@ namespace Assets.Scripts.Battles
 
         public BattleResult? ThisBattleResult { get; private set; }
 
-        private readonly ICombatAiRegistry _combatAiRegistry;
+        private readonly ISpaceShipAiRegistry _spaceShipAiRegistry;
         private readonly IFitSpaceShipsOnScreenService _fitSpaceShipsOnScreenService;
 
-        public BattleRunner(BattleData battleData, ICombatAiRegistry combatAiRegistry, IFitSpaceShipsOnScreenService fitSpaceShipsOnScreenService)
+        public BattleRunner(BattleData battleData, ISpaceShipAiRegistry spaceShipAiRegistry, IFitSpaceShipsOnScreenService fitSpaceShipsOnScreenService)
         {
-            _combatAiRegistry = combatAiRegistry;
+            _spaceShipAiRegistry = spaceShipAiRegistry;
             _fitSpaceShipsOnScreenService = fitSpaceShipsOnScreenService;
             BattleData = battleData;
         }

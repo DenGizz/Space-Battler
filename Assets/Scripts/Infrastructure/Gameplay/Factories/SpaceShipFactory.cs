@@ -12,7 +12,7 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
     public class SpaceShipFactory : ISpaceShipFactory
     {
         private readonly IAssetsProvider _assetsProvider;
-        private readonly ICombatAiRegistry _combatAiRegistry;
+        private readonly ISpaceShipAiRegistry _spaceShipAiRegistry;
         private readonly IGameObjectRegistry _gameObjectRegistry;
         private readonly IRootTransformsProvider _rootTransformsProvider;
         private readonly IBattleTickService _battleTickService;
@@ -20,12 +20,12 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
 
         [Inject]
         public SpaceShipFactory(IAssetsProvider assetsProvider, 
-            ICombatAiRegistry combatAiRegistry, IGameObjectRegistry gameObjectRegistry, 
+            ISpaceShipAiRegistry spaceShipAiRegistry, IGameObjectRegistry gameObjectRegistry, 
             IRootTransformsProvider rootTransformsProvider,
             IBattleTickService battleTickService, IInstantiator instantiator)
         {
             _assetsProvider = assetsProvider;
-            _combatAiRegistry = combatAiRegistry;
+            _spaceShipAiRegistry = spaceShipAiRegistry;
             _gameObjectRegistry = gameObjectRegistry;
             _rootTransformsProvider = rootTransformsProvider;
             _battleTickService = battleTickService;//TODO: Bring battle tick service registration to another place
@@ -47,7 +47,7 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
             ISpaceShip spaceShip = spaceShipComponent;
             ICombatAi combatAi = gameObject.GetComponent<ICombatAi>();
 
-            _combatAiRegistry.RegisterAi(spaceShip, combatAi);
+            _spaceShipAiRegistry.RegisterAi(spaceShip, combatAi);
             _gameObjectRegistry.RegisterSpaceShipGameObject(spaceShip, gameObject);
 
             return spaceShip;
