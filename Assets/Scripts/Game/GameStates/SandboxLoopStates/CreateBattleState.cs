@@ -15,27 +15,30 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
         private readonly IBattleSetupProvider _battleSetupProvider;
         private readonly IBattleSetupsShrinkService _battleSetupsShrinkService;
         private readonly IBattleRunnerProvider _battleRunnerProvider;
-        private readonly IBattleRunnerFactory _battleRunnerFactory;
         private readonly IUisProvider _uisProvider;
+        private readonly IAiAssignService _aiAssignService;
 
         private readonly StateMachine _stateMachine;
 
         public CreateBattleState(StateMachine stateMachine,
             IBattleSetupProvider battleSetupProvider, IBattleSetupsShrinkService battleSetupsShrinkService, 
-            IBattleRunnerProvider battleRunnerProvider, IBattleRunnerFactory battleRunnerFactory, IUisProvider uisProvider)
+            IBattleRunnerProvider battleRunnerProvider, IUisProvider uisProvider, IAiAssignService aiAssignService)
         {
             _stateMachine = stateMachine;
             _battleSetupProvider = battleSetupProvider;
             _battleSetupsShrinkService = battleSetupsShrinkService;
             _battleRunnerProvider = battleRunnerProvider;
-            _battleRunnerFactory = battleRunnerFactory;
             _uisProvider = uisProvider;
+            _aiAssignService = aiAssignService;
         }
 
         public void Enter()
         {
             BattleSetup battleSetup = _battleSetupProvider.BattleSetup;
             BattleRunner battleRunner = _battleSetupsShrinkService.UnShrinkBattleSetup(battleSetup);
+
+            AssignAiToShips(battleRunner);
+
             _battleRunnerProvider.CurrentBattleRunner = battleRunner;
             _uisProvider.SandboxModeUi
                 .GoToScreen<SandboxBattleViewUiScreen>()
@@ -48,6 +51,15 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
         public void Exit()
         {
 
+        }
+
+        private void AssignAiToShips(BattleRunner battleRunner)
+        {
+            foreach (ISpaceShip ship in battleRunner.BattleData.EnemyTeam.Members)
+                _aiAssignService.AssignTeamBattleAi(ship, battleRunner.BattleData.EnemyTeam, battleRunner.BattleData.AllyTeam);
+
+            foreach (ISpaceShip ship in battleRunner.BattleData.AllyTeam.Members)
+                _aiAssignService.AssignTeamBattleAi(ship, battleRunner.BattleData.AllyTeam, battleRunner.BattleData.EnemyTeam);
         }
     }
 }

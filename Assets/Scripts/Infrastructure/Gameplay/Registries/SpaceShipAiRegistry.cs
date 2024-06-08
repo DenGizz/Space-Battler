@@ -1,39 +1,28 @@
-﻿using System.Collections.Generic;
-using Assets.Scripts.AI.UnitsAI;
+﻿using Assets.Scripts.AI;
 using Assets.Scripts.Entities.SpaceShips;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.Infrastructure.Gameplay.Registries
 {
     public class SpaceShipAiRegistry : ISpaceShipAiRegistry
     {
-        public IEnumerable<ICombatAi> CombatAIs => _combatAis.Values;
+        public IEnumerable<ISpaceSipAi> SpaceShipAis => _spaceShipAis.Values;
 
-        private readonly Dictionary<ISpaceShip, ICombatAi> _combatAis = new Dictionary<ISpaceShip, ICombatAi>();
+        private readonly Dictionary<ISpaceShip, ISpaceSipAi> _spaceShipAis = new();
 
-        public ICombatAi GetAi(ISpaceShip spaceShip)
+        public ISpaceSipAi GetAi(ISpaceShip spaceShip)
         {
-            return _combatAis.ContainsKey(spaceShip) ? _combatAis[spaceShip] : null;
+            return _spaceShipAis[spaceShip];
         }
 
-        public void RegisterAi(ISpaceShip spaceShip, ICombatAi combatAi)
-        {     
-            if (_combatAis.ContainsKey(spaceShip))
-            {
-                _combatAis[spaceShip] = combatAi;
-            }
-            else
-            {
-                _combatAis.Add(spaceShip, combatAi);
-            }
+        public void RegisterAi(ISpaceShip spaceShip, ISpaceSipAi combatAi)
+        {
+            _spaceShipAis.Add(spaceShip, combatAi);
         }
 
         public void UnRegisterAi(ISpaceShip spaceShip)
         {
-            
-            if (_combatAis.ContainsKey(spaceShip))
-            {
-                _combatAis.Remove(spaceShip);
-            }
+            _spaceShipAis.Remove(spaceShip);
         }
     }
 }
