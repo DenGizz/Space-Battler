@@ -17,6 +17,8 @@ namespace Assets.Scripts.AI.UnitsAI
         private ICombatAi _combatAi;
         private IBattleRunnerProvider _battleRunnerProvider;
         private ISpaceShip _spaceShip;
+
+        private BattleTeam _team;
         private BattleTeam _opponentTeam;
 
         private ISelectTargetStrategy _selectTargetStrategy;
@@ -57,9 +59,15 @@ namespace Assets.Scripts.AI.UnitsAI
             BattleTeam enemyTeam = _battleRunnerProvider.CurrentBattleRunner.BattleData.EnemyTeam;
 
             if (allyTeam.Members.Contains(_spaceShip))
+            {
+                _team = allyTeam;
                 _opponentTeam = enemyTeam;
+            }
             else if (enemyTeam.Members.Contains(_spaceShip))
+            {
+                _team = enemyTeam;
                 _opponentTeam = allyTeam;
+            }
             else
                 throw new InvalidOperationException("Space ship is not a member of any team in current battle.");
         }
