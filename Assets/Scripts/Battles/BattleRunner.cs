@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.AI.UnitsAI;
 using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Infrastructure.Gameplay.Registries;
 using Assets.Scripts.Infrastructure.SandboxMode.Services;
@@ -17,10 +18,12 @@ namespace Assets.Scripts.Battles
 
         public BattleResult? ThisBattleResult { get; private set; }
 
+        private readonly ISpaceShipAiRegistry _spaceShipAiRegistry;
         private readonly IFitSpaceShipsOnScreenService _fitSpaceShipsOnScreenService;
 
-        public BattleRunner(BattleData battleData,  IFitSpaceShipsOnScreenService fitSpaceShipsOnScreenService)
+        public BattleRunner(BattleData battleData, ISpaceShipAiRegistry spaceShipAiRegistry, IFitSpaceShipsOnScreenService fitSpaceShipsOnScreenService)
         {
+            _spaceShipAiRegistry = spaceShipAiRegistry;
             _fitSpaceShipsOnScreenService = fitSpaceShipsOnScreenService;
             BattleData = battleData;
         }
