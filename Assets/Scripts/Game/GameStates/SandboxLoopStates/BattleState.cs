@@ -14,7 +14,7 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
     public class BattleState : IState
     {
         private readonly IUiElementsFactory _uiFactory;
-        private readonly IBattleTickService _battleTickService;
+        private readonly IGameplayTickService _gameplayTickService;
         private readonly IBattleRunnerProvider _battleRunnerProvider;
         private readonly IProgressProvider _progressProvider;
         private readonly IPersistentDataService _persistentDataService;
@@ -25,12 +25,12 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
         private BattleRunner _battleRunner;
 
         public BattleState(StateMachine gameStateMachine, 
-            IUiElementsFactory uiFactory, IBattleTickService battleTickService,
+            IUiElementsFactory uiFactory, IGameplayTickService gameplayTickService,
             IBattleRunnerProvider battleRunnerProvider, IProgressProvider progressProvider, IPersistentDataService persistentDataService, IHUDsProvider hudsProvider, IHUDFactory hudFactory)
         {
             _gameStateMachine = gameStateMachine;
             _uiFactory = uiFactory;
-            _battleTickService = battleTickService;
+            _gameplayTickService = gameplayTickService;
             _battleRunnerProvider = battleRunnerProvider;
             _progressProvider = progressProvider;
             _persistentDataService = persistentDataService;
@@ -43,7 +43,7 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
             _battleRunner = _battleRunnerProvider.CurrentBattleRunner;
             _battleRunner.RunBattle();
             _hudsProvider.PauseBattleHUD = _hudFactory.CreatePauseBattleHUD();
-            _battleTickService.IsPaused = false;
+            _gameplayTickService.IsPaused = false;
             _battleRunner.BattleEnded += OnBattleEndedEventHandler;
         }
 
@@ -63,13 +63,13 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
 
         private void OnPauseContinueButtonClicked()
         {
-            _battleTickService.IsPaused = !_battleTickService.IsPaused;
+            _gameplayTickService.IsPaused = !_gameplayTickService.IsPaused;
         }
 
         private void StopBattle()
         {
-            _battleTickService.IsPaused = true;
-            _battleTickService.IsPaused = true;
+            _gameplayTickService.IsPaused = true;
+            _gameplayTickService.IsPaused = true;
         }
 
         private void UpdateAndSaveProgress(BattleResult battleResult)

@@ -12,18 +12,18 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
         private readonly IStaticDataService _staticDataService;
         private readonly IInstantiator _instantiator;
         private readonly IRootTransformsProvider _rootTransformsProvider;
-        private readonly IBattleTickService _battleTickService;
+        private readonly IGameplayTickService _gameplayTickService;
         private readonly IProjectilesRegister _projectilesRegister;
         private readonly IGameObjectRegistry _gameObjectRegistry;
 
         public ProjectileFactory(IStaticDataService staticDataService, IInstantiator instantiator,
-            IRootTransformsProvider rootTransformsProvider, IBattleTickService battleTickService, 
+            IRootTransformsProvider rootTransformsProvider, IGameplayTickService gameplayTickService, 
             IProjectilesRegister projectilesRegister, IGameObjectRegistry gameObjectRegistry)
         {
             _staticDataService = staticDataService;
             _instantiator = instantiator;
             _rootTransformsProvider = rootTransformsProvider;
-            _battleTickService = battleTickService;
+            _gameplayTickService = gameplayTickService;
             _projectilesRegister = projectilesRegister;
             _gameObjectRegistry = gameObjectRegistry;
         }
@@ -36,7 +36,8 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
             GameObject projectileGO = _instantiator.InstantiatePrefab(projectilePrefab, position,
                 Quaternion.Euler(0, 0, zRotation), _rootTransformsProvider.ProjectilesRoot);
 
-            _battleTickService.RegisterGameObjectTickables(projectileGO);
+            ITickable[] tickables = projectileGO.GetComponents<ITickable>();
+            _gameplayTickService.AddTickable(tickables);
 
             ProjectileBehaviour projectileBehaviour = projectileGO.GetComponent<ProjectileBehaviour>();
             ProjectileData projectileData = new ProjectileData(position);

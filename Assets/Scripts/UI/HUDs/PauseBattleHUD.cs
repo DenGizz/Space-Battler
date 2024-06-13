@@ -14,32 +14,32 @@ namespace Assets.Scripts.UI.HUDs
 
         [SerializeField] private Button _pauseButton;
 
-        private IBattleTickService _battleTickService;
+        private IGameplayTickService _gameplayTickService;
         private TextMeshProUGUI buttonText;
 
         [Inject]
-        public void Construct(IBattleTickService battleTickService)
+        public void Construct(IGameplayTickService gameplayTickService)
         {
-            _battleTickService = battleTickService;
+            _gameplayTickService = gameplayTickService;
         }
 
         private void Awake()
         {
-            _battleTickService.OnPauseOrResume += OnPausedOrResumed;
+            _gameplayTickService.OnPauseOrResume += OnPausedOrResumed;
 
             buttonText = _pauseButton.GetComponentInChildren<TextMeshProUGUI>();
-            buttonText.text = _battleTickService.IsPaused ? ResumeButtonText : PauseButtonText;
+            buttonText.text = _gameplayTickService.IsPaused ? ResumeButtonText : PauseButtonText;
             _pauseButton.onClick.AddListener(OnButtonClicked);
         }
 
         private void OnButtonClicked()
         {
-            _battleTickService.IsPaused = !_battleTickService.IsPaused;
+            _gameplayTickService.IsPaused = !_gameplayTickService.IsPaused;
         }
 
         private void OnPausedOrResumed()
         {
-            buttonText.text = _battleTickService.IsPaused ? ResumeButtonText : PauseButtonText;
+            buttonText.text = _gameplayTickService.IsPaused ? ResumeButtonText : PauseButtonText;
         }
     }
 }

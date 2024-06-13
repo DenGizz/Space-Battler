@@ -10,15 +10,15 @@ namespace Assets.Scripts.Infrastructure.Gameplay.GameObjectDestroyers
     {
         private readonly IGameObjectRegistry _gameObjectRegistry;
         private readonly IProjectilesRegister _projectilesRegister;
-        private readonly IBattleTickService _battleTickService;
+        private readonly IGameplayTickService _gameplayTickService;
 
 
         [Inject]
-        public ProjectileDestroyer(IGameObjectRegistry gameObjectRegistry, IProjectilesRegister projectilesRegister, IBattleTickService battleTickService)
+        public ProjectileDestroyer(IGameObjectRegistry gameObjectRegistry, IProjectilesRegister projectilesRegister, IGameplayTickService gameplayTickService)
         {
             _gameObjectRegistry = gameObjectRegistry;
             _projectilesRegister = projectilesRegister;
-            _battleTickService = battleTickService;
+            _gameplayTickService = gameplayTickService;
         }
 
         public void Destroy(ProjectileBehaviour projectile)
@@ -27,7 +27,9 @@ namespace Assets.Scripts.Infrastructure.Gameplay.GameObjectDestroyers
 
             _projectilesRegister.UnRegisterProjectile(projectile);
             _gameObjectRegistry.UnRegisterGameObject(gameObject);
-            _battleTickService.UnRegisterGameObjectTickables(gameObject);
+
+            ITickable[] tickables = gameObject.GetComponents<ITickable>();
+            _gameplayTickService.RemoveTickable(tickables);
 
             Object.Destroy(gameObject);
         }

@@ -3,6 +3,7 @@ using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using Assets.Scripts.Infrastructure.Core.Services;
 using Assets.Scripts.Infrastructure.Core.Services.AssetProviders;
 using Assets.Scripts.Infrastructure.Gameplay.Registries;
+using Assets.Scripts.Infrastructure.SandboxMode.Services;
 using UnityEngine;
 using Zenject;
 
@@ -12,14 +13,14 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
     {
         private readonly IAssetsProvider _assetsProvider;
         private readonly IGameObjectRegistry _gameObjectRegistry;
-        private readonly IBattleTickService _battleTickService;
+        private readonly IGameplayTickService _gameplayTickService;
         private readonly IInstantiator _instantiator;
 
-        public WeaponFactory(IAssetsProvider assetsProvider, IGameObjectRegistry gameObjectRegistry, IBattleTickService battleTickService, IInstantiator instantiator)
+        public WeaponFactory(IAssetsProvider assetsProvider, IGameObjectRegistry gameObjectRegistry, IGameplayTickService gameplayTickService, IInstantiator instantiator)
         {
             _assetsProvider = assetsProvider;
             _gameObjectRegistry = gameObjectRegistry;
-            _battleTickService = battleTickService;
+            _gameplayTickService = gameplayTickService;
             _instantiator = instantiator;
         }
 
@@ -28,7 +29,11 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
             GameObject weaponPrefab = _assetsProvider.GetWeaponPrefab(weaponType);
             GameObject weaponGameObject = _instantiator.InstantiatePrefab(weaponPrefab, position, Quaternion.Euler(0, 0, zRotation), null);
             WeaponBehaviour weaponBehaviour = weaponGameObject.GetComponentInChildren<WeaponBehaviour>();
-            _battleTickService.RegisterGameObjectTickables(weaponGameObject);
+
+            ITickable[] tickables = weaponGameObject.GetComponents<ITickable>();
+            _gameplayTickService.AddTickable(tickables);
+
+
             IWeapon weapon = weaponBehaviour;
             _gameObjectRegistry.RegisterWeaponGameObject(weapon, weaponGameObject);
             return weapon;

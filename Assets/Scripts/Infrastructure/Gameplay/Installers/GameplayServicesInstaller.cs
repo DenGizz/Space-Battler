@@ -25,9 +25,9 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Installers
             Container.Bind<IFitSpaceShipsOnScreenService>().To<FitSpaceShipsOnScreenService>().AsSingle();
             Container.Bind<IRandomSetupService>().To<RandomSetupService>().AsSingle();
             Container.Bind<IBattleSetupProvider>().To<BattleSetupProvider>().AsSingle();
-            Container.Bind<BattleTickService>().AsSingle();
-            Container.Bind<IBattleTickService>().To<BattleTickService>().FromResolve();
-            Container.Bind<ITickable>().To<BattleTickService>().FromResolve();
+            Container.Bind<GameplayTickService>().AsSingle();
+            Container.Bind<IGameplayTickService>().To<GameplayTickService>().FromResolve();
+            Container.Bind<ITickable>().To<GameplayTickService>().FromResolve();
             Container.Bind<IBattleRunnerProvider>().To<BattleRunnerRunnerProvider>().AsSingle();
             Container.Bind<IBattleCleanUpService>().To<BattleCleanUpService>().AsSingle();
         }
