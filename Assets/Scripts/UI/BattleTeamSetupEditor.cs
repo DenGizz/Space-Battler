@@ -1,5 +1,6 @@
 using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Game.SandboxMode.BattleSetups;
+using Assets.Scripts.Infrastructure.SandboxMode.Services;
 using Assets.Scripts.Infrastructure.Ui.Factories;
 using Assets.Scripts.Infrastructure.Ui.Services;
 using Assets.Scripts.UI.UiElements;
@@ -19,16 +20,18 @@ public class BattleTeamSetupEditor : MonoBehaviour
     [SerializeField] private Button _deleteAllMembersButton;
     private List<ClickableView> _clickableViews;
 
+    private IRandomSetupService _randomSetupService;
     private IUiWindowsService _uiWindowsService;
     private IUiElementsFactory _uiElementsFactory;
 
     private BattleTeamSetup _battleTeamSetup;
 
     [Inject]
-    public void Construct(IUiWindowsService uiWindowsService, IUiElementsFactory uiElementsFactory)
+    public void Construct(IUiWindowsService uiWindowsService, IUiElementsFactory uiElementsFactory, IRandomSetupService randomSetupService)
     {
         _uiWindowsService = uiWindowsService;
         _uiElementsFactory = uiElementsFactory;
+        _randomSetupService = randomSetupService;
     }
 
     private void Awake()
@@ -51,6 +54,7 @@ public class BattleTeamSetupEditor : MonoBehaviour
     private void CreateAndAddNewTeamMemberSetup()
     {
         SpaceShipSetup newSpaceShipSetup = new SpaceShipSetup();
+        _randomSetupService.RandomizeSpaceShipSetup(newSpaceShipSetup);
         _battleTeamSetup.SpaceShipSetups.Add(newSpaceShipSetup);
         CreateSpaceShipSetupView(newSpaceShipSetup);
     }
