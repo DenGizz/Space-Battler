@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.AI.UnitsAI;
-using Assets.Scripts.Entities.SpaceShips;
+﻿using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Infrastructure.Core.Services;
 using Assets.Scripts.Infrastructure.Core.Services.AssetProviders;
@@ -12,7 +11,6 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
     public class SpaceShipFactory : ISpaceShipFactory
     {
         private readonly IAssetsProvider _assetsProvider;
-        private readonly ISpaceShipAiRegistry _spaceShipAiRegistry;
         private readonly IGameObjectRegistry _gameObjectRegistry;
         private readonly IRootTransformsProvider _rootTransformsProvider;
         private readonly IGameplayTickService _gameplayTickService;
@@ -20,12 +18,11 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
 
         [Inject]
         public SpaceShipFactory(IAssetsProvider assetsProvider, 
-            ISpaceShipAiRegistry spaceShipAiRegistry, IGameObjectRegistry gameObjectRegistry, 
+            IGameObjectRegistry gameObjectRegistry, 
             IRootTransformsProvider rootTransformsProvider,
             IGameplayTickService gameplayTickService, IInstantiator instantiator)
         {
             _assetsProvider = assetsProvider;
-            _spaceShipAiRegistry = spaceShipAiRegistry;
             _gameObjectRegistry = gameObjectRegistry;
             _rootTransformsProvider = rootTransformsProvider;
             _gameplayTickService = gameplayTickService;//TODO: Bring battle tick service registration to another place
@@ -46,9 +43,7 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
             PlaceSpaceShip(gameObject, position, zRotation);
 
             ISpaceShip spaceShip = spaceShipComponent;
-            ICombatAi combatAi = gameObject.GetComponent<ICombatAi>();
 
-            _spaceShipAiRegistry.RegisterAi(spaceShip, combatAi);
             _gameObjectRegistry.RegisterSpaceShipGameObject(spaceShip, gameObject);
 
             return spaceShip;

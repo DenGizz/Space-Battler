@@ -4,6 +4,7 @@ using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Entities.Weapons;
 using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using Assets.Scripts.Game.SandboxMode.BattleSetups;
+using Assets.Scripts.Infrastructure.Ai;
 using Assets.Scripts.Infrastructure.Gameplay.Services;
 using UnityEngine;
 using Zenject;
@@ -16,13 +17,15 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
         private readonly IWeaponFactory _weaponFactory;
         private readonly IWeaponAttachService _weaponAttachService;
         private readonly IInstantiator _instantiator;
+        private readonly IAiAssignService _aiAssignService;
 
-        public BattleSetupsShrinkService(ISpaceShipFactory spaceShipFactory, IWeaponFactory weaponFactory, IWeaponAttachService weaponAttachService, IInstantiator instantiator)
+        public BattleSetupsShrinkService(ISpaceShipFactory spaceShipFactory, IWeaponFactory weaponFactory, IWeaponAttachService weaponAttachService, IInstantiator instantiator, IAiAssignService aiAssignService)
         {
             _spaceShipFactory = spaceShipFactory;
             _weaponFactory = weaponFactory;
             _weaponAttachService = weaponAttachService;
             _instantiator = instantiator;
+            _aiAssignService = aiAssignService;
         }
 
         public BattleRunner UnShrinkBattleSetup(BattleSetup setup)
@@ -31,10 +34,18 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
             BattleRunner battleRunner = _instantiator.Instantiate<BattleRunner>(new[] { battleData });
 
             foreach( var spaceShipSetup in setup.EnemyTeamSetup.SpaceShipSetups)
-                battleRunner.AddSpaceShipToEnemyTeam(UnShrinkSpaceShip(spaceShipSetup));
+            {
+                ISpaceShip spaceShip = UnShrinkSpaceShip(spaceShipSetup);
+                _aiAssignService.AssignTeamMemberAiToSpaceShip(spaceShip, battleData.EnemyTeam, battleData.AllyTeam);
+                battleRunner.AddSpaceShipToEnemyTeam(spaceShip);
+            }
 
             foreach (var spaceShipSetup in setup.PlayerTeamSetup.SpaceShipSetups)
-                battleRunner.AddSpaceShipToAllyTeam(UnShrinkSpaceShip(spaceShipSetup));
+            {
+                ISpaceShip spaceShip = UnShrinkSpaceShip(spaceShipSetup);
+                _aiAssignService.AssignTeamMemberAiToSpaceShip(spaceShip, battleData.AllyTeam, battleData.EnemyTeam);
+                battleRunner.AddSpaceShipToAllyTeam(spaceShip);
+            }
 
             return battleRunner;
         }

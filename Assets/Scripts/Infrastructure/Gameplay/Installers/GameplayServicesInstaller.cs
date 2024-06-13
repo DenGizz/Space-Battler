@@ -38,7 +38,6 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Installers
             Container.Bind<IBattleSetupsShrinkService>().To<BattleSetupsShrinkService>().AsSingle();
             Container.Bind<IWeaponFactory>().To<WeaponFactory>().AsSingle();
             Container.Bind<ISpaceShipFactory>().To<SpaceShipFactory>().AsSingle();
-            Container.Bind<ISpaceShipAiRegistry>().To<SpaceShipAiRegistry>().AsSingle();
             Container.Bind<ISpaceShipDestroyer>().To<SpaceShipDestoyer>().AsSingle();
             Container.Bind<IWeaponDestroyer>().To<WeaponDestroyer>().AsSingle();
             Container.Bind<IProjectileDestroyer>().To<ProjectileDestroyer>().AsSingle();

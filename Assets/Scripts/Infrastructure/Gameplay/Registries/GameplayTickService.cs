@@ -10,7 +10,15 @@ namespace Assets.Scripts.Infrastructure.SandboxMode.Services
 {
     public class GameplayTickService : IGameplayTickService
     {
-        public bool IsPaused { get; set;}
+        public bool IsPaused
+        {
+            get => _isPaused;
+            set
+            {
+                _isPaused = value;
+                OnPauseOrResume?.Invoke();
+            }
+        }
 
         public event Action OnPauseOrResume;
 
@@ -18,6 +26,8 @@ namespace Assets.Scripts.Infrastructure.SandboxMode.Services
 
         private readonly HashSet<ITickable> _tickablesToRemove = new HashSet<ITickable>();
         private readonly List<ITickable> _tickablesToAdd = new List<ITickable>();
+
+        private bool _isPaused;
 
         public void AddTickable(ITickable tickable)
         {
