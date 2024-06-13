@@ -10,12 +10,14 @@ namespace Assets.Scripts.Infrastructure.Gameplay.GameObjectDestroyers
     {
         private readonly IGameObjectRegistry _gameObjectRegistry;
         private readonly IGameplayTickService _gameplayTickService;
+        private readonly ISpaceShipRegistry _spaceShipRegistry;
 
         [Inject]
-        public SpaceShipDestoyer(IGameObjectRegistry gameObjectRegistry, IGameplayTickService gameplayTickService)
+        public SpaceShipDestoyer(IGameObjectRegistry gameObjectRegistry, IGameplayTickService gameplayTickService, ISpaceShipRegistry spaceShipRegistry)
         {
             _gameObjectRegistry = gameObjectRegistry;
             _gameplayTickService = gameplayTickService;
+            _spaceShipRegistry = spaceShipRegistry;
         }
 
         public void Destroy(ISpaceShip spaceShip)
@@ -25,6 +27,7 @@ namespace Assets.Scripts.Infrastructure.Gameplay.GameObjectDestroyers
             ITickable[] tickables = gameObject.GetComponents<ITickable>();
             _gameplayTickService.RemoveTickable(tickables);
 
+            _spaceShipRegistry.Unregister(spaceShip);
             _gameObjectRegistry.UnRegisterGameObject(gameObject);
             Object.Destroy(gameObject);
         }

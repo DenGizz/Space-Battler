@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.AI;
+using Assets.Scripts.AI.AiStrategies;
 using Assets.Scripts.Battles;
 using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.Infrastructure.Core.Services;
@@ -13,11 +14,13 @@ namespace Assets.Scripts.Infrastructure.Ai
     {
         private readonly IGameObjectRegistry _gameObjectRegistry;
         private readonly IGameplayTickService _gameplayTickService;
+        private readonly IAiStrategyFactory _aiStrategyFactory;
         private readonly IInstantiator _instantiator;
 
-        public AiAssignService(IInstantiator instantiator,IGameObjectRegistry gameObjectRegistry, IGameplayTickService gameplayTickService)
+        public AiAssignService(IInstantiator instantiator, IAiStrategyFactory aiStrategyFactory, IGameObjectRegistry gameObjectRegistry, IGameplayTickService gameplayTickService)
         {
             _instantiator = instantiator;
+             _aiStrategyFactory = aiStrategyFactory;
             _gameObjectRegistry = gameObjectRegistry;
             _gameplayTickService = gameplayTickService;
         }
@@ -34,6 +37,8 @@ namespace Assets.Scripts.Infrastructure.Ai
             _gameplayTickService.AddTickable(aiBehaviour);
 
             aiBehaviour.Construct(team, opponentTeam);
+            aiBehaviour.SelectTargetStrategy = new SelectRandomTargetStrategy();
+            aiBehaviour.UpdateTargetStrategy = _aiStrategyFactory.CreateUpdateTargetStrategy();
         }
     }
 }

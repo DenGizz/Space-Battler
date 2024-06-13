@@ -13,6 +13,7 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
         private readonly IAssetsProvider _assetsProvider;
         private readonly IGameObjectRegistry _gameObjectRegistry;
         private readonly IRootTransformsProvider _rootTransformsProvider;
+        private readonly ISpaceShipRegistry _spaceShipRegistry;
         private readonly IGameplayTickService _gameplayTickService;
         private readonly IInstantiator _instantiator;
 
@@ -20,13 +21,14 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
         public SpaceShipFactory(IAssetsProvider assetsProvider, 
             IGameObjectRegistry gameObjectRegistry, 
             IRootTransformsProvider rootTransformsProvider,
-            IGameplayTickService gameplayTickService, IInstantiator instantiator)
+            IGameplayTickService gameplayTickService, IInstantiator instantiator, ISpaceShipRegistry spaceShipRegistry)
         {
             _assetsProvider = assetsProvider;
             _gameObjectRegistry = gameObjectRegistry;
             _rootTransformsProvider = rootTransformsProvider;
             _gameplayTickService = gameplayTickService;//TODO: Bring battle tick service registration to another place
             _instantiator = instantiator;
+            _spaceShipRegistry = spaceShipRegistry;
         }
 
         public ISpaceShip CreateSpaceShip(SpaceShipType type, Vector3 position = default, float zRotation = 0)//TODO: Pass SpaceShipData. No parameters
@@ -41,6 +43,8 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
             _gameplayTickService.AddTickable(tickables);
 
             PlaceSpaceShip(gameObject, position, zRotation);
+
+            _spaceShipRegistry.Register(spaceShipComponent);
 
             ISpaceShip spaceShip = spaceShipComponent;
 

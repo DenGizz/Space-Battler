@@ -9,6 +9,8 @@ namespace Assets.Scripts.Infrastructure.Ai
         public override void InstallBindings()
         {
             Container.Bind<IAiAssignService>().To<AiAssignService>().AsSingle();
+            Container.Bind<IAiStrategyFactory>().To<AiStrategyFactory>().AsSingle();
+            Container.Bind<IPredictDealedDamageService>().To<PredictDealedDamageService>().AsSingle().NonLazy();
         }
     }
 }

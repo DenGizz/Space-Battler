@@ -9,7 +9,7 @@ namespace Assets.Scripts.AI.AiStrategies
 {
     public class UpdateTargetWhenItsDeadOrNullStrategy : IUpdateTargetStrategy
     {
-        public bool IsNeedToFindNewTarget(ISpaceShip currentTarget)
+        public virtual bool IsNeedToFindNewTarget(ISpaceShip currentTarget)
         {
             return currentTarget == null || !currentTarget.Data.IsAlive;
         }

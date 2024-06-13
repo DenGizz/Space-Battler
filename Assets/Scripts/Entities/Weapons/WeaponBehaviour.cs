@@ -3,6 +3,7 @@ using Assets.Scripts.Entities.SpaceShips;
 using Assets.Scripts.ExtensionMethods;
 using Assets.Scripts.Infrastructure.Gameplay.Services;
 using Assets.Scripts.ScriptableObjects;
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -24,6 +25,8 @@ namespace Assets.Scripts.Entities.Weapons
         [SerializeField] private WeaponDescriptor _descriptor;
 
         private IProjectilesPoolService _projectilesPoolService;
+
+        public event EventHandler<AttackEventArgs> OnAttack;
 
         [Inject]
         public void Construct(IProjectilesPoolService projectilesPoolService)
@@ -50,12 +53,14 @@ namespace Assets.Scripts.Entities.Weapons
             if (_isOnColdDown)
                 return;
 
+            
             ProjectileBehaviour projectile = _projectilesPoolService.GetProjectile(_descriptor.ProjectileType);
             projectile.transform.position = transform.position;
             projectile.transform.rotation = transform.rotation;
             projectile.Launch(target, Damage);
             _isOnColdDown = true;
             StartColdDown(ColdDownTime);
+            OnAttack?.Invoke(this, new AttackEventArgs(this,target,Damage));
         }
 
         private void StartColdDown(float time)

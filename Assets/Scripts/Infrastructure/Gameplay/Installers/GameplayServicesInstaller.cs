@@ -34,6 +34,7 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Installers
 
         private void BindGameLoopServices()
         {
+            Container.Bind<ISpaceShipRegistry>().To<SpaceShipRegistry>().AsSingle().NonLazy();
             Container.Bind<IProjectilesPoolService>().To<ProjectilesPoolService>().AsSingle();
             Container.Bind<IBattleSetupsShrinkService>().To<BattleSetupsShrinkService>().AsSingle();
             Container.Bind<IWeaponFactory>().To<WeaponFactory>().AsSingle();

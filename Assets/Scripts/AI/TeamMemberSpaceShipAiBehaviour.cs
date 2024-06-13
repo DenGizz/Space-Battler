@@ -33,8 +33,6 @@ namespace Assets.Scripts.AI
         {
             _team = team;
             _opponentTeam = opponentTeam;
-            SelectTargetStrategy = new SelectRandomTargetStrategy();
-            UpdateTargetStrategy = new UpdateTargetWhenItsDeadOrNullStrategy();
         }
 
         public void Tick()

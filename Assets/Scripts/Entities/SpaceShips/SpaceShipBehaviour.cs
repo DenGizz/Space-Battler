@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Entities.Weapons;
 using Assets.Scripts.ScriptableObjects;
@@ -19,6 +20,7 @@ namespace Assets.Scripts.Entities.SpaceShips
         public bool CanAttack => Data.IsAlive;
 
         public event Action<ISpaceShip> OnDeath;
+        public event EventHandler<AttackEventArgs> OnAttack;
 
         public void SetData(SpaceShipData data)
         {
@@ -53,12 +55,20 @@ namespace Assets.Scripts.Entities.SpaceShips
             if(!Data.IsAlive)
                 throw new Exception("Dead ships can't attack");
 
+            float dealedDamage = 0;
+
             foreach (var weapon in Data.Weapons)
+            {
                 if (weapon.CanShoot)
                 {
                     weapon.Aim(target.Data.Position);
                     weapon.Attack(target);
+                    dealedDamage += weapon.Damage;
                 }
+            }
+
+            if(dealedDamage > 0)
+                OnAttack?.Invoke(this, new AttackEventArgs(this, target, dealedDamage));
         }
 
         public void RemoveWeapon(IWeapon weapon)
