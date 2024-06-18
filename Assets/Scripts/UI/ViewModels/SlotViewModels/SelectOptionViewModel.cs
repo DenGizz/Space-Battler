@@ -10,13 +10,13 @@ namespace Assets.Scripts.UI.ViewModels.SlotViewModels
     public abstract class SelectOptionViewModel<TOption> : MonoBehaviour
     {
         public IEnumerable<TOption> Options { get; set; }
+
         public virtual TOption SelectedOption
         {
             get => _selectedOption;
             set
             {
-                _selectedOption = value;
-                OnOptionSelected?.Invoke(value);
+                SelectOption(value);
             }
         }
 
@@ -26,11 +26,20 @@ namespace Assets.Scripts.UI.ViewModels.SlotViewModels
 
         private TOption _selectedOption;
 
-        public void SetOptions(IEnumerable<TOption> options, TOption defaultOption)
+        public void SetOptions(IEnumerable<TOption> options, TOption defaultOption, TOption selectedOption)
         {
             Options = options;
             DefaultOption = defaultOption;
-            SelectedOption = defaultOption;
+            SelectedOption = selectedOption;
+        }
+
+        private void SelectOption(TOption option)
+        {
+            if (!Options.Contains(option))
+                throw new InvalidOperationException("Option is not in the list of options");
+
+            _selectedOption = option;
+            OnOptionSelected?.Invoke(option);
         }
     }
 }
