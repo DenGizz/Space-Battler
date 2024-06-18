@@ -7,7 +7,7 @@ namespace Assets.Scripts.Infrastructure.Core.Services
 {
     public interface IGameplayTickService : ITickable
     {
-        event Action OnPauseOrResume;
+        event EventHandler<GameplayPauseResumeEventArgs> OnPausedOrResumed;
         bool IsPaused { get; set; }
 
         void AddTickable(ITickable tickable);

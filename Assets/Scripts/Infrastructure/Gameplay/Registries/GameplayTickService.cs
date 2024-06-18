@@ -16,14 +16,13 @@ namespace Assets.Scripts.Infrastructure.SandboxMode.Services
             set
             {
                 _isPaused = value;
-                OnPauseOrResume?.Invoke();
+                OnPausedOrResumed?.Invoke(this, new GameplayPauseResumeEventArgs(value));
             }
         }
 
-        public event Action OnPauseOrResume;
+        public event EventHandler<GameplayPauseResumeEventArgs> OnPausedOrResumed;
 
         private readonly List<ITickable> _tickables = new List<ITickable>();
-
         private readonly HashSet<ITickable> _tickablesToRemove = new HashSet<ITickable>();
         private readonly List<ITickable> _tickablesToAdd = new List<ITickable>();
 

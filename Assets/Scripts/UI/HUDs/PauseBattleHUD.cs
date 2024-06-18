@@ -9,12 +9,11 @@ namespace Assets.Scripts.UI.HUDs
 {
     public class PauseBattleHUD : MonoBehaviour
     {
-        private const string PauseButtonText = "II";
-        private const string ResumeButtonText = ">";
+        private IGameplayTickService _gameplayTickService;
 
         [SerializeField] private Button _pauseButton;
-
-        private IGameplayTickService _gameplayTickService;
+        private const string PauseButtonText = "II";
+        private const string ResumeButtonText = ">";
         private TextMeshProUGUI buttonText;
 
         [Inject]
@@ -25,7 +24,7 @@ namespace Assets.Scripts.UI.HUDs
 
         private void Awake()
         {
-            _gameplayTickService.OnPauseOrResume += OnPausedOrResumed;
+            _gameplayTickService.OnPausedOrResumed += OnGameplayPauserOrResumedEventHandler;
 
             buttonText = _pauseButton.GetComponentInChildren<TextMeshProUGUI>();
             buttonText.text = _gameplayTickService.IsPaused ? ResumeButtonText : PauseButtonText;
@@ -37,9 +36,9 @@ namespace Assets.Scripts.UI.HUDs
             _gameplayTickService.IsPaused = !_gameplayTickService.IsPaused;
         }
 
-        private void OnPausedOrResumed()
+        private void OnGameplayPauserOrResumedEventHandler( object sender, GameplayPauseResumeEventArgs e)
         {
-            buttonText.text = _gameplayTickService.IsPaused ? ResumeButtonText : PauseButtonText;
+            buttonText.text = e.IsPaused ? ResumeButtonText : PauseButtonText;
         }
     }
 }
