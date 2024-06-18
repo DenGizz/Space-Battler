@@ -4,7 +4,7 @@ using Assets.Scripts.UI.ViewModels.WeaponViewModels;
 
 namespace Assets.Scripts.UI.ViewModels.SlotViewModels
 {
-    public class WeaponTypeSlotViewModel : ItemSlotViewModel<WeaponType>
+    public class WeaponTypeSlotViewModel : SelectOptionViewModel<WeaponType>
     {
         private IWeaponTypeViewModel _weaponTypeViewModel;
 

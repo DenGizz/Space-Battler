@@ -13,7 +13,7 @@ namespace Assets.Scripts.UI
     [RequireComponent(typeof(ClickableView))]
     public abstract class ItemSelectionWindowInteraction<TOption> : MonoBehaviour
     {
-        private ItemSlotViewModel<TOption> _itemSlotViewModel;
+        private SelectOptionViewModel<TOption> _itemSlotViewModel;
         private ClickableView _clickableView;
 
         private UiWindow _uiWindow;
@@ -35,7 +35,7 @@ namespace Assets.Scripts.UI
 
         private void Awake()
         {
-            _itemSlotViewModel = GetComponent<ItemSlotViewModel<TOption>>() ?? throw new MissingComponentException();
+            _itemSlotViewModel = GetComponent<SelectOptionViewModel<TOption>>() ?? throw new MissingComponentException();
             _clickableView = GetComponent<ClickableView>();
             _clickableView.OnClicked += OnSlotClick;
         }

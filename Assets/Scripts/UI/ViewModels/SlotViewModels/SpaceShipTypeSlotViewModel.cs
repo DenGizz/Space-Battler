@@ -4,7 +4,7 @@ using Assets.Scripts.UI.ViewModels.SpaceShipViewModels;
 
 namespace Assets.Scripts.UI.ViewModels.SlotViewModels
 {
-    public class SpaceShipTypeSlotViewModel : ItemSlotViewModel<SpaceShipType>
+    public class SpaceShipTypeSlotViewModel : SelectOptionViewModel<SpaceShipType>
     {
         private ISpaceShipViewModel _spaceShipViewModel;
 

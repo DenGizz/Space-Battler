@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.UI.ViewModels.SlotViewModels
 {
-    public abstract class ItemSlotViewModel<TOption> : MonoBehaviour
+    public abstract class SelectOptionViewModel<TOption> : MonoBehaviour
     {
         public IEnumerable<TOption> Options { get; set; }
         public virtual TOption SelectedOption
