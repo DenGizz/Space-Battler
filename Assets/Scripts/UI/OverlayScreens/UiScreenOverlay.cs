@@ -16,7 +16,7 @@ namespace Assets.Scripts.UI.OverlayScreens
 
         public void Hide()
         {
-               gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 }
