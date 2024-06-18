@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,9 +13,9 @@ namespace Assets.Scripts.UI.UiElements
         private void Awake()
         {
             if (_contentContainer == null)
-                throw new MissingComponentException();
+                throw new NullReferenceException();
             if (_contentGridLayoutGroup == null)
-                throw new MissingComponentException();
+                throw new NullReferenceException();
         }
 
         public void SetContent(IEnumerable<MonoBehaviour> content)
