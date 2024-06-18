@@ -95,10 +95,10 @@ public class BattleTeamSetupEditor : MonoBehaviour
 
     private void OpenSpaceShipSetupEditorInWindow(SpaceShipSetup setup)
     {
-        WindowPanel window = _uiWindowsService.OpenWindow();
+        UiWindow uiWindow = _uiWindowsService.OpenWindow();
         SpaceShipSetupEditViewModel setupEditor = _uiElementsFactory.CreateSpaceShipSetupEditView();
         setupEditor.SetSpaceShipSetupForEdit(setup);
-        window.AddContent(setupEditor.gameObject);
+        uiWindow.AddContent(setupEditor.gameObject);
     }
 
     private void OnSpaceShipSetupViewClicked(ClickableView view)

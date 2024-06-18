@@ -19,21 +19,21 @@ namespace Assets.Scripts.Infrastructure.Ui.Services
             _rootTransformsProvider = rootTransformsProvider;
         }
 
-        public void CloseWindow(WindowPanel window)
+        public void CloseWindow(UiWindow uiWindow)
         {
-            GameObject.Destroy(window.gameObject);
+            GameObject.Destroy(uiWindow.gameObject);
         }
 
-        public bool IsWindowOpen(WindowPanel window)
+        public bool IsWindowOpen(UiWindow uiWindow)
         {
             throw new NotImplementedException();
         }
 
-        public WindowPanel OpenWindow()
+        public UiWindow OpenWindow()
         {
             GameObject windowPrefab = _uiAssetsProvider.GetWindowPrefab();
             GameObject window = _instantiator.InstantiatePrefab(windowPrefab, _rootTransformsProvider.UIRoot);
-            return window.GetComponent<WindowPanel>();
+            return window.GetComponent<UiWindow>();
         }
     }
 }

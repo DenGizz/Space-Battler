@@ -4,8 +4,8 @@ namespace Assets.Scripts.Infrastructure.Ui.Services
 {
     public interface IUiWindowsService
     {
-        WindowPanel OpenWindow();
-        void CloseWindow(WindowPanel window);
-        bool IsWindowOpen(WindowPanel window);
+        UiWindow OpenWindow();
+        void CloseWindow(UiWindow uiWindow);
+        bool IsWindowOpen(UiWindow uiWindow);
     }
 }

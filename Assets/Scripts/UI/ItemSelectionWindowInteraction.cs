@@ -16,7 +16,7 @@ namespace Assets.Scripts.UI
         private ItemSlotViewModel<TOption> _itemSlotViewModel;
         private ClickableView _clickableView;
 
-        private WindowPanel _windowPanel;
+        private UiWindow _uiWindow;
         private UiGrid _optionViewsGrid;
 
         private List<ClickableView> _optionsClickableViews;
@@ -54,21 +54,21 @@ namespace Assets.Scripts.UI
 
         private void OpenWindow()
         {
-            _windowPanel = _uiWindowsService.OpenWindow();
+            _uiWindow = _uiWindowsService.OpenWindow();
             CreateAndSetWindowContent();
-            _windowPanel.OnCloseButtonClicked += OnWindowClosed;
+            _uiWindow.OnCloseButtonClicked += OnUiWindowClosed;
         }
 
         private void CloseWindow()
         {
-            _uiWindowsService.CloseWindow(_windowPanel);
+            _uiWindowsService.CloseWindow(_uiWindow);
         }
 
-        private void OnWindowClosed()
+        private void OnUiWindowClosed()
         {
-            _windowPanel.OnCloseButtonClicked -= OnWindowClosed;
+            _uiWindow.OnCloseButtonClicked -= OnUiWindowClosed;
             _optionsClickableViews.ForEach(clickableView => clickableView.OnClicked -= OnGridElementSelected);
-            _windowPanel = null;
+            _uiWindow = null;
         }
 
         private void CreateAndSetWindowContent()
@@ -81,7 +81,7 @@ namespace Assets.Scripts.UI
 
             _optionViewsGrid.SetContent(gridContent);
             _optionViewsGrid.SetCellSize(gridContent.First().GetComponent<RectTransform>().sizeDelta);
-            _windowPanel.AddContent(_optionViewsGrid.gameObject);
+            _uiWindow.AddContent(_optionViewsGrid.gameObject);
         }
 
         private void GetOrAddClickableViewComponent(MonoBehaviour view)
