@@ -28,15 +28,15 @@ namespace Assets.Scripts.UI.ViewModels.SlotViewModels
 
         public void SetOptions(IEnumerable<TOption> options, TOption defaultOption, TOption selectedOption)
         {
-            Options = options;
+            Options = options.ToArray();
             DefaultOption = defaultOption;
             SelectedOption = selectedOption;
         }
 
         private void SelectOption(TOption option)
         {
-            if (!Options.Contains(option))
-                throw new InvalidOperationException("Option is not in the list of options");
+            //if (!Options.Contains(option))
+             //   throw new InvalidOperationException("Option is not in the list of options");
 
             _selectedOption = option;
             OnOptionSelected?.Invoke(option);
