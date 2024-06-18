@@ -41,8 +41,8 @@ namespace Assets.Scripts.UI.ViewModels.SpaceShipSetupEditor
             }
 
             _spaceShipSetup = spaceShipSetup;
-            _spaceShipTypeSlotViewModel.Options = CreateSpaceShipTypeSlotOptions();
-            _spaceShipTypeSlotViewModel.SelectedOption = _spaceShipSetup.SpaceShipType;
+
+            _spaceShipTypeSlotViewModel.SetOptions(CreateSpaceShipTypeSlotOptions(), SpaceShipType.None, _spaceShipSetup.SpaceShipType);
             _spaceShipTypeSlotViewModel.OnOptionSelected += OnSpaceShipSelected;
 
             DestroyAllWeaponSlots();
@@ -61,7 +61,7 @@ namespace Assets.Scripts.UI.ViewModels.SpaceShipSetupEditor
 
             for (int i = 0; i < count; i++)
             {
-                var slot = _uiFactory.CreateWeaponTypeSlot(_weaponSlotViewModelsContainer, slotOptions);
+                var slot = _uiFactory.CreateWeaponTypeSlot(_weaponSlotViewModelsContainer, slotOptions, WeaponType.None, WeaponType.None);
 
                 if(selectedOptionsArray != null &&  i < selectedOptionsArray.Length)
                     slot.SelectedOption = selectedOptionsArray[i];
@@ -73,12 +73,16 @@ namespace Assets.Scripts.UI.ViewModels.SpaceShipSetupEditor
 
         private IEnumerable<WeaponType> CreateWeaponTypeSlotOptions()
         {
-            return _staticDataService.GetWeaponDescriptors().Select(x => x.WeaponType);
+            List<WeaponType> options = new List<WeaponType> { WeaponType.None };
+            options.AddRange(_staticDataService.GetWeaponDescriptors().Select(x => x.WeaponType));
+            return options;
         }
 
         private IEnumerable<SpaceShipType> CreateSpaceShipTypeSlotOptions()
         {
-            return _staticDataService.GetSpaceShipDescriptors().Select(x => x.SpaceShipType);
+            List<SpaceShipType> options = new List<SpaceShipType> { SpaceShipType.None };
+            options.AddRange(_staticDataService.GetSpaceShipDescriptors().Select(x => x.SpaceShipType));
+            return options;
         }
 
         private void DestroyAllWeaponSlots() 

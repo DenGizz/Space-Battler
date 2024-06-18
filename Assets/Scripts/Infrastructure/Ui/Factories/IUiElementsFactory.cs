@@ -15,8 +15,7 @@ namespace Assets.Scripts.Infrastructure.Ui.Factories
     public interface IUiElementsFactory
     {
         HealthView CreateHealthView(ISpaceShip spaceShip, Vector2 screenPosition, Transform parent);
-        WeaponTypeSlotViewModel CreateWeaponTypeSlot(Transform weaponSlotViewModelsContainer, IEnumerable<WeaponType> options);
-
+        WeaponTypeSlotViewModel CreateWeaponTypeSlot(Transform weaponSlotViewModelsContainer, IEnumerable<WeaponType> options, WeaponType defaultOption, WeaponType selectedOption);
         UiGrid CreateUiGrid();
         WeaponTypeRowViewModel CreateWeaponTypeRowView();
         SpaceShipTypeRowViewModel CreateSpaceShipTypeRowView();

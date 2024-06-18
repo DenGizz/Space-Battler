@@ -81,12 +81,12 @@ namespace Assets.Scripts.Infrastructure.Ui.Factories
             return weaponTypeRow.GetComponent<WeaponTypeRowViewModel>();
         }
 
-        public WeaponTypeSlotViewModel CreateWeaponTypeSlot(Transform weaponSlotViewModelsContainer, IEnumerable<WeaponType> options)
+        public WeaponTypeSlotViewModel CreateWeaponTypeSlot(Transform weaponSlotViewModelsContainer, IEnumerable<WeaponType> options, WeaponType defaultOption, WeaponType selectedOption)
         {
             GameObject prefab = _uiAssetsProvider.GetWeaponTypeSlotPrefab();
             GameObject weaponTypeSlot = _instantiator.InstantiatePrefab(prefab, weaponSlotViewModelsContainer);
             WeaponTypeSlotViewModel view = weaponTypeSlot.GetComponent<WeaponTypeSlotViewModel>();
-            view.Options = options;
+            view.SetOptions(options, defaultOption, selectedOption);
             return view;
         }
     }

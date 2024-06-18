@@ -27,6 +27,9 @@ namespace Assets.Scripts.UI
 
             foreach (var option in options)
             {
+                if(option == SpaceShipType.None)
+                    continue;
+
                 SpaceShipTypeRowViewModel view = _uiElementsFactory.CreateSpaceShipTypeRowView();
                 view.SpaceShipType = option;
                 views.Add(view);

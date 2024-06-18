@@ -9,7 +9,7 @@ namespace Assets.Scripts.UI.ViewModels.SlotViewModels
 {
     public abstract class SelectOptionViewModel<TOption> : MonoBehaviour
     {
-        public IEnumerable<TOption> Options { get; set; }
+        public IEnumerable<TOption> Options { get; private set; }
 
         public virtual TOption SelectedOption
         {
@@ -20,7 +20,7 @@ namespace Assets.Scripts.UI.ViewModels.SlotViewModels
             }
         }
 
-        public TOption DefaultOption { get; set; }
+        public TOption DefaultOption { get; private set; }
 
         public event Action<TOption> OnOptionSelected;
 
@@ -35,8 +35,8 @@ namespace Assets.Scripts.UI.ViewModels.SlotViewModels
 
         private void SelectOption(TOption option)
         {
-            //if (!Options.Contains(option))
-             //   throw new InvalidOperationException("Option is not in the list of options");
+            if (!Options.Contains(option))
+                throw new InvalidOperationException("Option is not in the list of options");
 
             _selectedOption = option;
             OnOptionSelected?.Invoke(option);

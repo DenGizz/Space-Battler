@@ -27,6 +27,9 @@ namespace Assets.Scripts.UI
 
             foreach (var option in options)
             {
+                if(option == WeaponType.None)
+                    continue;
+
                 WeaponTypeRowViewModel view = _uiElementsFactory.CreateWeaponTypeRowView();
                 view.WeaponType = option;
                 views.Add(view);
