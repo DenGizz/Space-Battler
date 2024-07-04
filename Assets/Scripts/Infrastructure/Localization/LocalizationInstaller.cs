@@ -12,7 +12,7 @@ namespace Assets.Scripts.Infrastructure.Localization
         public override void InstallBindings()
         {
             Container.Bind<ILocalizationDb>().To<LocalizationDb>().AsSingle();
-            Container.Bind<LocalizationService>().To<LocalizationService>().AsSingle();
+            Container.Bind<ILocalizationService>().To<LocalizationService>().AsSingle();
         }
     }
 }
