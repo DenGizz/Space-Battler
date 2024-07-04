@@ -19,5 +19,6 @@ namespace Assets.Scripts.Infrastructure.Core.Services.AssetProviders
         SpaceShipDescriptor GetSpaceShipDescriptor(SpaceShipType spaceShipType);
         WeaponDescriptor GetWeaponDescriptor(WeaponType weaponType);
         ProjectileDescriptor GetProjectileDescriptor(ProjectileType projectileType);
+        TextAsset GetLocalizationTextAsset();
     }
 }
