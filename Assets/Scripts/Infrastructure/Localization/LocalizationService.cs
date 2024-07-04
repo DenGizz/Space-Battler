@@ -20,13 +20,12 @@ namespace Assets.Scripts.Infrastructure.Localization
 
         public event Action<LanguageKey> LanguageSelected;
 
-        private LanguageKey _selectedLanguage;
+        private LanguageKey _selectedLanguage = LanguageKey.UA;
 
         private readonly ILocalizationDb _localizationDb;
 
-        public LocalizationService(LanguageKey selectedLanguage, ILocalizationDb localizationDb)
+        public LocalizationService(ILocalizationDb localizationDb)
         {
-            _selectedLanguage = selectedLanguage;
             _localizationDb = localizationDb;
         }
 
