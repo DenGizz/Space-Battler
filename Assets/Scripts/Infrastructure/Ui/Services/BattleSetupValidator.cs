@@ -13,11 +13,11 @@ namespace Assets.Scripts.Infrastructure.Ui.Services
 {
     public class BattleSetupValidator
     {
-        private readonly ILocalizationService _localizationService;
+        private readonly IStringLocalizer _stringLocalizer;
 
-        public BattleSetupValidator(ILocalizationService localizationService)
+        public BattleSetupValidator(IStringLocalizer stringLocalizer)
         {
-            _localizationService = localizationService;
+            _stringLocalizer = stringLocalizer;
         }
 
         public bool IsSpaceShipSetupValidForBattle(SpaceShipSetup battleSetup, out string message)
@@ -81,7 +81,7 @@ namespace Assets.Scripts.Infrastructure.Ui.Services
 
         private string GetLocalizedByKey(string stringKey)
         {
-            return _localizationService.GetLocalizedString(stringKey);
+            return _stringLocalizer.GetLocalizedString(stringKey);
         }
     }
 }

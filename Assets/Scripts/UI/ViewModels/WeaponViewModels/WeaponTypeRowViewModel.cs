@@ -23,24 +23,24 @@ namespace Assets.Scripts.UI.ViewModels.WeaponViewModels
             }
         }
         private IStaticDataService _staticDataService;
-        private ILocalizationService _localizationService;
+        private IStringLocalizer _stringLocalizer;
 
         [Inject]
-        public void Construct(IStaticDataService staticDataService, ILocalizationService localizationService) 
+        public void Construct(IStaticDataService staticDataService, IStringLocalizer stringLocalizer) 
         {
             _staticDataService = staticDataService;
-            _localizationService = localizationService;
+            _stringLocalizer = stringLocalizer;
         }  
 
         private void Awake()
         {
             _descriptionRowView = GetComponent<DescriptionRowView>();
-            _localizationService.LanguageSelected += ChangeLanguageEventHandler;
+            _stringLocalizer.LanguageSelected += ChangeLanguageEventHandler;
         }
 
         private void OnDestroy()
         {
-            _localizationService.LanguageSelected -= ChangeLanguageEventHandler;
+            _stringLocalizer.LanguageSelected -= ChangeLanguageEventHandler;
         }
 
         private void UpdateDescription()
@@ -58,7 +58,7 @@ namespace Assets.Scripts.UI.ViewModels.WeaponViewModels
         private string CreateTitle(WeaponType type)
         {
             string spaceShipNameKey = _staticDataService.GetWeaponDescriptor(type).NameKey;
-            return _localizationService.GetLocalizedString(spaceShipNameKey);
+            return _stringLocalizer.GetLocalizedString(spaceShipNameKey);
         }
 
         private string CreateDescription(WeaponType type)
@@ -66,9 +66,9 @@ namespace Assets.Scripts.UI.ViewModels.WeaponViewModels
             float damageValue = _staticDataService.GetWeaponDescriptor(type).Damage;
             float colddownValue = _staticDataService.GetWeaponDescriptor(type).ColdDownTime;
 
-            string damageText = _localizationService.GetLocalizedString("weapon_description_damage");
-            string colddownText = _localizationService.GetLocalizedString("weapon_description_colddown");
-            string shortSecondsText = _localizationService.GetLocalizedString("short_seconds");
+            string damageText = _stringLocalizer.GetLocalizedString("weapon_description_damage");
+            string colddownText = _stringLocalizer.GetLocalizedString("weapon_description_colddown");
+            string shortSecondsText = _stringLocalizer.GetLocalizedString("short_seconds");
 
 
             return $"{damageText}: {damageValue}.\n{colddownText}: {colddownValue} {shortSecondsText}.";

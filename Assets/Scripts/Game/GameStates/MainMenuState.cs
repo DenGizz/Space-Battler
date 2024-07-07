@@ -17,19 +17,19 @@ namespace Assets.Scripts.Game.GameStates
         private readonly IBattleSetupProvider _battleSetupProvider;
         private readonly IPersistentDataService _persistentDataService;
         private readonly IPopoutMessagesService _popoutMessagesService;
-        private readonly ILocalizationService _localizationService;
+        private readonly IStringLocalizer _stringLocalizer;
 
         private Ui _mainMenuUi;
 
         public MainMenuState(StateMachine stateMachine, IUiFactory uiFactory, IBattleSetupProvider battleSetupProvider, 
-            IPersistentDataService persistentDataService, IPopoutMessagesService popoutMessagesService, ILocalizationService localizationService)
+            IPersistentDataService persistentDataService, IPopoutMessagesService popoutMessagesService, IStringLocalizer stringLocalizer)
         {
             _stateMachine = stateMachine;
             _uiFactory = uiFactory;
             _battleSetupProvider = battleSetupProvider;
             _persistentDataService = persistentDataService;
             _popoutMessagesService = popoutMessagesService;
-            _localizationService = localizationService;
+            _stringLocalizer = stringLocalizer;
         }
 
 
@@ -50,7 +50,7 @@ namespace Assets.Scripts.Game.GameStates
             if(@event == GameStateChangeEvent.EnterStoryMode)
             {
                 _popoutMessagesService.SendMessage(
-                    _localizationService.GetLocalizedString("story_mode_not_avaliable"));
+                    _stringLocalizer.GetLocalizedString("story_mode_not_avaliable"));
                 return;
             }
 

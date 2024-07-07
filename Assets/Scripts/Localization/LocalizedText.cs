@@ -13,14 +13,14 @@ namespace Assets.Scripts.Localization
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class LocalizedText : MonoBehaviour
     {
-        private ILocalizationService _localizationService;
+        private IStringLocalizer _stringLocalizer;
         private TextMeshProUGUI _text;
         private string stringKey;
 
         [Inject]
-        public void Construct(ILocalizationService localizationService)
+        public void Construct(IStringLocalizer stringLocalizer)
         {
-            _localizationService = localizationService;
+            _stringLocalizer = stringLocalizer;
         }    
 
         private void Awake()
@@ -28,7 +28,7 @@ namespace Assets.Scripts.Localization
             _text = GetComponent<TextMeshProUGUI>();
             stringKey = _text.text;
             LocalizeText();
-            _localizationService.LanguageSelected += OnLanguageSelectedEventHandler;
+            _stringLocalizer.LanguageSelected += OnLanguageSelectedEventHandler;
         }
 
         private void OnDestroy()
@@ -43,7 +43,7 @@ namespace Assets.Scripts.Localization
 
         private void LocalizeText()
         {
-            _text.text = _localizationService.GetLocalizedString(stringKey);
+            _text.text = _stringLocalizer.GetLocalizedString(stringKey);
         }
     }
 }
