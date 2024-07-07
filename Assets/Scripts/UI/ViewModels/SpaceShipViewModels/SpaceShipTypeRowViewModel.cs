@@ -57,7 +57,7 @@ namespace Assets.Scripts.UI.ViewModels.SpaceShipViewModels
 
         private void OnLanguageChangedEventHandler(LanguageKey key)
         {
-            ClearView();
+            UpdateDescription();
         }
     }
 }

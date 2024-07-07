@@ -20,7 +20,7 @@ namespace Assets.Scripts.Infrastructure.Localization
 
         public event Action<LanguageKey> LanguageSelected;
 
-        private LanguageKey _selectedLanguage = LanguageKey.UA;
+        private LanguageKey _selectedLanguage = LanguageKey.EN;
 
         private readonly ILocalizationDb _localizationDb;
 

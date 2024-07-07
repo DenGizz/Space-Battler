@@ -9,5 +9,6 @@ namespace Assets.Scripts.Infrastructure.Ui.Factories
 
         UiScreenOverlay CreateLoadingOverlay();
         PopoutMessagesUiScreenOverlay CreatePopoutMessagesOverlay();
+        ChangeLanguageUiScreenOverlay CreateChangeLanguageUiScreenOverlay();
     }
 }
