@@ -33,7 +33,7 @@ namespace Assets.Scripts.Localization
 
         private void OnDestroy()
         {
-            _text.text = stringKey;
+            _localizationService.LanguageSelected -= OnLanguageSelectedEventHandler;
         }
 
         private void OnLanguageSelectedEventHandler(LanguageKey key)
