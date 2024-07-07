@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Infrastructure.Localization
 {
-    public class StringLocalizer : IStringLocalizer
+    public class LocalizationService : ILocalizationService
     {
         public LanguageKey SelectedLanguage
         {
@@ -24,7 +24,7 @@ namespace Assets.Scripts.Infrastructure.Localization
 
         private readonly ILocalizationDb _localizationDb;
 
-        public StringLocalizer(ILocalizationDb localizationDb)
+        public LocalizationService(ILocalizationDb localizationDb)
         {
             _localizationDb = localizationDb;
         }

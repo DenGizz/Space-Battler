@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Infrastructure.Localization
 {
-    public interface IStringLocalizer
+    public interface ILocalizationService
     {
         LanguageKey SelectedLanguage { get; set; }
         event Action<LanguageKey> LanguageSelected;
