@@ -33,7 +33,9 @@
 
 		"ally_team_setup_invalid" : "Player team setup is invalid.",
 		"enemy_team_setup_invalid" : "Enemy team setup is invalid.",
+		"short_seconds" : "sec."
 		},
+		
 		"ua": 
 		{
 		"story_mode_not_avaliable": "Режим історії ще недоступний!",
@@ -66,6 +68,7 @@
 
 		"ally_team_setup_invalid" : "Невалідне устаткування дружньої команди.",
 		"enemy_team_setup_invalid" : "Невалідне устаткування ворожої команди.",
+		"short_seconds" : "сек."
 		}
 	}
 }

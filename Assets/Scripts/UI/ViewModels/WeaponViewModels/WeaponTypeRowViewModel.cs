@@ -1,6 +1,8 @@
 ﻿using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using Assets.Scripts.Infrastructure.Core.Services;
+using Assets.Scripts.Infrastructure.Localization;
 using Assets.Scripts.UI.ViewModels.BaseViewModels;
+using System.Text;
 using UnityEngine;
 using Zenject;
 
@@ -21,33 +23,66 @@ namespace Assets.Scripts.UI.ViewModels.WeaponViewModels
             }
         }
         private IStaticDataService _staticDataService;
+        private ILocalizationService _localizationService;
 
         [Inject]
-        public void Construct(IStaticDataService staticDataService)
+        public void Construct(IStaticDataService staticDataService, ILocalizationService localizationService) 
         {
             _staticDataService = staticDataService;
+            _localizationService = localizationService;
         }  
 
         private void Awake()
         {
             _descriptionRowView = GetComponent<DescriptionRowView>();
+            _localizationService.LanguageSelected += ChangeLanguageEventHandler;
+        }
+
+        private void OnDestroy()
+        {
+            _localizationService.LanguageSelected -= ChangeLanguageEventHandler;
         }
 
         private void UpdateDescription()
         {
-            _descriptionRowView.TitleText = GetTitle(WeaponType);
-            _descriptionRowView.DescriptionText = GetDescription(WeaponType);
+            if(WeaponType == WeaponType.None)
+            {
+                ClearView();
+                return;
+            }
+
+            _descriptionRowView.TitleText = CreateTitle(WeaponType);
+            _descriptionRowView.DescriptionText = CreateDescription(WeaponType);
         }
 
-        private string GetTitle(WeaponType type)
+        private string CreateTitle(WeaponType type)
         {
-            return type == WeaponType.None ? "" : _staticDataService.GetWeaponDescriptor(type).WeaponType.ToString();
+            string spaceShipNameKey = _staticDataService.GetWeaponDescriptor(type).NameKey;
+            return _localizationService.GetLocalizedString(spaceShipNameKey);
         }
 
-        private string GetDescription(WeaponType type)
+        private string CreateDescription(WeaponType type)
         {
-            return type == WeaponType.None ? "" : $"Damage: {_staticDataService.GetWeaponDescriptor(type).Damage}.\nCold down: {_staticDataService.GetWeaponDescriptor(type).ColdDownTime} sec.";
+            float damageValue = _staticDataService.GetWeaponDescriptor(type).Damage;
+            float colddownValue = _staticDataService.GetWeaponDescriptor(type).ColdDownTime;
+
+            string damageText = _localizationService.GetLocalizedString("weapon_description_damage");
+            string colddownText = _localizationService.GetLocalizedString("weapon_description_colddown");
+            string shortSecondsText = _localizationService.GetLocalizedString("short_seconds");
+
+
+            return $"{damageText}: {damageValue}.\n{colddownText}: {colddownValue} {shortSecondsText}.";
         }
 
+        private void ClearView()
+        {
+            _descriptionRowView.TitleText = string.Empty;
+            _descriptionRowView.DescriptionText = string.Empty;
+        }
+
+        private void ChangeLanguageEventHandler(LanguageKey key) 
+        {
+            UpdateDescription();
+        }
     }
 }

@@ -7,6 +7,7 @@ namespace Assets.Scripts.ScriptableObjects
     [CreateAssetMenu(fileName = "WeaponDescriptor", menuName = "StaticData/WeaponDescriptor", order = 0)]
     public class WeaponDescriptor : ScriptableObject
     {
+        public string NameKey => _nameKey;
         public WeaponType WeaponType => _weaponType;
         public ProjectileType ProjectileType => _projectileType;
         public float Damage => _damage;
@@ -14,6 +15,7 @@ namespace Assets.Scripts.ScriptableObjects
         public Sprite Sprite => _sprite;
         public GameObject Prefab => _prefab;
 
+        [SerializeField] private string _nameKey;
         [SerializeField] private WeaponType _weaponType;
         [SerializeField] private ProjectileType _projectileType;
         [SerializeField] private float _damage;
