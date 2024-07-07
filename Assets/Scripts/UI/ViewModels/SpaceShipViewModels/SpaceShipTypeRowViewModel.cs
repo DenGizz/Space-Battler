@@ -1,4 +1,6 @@
 ﻿using Assets.Scripts.Infrastructure.Core.Services;
+using Assets.Scripts.Infrastructure.Gameplay.Factories;
+using Assets.Scripts.Infrastructure.Localization;
 using Assets.Scripts.UI.ViewModels.BaseViewModels;
 using UnityEngine;
 using Zenject;
@@ -20,33 +22,42 @@ namespace Assets.Scripts.UI.ViewModels.SpaceShipViewModels
             }
         }
 
-        private IStaticDataService _staticDataService;
+        private IStringContentFactory _stringContentFactory;
+        private ILocalizationService _localizationService;
 
         [Inject]
-        public void Construct(IStaticDataService staticDataService)
+        public void Construct(IStringContentFactory stringContentFactory, ILocalizationService localizationService)
         {
-            _staticDataService = staticDataService;
+            _stringContentFactory = stringContentFactory;
+            _localizationService = localizationService;
         }
 
         private void Awake()
         {
             _descriptionRowView = GetComponent<DescriptionRowView>();
+            _localizationService.LanguageSelected += OnLanguageChangedEventHandler;
+        }
+
+        private void OnDestroy()
+        {
+            _localizationService.LanguageSelected -= OnLanguageChangedEventHandler;
         }
 
         private void UpdateDescription()
         {
-            _descriptionRowView.TitleText = GetTitle(SpaceShipType);
-            _descriptionRowView.DescriptionText = GetDescription(SpaceShipType);
-        }   
-
-        private string GetTitle(Entities.SpaceShips.SpaceShipConfigs.SpaceShipType type)
-        {
-            return type == Entities.SpaceShips.SpaceShipConfigs.SpaceShipType.None ? "" : _staticDataService.GetSpaceShipDescriptor(type).SpaceShipType.ToString();
+            _descriptionRowView.TitleText = _stringContentFactory.CreateSpaceShipName(SpaceShipType);
+            _descriptionRowView.DescriptionText = _stringContentFactory.CreateSpaceShipDescription(SpaceShipType);
         }
 
-        private string GetDescription(Entities.SpaceShips.SpaceShipConfigs.SpaceShipType type)
+        private void ClearView()
         {
-            return type == Entities.SpaceShips.SpaceShipConfigs.SpaceShipType.None ? "" : $"HP: {_staticDataService.GetSpaceShipDescriptor(type).MaxHealth}.\nWeapon slots: {_staticDataService.GetSpaceShipDescriptor(type).WeaponSlotsCount}";
+            _descriptionRowView.TitleText = string.Empty;
+            _descriptionRowView.DescriptionText = string.Empty;
+        }
+
+        private void OnLanguageChangedEventHandler(LanguageKey key)
+        {
+            ClearView();
         }
     }
 }

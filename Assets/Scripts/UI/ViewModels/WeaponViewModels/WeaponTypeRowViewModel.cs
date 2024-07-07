@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using Assets.Scripts.Infrastructure.Core.Services;
+using Assets.Scripts.Infrastructure.Gameplay.Factories;
 using Assets.Scripts.Infrastructure.Localization;
 using Assets.Scripts.UI.ViewModels.BaseViewModels;
 using System.Text;
@@ -22,14 +23,14 @@ namespace Assets.Scripts.UI.ViewModels.WeaponViewModels
                 UpdateDescription();
             }
         }
-        private IStaticDataService _staticDataService;
         private ILocalizationService _localizationService;
+        private IStringContentFactory _stringContentFactory;
 
         [Inject]
-        public void Construct(IStaticDataService staticDataService, ILocalizationService localizationService) 
+        public void Construct(ILocalizationService localizationService, IStringContentFactory stringContentFactory)
         {
-            _staticDataService = staticDataService;
             _localizationService = localizationService;
+            _stringContentFactory = stringContentFactory;
         }  
 
         private void Awake()
@@ -51,28 +52,10 @@ namespace Assets.Scripts.UI.ViewModels.WeaponViewModels
                 return;
             }
 
-            _descriptionRowView.TitleText = CreateTitle(WeaponType);
-            _descriptionRowView.DescriptionText = CreateDescription(WeaponType);
+            _descriptionRowView.TitleText = _stringContentFactory.CreateWeaponName(WeaponType);
+            _descriptionRowView.DescriptionText = _stringContentFactory.CreateWeaponDescription(WeaponType);
         }
 
-        private string CreateTitle(WeaponType type)
-        {
-            string spaceShipNameKey = _staticDataService.GetWeaponDescriptor(type).NameKey;
-            return _localizationService.GetLocalizedString(spaceShipNameKey);
-        }
-
-        private string CreateDescription(WeaponType type)
-        {
-            float damageValue = _staticDataService.GetWeaponDescriptor(type).Damage;
-            float colddownValue = _staticDataService.GetWeaponDescriptor(type).ColdDownTime;
-
-            string damageText = _localizationService.GetLocalizedString("weapon_description_damage");
-            string colddownText = _localizationService.GetLocalizedString("weapon_description_colddown");
-            string shortSecondsText = _localizationService.GetLocalizedString("short_seconds");
-
-
-            return $"{damageText}: {damageValue}.\n{colddownText}: {colddownValue} {shortSecondsText}.";
-        }
 
         private void ClearView()
         {

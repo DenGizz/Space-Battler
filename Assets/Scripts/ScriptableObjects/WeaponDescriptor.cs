@@ -15,7 +15,7 @@ namespace Assets.Scripts.ScriptableObjects
         public Sprite Sprite => _sprite;
         public GameObject Prefab => _prefab;
 
-        [SerializeField] private string _nameKey;
+        [SerializeField] private string _nameKey = "weapon_name";
         [SerializeField] private WeaponType _weaponType;
         [SerializeField] private ProjectileType _projectileType;
         [SerializeField] private float _damage;

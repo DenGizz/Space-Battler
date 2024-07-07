@@ -20,6 +20,7 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Installers
             BindBattleServices();
 
             Container.Bind<BattleSetupValidator>().ToSelf().AsSingle();
+            Container.Bind<IStringContentFactory>().To<LocalizedStringContentFactory>().AsSingle();
         }
 
         private void BindBattleServices()
