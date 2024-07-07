@@ -6,6 +6,8 @@
 		"story_mode_not_avaliable": "Story mode is not available yet!",
 		"play_story_mode_button": "Play Story Mode",
 		"play_sandbox_mode_button": "Play Sandbox Mode",
+		"return_to_battle_editor_button": "Return to battle editor",
+		"start_battle_button": "Start Battle",
 
 		"space_ship_editor_ally_team_lable" : "Ally Team",
 		"space_ship_editor_enemy_team_lable" : "Enemy Team",
@@ -33,7 +35,10 @@
 
 		"ally_team_setup_invalid" : "Player team setup is invalid.",
 		"enemy_team_setup_invalid" : "Enemy team setup is invalid.",
-		"short_seconds" : "sec."
+		"short_seconds" : "sec.",
+		
+		"ally_team_won" : "Ally team won",
+		"ally_team_lost" : "Ally team lost"
 		},
 		
 		"ua": 
@@ -41,6 +46,8 @@
 		"story_mode_not_avaliable": "Режим історії ще недоступний!",
 		"play_story_mode_button": "Грати в режим історії",
 		"play_sandbox_mode_button": "Грати в режим пісочниці",
+		"return_to_battle_editor_button": "Повернутись до редактора бою",
+		"start_battle_button": "Почати Битву",
 
 		"space_ship_editor_ally_team_lable" : "Союзна команда",
 		"space_ship_editor_enemy_team_lable" : "Ворожа команда",
@@ -68,7 +75,10 @@
 
 		"ally_team_setup_invalid" : "Невалідне устаткування дружньої команди.",
 		"enemy_team_setup_invalid" : "Невалідне устаткування ворожої команди.",
-		"short_seconds" : "сек."
+		"short_seconds" : "сек.",
+		
+		"ally_team_won" : "Союзна команда перемогла",
+		"ally_team_lost" : "Союзна команда програла"
 		}
 	}
 }

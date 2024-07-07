@@ -1,6 +1,7 @@
 using System;
 using Assets.Scripts.Battles;
 using Assets.Scripts.Infrastructure.Core.Services.PersistentProgressServices;
+using Assets.Scripts.Infrastructure.Gameplay.Factories;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,14 +14,22 @@ namespace Assets.Scripts.UI.ViewModels
         [SerializeField] private TextMeshProUGUI _winnerNameText;
         [SerializeField] private Button _returnToMainMenuButton;
 
-        [SerializeField] string winText = "Ally team won";
-        [SerializeField] string loseText = "Ally team lost";
-
         public event Action OnReturnMainMenuButtonPressed;
+
+        private IStringContentFactory _stringContentFactory;
 
         public void SetWinner(BattleResult battleResult)
         {
-            _winnerNameText.text = battleResult == BattleResult.AllyTeamWin ? winText : loseText;
+            _winnerNameText.text = 
+                battleResult == BattleResult.AllyTeamWin ? 
+                _stringContentFactory.CreateAllyTeamWonText() :
+                _stringContentFactory.CreateAllyTeamLostText();
+        }
+
+        [Inject]
+        public void Construct(IStringContentFactory stringContentFactory)
+        {
+            _stringContentFactory = stringContentFactory;
         }
 
         private void Awake()

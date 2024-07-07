@@ -21,6 +21,16 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
             _localizationService = localizationService;
         }
 
+        public string CreateAllyTeamLostText()
+        {
+            return _localizationService.GetLocalizedString("ally_team_lost");
+        }
+
+        public string CreateAllyTeamWonText()
+        {
+            return _localizationService.GetLocalizedString("ally_team_won");
+        }
+
         public string CreateSpaceShipDescription(SpaceShipType type)
         {
             float maxHealth = _staticDataService.GetSpaceShipDescriptor(type).MaxHealth;

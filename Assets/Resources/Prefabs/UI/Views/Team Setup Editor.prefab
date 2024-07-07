@@ -938,6 +938,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3000581519534019030}
   - component: {fileID: 4851177906166496387}
+  - component: {fileID: 2980392819833476267}
   - component: {fileID: 864011456661309660}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -973,6 +974,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5101394807438985713}
   m_CullTransparentMesh: 1
+--- !u!114 &2980392819833476267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5101394807438985713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71c5ece2ff687e44967519d078f83b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stringKey: space_ship_editor_add_button
 --- !u!114 &864011456661309660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1181,6 +1195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1181539148204337846}
   - component: {fileID: 7602799728429302998}
+  - component: {fileID: 7064940397700346015}
   - component: {fileID: 3910243014273913130}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -1216,6 +1231,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5675495842925819282}
   m_CullTransparentMesh: 1
+--- !u!114 &7064940397700346015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5675495842925819282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71c5ece2ff687e44967519d078f83b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stringKey: space_ship_editor_remove_all_button
 --- !u!114 &3910243014273913130
 MonoBehaviour:
   m_ObjectHideFlags: 0

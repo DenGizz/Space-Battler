@@ -17,5 +17,8 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Factories
 
         string CreateSpaceShipDescription(SpaceShipType type);
         string CreateSpaceShipName(SpaceShipType type);
+
+        string CreateAllyTeamWonText();
+        string CreateAllyTeamLostText();
     }
 }
