@@ -111,10 +111,5 @@ namespace Assets.Scripts.Infrastructure.Ui.Services
         {
             return GetOrLoadAndGetUiElementPrefabsBundle().PopoutMessagesOverlayPrefab;
         }
-
-        public GameObject GetChangeLanguageUiScreenOverlayPrefab()
-        {
-            return GetOrLoadAndGetUiElementPrefabsBundle().ChangeLanguageUiScreenOverlayPrefab;
-        }
     }
 }

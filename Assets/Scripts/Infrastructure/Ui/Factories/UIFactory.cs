@@ -20,17 +20,6 @@ namespace Assets.Scripts.Infrastructure.Ui.Factories
             _rootTransformsProvider = rootTransformsProvider;
         }
 
-        public ChangeLanguageUiScreenOverlay CreateChangeLanguageUiScreenOverlay()
-        {
-            GameObject prefab = _uiAssetsProvider.GetChangeLanguageUiScreenOverlayPrefab();
-            Transform parentTransform = _rootTransformsProvider.UIRoot;
-            GameObject instance = _instantiator.InstantiatePrefab(prefab, parentTransform);
-            instance.transform.SetAsLastSibling();
-            GameObject.DontDestroyOnLoad(instance);
-            ChangeLanguageUiScreenOverlay overlay = instance.GetComponent<ChangeLanguageUiScreenOverlay>();
-            return overlay;
-        }
-
         public UiScreenOverlay CreateLoadingOverlay()
         {
             throw new NotImplementedException();
@@ -53,17 +42,17 @@ namespace Assets.Scripts.Infrastructure.Ui.Factories
             return popoutMessagesUiScreenOverlay;
         }
 
-        public UI.Uis.Ui CreateSandboxBattleUi()
+        public global::Assets.Scripts.UI.Uis.Ui CreateSandboxBattleUi()
         {
             GameObject prefab = _uiAssetsProvider.GetSandboxModeUiPrefab();
             return InstantiateAndInitializeUiFromPrefab(prefab);
         }
 
-        private UI.Uis.Ui InstantiateAndInitializeUiFromPrefab(GameObject prefab)
+        private global::Assets.Scripts.UI.Uis.Ui InstantiateAndInitializeUiFromPrefab(GameObject prefab)
         {
             Transform patentTransform = _rootTransformsProvider.UIRoot;
             GameObject instance = _instantiator.InstantiatePrefab(prefab, patentTransform);
-            UI.Uis.Ui ui = instance.GetComponent<UI.Uis.Ui>() ?? throw new Exception("Ui prefab does not contain Ui component"); //TODO: Create custom exception
+            global::Assets.Scripts.UI.Uis.Ui ui = instance.GetComponent<global::Assets.Scripts.UI.Uis.Ui>() ?? throw new Exception("Ui prefab does not contain Ui component"); //TODO: Create custom exception
             ui.Initialize();
             return ui;
         }

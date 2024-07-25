@@ -5,7 +5,6 @@ using Assets.Scripts.Entities.SpaceShips.SpaceShipConfigs;
 using Assets.Scripts.Infrastructure.Core.Services.PersistentDataServices;
 using Assets.Scripts.Infrastructure.Core.Services.PersistentProgressServices;
 using Assets.Scripts.Infrastructure.SandboxMode.Services;
-using Assets.Scripts.Infrastructure.Localization;
 
 namespace Assets.Scripts.Game.GameStates
 {
@@ -15,21 +14,18 @@ namespace Assets.Scripts.Game.GameStates
         private readonly IBattleSetupProvider _battleSetupProvider;
         private readonly IProgressProvider _progressProvider;
         private readonly IPersistentDataService _persistentDataService;
-        private readonly ILocalizationDb _localizationDb;
 
         public InitializeAndLoadGame(StateMachine stateMachine, IBattleSetupProvider battleSetupProvider, 
-            IPersistentDataService persistentDataService, IProgressProvider progressProvider, ILocalizationDb localizationDb)
+            IPersistentDataService persistentDataService, IProgressProvider progressProvider)
         {
             _stateMachine = stateMachine;
             _battleSetupProvider = battleSetupProvider;
             _persistentDataService = persistentDataService;
             _progressProvider = progressProvider;
-            _localizationDb = localizationDb;
         }
 
         public void Enter()
         {
-            _localizationDb.LoadDb();
             _persistentDataService.Initialize();
 
             LoadOrCreateBattleSetup();

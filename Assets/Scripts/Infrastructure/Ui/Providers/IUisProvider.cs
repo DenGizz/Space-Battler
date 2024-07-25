@@ -8,6 +8,5 @@ namespace Assets.Scripts.Infrastructure.Ui.Providers
 
         UiScreenOverlay LoadingOverlay { get; set; }
         PopoutMessagesUiScreenOverlay PopoutMessagesOverlay { get; set; }
-        ChangeLanguageUiScreenOverlay ChangeLanguageOverlay { get; set; }
     }
 }

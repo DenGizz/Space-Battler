@@ -1,9 +1,6 @@
 ﻿using Assets.Scripts.Entities.Weapons.WeaponConfigs;
 using Assets.Scripts.Infrastructure.Core.Services;
-using Assets.Scripts.Infrastructure.Gameplay.Factories;
-using Assets.Scripts.Infrastructure.Localization;
 using Assets.Scripts.UI.ViewModels.BaseViewModels;
-using System.Text;
 using UnityEngine;
 using Zenject;
 
@@ -23,49 +20,34 @@ namespace Assets.Scripts.UI.ViewModels.WeaponViewModels
                 UpdateDescription();
             }
         }
-        private ILocalizationService _localizationService;
-        private IStringContentFactory _stringContentFactory;
+        private IStaticDataService _staticDataService;
 
         [Inject]
-        public void Construct(ILocalizationService localizationService, IStringContentFactory stringContentFactory)
+        public void Construct(IStaticDataService staticDataService)
         {
-            _localizationService = localizationService;
-            _stringContentFactory = stringContentFactory;
+            _staticDataService = staticDataService;
         }  
 
         private void Awake()
         {
             _descriptionRowView = GetComponent<DescriptionRowView>();
-            _localizationService.LanguageSelected += ChangeLanguageEventHandler;
-        }
-
-        private void OnDestroy()
-        {
-            _localizationService.LanguageSelected -= ChangeLanguageEventHandler;
         }
 
         private void UpdateDescription()
         {
-            if(WeaponType == WeaponType.None)
-            {
-                ClearView();
-                return;
-            }
-
-            _descriptionRowView.TitleText = _stringContentFactory.CreateWeaponName(WeaponType);
-            _descriptionRowView.DescriptionText = _stringContentFactory.CreateWeaponDescription(WeaponType);
+            _descriptionRowView.TitleText = GetTitle(WeaponType);
+            _descriptionRowView.DescriptionText = GetDescription(WeaponType);
         }
 
-
-        private void ClearView()
+        private string GetTitle(WeaponType type)
         {
-            _descriptionRowView.TitleText = string.Empty;
-            _descriptionRowView.DescriptionText = string.Empty;
+            return type == WeaponType.None ? "" : _staticDataService.GetWeaponDescriptor(type).WeaponType.ToString();
         }
 
-        private void ChangeLanguageEventHandler(LanguageKey key) 
+        private string GetDescription(WeaponType type)
         {
-            UpdateDescription();
+            return type == WeaponType.None ? "" : $"Damage: {_staticDataService.GetWeaponDescriptor(type).Damage}.\nCold down: {_staticDataService.GetWeaponDescriptor(type).ColdDownTime} sec.";
         }
+
     }
 }

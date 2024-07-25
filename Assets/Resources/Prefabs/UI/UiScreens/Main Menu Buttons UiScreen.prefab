@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6024750056931622625}
   - component: {fileID: 4315712134993600443}
-  - component: {fileID: 2836245240953142515}
   - component: {fileID: 5992029753614637218}
   m_Layer: 5
   m_Name: Play Story Mode Text
@@ -46,19 +45,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543733532126596618}
   m_CullTransparentMesh: 1
---- !u!114 &2836245240953142515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1543733532126596618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e71c5ece2ff687e44967519d078f83b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stringKey: play_story_mode_button
 --- !u!114 &5992029753614637218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,7 +540,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2577181302357097609}
   - component: {fileID: 4139439291306420256}
-  - component: {fileID: 509239792691535974}
   - component: {fileID: 7322348362339038341}
   m_Layer: 5
   m_Name: Play Sandbox Button Text
@@ -590,19 +575,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8911642589500660140}
   m_CullTransparentMesh: 1
---- !u!114 &509239792691535974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8911642589500660140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e71c5ece2ff687e44967519d078f83b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stringKey: play_sandbox_mode_button
 --- !u!114 &7322348362339038341
 MonoBehaviour:
   m_ObjectHideFlags: 0

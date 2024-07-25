@@ -4,7 +4,6 @@ namespace Assets.Scripts.Infrastructure.Ui.Services
 {
     public interface IUiAssetsProvider
     {
-        GameObject GetChangeLanguageUiScreenOverlayPrefab();
         GameObject GetMainMenuUiPrefab();
         GameObject GetPauseBattleHUDPrefab();
         GameObject GetPopoutMessagePrefab();

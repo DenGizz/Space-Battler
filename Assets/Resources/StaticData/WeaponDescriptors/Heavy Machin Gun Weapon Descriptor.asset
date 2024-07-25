@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e487278c9d3814042b70534a8c9b12ef, type: 3}
   m_Name: Heavy Machin Gun Weapon Descriptor
   m_EditorClassIdentifier: 
-  _nameKey: weapon_name_heavy_machine_gun
   _weaponType: 3
   _projectileType: 1
   _damage: 1.55

@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Zenject;
 
 namespace Assets.Scripts.Game.GameStates
 {
@@ -26,7 +25,6 @@ namespace Assets.Scripts.Game.GameStates
 
         public void Enter()
         {
-            _uisProvider.ChangeLanguageOverlay = _uiFactory.CreateChangeLanguageUiScreenOverlay();
             _uisProvider.PopoutMessagesOverlay = _uiFactory.CreatePopoutMessagesOverlay();
             _stateMachine.EnterState<LoadMainMenuSceneState>();
         }

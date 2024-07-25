@@ -22,4 +22,3 @@ MonoBehaviour:
   _spaceShipSetupRowPrefab: {fileID: 982068873312117090, guid: 6fb233b4baf24be46b0b951ec7ee2a0d, type: 3}
   _popoutMessagePrefab: {fileID: 8539310105152635375, guid: eb91fde21e0f9484498d65817164e11a, type: 3}
   _popoutMessagesOverlayPrefab: {fileID: 2898649749885850413, guid: e591a0bcaa2a282438e9d8daafdca453, type: 3}
-  _changeLanguageUiScreenOverlayPrefab: {fileID: 2898649749885850413, guid: 422438404b8ff304298c093567aef04a, type: 3}

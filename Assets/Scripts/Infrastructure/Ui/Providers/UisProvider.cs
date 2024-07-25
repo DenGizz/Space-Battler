@@ -7,6 +7,5 @@ namespace Assets.Scripts.Infrastructure.Ui.Providers
         public UI.Uis.Ui SandboxModeUi { get; set; }
         public UiScreenOverlay LoadingOverlay { get; set; }
         public PopoutMessagesUiScreenOverlay PopoutMessagesOverlay { get; set; }
-        public ChangeLanguageUiScreenOverlay ChangeLanguageOverlay { get; set; }
     }
 }
