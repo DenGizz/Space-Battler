@@ -17,13 +17,16 @@ namespace Assets.Scripts.Infrastructure.Core.Services
         }
 
         private readonly IAssetsProvider _assetsProvider;
+        private readonly ICoroutineRunner _coroutineRunner;
 
         private GameObject _audioGameObject;
         private AudioSource _audioSource;
+        private Coroutine _audioFadeCoroutine;
 
-        public AudioPlayer(IAssetsProvider assetsProvider)
+        public AudioPlayer(IAssetsProvider assetsProvider, ICoroutineRunner coroutineRunner)
         {
             _assetsProvider = assetsProvider;
+            _coroutineRunner = coroutineRunner;
         }
 
         public void Initialize()
@@ -31,20 +34,49 @@ namespace Assets.Scripts.Infrastructure.Core.Services
             _audioGameObject = new GameObject("Audio");
             GameObject.DontDestroyOnLoad(_audioGameObject);
             _audioSource = _audioGameObject.AddComponent<AudioSource>();
+            _audioSource.volume = 0.5f;
         }
 
-        public void PlayMainMenuMusic()
+        public void UnmuteMainMenuMusic()
+        {
+            if (!_audioSource.isPlaying)
+                PlayMainMenuMusic();
+
+            FadeInVolume();
+        }
+
+        public void MuteMainMenuMusic()
+        {
+            FadeOutVolume();
+        }
+
+        private void PlayMainMenuMusic()
         {
             _audioSource.loop = true;
             _audioSource.clip = _assetsProvider.GetMainMenuMusic();
             _audioSource.Play();
         }
 
-        public void StopMainMenuMusic()
+        private void FadeInVolume()
         {
-            _audioSource.loop = false;
-            _audioSource.clip = null;
-           _audioSource.Stop();
+            if (_audioFadeCoroutine != null)
+                _coroutineRunner.StopCoroutine(_audioFadeCoroutine);
+
+            _audioFadeCoroutine = _coroutineRunner.FadeValue(
+                () => NormalizedMasterVolume,
+                (volume) => NormalizedMasterVolume = volume,
+                0.5f, 1.5f);
+        }
+
+        private void FadeOutVolume() 
+        {
+            if (_audioFadeCoroutine != null)
+                _coroutineRunner.StopCoroutine(_audioFadeCoroutine);
+
+            _audioFadeCoroutine =_coroutineRunner.FadeValue(
+                () => NormalizedMasterVolume,
+                (volume) => NormalizedMasterVolume = volume,
+                0, 1.5f);
         }
     }
 }

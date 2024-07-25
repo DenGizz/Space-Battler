@@ -45,7 +45,7 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
 
         public void Enter()
         {
-            _audioPlayer.StopMainMenuMusic();
+            _audioPlayer.MuteMainMenuMusic();
             _battleRunner = _battleRunnerProvider.CurrentBattleRunner;
             _battleRunner.RunBattle();
             _hudsProvider.PauseBattleHUD = _hudFactory.CreatePauseBattleHUD();

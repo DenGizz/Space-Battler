@@ -40,7 +40,7 @@ namespace Assets.Scripts.Game.GameStates
 
         public void Enter()
         {
-            _audioPlayer.PlayMainMenuMusic();
+            _audioPlayer.UnmuteMainMenuMusic();
 
             _mainMenuUi = _uiFactory.CreateMainMenuUi();
             _mainMenuUi.GoToScreen<MainMenuButtonsUiScreen>();

@@ -11,7 +11,7 @@ namespace Assets.Scripts.Infrastructure.Core.Services
     {
         float NormalizedMasterVolume { get; set; }
 
-        void PlayMainMenuMusic();
-        void StopMainMenuMusic();
+        void UnmuteMainMenuMusic();
+        void MuteMainMenuMusic();
     }
 }
