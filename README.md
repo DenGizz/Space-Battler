@@ -41,3 +41,7 @@ This structure ensures a clear separation of concerns, making the codebase more 
 - **Add Game Currency and Spaceship Module Store:** Introduce an in-game currency system and a store where players can purchase and upgrade spaceship modules.
 - **Implement Advertising Service:** Integrate an advertising service to monetize the game while ensuring a non-intrusive experience for players.
 - **Redesign UI:** Improve the user interface to enhance usability and aesthetic appeal.
+
+## License
+
+This repository is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International Public License. You are permitted to view and examine the code for personal or educational purposes only. Any other use, including commercial use, modification, distribution, or incorporation into other projects, is strictly prohibited. See the [LICENSE](./LICENSE) file for more details.
