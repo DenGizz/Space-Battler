@@ -2,6 +2,7 @@
 
 This repository is an example of the implementation of a simple mobile game built using Unity.
 Unity version is 2022.3.22f1
+Lunch game from Bootstrap scene
 
 ## About the Game
 
