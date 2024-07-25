@@ -44,4 +44,4 @@ This structure ensures a clear separation of concerns, making the codebase more 
 
 ## License
 
-This repository is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International Public License. You are permitted to view and examine the code for personal or educational purposes only. Any other use, including commercial use, modification, distribution, or incorporation into other projects, is strictly prohibited. See the [LICENSE](./LICENSE) file for more details.
+This repository is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International Public License. You are permitted to view and examine the code for personal or educational purposes only. Any other use, including commercial use, modification, distribution, or incorporation into other projects, is strictly prohibited. See the [LICENSE](LICENSE.txt) file for more details.
