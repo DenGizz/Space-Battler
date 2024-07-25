@@ -5,6 +5,7 @@ using Assets.Scripts.Infrastructure.Gameplay.Registries;
 using Assets.Scripts.Infrastructure.Gameplay.Services;
 using Assets.Scripts.Infrastructure.SandboxMode.Factories;
 using Assets.Scripts.Infrastructure.SandboxMode.Services;
+using Assets.Scripts.Infrastructure.Ui.Services;
 using UnityEngine;
 using Zenject;
 
@@ -17,6 +18,9 @@ namespace Assets.Scripts.Infrastructure.Gameplay.Installers
         {
             BindGameLoopServices();
             BindBattleServices();
+
+            Container.Bind<BattleSetupValidator>().ToSelf().AsSingle();
+            Container.Bind<IStringContentFactory>().To<LocalizedStringContentFactory>().AsSingle();
         }
 
         private void BindBattleServices()

@@ -114,6 +114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8397298010144402624}
   - component: {fileID: 4090235291240634718}
+  - component: {fileID: 2095447864729164122}
   - component: {fileID: 3714981258557427480}
   m_Layer: 5
   m_Name: Label
@@ -149,6 +150,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2830243399413196459}
   m_CullTransparentMesh: 1
+--- !u!114 &2095447864729164122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2830243399413196459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71c5ece2ff687e44967519d078f83b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stringKey: space_ship_editor_enemy_team_lable
 --- !u!114 &3714981258557427480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,6 +374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2774561797577231822}
   - component: {fileID: 6096966500495403536}
+  - component: {fileID: 536013498491717668}
   - component: {fileID: 763435795028796399}
   m_Layer: 5
   m_Name: Label
@@ -395,6 +410,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5653896144824010702}
   m_CullTransparentMesh: 1
+--- !u!114 &536013498491717668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5653896144824010702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71c5ece2ff687e44967519d078f83b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stringKey: space_ship_editor_ally_team_lable
 --- !u!114 &763435795028796399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,11 +567,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 195750004190721474, guid: 75e8804a1903cb8428c7eccf95b3c01c, type: 3}
       propertyPath: m_Size
-      value: 0.6495149
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 195750004190721474, guid: 75e8804a1903cb8428c7eccf95b3c01c, type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1321304876938861864, guid: 75e8804a1903cb8428c7eccf95b3c01c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -785,11 +813,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 195750004190721474, guid: 75e8804a1903cb8428c7eccf95b3c01c, type: 3}
       propertyPath: m_Size
-      value: 0.6495149
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 195750004190721474, guid: 75e8804a1903cb8428c7eccf95b3c01c, type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1321304876938861864, guid: 75e8804a1903cb8428c7eccf95b3c01c, type: 3}
       propertyPath: m_AnchorMax.x

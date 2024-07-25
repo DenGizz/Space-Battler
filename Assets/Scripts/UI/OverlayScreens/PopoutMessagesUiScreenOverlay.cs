@@ -1,8 +1,9 @@
 using Assets.Scripts.Infrastructure.Ui.Factories;
+using Assets.Scripts.UI.OverlayScreens;
 using Assets.Scripts.UI.PopoutMessages;
 using UnityEngine;
 
-public class PopoutMessagesUiScreenOverlay : MonoBehaviour
+public class PopoutMessagesUiScreenOverlay : UiScreenOverlay
 {
     [SerializeField] private PopoutMessagesContainerViewModel _popoutMessagesContainerViewModel;
 
