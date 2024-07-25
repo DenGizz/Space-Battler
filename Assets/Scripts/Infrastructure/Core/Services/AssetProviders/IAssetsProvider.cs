@@ -20,5 +20,6 @@ namespace Assets.Scripts.Infrastructure.Core.Services.AssetProviders
         WeaponDescriptor GetWeaponDescriptor(WeaponType weaponType);
         ProjectileDescriptor GetProjectileDescriptor(ProjectileType projectileType);
         TextAsset GetLocalizationTextAsset();
+        AudioClip GetMainMenuMusic();
     }
 }

@@ -23,6 +23,7 @@ namespace Assets.Scripts.Infrastructure.Core.Installers
             Container.Bind<ICoroutineRunner>().To<CoroutineRunner>().AsSingle();
             Container.Bind<IAssetsProvider>().To<AssetsProvider>().AsSingle();
             Container.Bind<IStatesFactory>().To<StatesFactory>().AsSingle();
+            Container.Bind<IAudioPlayer>().To<AudioPlayer>().AsSingle();
         }
     }
 }

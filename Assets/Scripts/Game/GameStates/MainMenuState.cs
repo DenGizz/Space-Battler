@@ -7,6 +7,7 @@ using Assets.Scripts.Infrastructure.Ui.Factories;
 using Assets.Scripts.UI.Uis;
 using Assets.Scripts.UI.UiScreens.MainMenuUiScreens;
 using Assets.Scripts.Infrastructure.Gameplay.Factories;
+using Assets.Scripts.Infrastructure.Core.Services;
 
 namespace Assets.Scripts.Game.GameStates
 {
@@ -18,11 +19,14 @@ namespace Assets.Scripts.Game.GameStates
         private readonly IPersistentDataService _persistentDataService;
         private readonly IPopoutMessagesService _popoutMessagesService;
         private readonly IStringContentFactory _stringContentFactory;
+        private readonly IAudioPlayer _audioPlayer;
 
         private Ui _mainMenuUi;
 
         public MainMenuState(StateMachine stateMachine, IUiFactory uiFactory, IBattleSetupProvider battleSetupProvider, 
-            IPersistentDataService persistentDataService, IPopoutMessagesService popoutMessagesService, IStringContentFactory stringContentFactory)
+            IPersistentDataService persistentDataService, 
+            IPopoutMessagesService popoutMessagesService, IStringContentFactory stringContentFactory,
+            IAudioPlayer audioPlayer)
         {
             _stateMachine = stateMachine;
             _uiFactory = uiFactory;
@@ -30,11 +34,14 @@ namespace Assets.Scripts.Game.GameStates
             _persistentDataService = persistentDataService;
             _popoutMessagesService = popoutMessagesService;
             _stringContentFactory = stringContentFactory;
+            _audioPlayer = audioPlayer;
         }
 
 
         public void Enter()
         {
+            _audioPlayer.PlayMainMenuMusic();
+
             _mainMenuUi = _uiFactory.CreateMainMenuUi();
             _mainMenuUi.GoToScreen<MainMenuButtonsUiScreen>();
             _mainMenuUi.OnGameStateChangeEvent += OnGameStateChangeUiEventHandler;

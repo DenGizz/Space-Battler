@@ -6,6 +6,7 @@ using Assets.Scripts.Infrastructure.Core.Services.PersistentDataServices;
 using Assets.Scripts.Infrastructure.Core.Services.PersistentProgressServices;
 using Assets.Scripts.Infrastructure.SandboxMode.Services;
 using Assets.Scripts.Infrastructure.Localization;
+using Assets.Scripts.Infrastructure.Core.Services;
 
 namespace Assets.Scripts.Game.GameStates
 {
@@ -16,21 +17,25 @@ namespace Assets.Scripts.Game.GameStates
         private readonly IProgressProvider _progressProvider;
         private readonly IPersistentDataService _persistentDataService;
         private readonly ILocalizationDb _localizationDb;
+        private readonly IAudioPlayer _audioPlayer;
 
         public InitializeAndLoadGame(StateMachine stateMachine, IBattleSetupProvider battleSetupProvider, 
-            IPersistentDataService persistentDataService, IProgressProvider progressProvider, ILocalizationDb localizationDb)
+            IPersistentDataService persistentDataService, 
+            IProgressProvider progressProvider, ILocalizationDb localizationDb, IAudioPlayer audioPlayer)
         {
             _stateMachine = stateMachine;
             _battleSetupProvider = battleSetupProvider;
             _persistentDataService = persistentDataService;
             _progressProvider = progressProvider;
             _localizationDb = localizationDb;
+            _audioPlayer = audioPlayer;
         }
 
         public void Enter()
         {
             _localizationDb.LoadDb();
             _persistentDataService.Initialize();
+            _audioPlayer.Initialize();
 
             LoadOrCreateBattleSetup();
             LoadOrCreateProgress();

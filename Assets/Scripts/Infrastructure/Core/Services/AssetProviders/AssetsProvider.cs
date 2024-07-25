@@ -111,5 +111,10 @@ namespace Assets.Scripts.Infrastructure.Core.Services.AssetProviders
             return Resources.Load<TextAsset>(Path.Combine(LocalizationAssetPath, LocalizationAssetName)) 
                 ?? throw new System.Exception("Localization asset is missing.");
         }
+
+        public AudioClip GetMainMenuMusic()
+        {
+            return Resources.Load<AudioClip>(Path.Combine("Audio", "MainMenuSound"));
+        }
     }
 }
