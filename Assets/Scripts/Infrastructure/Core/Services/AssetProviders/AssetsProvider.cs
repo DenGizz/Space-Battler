@@ -16,6 +16,8 @@ namespace Assets.Scripts.Infrastructure.Core.Services.AssetProviders
         private const string SpaceShipsStaticDataPath = "SpaceShipDescriptors";
         private const string WeaponStaticDataPath = "WeaponDescriptors";
         private const string ProjectileDataPath = "ProjectileDescriptors";
+        private const string LocalizationAssetPath = "Localization";
+        private const string LocalizationAssetName = "Localization";
 
         private readonly Dictionary<SpaceShipType, SpaceShipDescriptor> _loadedSpaceShipDescriptorsCache;
         private readonly Dictionary<WeaponType, WeaponDescriptor> _loadedWeaponDescriptorsCache;
@@ -104,6 +106,10 @@ namespace Assets.Scripts.Infrastructure.Core.Services.AssetProviders
             return GetProjectileDescriptors().FirstOrDefault(d => d.ProjectileType == projectileType);
         }
 
-
+        public TextAsset GetLocalizationTextAsset()
+        {
+            return Resources.Load<TextAsset>(Path.Combine(LocalizationAssetPath, LocalizationAssetName)) 
+                ?? throw new System.Exception("Localization asset is missing.");
+        }
     }
 }

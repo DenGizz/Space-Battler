@@ -6,6 +6,7 @@ using Assets.Scripts.Infrastructure.SandboxMode.Services;
 using Assets.Scripts.Infrastructure.Ui.Factories;
 using Assets.Scripts.UI.Uis;
 using Assets.Scripts.UI.UiScreens.MainMenuUiScreens;
+using Assets.Scripts.Infrastructure.Gameplay.Factories;
 
 namespace Assets.Scripts.Game.GameStates
 {
@@ -16,17 +17,19 @@ namespace Assets.Scripts.Game.GameStates
         private readonly IBattleSetupProvider _battleSetupProvider;
         private readonly IPersistentDataService _persistentDataService;
         private readonly IPopoutMessagesService _popoutMessagesService;
+        private readonly IStringContentFactory _stringContentFactory;
 
         private Ui _mainMenuUi;
 
         public MainMenuState(StateMachine stateMachine, IUiFactory uiFactory, IBattleSetupProvider battleSetupProvider, 
-            IPersistentDataService persistentDataService, IPopoutMessagesService popoutMessagesService)
+            IPersistentDataService persistentDataService, IPopoutMessagesService popoutMessagesService, IStringContentFactory stringContentFactory)
         {
             _stateMachine = stateMachine;
             _uiFactory = uiFactory;
             _battleSetupProvider = battleSetupProvider;
             _persistentDataService = persistentDataService;
             _popoutMessagesService = popoutMessagesService;
+            _stringContentFactory = stringContentFactory;
         }
 
 
@@ -46,7 +49,8 @@ namespace Assets.Scripts.Game.GameStates
         {
             if(@event == GameStateChangeEvent.EnterStoryMode)
             {
-                _popoutMessagesService.SendMessage("Story mode is not available yet");
+                _popoutMessagesService.SendMessage(
+                    _stringContentFactory.CreateStringByKey("story_mode_not_avaliable"));
                 return;
             }
 

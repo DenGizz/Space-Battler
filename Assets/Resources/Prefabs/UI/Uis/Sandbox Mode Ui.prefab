@@ -125,6 +125,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8665951795011478017}
     m_Modifications:
+    - target: {fileID: 770732640446000133, guid: 47cfc4f4d0a1bc94183cf5b70eab8fa5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 770732640446000133, guid: 47cfc4f4d0a1bc94183cf5b70eab8fa5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539624822630474950, guid: 47cfc4f4d0a1bc94183cf5b70eab8fa5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539624822630474950, guid: 47cfc4f4d0a1bc94183cf5b70eab8fa5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6822834217197612603, guid: 47cfc4f4d0a1bc94183cf5b70eab8fa5, type: 3}
       propertyPath: m_Name
       value: Sandbox Battle Setup Ui Screen
@@ -132,6 +148,22 @@ PrefabInstance:
     - target: {fileID: 6822834217197612603, guid: 47cfc4f4d0a1bc94183cf5b70eab8fa5, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7759169627163050450, guid: 47cfc4f4d0a1bc94183cf5b70eab8fa5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7759169627163050450, guid: 47cfc4f4d0a1bc94183cf5b70eab8fa5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377243362752432401, guid: 47cfc4f4d0a1bc94183cf5b70eab8fa5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377243362752432401, guid: 47cfc4f4d0a1bc94183cf5b70eab8fa5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8865524069182208634, guid: 47cfc4f4d0a1bc94183cf5b70eab8fa5, type: 3}
       propertyPath: m_Pivot.x
