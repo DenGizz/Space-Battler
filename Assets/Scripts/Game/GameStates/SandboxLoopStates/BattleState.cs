@@ -20,13 +20,17 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
         private readonly IPersistentDataService _persistentDataService;
         private readonly IHUDsProvider _hudsProvider;
         private readonly IHUDFactory _hudFactory;
+        private readonly IAudioPlayer _audioPlayer;
 
         private readonly StateMachine _gameStateMachine;
         private BattleRunner _battleRunner;
 
         public BattleState(StateMachine gameStateMachine, 
             IUiElementsFactory uiFactory, IGameplayTickService gameplayTickService,
-            IBattleRunnerProvider battleRunnerProvider, IProgressProvider progressProvider, IPersistentDataService persistentDataService, IHUDsProvider hudsProvider, IHUDFactory hudFactory)
+            IBattleRunnerProvider battleRunnerProvider, 
+            IProgressProvider progressProvider, IPersistentDataService persistentDataService, 
+            IHUDsProvider hudsProvider, IHUDFactory hudFactory,
+            IAudioPlayer audioPlayer)
         {
             _gameStateMachine = gameStateMachine;
             _uiFactory = uiFactory;
@@ -36,10 +40,12 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
             _persistentDataService = persistentDataService;
             _hudsProvider = hudsProvider;
             _hudFactory = hudFactory;
+            _audioPlayer = audioPlayer;
         }
 
         public void Enter()
         {
+            _audioPlayer.MuteMainMenuMusic();
             _battleRunner = _battleRunnerProvider.CurrentBattleRunner;
             _battleRunner.RunBattle();
             _hudsProvider.PauseBattleHUD = _hudFactory.CreatePauseBattleHUD();

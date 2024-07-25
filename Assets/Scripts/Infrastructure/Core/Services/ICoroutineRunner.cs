@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Core.Services
@@ -7,5 +8,7 @@ namespace Assets.Scripts.Infrastructure.Core.Services
     {
         public Coroutine StartCoroutine(IEnumerator coroutine);
         public void StopCoroutine(Coroutine coroutine);
+
+        public Coroutine FadeValue(Func<float> getter, Action<float> setter, float targetValue, float time);
     }
 }
