@@ -9,14 +9,16 @@ namespace Assets.Scripts.UI.OverlayScreens
 {
     public class UiScreenOverlay : MonoBehaviour
     {
-        public void Show()
+        public bool IsVisible
         {
-            gameObject.SetActive(true);
+            get => _isVisible;
+            set
+            {
+                _isVisible = value;
+                gameObject.SetActive(value);
+            }
         }
 
-        public void Hide()
-        {
-            gameObject.SetActive(false);
-        }
+        private bool _isVisible = false;
     }
 }
