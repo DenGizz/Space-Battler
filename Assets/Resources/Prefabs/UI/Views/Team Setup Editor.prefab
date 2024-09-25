@@ -990,6 +990,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1502202314233999607}
     m_Modifications:
+    - target: {fileID: 1826049813240499587, guid: 32cf3f4261bfe0e43b1aa7e702b4beec, type: 3}
+      propertyPath: _stringKey
+      value: space_ship_editor_add_button
+      objectReference: {fileID: 0}
     - target: {fileID: 2428757892204381360, guid: 32cf3f4261bfe0e43b1aa7e702b4beec, type: 3}
       propertyPath: m_text
       value: Add
