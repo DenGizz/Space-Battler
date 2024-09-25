@@ -43,6 +43,7 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
             _sandboxUi = _uisProvider.SandboxModeUi;
             _sandboxScreen = _sandboxUi.GoToScreen<SetupSandboxBattleUiScreen>();
             _sandboxScreen.SetBattleSetupForEditing(_battleSetupProvider.BattleSetup);
+            _uisProvider.ChangeLanguageOverlay.IsVisible = true;
             _sandboxUi.OnGameStateChangeEvent += OnGameStateChangeUiEventHandler;// TODO: Use Task and async/await
         }
 
