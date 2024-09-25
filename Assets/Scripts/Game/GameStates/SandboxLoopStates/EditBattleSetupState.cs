@@ -10,6 +10,7 @@ using Assets.Scripts.Infrastructure.Ui.Providers;
 using Assets.Scripts.UI.Uis;
 using Assets.Scripts.UI.UiScreens.SandboxModeUiScreens;
 using Assets.Scripts.Infrastructure.Core.Services;
+using Assets.Scripts.Infrastructure.Ui.Services;
 
 namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
 {
@@ -20,6 +21,7 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
         private readonly IPersistentDataService _persistentDataService;
         private readonly IUisProvider _uisProvider;
         private readonly IAudioPlayer _audioPlayer;
+        private readonly IUiWindowsService _uiWindowsService;
 
         private Ui _sandboxUi;
 
@@ -27,13 +29,15 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
         private SetupSandboxBattleUiScreen _sandboxScreen;
 
         public EditBattleSetupState(StateMachine stateMachine, IBattleSetupProvider battleSetupProvider,
-            IPersistentDataService persistentDataService, IUisProvider uisProvider, IAudioPlayer audioPlayer)
+            IPersistentDataService persistentDataService, IUisProvider uisProvider, IAudioPlayer audioPlayer,
+            IUiWindowsService uiWindowsService)
         {
             _stateMachine = stateMachine;
             _battleSetupProvider = battleSetupProvider;
             _persistentDataService = persistentDataService;
             _uisProvider = uisProvider;
             _audioPlayer = audioPlayer;
+            _uiWindowsService = uiWindowsService;
         }
 
 
@@ -50,6 +54,7 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
         public void Exit()
         {
             _sandboxUi.OnGameStateChangeEvent -= OnGameStateChangeUiEventHandler;
+            _uiWindowsService.CloseAllWindows();
         }
 
         private void OnGameStateChangeUiEventHandler(GameStateChangeEvent @event)
