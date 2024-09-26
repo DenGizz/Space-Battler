@@ -50,8 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _messagesContainer: {fileID: 7563495800664131027}
-  _messageDisplayTime: 3
-  _maxMessages: 3
+  _messageDisplayTime: 2
+  _maxMessages: 2
 --- !u!114 &3584226578656342252
 MonoBehaviour:
   m_ObjectHideFlags: 0

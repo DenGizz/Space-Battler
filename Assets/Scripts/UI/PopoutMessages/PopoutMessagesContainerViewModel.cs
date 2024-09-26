@@ -14,7 +14,7 @@ namespace Assets.Scripts.UI.PopoutMessages
     {
         [SerializeField] private Transform _messagesContainer;
         [SerializeField] private float _messageDisplayTime = 3f;
-        [SerializeField] private int _maxMessages = 3;
+        [SerializeField] private int _maxMessages = 2;
 
         private IUiElementsFactory _uiElementsFactory;
 
