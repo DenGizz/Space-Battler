@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.3820755, g: 0.98751205, b: 1, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -230,7 +230,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spaceShipTypeSlotViewModel: {fileID: 3616537382607206989}
   _weaponSlotViewModelsContainer: {fileID: 7646932864048182406}
-  _weaponTypeSlotViewModelPrefab: {fileID: 1646753220554417511, guid: 72799edd07879784ba41c7425d841176, type: 3}
 --- !u!1 &6539085692765334819
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23529413, g: 0.23529413, b: 0.23529413, a: 1}
+  m_Color: {r: 0.05887327, g: 0.3723178, b: 0.46226418, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

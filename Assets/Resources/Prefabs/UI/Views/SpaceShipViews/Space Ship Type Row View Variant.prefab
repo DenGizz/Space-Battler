@@ -144,22 +144,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3913056320827847404, guid: 17391237be46a5845a910eae53566335, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913056320827847404, guid: 17391237be46a5845a910eae53566335, type: 3}
-      propertyPath: m_Color.b
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913056320827847404, guid: 17391237be46a5845a910eae53566335, type: 3}
-      propertyPath: m_Color.g
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913056320827847404, guid: 17391237be46a5845a910eae53566335, type: 3}
-      propertyPath: m_Color.r
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5049689122740128467, guid: 17391237be46a5845a910eae53566335, type: 3}
       propertyPath: m_Name
       value: Space Ship Type Row View Variant
@@ -202,7 +186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8658718018392169142, guid: 17391237be46a5845a910eae53566335, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 130
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8658718018392169142, guid: 17391237be46a5845a910eae53566335, type: 3}
       propertyPath: m_LocalPosition.x
