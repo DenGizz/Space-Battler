@@ -26,6 +26,11 @@ namespace Assets.Scripts.Infrastructure.Core.Services
             runner.StopCoroutine(coroutine);
         }
 
+        public void DoAfterDelay(Action action, float delay)
+        {
+            StartCoroutine(DoAfterDelayCoroutine(action, delay));
+        }
+
         public Coroutine FadeValue(Func<float> getter, Action<float> setter, float targetValue, float time)
         {
             return StartCoroutine(FadeCoroutine(getter, setter, targetValue, time));
@@ -46,6 +51,12 @@ namespace Assets.Scripts.Infrastructure.Core.Services
             }
 
             yield return false;
+        }
+
+        private IEnumerator DoAfterDelayCoroutine(Action action, float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            action.Invoke();
         }
     }
 
