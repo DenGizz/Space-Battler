@@ -41,6 +41,8 @@ namespace Assets.Scripts.Game.GameStates.SandboxLoopStates
                 .GoToScreen<SandboxBattleViewUiScreen>()
                 .SetBattleData(battleRunner.BattleData);
 
+            _uisProvider.ChangeLanguageOverlay.IsVisible = false;
+
             _stateMachine.EnterState<BattleState>();
         }
 

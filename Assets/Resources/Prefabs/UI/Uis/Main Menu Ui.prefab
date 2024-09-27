@@ -123,6 +123,70 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4257191540463016810}
     m_Modifications:
+    - target: {fileID: 2001628530897515963, guid: dbf0ba5ecbaa3ce42acd26867f8f423d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.6712501
+      objectReference: {fileID: 0}
+    - target: {fileID: 2001628530897515963, guid: dbf0ba5ecbaa3ce42acd26867f8f423d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.6863333
+      objectReference: {fileID: 0}
+    - target: {fileID: 2001628530897515963, guid: dbf0ba5ecbaa3ce42acd26867f8f423d, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.32988897
+      objectReference: {fileID: 0}
+    - target: {fileID: 2001628530897515963, guid: dbf0ba5ecbaa3ce42acd26867f8f423d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5515555
+      objectReference: {fileID: 0}
+    - target: {fileID: 2001628530897515963, guid: dbf0ba5ecbaa3ce42acd26867f8f423d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2001628530897515963, guid: dbf0ba5ecbaa3ce42acd26867f8f423d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2001628530897515963, guid: dbf0ba5ecbaa3ce42acd26867f8f423d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2001628530897515963, guid: dbf0ba5ecbaa3ce42acd26867f8f423d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372222880782404547, guid: dbf0ba5ecbaa3ce42acd26867f8f423d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.6712501
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372222880782404547, guid: dbf0ba5ecbaa3ce42acd26867f8f423d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.4512778
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372222880782404547, guid: dbf0ba5ecbaa3ce42acd26867f8f423d, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.32988897
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372222880782404547, guid: dbf0ba5ecbaa3ce42acd26867f8f423d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.3135555
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372222880782404547, guid: dbf0ba5ecbaa3ce42acd26867f8f423d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372222880782404547, guid: dbf0ba5ecbaa3ce42acd26867f8f423d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372222880782404547, guid: dbf0ba5ecbaa3ce42acd26867f8f423d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372222880782404547, guid: dbf0ba5ecbaa3ce42acd26867f8f423d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5599486078064531609, guid: dbf0ba5ecbaa3ce42acd26867f8f423d, type: 3}
       propertyPath: m_Name
       value: MainMenuButtonsUiScreen

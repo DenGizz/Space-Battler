@@ -61,7 +61,7 @@ namespace Assets.Scripts.UI.UiScreens.SandboxModeUiScreens
 
         private void OnBackButtonClicked()
         {
-            _ui.GoToScreen<MainMenuButtonsUiScreen>();
+
         }
     }
 }

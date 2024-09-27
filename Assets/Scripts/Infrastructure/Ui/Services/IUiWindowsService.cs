@@ -7,5 +7,7 @@ namespace Assets.Scripts.Infrastructure.Ui.Services
         UiWindow OpenWindow();
         void CloseWindow(UiWindow uiWindow);
         bool IsWindowOpen(UiWindow uiWindow);
+
+        void CloseAllWindows();
     }
 }

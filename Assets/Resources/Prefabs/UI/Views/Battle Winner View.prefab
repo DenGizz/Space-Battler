@@ -324,8 +324,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Win Lose Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 01e322d671527704886d5188dde98a37, type: 2}
+  m_sharedMaterial: {fileID: -8943942896434177987, guid: 01e322d671527704886d5188dde98a37, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -443,5 +443,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _winnerNameText: {fileID: 829254246387870257}
   _returnToMainMenuButton: {fileID: 9085564677178412182}
-  winText: Ally team won
-  loseText: Ally team lost

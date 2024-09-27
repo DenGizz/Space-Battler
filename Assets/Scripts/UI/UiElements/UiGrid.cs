@@ -9,6 +9,7 @@ namespace Assets.Scripts.UI.UiElements
     {
         [SerializeField] private Transform _contentContainer;
         [SerializeField] private GridLayoutGroup _contentGridLayoutGroup;
+        [SerializeField] private ScallableGridLayout _flexableContentGridLayout;
 
         private void Awake()
         {
@@ -27,6 +28,7 @@ namespace Assets.Scripts.UI.UiElements
         public void SetCellSize(Vector2 size)
         {
             _contentGridLayoutGroup.cellSize = size;
+            _flexableContentGridLayout.SetCellSize(size);
         }
     }
 }
